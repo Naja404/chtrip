@@ -1,0 +1,19 @@
+PODS:
+  - ObjectiveRecord (1.5.0):
+    - ObjectiveSugar
+  - ObjectiveSugar (1.1.0)
+  - PureLayout (2.0.5)
+  - SVProgressHUD (1.1.2)
+
+DEPENDENCIES:
+  - ObjectiveRecord (~> 1.5.0)
+  - PureLayout (~> 2.0.5)
+  - SVProgressHUD (~> 1.1.2)
+
+SPEC CHECKSUMS:
+  ObjectiveRecord: 173527cdf923ee956f6b0a4430916534b54583f5
+  ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
+  PureLayout: 63a3257320223e8edddcd3afb407445f85a6bf74
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+
+COCOAPODS: 0.35.0

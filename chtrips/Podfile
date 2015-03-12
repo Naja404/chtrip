@@ -1,0 +1,4 @@
+platform :ios,'7.0'
+pod 'ObjectiveRecord', '~> 1.5.0'
+pod 'PureLayout', '~> 2.0.5'
+pod 'SVProgressHUD', '~> 1.1.2'

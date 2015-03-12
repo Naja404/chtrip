@@ -1,0 +1,726 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34FF71DF21F11ABF9C7C0316 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F657EEF036818D0C17CEA5 /* libPods.a */; };
+		E90990DC1AAFD6D600C48688 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E90990DB1AAFD6D600C48688 /* main.m */; };
+		E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E90990DE1AAFD6D600C48688 /* AppDelegate.m */; };
+		E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90990E31AAFD6D600C48688 /* Main.storyboard */; };
+		E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90990E61AAFD6D600C48688 /* Images.xcassets */; };
+		E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90990E81AAFD6D600C48688 /* LaunchScreen.xib */; };
+		E90990F61AAFD6D600C48688 /* chtripsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E90990F51AAFD6D600C48688 /* chtripsTests.m */; };
+		E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90991051AAFE7E300C48688 /* AddTripViewController.m */; };
+		E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90991091AAFE82400C48688 /* TripListViewController.m */; };
+		E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90991101AAFEAA700C48688 /* TripListTableViewCell.m */; };
+		E90991161AB013B900C48688 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991151AB013B900C48688 /* MapKit.framework */; };
+		E90991181AB013FB00C48688 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991171AB013FB00C48688 /* CoreLocation.framework */; };
+		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
+		E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */; };
+		E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */; };
+		E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */; };
+		E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */; };
+		E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B3B1AB024E100F7CB38 /* AddTripFrontTableViewCell.m */; };
+		E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B3E1AB0295500F7CB38 /* ViewController.m */; };
+		E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B411AB03A4800F7CB38 /* AddTripNameTableViewCell.m */; };
+		E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B441AB048FC00F7CB38 /* ZBActionSheetDatePicker.m */; };
+		E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B461AB048FC00F7CB38 /* ZBPhotoTaker.m */; };
+		E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */; };
+		E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */; };
+		E96D4B521AB146B500F7CB38 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B511AB146B500F7CB38 /* Trip.m */; };
+		E96D4B551AB146B600F7CB38 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B541AB146B600F7CB38 /* SubTrip.m */; };
+		E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */; };
+		E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */; };
+		E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E90990F01AAFD6D600C48688 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E90990CE1AAFD6D600C48688 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E90990D51AAFD6D600C48688;
+			remoteInfo = chtrips;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B141F703581413DD27DD58A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B2F657EEF036818D0C17CEA5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB3812721C5D0A280CB72168 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E90990D61AAFD6D600C48688 /* chtrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chtrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90990DA1AAFD6D600C48688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E90990DB1AAFD6D600C48688 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E90990DD1AAFD6D600C48688 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E90990DE1AAFD6D600C48688 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E90990E41AAFD6D600C48688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E90990E61AAFD6D600C48688 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E90990E91AAFD6D600C48688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E90990EF1AAFD6D600C48688 /* chtripsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chtripsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90990F41AAFD6D600C48688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E90990F51AAFD6D600C48688 /* chtripsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chtripsTests.m; sourceTree = "<group>"; };
+		E90991041AAFE7E300C48688 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTripViewController.h; path = ViewControllers/AddTripViewController.h; sourceTree = "<group>"; };
+		E90991051AAFE7E300C48688 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTripViewController.m; path = ViewControllers/AddTripViewController.m; sourceTree = "<group>"; };
+		E90991081AAFE82400C48688 /* TripListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripListViewController.h; path = ViewControllers/TripListViewController.h; sourceTree = "<group>"; };
+		E90991091AAFE82400C48688 /* TripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripListViewController.m; path = ViewControllers/TripListViewController.m; sourceTree = "<group>"; };
+		E909910F1AAFEAA700C48688 /* TripListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripListTableViewCell.h; path = Views/TripListTableViewCell.h; sourceTree = "<group>"; };
+		E90991101AAFEAA700C48688 /* TripListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripListTableViewCell.m; path = Views/TripListTableViewCell.m; sourceTree = "<group>"; };
+		E90991141AAFEED100C48688 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E90991151AB013B900C48688 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E90991171AB013FB00C48688 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E96D4B251AB016C100F7CB38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E96D4B261AB016C500F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E96D4B281AB01AE600F7CB38 /* AddTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTripTableViewCell.h; path = Views/AddTripTableViewCell.h; sourceTree = "<group>"; };
+		E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTripTableViewCell.m; path = Views/AddTripTableViewCell.m; sourceTree = "<group>"; };
+		E96D4B2B1AB01F8100F7CB38 /* AddTripDateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTripDateTableViewCell.h; path = Views/AddTripDateTableViewCell.h; sourceTree = "<group>"; };
+		E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTripDateTableViewCell.m; path = Views/AddTripDateTableViewCell.m; sourceTree = "<group>"; };
+		E96D4B341AB0236300F7CB38 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate-Utilities.h"; path = "Vendors/NSDate-Utilities.h"; sourceTree = "<group>"; };
+		E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate-Utilities.m"; path = "Vendors/NSDate-Utilities.m"; sourceTree = "<group>"; };
+		E96D4B361AB0236300F7CB38 /* NSDate+Fomatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Fomatter.h"; path = "Vendors/NSDate+Fomatter.h"; sourceTree = "<group>"; };
+		E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Fomatter.m"; path = "Vendors/NSDate+Fomatter.m"; sourceTree = "<group>"; };
+		E96D4B3A1AB024E100F7CB38 /* AddTripFrontTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTripFrontTableViewCell.h; path = Views/AddTripFrontTableViewCell.h; sourceTree = "<group>"; };
+		E96D4B3B1AB024E100F7CB38 /* AddTripFrontTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTripFrontTableViewCell.m; path = Views/AddTripFrontTableViewCell.m; sourceTree = "<group>"; };
+		E96D4B3D1AB0295500F7CB38 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E96D4B3E1AB0295500F7CB38 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E96D4B401AB03A4800F7CB38 /* AddTripNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTripNameTableViewCell.h; path = Views/AddTripNameTableViewCell.h; sourceTree = "<group>"; };
+		E96D4B411AB03A4800F7CB38 /* AddTripNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTripNameTableViewCell.m; path = Views/AddTripNameTableViewCell.m; sourceTree = "<group>"; };
+		E96D4B431AB048FC00F7CB38 /* ZBActionSheetDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBActionSheetDatePicker.h; path = Vendors/ZBActionSheetDatePicker.h; sourceTree = "<group>"; };
+		E96D4B441AB048FC00F7CB38 /* ZBActionSheetDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBActionSheetDatePicker.m; path = Vendors/ZBActionSheetDatePicker.m; sourceTree = "<group>"; };
+		E96D4B451AB048FC00F7CB38 /* ZBPhotoTaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBPhotoTaker.h; path = Vendors/ZBPhotoTaker.h; sourceTree = "<group>"; };
+		E96D4B461AB048FC00F7CB38 /* ZBPhotoTaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZBPhotoTaker.m; path = Vendors/ZBPhotoTaker.m; sourceTree = "<group>"; };
+		E96D4B491AB04F0400F7CB38 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendors/UIImage+Resize.h"; sourceTree = "<group>"; };
+		E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendors/UIImage+Resize.m"; sourceTree = "<group>"; };
+		E96D4B4E1AB13E4600F7CB38 /* chtripCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chtripCD.xcdatamodel; sourceTree = "<group>"; };
+		E96D4B501AB146B500F7CB38 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
+		E96D4B511AB146B500F7CB38 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
+		E96D4B531AB146B600F7CB38 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
+		E96D4B541AB146B600F7CB38 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
+		E96D4B561AB1476800F7CB38 /* ChtripCDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChtripCDManager.h; path = coreData/ChtripCDManager.h; sourceTree = "<group>"; };
+		E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChtripCDManager.m; path = coreData/ChtripCDManager.m; sourceTree = "<group>"; };
+		E96D4B5A1AB190E300F7CB38 /* SubTripListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListViewController.h; path = ViewControllers/SubTripListViewController.h; sourceTree = "<group>"; };
+		E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListViewController.m; path = ViewControllers/SubTripListViewController.m; sourceTree = "<group>"; };
+		E96D4B5D1AB1952F00F7CB38 /* SubTripListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListTableViewCell.h; path = Views/SubTripListTableViewCell.h; sourceTree = "<group>"; };
+		E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListTableViewCell.m; path = Views/SubTripListTableViewCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E90990D31AAFD6D600C48688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E90991181AB013FB00C48688 /* CoreLocation.framework in Frameworks */,
+				E90991161AB013B900C48688 /* MapKit.framework in Frameworks */,
+				34FF71DF21F11ABF9C7C0316 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E90990EC1AAFD6D600C48688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8247C5FB3C0BA941A93CDABE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E90991171AB013FB00C48688 /* CoreLocation.framework */,
+				E90991151AB013B900C48688 /* MapKit.framework */,
+				B2F657EEF036818D0C17CEA5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C5AC756C6377FB4DDFF03BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B141F703581413DD27DD58A /* Pods.debug.xcconfig */,
+				DB3812721C5D0A280CB72168 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E90990CD1AAFD6D600C48688 = {
+			isa = PBXGroup;
+			children = (
+				E96D4B241AB016BE00F7CB38 /* Localizable.strings */,
+				E90990D81AAFD6D600C48688 /* chtrips */,
+				E90990F21AAFD6D600C48688 /* chtripsTests */,
+				E90990D71AAFD6D600C48688 /* Products */,
+				9C5AC756C6377FB4DDFF03BF /* Pods */,
+				8247C5FB3C0BA941A93CDABE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E90990D71AAFD6D600C48688 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E90990D61AAFD6D600C48688 /* chtrips.app */,
+				E90990EF1AAFD6D600C48688 /* chtripsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E90990D81AAFD6D600C48688 /* chtrips */ = {
+			isa = PBXGroup;
+			children = (
+				E96D4B4C1AB13E2000F7CB38 /* coreData */,
+				E909910E1AAFE8FA00C48688 /* Vendors */,
+				E909910D1AAFE8EA00C48688 /* Views */,
+				E909910C1AAFE8CC00C48688 /* ViewControllers */,
+				E90991141AAFEED100C48688 /* PrefixHeader.pch */,
+				E90990DD1AAFD6D600C48688 /* AppDelegate.h */,
+				E90990DE1AAFD6D600C48688 /* AppDelegate.m */,
+				E96D4B3D1AB0295500F7CB38 /* ViewController.h */,
+				E96D4B3E1AB0295500F7CB38 /* ViewController.m */,
+				E90990E31AAFD6D600C48688 /* Main.storyboard */,
+				E90990E61AAFD6D600C48688 /* Images.xcassets */,
+				E90990E81AAFD6D600C48688 /* LaunchScreen.xib */,
+				E90990D91AAFD6D600C48688 /* Supporting Files */,
+			);
+			path = chtrips;
+			sourceTree = "<group>";
+		};
+		E90990D91AAFD6D600C48688 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E90990DA1AAFD6D600C48688 /* Info.plist */,
+				E90990DB1AAFD6D600C48688 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E90990F21AAFD6D600C48688 /* chtripsTests */ = {
+			isa = PBXGroup;
+			children = (
+				E90990F51AAFD6D600C48688 /* chtripsTests.m */,
+				E90990F31AAFD6D600C48688 /* Supporting Files */,
+			);
+			path = chtripsTests;
+			sourceTree = "<group>";
+		};
+		E90990F31AAFD6D600C48688 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E90990F41AAFD6D600C48688 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E90991071AAFE7F500C48688 /* AddTrip */ = {
+			isa = PBXGroup;
+			children = (
+				E90991041AAFE7E300C48688 /* AddTripViewController.h */,
+				E90991051AAFE7E300C48688 /* AddTripViewController.m */,
+			);
+			name = AddTrip;
+			sourceTree = "<group>";
+		};
+		E909910B1AAFE82D00C48688 /* TripList */ = {
+			isa = PBXGroup;
+			children = (
+				E90991081AAFE82400C48688 /* TripListViewController.h */,
+				E90991091AAFE82400C48688 /* TripListViewController.m */,
+				E96D4B5A1AB190E300F7CB38 /* SubTripListViewController.h */,
+				E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */,
+			);
+			name = TripList;
+			sourceTree = "<group>";
+		};
+		E909910C1AAFE8CC00C48688 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E909910B1AAFE82D00C48688 /* TripList */,
+				E90991071AAFE7F500C48688 /* AddTrip */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E909910D1AAFE8EA00C48688 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E96D4B271AB01AC300F7CB38 /* Add */,
+				E90991121AAFEAAD00C48688 /* TripList */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E909910E1AAFE8FA00C48688 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				E96D4B491AB04F0400F7CB38 /* UIImage+Resize.h */,
+				E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */,
+				E96D4B431AB048FC00F7CB38 /* ZBActionSheetDatePicker.h */,
+				E96D4B441AB048FC00F7CB38 /* ZBActionSheetDatePicker.m */,
+				E96D4B451AB048FC00F7CB38 /* ZBPhotoTaker.h */,
+				E96D4B461AB048FC00F7CB38 /* ZBPhotoTaker.m */,
+				E96D4B341AB0236300F7CB38 /* NSDate-Utilities.h */,
+				E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */,
+				E96D4B361AB0236300F7CB38 /* NSDate+Fomatter.h */,
+				E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		E90991121AAFEAAD00C48688 /* TripList */ = {
+			isa = PBXGroup;
+			children = (
+				E909910F1AAFEAA700C48688 /* TripListTableViewCell.h */,
+				E90991101AAFEAA700C48688 /* TripListTableViewCell.m */,
+				E96D4B5D1AB1952F00F7CB38 /* SubTripListTableViewCell.h */,
+				E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */,
+			);
+			name = TripList;
+			sourceTree = "<group>";
+		};
+		E96D4B271AB01AC300F7CB38 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				E96D4B281AB01AE600F7CB38 /* AddTripTableViewCell.h */,
+				E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */,
+				E96D4B2B1AB01F8100F7CB38 /* AddTripDateTableViewCell.h */,
+				E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */,
+				E96D4B3A1AB024E100F7CB38 /* AddTripFrontTableViewCell.h */,
+				E96D4B3B1AB024E100F7CB38 /* AddTripFrontTableViewCell.m */,
+				E96D4B401AB03A4800F7CB38 /* AddTripNameTableViewCell.h */,
+				E96D4B411AB03A4800F7CB38 /* AddTripNameTableViewCell.m */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
+		E96D4B4C1AB13E2000F7CB38 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */,
+				E96D4B531AB146B600F7CB38 /* SubTrip.h */,
+				E96D4B541AB146B600F7CB38 /* SubTrip.m */,
+				E96D4B501AB146B500F7CB38 /* Trip.h */,
+				E96D4B511AB146B500F7CB38 /* Trip.m */,
+				E96D4B561AB1476800F7CB38 /* ChtripCDManager.h */,
+				E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */,
+			);
+			name = coreData;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E90990D51AAFD6D600C48688 /* chtrips */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E90990F91AAFD6D600C48688 /* Build configuration list for PBXNativeTarget "chtrips" */;
+			buildPhases = (
+				1DBA11576C368AF852308CEE /* Check Pods Manifest.lock */,
+				E90990D21AAFD6D600C48688 /* Sources */,
+				E90990D31AAFD6D600C48688 /* Frameworks */,
+				E90990D41AAFD6D600C48688 /* Resources */,
+				5FB8F19F139F46964C24C0ED /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = chtrips;
+			productName = chtrips;
+			productReference = E90990D61AAFD6D600C48688 /* chtrips.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E90990EE1AAFD6D600C48688 /* chtripsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E90990FC1AAFD6D600C48688 /* Build configuration list for PBXNativeTarget "chtripsTests" */;
+			buildPhases = (
+				E90990EB1AAFD6D600C48688 /* Sources */,
+				E90990EC1AAFD6D600C48688 /* Frameworks */,
+				E90990ED1AAFD6D600C48688 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E90990F11AAFD6D600C48688 /* PBXTargetDependency */,
+			);
+			name = chtripsTests;
+			productName = chtripsTests;
+			productReference = E90990EF1AAFD6D600C48688 /* chtripsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E90990CE1AAFD6D600C48688 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = HSK.ltd;
+				TargetAttributes = {
+					E90990D51AAFD6D600C48688 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = U6HJXK6D8E;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					E90990EE1AAFD6D600C48688 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = E90990D51AAFD6D600C48688;
+					};
+				};
+			};
+			buildConfigurationList = E90990D11AAFD6D600C48688 /* Build configuration list for PBXProject "chtrips" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = E90990CD1AAFD6D600C48688;
+			productRefGroup = E90990D71AAFD6D600C48688 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E90990D51AAFD6D600C48688 /* chtrips */,
+				E90990EE1AAFD6D600C48688 /* chtripsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E90990D41AAFD6D600C48688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
+				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
+				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
+				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E90990ED1AAFD6D600C48688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DBA11576C368AF852308CEE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5FB8F19F139F46964C24C0ED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E90990D21AAFD6D600C48688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
+				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
+				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
+				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
+				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
+				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
+				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
+				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
+				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
+				E96D4B521AB146B500F7CB38 /* Trip.m in Sources */,
+				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
+				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
+				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
+				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
+				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
+				E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */,
+				E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */,
+				E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */,
+				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
+				E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */,
+				E96D4B551AB146B600F7CB38 /* SubTrip.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E90990EB1AAFD6D600C48688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E90990F61AAFD6D600C48688 /* chtripsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E90990F11AAFD6D600C48688 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E90990D51AAFD6D600C48688 /* chtrips */;
+			targetProxy = E90990F01AAFD6D600C48688 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E90990E31AAFD6D600C48688 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E90990E41AAFD6D600C48688 /* Base */,
+				E96D4B201AB0160400F7CB38 /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E90990E81AAFD6D600C48688 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E90990E91AAFD6D600C48688 /* Base */,
+				E96D4B211AB0160400F7CB38 /* zh-Hans */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		E96D4B241AB016BE00F7CB38 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E96D4B231AB016BE00F7CB38 /* Base */,
+				E96D4B251AB016C100F7CB38 /* en */,
+				E96D4B261AB016C500F7CB38 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			path = chtrips;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E90990F71AAFD6D600C48688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E90990F81AAFD6D600C48688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E90990FA1AAFD6D600C48688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B141F703581413DD27DD58A /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
+				INFOPLIST_FILE = chtrips/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+			};
+			name = Debug;
+		};
+		E90990FB1AAFD6D600C48688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB3812721C5D0A280CB72168 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
+				INFOPLIST_FILE = chtrips/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+			};
+			name = Release;
+		};
+		E90990FD1AAFD6D600C48688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = chtripsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chtrips.app/chtrips";
+			};
+			name = Debug;
+		};
+		E90990FE1AAFD6D600C48688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = chtripsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chtrips.app/chtrips";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E90990D11AAFD6D600C48688 /* Build configuration list for PBXProject "chtrips" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E90990F71AAFD6D600C48688 /* Debug */,
+				E90990F81AAFD6D600C48688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E90990F91AAFD6D600C48688 /* Build configuration list for PBXNativeTarget "chtrips" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E90990FA1AAFD6D600C48688 /* Debug */,
+				E90990FB1AAFD6D600C48688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E90990FC1AAFD6D600C48688 /* Build configuration list for PBXNativeTarget "chtripsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E90990FD1AAFD6D600C48688 /* Debug */,
+				E90990FE1AAFD6D600C48688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E96D4B4E1AB13E4600F7CB38 /* chtripCD.xcdatamodel */,
+			);
+			currentVersion = E96D4B4E1AB13E4600F7CB38 /* chtripCD.xcdatamodel */;
+			name = chtripCD.xcdatamodeld;
+			path = coreData/chtripCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E90990CE1AAFD6D600C48688 /* Project object */;
+}

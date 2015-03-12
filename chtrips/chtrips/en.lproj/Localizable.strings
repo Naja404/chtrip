@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  chtrips
+
+  Created by Hisoka on 15/3/11.
+  Copyright (c) 2015年 HSK.ltd. All rights reserved.
+*/
+
+// btn
+"BTN_EDIT_ICON" = "Edit";
+"BTN_DEL_ICON" = "Del";
+"BTN_COPY_ICON" = "Copy";
+"BTN_BACK" = "Back";
+"BTN_SAVE" = "Save";
+"BTN_SEARCH" = "Search";
+"BTN_CHOOSE_PICTURE" = "Choose A Picture";
+"BTN_CANCEL" = "Cancel";
+"BTN_CAMERA" = "Camera";
+"BTN_ALBUM" = "Album";
+
+// text
+"TEXT_MY_ALL_PLAN" = "My All Plan";
+"TEXT_ADDPREVIEW_DEFAULT_NOTE" = "Click “Day1” Add Frist Destination";
+"TEXT_START_DATE" = "Start";
+"TEXT_END_DATE" = "Finish";
+"TEXT_ADD_FRONT_IMAGE" = "Add Front";
+"TEXT_LOCATION_CURRENT_TITLE" = "Current Location";
+"TEXT_PLACE_INPUT" = "Input here";
+"TEXT_CONFIRM_ADD_LOCATION" = "Confirm";
+"TEXT_ADD_LOCATION" = "Add This Location";
+
+"INPUT_ADD_TRIP_NAME" = "Add Trip Name";
+"INPUT_SEARCH_LOCATION" = "Plase Input Destination";
+
+// alert text
+"TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";
+"TEXT_ADD_TRIP_FAILD" = "Add Faild";
+"TEXT_ADD_TRIP_SUCCESS" = "Add Success";

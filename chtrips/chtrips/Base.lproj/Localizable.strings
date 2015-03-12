@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  chtrips
+
+  Created by Hisoka on 15/3/11.
+  Copyright (c) 2015年 HSK.ltd. All rights reserved.
+*/
+
+// btn
+"BTN_EDIT_ICON" = "编辑";
+"BTN_DEL_ICON" = "删除";
+"BTN_COPY_ICON" = "复制";
+"BTN_BACK" = "返回";
+"BTN_SAVE" = "保存";
+"BTN_SEARCH" = "搜索";
+"BTN_CHOOSE_PICTURE" = "选择一张图片";
+"BTN_CANCEL" = "取消";
+"BTN_CAMERA" = "拍照";
+"BTN_ALBUM" = "相册";
+
+// text
+"TEXT_MY_ALL_PLAN" = "我的所有行程";
+"TEXT_ADDPREVIEW_DEFAULT_NOTE" = "点击“Day1”添加第一个目的地";
+"TEXT_START_DATE" = "出发时间";
+"TEXT_END_DATE" = "离开时间";
+"TEXT_ADD_FRONT_IMAGE" = "添加封面";
+"TEXT_LOCATION_CURRENT_TITLE" = "我的位置";
+"TEXT_PLACE_INPUT" = "请输入内容";
+"TEXT_CONFIRM_ADD_LOCATION" = "是否确认添加";
+"TEXT_ADD_LOCATION" = "添加此目的地";
+
+"INPUT_ADD_TRIP_NAME" = "添加行程名称";
+"INPUT_SEARCH_LOCATION" = "请输入目的地";
+
+// alert info
+
+"TEXT_PLACE_INPUT_TRIP_NAME" = "请输入行程名称";
+"TEXT_ADD_TRIP_FAILD" = "行程添加失败";
+"TEXT_ADD_TRIP_SUCCESS" = "行程添加成功";

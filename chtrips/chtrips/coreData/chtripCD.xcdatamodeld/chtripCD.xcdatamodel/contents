@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1510" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SubTrip" representedClassName="SubTrip" syncable="YES">
+        <attribute name="keyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="subEndTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subLat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subLng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subStartTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subTitle" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="frontData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="keyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="tripName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Trip" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="SubTrip" positionX="-54" positionY="27" width="128" height="163"/>
+    </elements>
+</model>
