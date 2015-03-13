@@ -10,4 +10,7 @@
 
 @interface SubTripListTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *subTitleLB;
+@property (nonatomic, strong) UILabel *subTimeLB;
+
 @end

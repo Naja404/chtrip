@@ -36,6 +36,13 @@
 		E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */; };
 		E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */; };
 		E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */; };
+		E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */; };
+		E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */; };
+		E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */; };
+		E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319A1AB2F1D600E6E873 /* tripLocation.png */; };
+		E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319B1AB2F1D600E6E873 /* tripLocation@2x.png */; };
+		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
+		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +115,16 @@
 		E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListViewController.m; path = ViewControllers/SubTripListViewController.m; sourceTree = "<group>"; };
 		E96D4B5D1AB1952F00F7CB38 /* SubTripListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListTableViewCell.h; path = Views/SubTripListTableViewCell.h; sourceTree = "<group>"; };
 		E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListTableViewCell.m; path = Views/SubTripListTableViewCell.m; sourceTree = "<group>"; };
+		E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripViewController.h; path = ViewControllers/AddSubTripViewController.h; sourceTree = "<group>"; };
+		E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripViewController.m; path = ViewControllers/AddSubTripViewController.m; sourceTree = "<group>"; };
+		E9C131931AB2E79400E6E873 /* AddSubTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripTableViewCell.h; path = Views/AddSubTripTableViewCell.h; sourceTree = "<group>"; };
+		E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripTableViewCell.m; path = Views/AddSubTripTableViewCell.m; sourceTree = "<group>"; };
+		E9C131961AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripEndTimeTableViewCell.h; path = Views/AddSubTripEndTimeTableViewCell.h; sourceTree = "<group>"; };
+		E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripEndTimeTableViewCell.m; path = Views/AddSubTripEndTimeTableViewCell.m; sourceTree = "<group>"; };
+		E9C1319A1AB2F1D600E6E873 /* tripLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tripLocation.png; path = Resource/tripLocation.png; sourceTree = "<group>"; };
+		E9C1319B1AB2F1D600E6E873 /* tripLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripLocation@2x.png"; path = "Resource/tripLocation@2x.png"; sourceTree = "<group>"; };
+		E9C1319C1AB2F1D600E6E873 /* tripTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tripTitle.png; path = Resource/tripTitle.png; sourceTree = "<group>"; };
+		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +191,7 @@
 		E90990D81AAFD6D600C48688 /* chtrips */ = {
 			isa = PBXGroup;
 			children = (
+				E9C131991AB2F1C400E6E873 /* Resource */,
 				E96D4B4C1AB13E2000F7CB38 /* coreData */,
 				E909910E1AAFE8FA00C48688 /* Vendors */,
 				E909910D1AAFE8EA00C48688 /* Views */,
@@ -217,13 +235,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E90991071AAFE7F500C48688 /* AddTrip */ = {
+		E90991071AAFE7F500C48688 /* Add */ = {
 			isa = PBXGroup;
 			children = (
 				E90991041AAFE7E300C48688 /* AddTripViewController.h */,
 				E90991051AAFE7E300C48688 /* AddTripViewController.m */,
+				E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */,
+				E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */,
 			);
-			name = AddTrip;
+			name = Add;
 			sourceTree = "<group>";
 		};
 		E909910B1AAFE82D00C48688 /* TripList */ = {
@@ -241,7 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				E909910B1AAFE82D00C48688 /* TripList */,
-				E90991071AAFE7F500C48688 /* AddTrip */,
+				E90991071AAFE7F500C48688 /* Add */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -294,6 +314,10 @@
 				E96D4B3B1AB024E100F7CB38 /* AddTripFrontTableViewCell.m */,
 				E96D4B401AB03A4800F7CB38 /* AddTripNameTableViewCell.h */,
 				E96D4B411AB03A4800F7CB38 /* AddTripNameTableViewCell.m */,
+				E9C131931AB2E79400E6E873 /* AddSubTripTableViewCell.h */,
+				E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */,
+				E9C131961AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.h */,
+				E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -310,6 +334,17 @@
 				E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */,
 			);
 			name = coreData;
+			sourceTree = "<group>";
+		};
+		E9C131991AB2F1C400E6E873 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E9C1319A1AB2F1D600E6E873 /* tripLocation.png */,
+				E9C1319B1AB2F1D600E6E873 /* tripLocation@2x.png */,
+				E9C1319C1AB2F1D600E6E873 /* tripTitle.png */,
+				E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,9 +437,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
+				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
+				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
 				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
+				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
+				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,12 +506,15 @@
 				E96D4B521AB146B500F7CB38 /* Trip.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
+				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
+				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
 				E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */,
 				E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */,
 				E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */,
+				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
 				E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */,
 				E96D4B551AB146B600F7CB38 /* SubTrip.m in Sources */,

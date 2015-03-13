@@ -19,6 +19,7 @@
 "BTN_ALBUM" = "相册";
 
 // text
+"TEXT_APP_TITLE" = "彩虹Town";
 "TEXT_MY_ALL_PLAN" = "我的所有行程";
 "TEXT_ADDPREVIEW_DEFAULT_NOTE" = "点击“Day1”添加第一个目的地";
 "TEXT_START_DATE" = "出发时间";
@@ -28,6 +29,9 @@
 "TEXT_PLACE_INPUT" = "请输入内容";
 "TEXT_CONFIRM_ADD_LOCATION" = "是否确认添加";
 "TEXT_ADD_LOCATION" = "添加此目的地";
+"TEXT_ADD_SUBTRIP" = "添加一个行程";
+"TEXT_SUB_TRIP_LOCATION" = "地址";
+"TEXT_SUB_TRIP" = "行程名";
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";

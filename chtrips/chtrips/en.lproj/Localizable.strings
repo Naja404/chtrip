@@ -19,6 +19,7 @@
 "BTN_ALBUM" = "Album";
 
 // text
+"TEXT_APP_TITLE" = "彩虹Town";
 "TEXT_MY_ALL_PLAN" = "My All Plan";
 "TEXT_ADDPREVIEW_DEFAULT_NOTE" = "Click “Day1” Add Frist Destination";
 "TEXT_START_DATE" = "Start";
@@ -28,9 +29,12 @@
 "TEXT_PLACE_INPUT" = "Input here";
 "TEXT_CONFIRM_ADD_LOCATION" = "Confirm";
 "TEXT_ADD_LOCATION" = "Add This Location";
+"TEXT_SUB_TRIP_LOCATION" = "Location";
+"TEXT_SUB_TRIP" = "Sub Trip Name";
 
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";
 "INPUT_SEARCH_LOCATION" = "Plase Input Destination";
+"TEXT_ADD_SUBTRIP" = "New SubTrip";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";

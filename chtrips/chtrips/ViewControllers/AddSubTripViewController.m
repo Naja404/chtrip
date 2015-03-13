@@ -1,0 +1,142 @@
+//
+//  AddSubTripViewController.m
+//  chtrips
+//
+//  Created by Hisoka on 15/3/13.
+//  Copyright (c) 2015年 HSK.ltd. All rights reserved.
+//
+
+#import "AddSubTripViewController.h"
+#import "AddSubTripTableViewCell.h"
+
+static NSString * const ADD_TRIPSUB_CELL = @"AddSubTripCell";
+static NSInteger const START_TIME_ROW = 0;
+static NSInteger const END_DATE_SECTION = 2;
+
+@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *addSubTripTV;
+@property (nonatomic, strong) AddSubTripTableViewCell *addSubTripCell;
+
+@end
+
+@implementation AddSubTripViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setupAddSubTripTV];
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark 设置addSubTrip tableview
+- (void) setupAddSubTripTV
+{
+    [self setupNav];
+    
+    self.addSubTripTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _addSubTripTV.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:_addSubTripTV];
+    
+    _addSubTripTV.dataSource = self;
+    _addSubTripTV.delegate = self;
+    _addSubTripTV.separatorStyle = UITableViewCellAccessoryNone;
+    
+    [_addSubTripTV autoPinToTopLayoutGuideOfViewController:self withInset:-85.0];
+    [_addSubTripTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_addSubTripTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_addSubTripTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    
+    [self.addSubTripTV registerClass:[AddSubTripTableViewCell class] forCellReuseIdentifier:ADD_TRIPSUB_CELL];
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    
+    if (indexPath.section == END_DATE_SECTION) {
+        self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
+        
+        _addSubTripCell.inputField.placeholder = @"test";
+        
+        cell = _addSubTripCell;
+        
+    }else{
+        self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
+        
+        if (indexPath.row == 1) {
+            _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
+            _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
+        }else{
+            _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP", Nil);
+            _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripTitle"];
+        }
+        
+        cell = _addSubTripCell;
+    }
+    
+    return cell;
+}
+
+
+#pragma mark 设置nav内容
+- (void) setupNav
+{
+    UIBarButtonItem *navCancelBTN = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BTN_CANCEL", Nil)
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(navCancelBTN)];
+    self.navigationItem.leftBarButtonItem = navCancelBTN;
+    
+    UIBarButtonItem *navSaveBTN = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BTN_SAVE", Nil)
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(navSaveBTN)];
+    self.navigationItem.rightBarButtonItem = navSaveBTN;
+    
+}
+
+#pragma mark nav取消按钮
+- (void) navCancelBTN
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark nav保存按钮
+- (void) navSaveBTN
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

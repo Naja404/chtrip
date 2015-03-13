@@ -66,6 +66,8 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
                                                                               target:self
                                                                               action:@selector(pushAddTrip)];
     self.navigationItem.rightBarButtonItem = rightBTN;
+    
+    self.navigationItem.title = NSLocalizedString(@"TEXT_APP_TITLE", Nil);
 }
 
 #pragma mark
@@ -158,6 +160,21 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
     cell.frontImg.image = [UIImage imageWithData:trip.frontData];
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SubTripListViewController *subTripListVC = [[SubTripListViewController alloc] init];
+    
+    Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    subTripListVC.keyID = trip.keyID;
+    subTripListVC.tripName = trip.tripName;
+    
+    [self.navigationController pushViewController:subTripListVC animated:YES];
+    
 }
 
 /*
