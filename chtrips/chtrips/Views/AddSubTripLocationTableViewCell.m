@@ -1,14 +1,14 @@
 //
-//  AddSubTripTableViewCell.m
+//  AddSubTripLocationTableViewCell.m
 //  chtrips
 //
-//  Created by Hisoka on 15/3/13.
+//  Created by Hisoka on 15/3/14.
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
-#import "AddSubTripTableViewCell.h"
+#import "AddSubTripLocationTableViewCell.h"
 
-@implementation AddSubTripTableViewCell
+@implementation AddSubTripLocationTableViewCell
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,9 +31,9 @@
         [_inputField autoSetDimension:ALDimensionHeight toSize:20.0];
         
         _inputField.contentHorizontalAlignment = UIControlContentVerticalAlignmentCenter;
-//        _inputField.userInteractionEnabled = NO;
+        //        _inputField.userInteractionEnabled = NO;
         _inputField.returnKeyType = UIReturnKeyDone;
-
+        
     }
     
     return self;

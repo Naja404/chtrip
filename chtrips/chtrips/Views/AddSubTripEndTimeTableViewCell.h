@@ -10,5 +10,8 @@
 
 @interface AddSubTripEndTimeTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *titleLB;
+@property (nonatomic, strong) UILabel *timeLB;
+
 
 @end

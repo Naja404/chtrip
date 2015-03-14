@@ -35,6 +35,7 @@
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";
 "INPUT_SEARCH_LOCATION" = "Plase Input Destination";
 "TEXT_ADD_SUBTRIP" = "New SubTrip";
+"TEXT_TIME" = "Time";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";

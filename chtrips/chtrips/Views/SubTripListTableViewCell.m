@@ -25,7 +25,7 @@
         self.subTimeLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_subTimeLB];
         
-        [_subTimeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_subTitleLB withOffset:10.0];
+        [_subTimeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_subTitleLB withOffset:20.0];
         [_subTimeLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:50.0];
         [_subTimeLB autoSetDimensionsToSize:CGSizeMake(200, 30)];
         

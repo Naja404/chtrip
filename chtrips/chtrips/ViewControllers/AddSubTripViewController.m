@@ -8,15 +8,24 @@
 
 #import "AddSubTripViewController.h"
 #import "AddSubTripTableViewCell.h"
+#import "AddSubTripLocationTableViewCell.h"
+#import "AddSubTripEndTimeTableViewCell.h"
+
+#import "NSDate-Utilities.h"
+#import "NSDate+Fomatter.h"
 
 static NSString * const ADD_TRIPSUB_CELL = @"AddSubTripCell";
+static NSString * const ADD_END_TIME_CELL = @"AddSubTripEndTimeCell";
+static NSString * const ADD_LOCATION_CELL = @"AddSubTripLocationCell";
 static NSInteger const START_TIME_ROW = 0;
-static NSInteger const END_DATE_SECTION = 2;
+static NSInteger const END_DATE_SECTION = 1;
 
-@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *addSubTripTV;
 @property (nonatomic, strong) AddSubTripTableViewCell *addSubTripCell;
+@property (nonatomic, strong) AddSubTripEndTimeTableViewCell *addSubTripEndTimeCell;
+@property (nonatomic, strong) AddSubTripLocationTableViewCell *addSubTripLocationCell;
 
 @end
 
@@ -47,19 +56,20 @@ static NSInteger const END_DATE_SECTION = 2;
     
     _addSubTripTV.dataSource = self;
     _addSubTripTV.delegate = self;
-    _addSubTripTV.separatorStyle = UITableViewCellAccessoryNone;
     
-    [_addSubTripTV autoPinToTopLayoutGuideOfViewController:self withInset:-85.0];
+    [_addSubTripTV autoPinToTopLayoutGuideOfViewController:self withInset:-100.0];
     [_addSubTripTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_addSubTripTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_addSubTripTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
     [self.addSubTripTV registerClass:[AddSubTripTableViewCell class] forCellReuseIdentifier:ADD_TRIPSUB_CELL];
+    [self.addSubTripTV registerClass:[AddSubTripLocationTableViewCell class] forCellReuseIdentifier:ADD_LOCATION_CELL];
+    [self.addSubTripTV registerClass:[AddSubTripEndTimeTableViewCell class] forCellReuseIdentifier:ADD_END_TIME_CELL];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +79,11 @@ static NSInteger const END_DATE_SECTION = 2;
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    if (section == 0) {
+        return 2;
+    }else{
+        return 1;
+    }
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,29 +91,45 @@ static NSInteger const END_DATE_SECTION = 2;
     UITableViewCell *cell = nil;
     
     if (indexPath.section == END_DATE_SECTION) {
-        self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
+        self.addSubTripEndTimeCell = [tableView dequeueReusableCellWithIdentifier:ADD_END_TIME_CELL forIndexPath:indexPath];
         
-        _addSubTripCell.inputField.placeholder = @"test";
+        _addSubTripEndTimeCell.titleLB.text = NSLocalizedString(@"TEXT_TIME", Nil);
         
-        cell = _addSubTripCell;
+        _addSubTripEndTimeCell.timeLB.text = @"12:00";
+        
+        cell = _addSubTripEndTimeCell;
         
     }else{
-        self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
+        
         
         if (indexPath.row == 1) {
-            _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
-            _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
+            self.addSubTripLocationCell = [tableView dequeueReusableCellWithIdentifier:ADD_LOCATION_CELL forIndexPath:indexPath];
+            _addSubTripLocationCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
+            _addSubTripLocationCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
+            cell = _addSubTripLocationCell;
         }else{
+            self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
             _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP", Nil);
             _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripTitle"];
+            cell = _addSubTripCell;
         }
         
-        cell = _addSubTripCell;
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.section == 1) {
+        NSLog(@"1");
+    }else{
+        NSLog(@"other");
+    }
+}
 
 #pragma mark 设置nav内容
 - (void) setupNav
@@ -128,6 +158,13 @@ static NSInteger const END_DATE_SECTION = 2;
 - (void) navSaveBTN
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma  mark return keybord
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 /*
 #pragma mark - Navigation

@@ -259,7 +259,7 @@ static NSInteger const ROW_FRONT = 0;
     
     NSDictionary *tripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
                                                                             self.startDate, @"startDate",
-                                                                            [self.startDate setupNoonByNum:3], @"endDate",
+                                                                            [self.startDate setupNoonByNum:2], @"endDate",
                                                                             self.tripNameCell.tripNameInput.text, @"tripName",
                                                                             [self setupFrontImg], @"frontData",
                                                                             nil];

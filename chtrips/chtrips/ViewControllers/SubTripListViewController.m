@@ -41,6 +41,8 @@ static NSString * const SECTION_ADD_MARK = @"section";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = self.tripName;
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewDay)];
+    
     self.subTripTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_subTripTV];
     
@@ -71,6 +73,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"keyID = %@", self.keyID]];
     
     [fetchRequest setPredicate:predicate];
+    [fetchRequest setFetchBatchSize:10];
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"subEndTime" ascending:NO];
     
@@ -205,6 +208,12 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [self.navigationController presentViewController:navVC animated:YES completion:nil];
 }
 
+#pragma mark 新增一天
+- (void) addNewDay
+{
+    NSLog(@"add new day %@", self.keyID);
+    
+}
 /*
 #pragma mark - Navigation
 
