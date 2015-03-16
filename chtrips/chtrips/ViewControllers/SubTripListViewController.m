@@ -9,6 +9,10 @@
 #import "SubTripListViewController.h"
 #import "SubTripListTableViewCell.h"
 #import "AddSubTripViewController.h"
+
+#import "NSDate+Fomatter.h"
+#import "NSDate-Utilities.h"
+#import "ChtripCDManager.h"
 #import "SubTrip.h"
 
 static NSString * const SUB_TRIP_CELL = @"SubTripListCell";
@@ -18,6 +22,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) UITableView *subTripTV;
+@property (nonatomic, strong) NSDate *lastDate;
 
 @end
 
@@ -82,7 +87,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                     managedObjectContext:[CoreDataManager sharedManager].managedObjectContext
                                                                       sectionNameKeyPath:@"subDate"
-                                                                               cacheName:@"subTripFetchResultCache"];
+                                                                               cacheName:nil];
     
     _fetchedResultsController.delegate = self;
     
@@ -168,7 +173,6 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [dateLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:autoSectionView];
     [dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:autoSectionView];
     [dateLB autoSetDimensionsToSize:CGSizeMake(200, 20)];
-    dateLB.text = @"1";
     
     NSArray *sections = [_fetchedResultsController sections];
     id <NSFetchedResultsSectionInfo> sectionInfo = nil;
@@ -211,7 +215,22 @@ static NSString * const SECTION_ADD_MARK = @"section";
 #pragma mark 新增一天
 - (void) addNewDay
 {
-    NSLog(@"add new day %@", self.keyID);
+    ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
+    
+    NSArray *lastDateArr = [TripCD getSubTripLastDateByKeyID:self.keyID];
+    
+    for (SubTrip *ch in lastDateArr) {
+         self.lastDate = ch.subDate;
+    }
+    
+    NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
+                                 [_lastDate setupNoonByNum:1], @"subDate",
+                                 @"section", @"subTitle",
+                                 nil];
+    
+    [TripCD addSubTripSections:subTripData];
+    
+    [self.subTripTV reloadData];
     
 }
 /*

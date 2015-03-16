@@ -3,18 +3,18 @@
     <entity name="SubTrip" representedClassName="SubTrip" syncable="YES">
         <attribute name="keyID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="subDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="subEndTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subDate" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="subEndTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="subLat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subLng" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="subStartTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subStartTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="subTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES">
-        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="frontData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="keyID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="tripName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>

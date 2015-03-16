@@ -13,19 +13,25 @@
 
 #import "NSDate-Utilities.h"
 #import "NSDate+Fomatter.h"
+#import "ZBActionSheetDatePicker.h"
+
+#import "ChtripCDManager.h"
 
 static NSString * const ADD_TRIPSUB_CELL = @"AddSubTripCell";
 static NSString * const ADD_END_TIME_CELL = @"AddSubTripEndTimeCell";
 static NSString * const ADD_LOCATION_CELL = @"AddSubTripLocationCell";
-static NSInteger const START_TIME_ROW = 0;
+//static NSInteger const START_TIME_ROW = 0;
 static NSInteger const END_DATE_SECTION = 1;
 
-@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate>
 
 @property (nonatomic, strong) UITableView *addSubTripTV;
 @property (nonatomic, strong) AddSubTripTableViewCell *addSubTripCell;
 @property (nonatomic, strong) AddSubTripEndTimeTableViewCell *addSubTripEndTimeCell;
 @property (nonatomic, strong) AddSubTripLocationTableViewCell *addSubTripLocationCell;
+@property (nonatomic, strong) ZBActionSheetDatePicker *datePicker;
+@property (nonatomic, strong) NSDate *subTime;
+@property (nonatomic, strong) NSString *keyBoardShow;
 
 @end
 
@@ -94,8 +100,13 @@ static NSInteger const END_DATE_SECTION = 1;
         self.addSubTripEndTimeCell = [tableView dequeueReusableCellWithIdentifier:ADD_END_TIME_CELL forIndexPath:indexPath];
         
         _addSubTripEndTimeCell.titleLB.text = NSLocalizedString(@"TEXT_TIME", Nil);
+        _addSubTripEndTimeCell.timeLB.textColor = [UIColor blueColor];
         
-        _addSubTripEndTimeCell.timeLB.text = @"12:00";
+        if (_subTime == nil) {
+            _addSubTripEndTimeCell.timeLB.text = @"12:00";
+        }else{
+            _addSubTripEndTimeCell.timeLB.text = [_subTime hourAndMinute];
+        }
         
         cell = _addSubTripEndTimeCell;
         
@@ -106,10 +117,12 @@ static NSInteger const END_DATE_SECTION = 1;
             self.addSubTripLocationCell = [tableView dequeueReusableCellWithIdentifier:ADD_LOCATION_CELL forIndexPath:indexPath];
             _addSubTripLocationCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
             _addSubTripLocationCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
+            _addSubTripLocationCell.inputField.delegate = self;
             cell = _addSubTripLocationCell;
         }else{
             self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
             _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP", Nil);
+            _addSubTripCell.inputField.delegate = self;
             _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripTitle"];
             cell = _addSubTripCell;
         }
@@ -125,10 +138,33 @@ static NSInteger const END_DATE_SECTION = 1;
 {
     
     if (indexPath.section == 1) {
-        NSLog(@"1");
+        if ([_keyBoardShow isEqualToString:@"YES"]) {
+            NSLog(@"if yes");
+            [self.view endEditing:YES];
+            //        [_addSubTripCell.inputField resignFirstResponder];
+            //        [_addSubTripLocationCell.inputField resignFirstResponder];
+        }
+        
+        self.datePicker = Nil;
+        NSDate *date = [NSDate tomorrowNoon];
+        self.datePicker = [[ZBActionSheetDatePicker alloc] initWithMode:UIDatePickerModeTime initialDate:date delegate:self];
     }else{
         NSLog(@"other");
     }
+}
+
+#pragma mark 时间选择
+- (void) datePickerDidSelectDate:(NSDate *)date pickerController:(ZBActionSheetDatePicker *)pickerController
+{
+    
+    self.subTime = date;
+    
+    [self.addSubTripTV reloadData];
+}
+#pragma mark 时间取消
+- (void) datePickerDidCancel:(ZBActionSheetDatePicker *)pickerController
+{
+    
 }
 
 #pragma mark 设置nav内容
@@ -157,14 +193,49 @@ static NSInteger const END_DATE_SECTION = 1;
 #pragma mark nav保存按钮
 - (void) navSaveBTN
 {
+    ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
+    
+    NSDictionary *subTripDate = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
+                                                                            _addSubTripLocationCell.inputField.text, @"subAddress",
+                                                                            self.subDate, @"subDate",
+                                                                            @"12:00", @"subEndTime",
+                                                                            @"经纬度lat", @"subLat",
+                                                                            @"经纬度lng", @"subLng",
+                                                                            @"10:12", @"subStartTime",
+                                                                            _addSubTripCell.inputField.text, @"subTitle",
+                                 nil];
+    
+    if ([TripCD addSubTripSections:subTripDate]) {
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeClear];
+    }else{
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeClear];
+    }
+    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma  mark return keybord
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    NSLog(@"should return ");
+    self.keyBoardShow = @"NO";
+    
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark 键盘弹出
+- (void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    NSLog(@"begin yes");
+    self.keyBoardShow = @"YES";
+}
+
+#pragma mark 键盘隐藏
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    NSLog(@"end no");
+    self.keyBoardShow = @"NO";
 }
 /*
 #pragma mark - Navigation

@@ -21,6 +21,15 @@
     return allTrip;
 }
 
+#pragma mark 根据keyID获取子行程的最后一天日期
+- (NSArray *) getSubTripLastDateByKeyID:(NSString *)keyID
+{
+    NSArray *lastDate = [SubTrip where:@{@"keyID" : keyID}
+                                 order:@{@"subDate" : @"DESC"}
+                                 limit:@(1)];
+    return lastDate;
+}
+
 #pragma mark 添加行程
 - (BOOL) addTrip:(NSDictionary *)tripData
 {

@@ -11,6 +11,7 @@
 @interface ChtripCDManager : NSObject
 
 - (NSArray *) getAllTrip;
+- (NSArray *) getSubTripLastDateByKeyID:(NSString *)keyID;
 - (BOOL) addTrip:(NSDictionary *) tripData;
 - (BOOL) addSubTripSections:(NSDictionary *) subTripData;
 - (NSString *) makeKeyID;

@@ -124,7 +124,7 @@
                  initialDate:(NSDate *)date
                     delegate:(id<ZBActionSheetDatePickerDelegate>)delegate {
     
-    return [self initWithMode:mode initialDate:date minuteInterval:15 delegate:delegate];
+    return [self initWithMode:mode initialDate:date minuteInterval:1 delegate:delegate];
 
 }
 
