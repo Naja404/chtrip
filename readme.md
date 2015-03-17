@@ -18,8 +18,8 @@ Attribute|type|
 ---|---|
 keyId|String
 tripName|string
-startDate|Date
-endDate|Date
+startDate|double
+endDate|double
 FrontData|Binary Data
 
 
@@ -28,10 +28,10 @@ FrontData|Binary Data
 Attribute|type|
 ---|---|
 keyId|String
-subDate|Date|
-subEndTime|String|
+subDate|double|
+subEndTime|double|
 subId|String|
 subLat|String|
 subLng|String|
 subTitle|String|
-subStartTime|String|
+subStartTime|double|
