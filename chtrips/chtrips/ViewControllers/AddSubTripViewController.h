@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  AddSubTripViewControllerDelegate <NSObject>
+
+- (void) refreshTableView;
+
+@end
+
 @interface AddSubTripViewController : UIViewController
 
 @property (nonatomic, strong) NSString *keyID;
-@property (nonatomic, strong) NSDate *subDate;
+@property (nonatomic, strong) NSNumber *subDate;
+@property (nonatomic, weak) id<AddSubTripViewControllerDelegate> addSubTripDelegate;
 
 @end

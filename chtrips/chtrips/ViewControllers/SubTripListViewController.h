@@ -10,7 +10,7 @@
 
 @interface SubTripListViewController : UIViewController
 
-@property (nonatomic, retain) NSString *keyID;
+@property (nonatomic, copy) NSString *keyID;
 @property (nonatomic, strong) NSString *tripName;
 
 @end

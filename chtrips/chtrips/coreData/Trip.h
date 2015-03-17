@@ -2,7 +2,7 @@
 //  Trip.h
 //  chtrips
 //
-//  Created by Hisoka on 15/3/12.
+//  Created by Hisoka on 15/3/17.
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
@@ -12,10 +12,10 @@
 
 @interface Trip : NSManagedObject
 
-@property (nonatomic, retain) NSString * keyID;
-@property (nonatomic, retain) NSString * tripName;
-@property (nonatomic, retain) NSDate * startDate;
-@property (nonatomic, retain) NSDate * endDate;
+@property (nonatomic, retain) NSNumber * endDate;
 @property (nonatomic, retain) NSData * frontData;
+@property (nonatomic, retain) NSString * keyID;
+@property (nonatomic, retain) NSNumber * startDate;
+@property (nonatomic, retain) NSString * tripName;
 
 @end

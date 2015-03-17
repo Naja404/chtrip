@@ -31,8 +31,6 @@
 		E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B461AB048FC00F7CB38 /* ZBPhotoTaker.m */; };
 		E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */; };
 		E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */; };
-		E96D4B521AB146B500F7CB38 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B511AB146B500F7CB38 /* Trip.m */; };
-		E96D4B551AB146B600F7CB38 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B541AB146B600F7CB38 /* SubTrip.m */; };
 		E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */; };
 		E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */; };
 		E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */; };
@@ -44,6 +42,12 @@
 		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
 		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
 		E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */; };
+		E9EB9C791AB7CA5B00ED0334 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C781AB7CA5B00ED0334 /* SubTrip.m */; };
+		E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */; };
+		E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7E1AB8142D00ED0334 /* addIcon.png */; };
+		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
+		E9EB9C841AB8150900ED0334 /* day.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C821AB8150900ED0334 /* day.png */; };
+		E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C831AB8150900ED0334 /* day@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,10 +110,6 @@
 		E96D4B491AB04F0400F7CB38 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Vendors/UIImage+Resize.h"; sourceTree = "<group>"; };
 		E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Vendors/UIImage+Resize.m"; sourceTree = "<group>"; };
 		E96D4B4E1AB13E4600F7CB38 /* chtripCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chtripCD.xcdatamodel; sourceTree = "<group>"; };
-		E96D4B501AB146B500F7CB38 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
-		E96D4B511AB146B500F7CB38 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
-		E96D4B531AB146B600F7CB38 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
-		E96D4B541AB146B600F7CB38 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
 		E96D4B561AB1476800F7CB38 /* ChtripCDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChtripCDManager.h; path = coreData/ChtripCDManager.h; sourceTree = "<group>"; };
 		E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChtripCDManager.m; path = coreData/ChtripCDManager.m; sourceTree = "<group>"; };
 		E96D4B5A1AB190E300F7CB38 /* SubTripListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListViewController.h; path = ViewControllers/SubTripListViewController.h; sourceTree = "<group>"; };
@@ -128,6 +128,14 @@
 		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
 		E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationTableViewCell.h; path = Views/AddSubTripLocationTableViewCell.h; sourceTree = "<group>"; };
 		E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationTableViewCell.m; path = Views/AddSubTripLocationTableViewCell.m; sourceTree = "<group>"; };
+		E9EB9C771AB7CA5B00ED0334 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
+		E9EB9C781AB7CA5B00ED0334 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
+		E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
+		E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
+		E9EB9C7E1AB8142D00ED0334 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addIcon.png; path = Resource/addIcon.png; sourceTree = "<group>"; };
+		E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addIcon@2x.png"; path = "Resource/addIcon@2x.png"; sourceTree = "<group>"; };
+		E9EB9C821AB8150900ED0334 /* day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = day.png; path = Resource/day.png; sourceTree = "<group>"; };
+		E9EB9C831AB8150900ED0334 /* day@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "day@2x.png"; path = "Resource/day@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,10 +339,10 @@
 			isa = PBXGroup;
 			children = (
 				E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */,
-				E96D4B531AB146B600F7CB38 /* SubTrip.h */,
-				E96D4B541AB146B600F7CB38 /* SubTrip.m */,
-				E96D4B501AB146B500F7CB38 /* Trip.h */,
-				E96D4B511AB146B500F7CB38 /* Trip.m */,
+				E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */,
+				E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */,
+				E9EB9C771AB7CA5B00ED0334 /* SubTrip.h */,
+				E9EB9C781AB7CA5B00ED0334 /* SubTrip.m */,
 				E96D4B561AB1476800F7CB38 /* ChtripCDManager.h */,
 				E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */,
 			);
@@ -344,6 +352,10 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9EB9C821AB8150900ED0334 /* day.png */,
+				E9EB9C831AB8150900ED0334 /* day@2x.png */,
+				E9EB9C7E1AB8142D00ED0334 /* addIcon.png */,
+				E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */,
 				E9C1319A1AB2F1D600E6E873 /* tripLocation.png */,
 				E9C1319B1AB2F1D600E6E873 /* tripLocation@2x.png */,
 				E9C1319C1AB2F1D600E6E873 /* tripTitle.png */,
@@ -442,13 +454,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
+				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
 				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
+				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
+				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
+				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,16 +520,17 @@
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
 				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
+				E9EB9C791AB7CA5B00ED0334 /* SubTrip.m in Sources */,
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
-				E96D4B521AB146B500F7CB38 /* Trip.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
 				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
+				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
 				E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */,
@@ -523,7 +540,6 @@
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
 				E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */,
-				E96D4B551AB146B600F7CB38 /* SubTrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,7 +675,7 @@
 			baseConfigurationReference = 4B141F703581413DD27DD58A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
@@ -677,7 +693,7 @@
 			baseConfigurationReference = DB3812721C5D0A280CB72168 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;

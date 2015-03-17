@@ -12,17 +12,18 @@
 
 #import "NSDate+Fomatter.h"
 #import "NSDate-Utilities.h"
+#import "NSDate+DateTools.h"
 #import "ChtripCDManager.h"
 #import "SubTrip.h"
 
 static NSString * const SUB_TRIP_CELL = @"SubTripListCell";
 static NSString * const SECTION_ADD_MARK = @"section";
 
-@interface SubTripListViewController ()<NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SubTripListViewController ()<NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, AddSubTripViewControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) UITableView *subTripTV;
-@property (nonatomic, strong) NSDate *lastDate;
+@property (nonatomic, strong) NSNumber *lastDate;
 
 @end
 
@@ -60,6 +61,10 @@ static NSString * const SECTION_ADD_MARK = @"section";
     _subTripTV.delegate = self;
     _subTripTV.separatorColor = UITableViewCellAccessoryNone;
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [_subTripTV addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
     [self.subTripTV registerClass:[SubTripListTableViewCell class] forCellReuseIdentifier:SUB_TRIP_CELL];
 }
 
@@ -75,17 +80,17 @@ static NSString * const SECTION_ADD_MARK = @"section";
     NSEntityDescription *subTripEntiry = [NSEntityDescription entityForName:@"SubTrip" inManagedObjectContext:[CoreDataManager sharedManager].managedObjectContext];
     [fetchRequest setEntity:subTripEntiry];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"keyID = %@", self.keyID]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"keyID = %@", self.keyID];
     
     [fetchRequest setPredicate:predicate];
-    [fetchRequest setFetchBatchSize:10];
+    //[fetchRequest setFetchBatchSize:10];
     
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"subEndTime" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"subDate" ascending:YES];
     
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                    managedObjectContext:[CoreDataManager sharedManager].managedObjectContext
+                                                                    managedObjectContext:[[CoreDataManager sharedManager] managedObjectContext]
                                                                       sectionNameKeyPath:@"subDate"
                                                                                cacheName:nil];
     
@@ -102,25 +107,21 @@ static NSString * const SECTION_ADD_MARK = @"section";
 }
 
 #pragma mark 更新fetch数据
-- (void) controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = _subTripTV;
-    
-    if (type == NSFetchedResultsChangeInsert) {
-        [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
 
-- (void) controllerDidChangeContent:(NSFetchedResultsController *)controller
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [_subTripTV reloadData];
-    [_subTripTV endUpdates];
 }
 
-- (void) controllerWillChangeContent:(NSFetchedResultsController *)controller
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [_subTripTV beginUpdates];
+    
 }
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+}
+
 
 #pragma mark 开始设置subtrip list
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -146,9 +147,18 @@ static NSString * const SECTION_ADD_MARK = @"section";
     
     if ([subTrip.subTitle isEqualToString:SECTION_ADD_MARK]) {
         cell.subTitleLB.text = NSLocalizedString(@"TEXT_ADD_SUBTRIP", Nil);
+
+        UIImageView *addImg = [UIImageView newAutoLayoutView];
+        [cell.contentView addSubview:addImg];
+        [addImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:cell.subTitleLB];
+        [addImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:cell.subTitleLB];
+        [addImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
+        addImg.image = [UIImage imageNamed:@"addIcon"];
     }else{
         cell.subTitleLB.text = subTrip.subTitle;
-        cell.subTimeLB.text = @"05:00 - 06:00";
+        
+        NSDate *startTime = [NSDate dateWithTimeIntervalSince1970:[subTrip.subStartTime doubleValue]];
+        cell.subTimeLB.text = [startTime formattedDateWithFormat:@"HH:mm"];
     }
     
     
@@ -157,59 +167,85 @@ static NSString * const SECTION_ADD_MARK = @"section";
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-    sectionView.backgroundColor = [UIColor grayColor];
-    
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    sectionView.backgroundColor = [UIColor whiteColor];
     UIView *autoSectionView = [UIView newAutoLayoutView];
     [sectionView addSubview:autoSectionView];
 
     [autoSectionView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:sectionView];
     [autoSectionView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:sectionView];
-    [autoSectionView autoSetDimensionsToSize:CGSizeMake(200, 30)];
+    [autoSectionView autoSetDimensionsToSize:CGSizeMake(200, 50)];
+    
+    UIImageView *dayIcon = [UIImageView newAutoLayoutView];
+    [autoSectionView addSubview:dayIcon];
+    
+    [dayIcon autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:autoSectionView];
+    [dayIcon autoAlignAxis:ALAxisHorizontal toSameAxisOfView:autoSectionView];
+    [dayIcon autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    
+    dayIcon.image = [UIImage imageNamed:@"day"];
+    
+    // day 图标上的数字
+    UILabel *dayNumLB = [UILabel newAutoLayoutView];
+    [autoSectionView addSubview:dayNumLB];
+    
+    [dayNumLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:autoSectionView withOffset:18.0];
+    [dayNumLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:autoSectionView withOffset:-5.0];
+    [dayNumLB autoSetDimensionsToSize:CGSizeMake(20, 20)];
+    dayNumLB.text = [NSString stringWithFormat:@"%d", section + 1];
+    dayNumLB.textColor = [UIColor redColor];
+    dayNumLB.backgroundColor = [UIColor whiteColor];
     
     UILabel *dateLB = [UILabel newAutoLayoutView];
     [autoSectionView addSubview:dateLB];
     
-    [dateLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:autoSectionView];
-    [dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:autoSectionView];
+//    [dateLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:autoSectionView];
+    [dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:dayIcon withOffset:20.0];
+    [dateLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:autoSectionView];
     [dateLB autoSetDimensionsToSize:CGSizeMake(200, 20)];
     
-    NSArray *sections = [_fetchedResultsController sections];
+    NSArray *sections = [self.fetchedResultsController sections];
     id <NSFetchedResultsSectionInfo> sectionInfo = nil;
     
     sectionInfo = [sections objectAtIndex:section];
     SubTrip *subTripObj = [sectionInfo objects][0];
     
-    dateLB.text = [NSString stringWithFormat:@"%@", subTripObj.subDate];
+    NSDate *dateTime = [NSDate dateWithTimeIntervalSince1970:[subTripObj.subDate doubleValue]];
+    
+//    dateLB.text = [NSString stringWithFormat:@"%@", subTripObj.subDate];
+    
+    dateLB.text = [dateTime formattedDateWithFormat:[NSString stringWithFormat:@"MM%@dd%@", NSLocalizedString(@"TEXT_MONTH", Nil), NSLocalizedString(@"TEXT_DAY", Nil)]];
+    dateLB.textColor = [UIColor grayColor];
 
     return sectionView;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 50;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SubTrip *subTripObj = [_fetchedResultsController objectAtIndexPath:indexPath];
+    SubTrip *subTripObj = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     AddSubTripViewController *addSubTripVC = [[AddSubTripViewController alloc] init];
     
     addSubTripVC.keyID = subTripObj.keyID;
     addSubTripVC.subDate = subTripObj.subDate;
+    addSubTripVC.addSubTripDelegate = self;
     
     if ([subTripObj.subTitle isEqualToString:SECTION_ADD_MARK]) {
+        UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addSubTripVC];
         addSubTripVC.navigationItem.title = NSLocalizedString(@"TEXT_ADD_SUBTRIP", Nil);
+        [self.navigationController presentViewController:navVC animated:YES completion:nil];
     }else{
         addSubTripVC.navigationItem.title = subTripObj.subTitle;
     }
     
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addSubTripVC];
     
-    [self.navigationController presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark 新增一天
@@ -223,15 +259,27 @@ static NSString * const SECTION_ADD_MARK = @"section";
          self.lastDate = ch.subDate;
     }
     
+    int newLastTime = [self.lastDate doubleValue] + 3600 * 24;
+    
     NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
-                                 [_lastDate setupNoonByNum:1], @"subDate",
+                                 [NSNumber numberWithDouble:newLastTime], @"subDate",
                                  @"section", @"subTitle",
                                  nil];
     
     [TripCD addSubTripSections:subTripData];
     
+}
+
+#pragma mark 刷新tableview
+- (void) refreshTableView
+{
+    NSLog(@"refresh sub trip table view");
     [self.subTripTV reloadData];
-    
+}
+
+- (void)refresh:(UIRefreshControl *)control {
+    [control endRefreshing];
+    [self.subTripTV reloadData];
 }
 /*
 #pragma mark - Navigation

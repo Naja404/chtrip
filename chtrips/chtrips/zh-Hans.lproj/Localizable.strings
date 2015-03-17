@@ -32,6 +32,8 @@
 "TEXT_SUB_TRIP_LOCATION" = "地址";
 "TEXT_SUB_TRIP" = "行程名";
 "TEXT_TIME" = "时间";
+"TEXT_MONTH" = "月";
+"TEXT_DAY" = "日";
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";
@@ -42,3 +44,4 @@
 "TEXT_PLACE_INPUT_TRIP_NAME" = "请输入行程名称";
 "TEXT_ADD_TRIP_FAILD" = "行程添加失败";
 "TEXT_ADD_TRIP_SUCCESS" = "行程添加成功";
+"TEXT_PLACE_INPUT_ADDRESS" = "请输入地址";

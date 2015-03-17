@@ -32,6 +32,9 @@
 "TEXT_SUB_TRIP_LOCATION" = "Location";
 "TEXT_SUB_TRIP" = "Sub Trip Name";
 
+"TEXT_MONTH" = "/";
+"TEXT_DAY" = "";
+
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";
 "INPUT_SEARCH_LOCATION" = "Plase Input Destination";
 "TEXT_ADD_SUBTRIP" = "New SubTrip";
@@ -41,3 +44,4 @@
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";
 "TEXT_ADD_TRIP_FAILD" = "Add Faild";
 "TEXT_ADD_TRIP_SUCCESS" = "Add Success";
+"TEXT_PLACE_INPUT_ADDRESS" = "Place Input Address";

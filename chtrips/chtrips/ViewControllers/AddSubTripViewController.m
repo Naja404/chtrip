@@ -139,14 +139,13 @@ static NSInteger const END_DATE_SECTION = 1;
     
     if (indexPath.section == 1) {
         if ([_keyBoardShow isEqualToString:@"YES"]) {
-            NSLog(@"if yes");
             [self.view endEditing:YES];
             //        [_addSubTripCell.inputField resignFirstResponder];
             //        [_addSubTripLocationCell.inputField resignFirstResponder];
         }
         
         self.datePicker = Nil;
-        NSDate *date = [NSDate tomorrowNoon];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[_subDate doubleValue]];
         self.datePicker = [[ZBActionSheetDatePicker alloc] initWithMode:UIDatePickerModeTime initialDate:date delegate:self];
     }else{
         NSLog(@"other");
@@ -193,23 +192,37 @@ static NSInteger const END_DATE_SECTION = 1;
 #pragma mark nav保存按钮
 - (void) navSaveBTN
 {
+    
+    if ([_addSubTripCell.inputField.text isEqualToString:@""]) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PLACE_INPUT_TRIP_NAME", Nil) maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
+    if ([_addSubTripLocationCell.inputField.text isEqualToString:@""]) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PLACE_INPUT_ADDRESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
     ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
     
-    NSDictionary *subTripDate = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
+    NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
                                                                             _addSubTripLocationCell.inputField.text, @"subAddress",
                                                                             self.subDate, @"subDate",
-                                                                            @"12:00", @"subEndTime",
+                                                                            [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subEndTime",
                                                                             @"经纬度lat", @"subLat",
                                                                             @"经纬度lng", @"subLng",
-                                                                            @"10:12", @"subStartTime",
+                                                                            [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
                                                                             _addSubTripCell.inputField.text, @"subTitle",
                                  nil];
     
-    if ([TripCD addSubTripSections:subTripDate]) {
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeClear];
+    
+    if ([TripCD addSubTripSections:subTripData]) {
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
     }else{
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeBlack];
     }
+    
+    [self.addSubTripDelegate refreshTableView];
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -217,7 +230,6 @@ static NSInteger const END_DATE_SECTION = 1;
 #pragma  mark return keybord
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"should return ");
     self.keyBoardShow = @"NO";
     
     [textField resignFirstResponder];
@@ -227,14 +239,12 @@ static NSInteger const END_DATE_SECTION = 1;
 #pragma mark 键盘弹出
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    NSLog(@"begin yes");
     self.keyBoardShow = @"YES";
 }
 
 #pragma mark 键盘隐藏
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"end no");
     self.keyBoardShow = @"NO";
 }
 /*

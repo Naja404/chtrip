@@ -249,7 +249,7 @@ static NSInteger const ROW_FRONT = 0;
 {
     
     if ([self.tripNameCell.tripNameInput.text isEqualToString:@""]) {
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PLACE_INPUT_TRIP_NAME", Nil) maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PLACE_INPUT_TRIP_NAME", Nil) maskType:SVProgressHUDMaskTypeBlack];
         return;
     }
     
@@ -258,8 +258,8 @@ static NSInteger const ROW_FRONT = 0;
     NSString *keyID = [TripCD makeKeyID];
     
     NSDictionary *tripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
-                                                                            self.startDate, @"startDate",
-                                                                            [self.startDate setupNoonByNum:2], @"endDate",
+                                                                            [NSNumber numberWithDouble:[self.startDate timeIntervalSince1970]], @"startDate",
+                                                                            [NSNumber numberWithDouble:[[self.startDate setupNoonByNum:2] timeIntervalSince1970]], @"endDate",
                                                                             self.tripNameCell.tripNameInput.text, @"tripName",
                                                                             [self setupFrontImg], @"frontData",
                                                                             nil];
@@ -268,11 +268,11 @@ static NSInteger const ROW_FRONT = 0;
     
     if ([TripCD addTrip:tripData]) {
         
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
         [self setupSubTripSection:keyID startDate:self.startDate ChtripCDManager:TripCD];
         saveStatus = @"1";
     }else{
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeBlack];
     }
 
     [self popToRoot:saveStatus keyID:keyID tripName:self.tripNameCell.tripNameInput.text];
@@ -284,7 +284,7 @@ static NSInteger const ROW_FRONT = 0;
 {
     for (int i = 0; i < 3; i++) {
         NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
-                                                                                [self.startDate setupNoonByNum:i], @"subDate",
+                                                                                [NSNumber numberWithDouble:[[self.startDate setupNoonByNum:i] timeIntervalSince1970]], @"subDate",
                                                                                 @"section", @"subTitle",
                                                                                 nil];
         
