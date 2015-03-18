@@ -8,6 +8,7 @@
 
 #import "SubTripListViewController.h"
 #import "SubTripListTableViewCell.h"
+#import "SubTripListNormalTableViewCell.h"
 #import "AddSubTripViewController.h"
 
 #import "NSDate+Fomatter.h"
@@ -17,6 +18,7 @@
 #import "SubTrip.h"
 
 static NSString * const SUB_TRIP_CELL = @"SubTripListCell";
+static NSString * const SUB_TRIP_NORMAL_CELL = @"SubTripNormalCell";
 static NSString * const SECTION_ADD_MARK = @"section";
 
 @interface SubTripListViewController ()<NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, AddSubTripViewControllerDelegate>
@@ -24,6 +26,8 @@ static NSString * const SECTION_ADD_MARK = @"section";
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) UITableView *subTripTV;
 @property (nonatomic, strong) NSNumber *lastDate;
+@property (nonatomic, strong) SubTripListTableViewCell *subTripCell;
+@property (nonatomic, strong) SubTripListNormalTableViewCell *subTripNormalCell;
 
 @end
 
@@ -66,6 +70,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     [self.subTripTV registerClass:[SubTripListTableViewCell class] forCellReuseIdentifier:SUB_TRIP_CELL];
+    [self.subTripTV registerClass:[SubTripListNormalTableViewCell class] forCellReuseIdentifier:SUB_TRIP_NORMAL_CELL];
 }
 
 #pragma mark fetch subtrip数据
@@ -141,24 +146,24 @@ static NSString * const SECTION_ADD_MARK = @"section";
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SubTripListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SUB_TRIP_CELL forIndexPath:indexPath];
+
+    UITableViewCell *cell = nil;
     
     SubTrip *subTrip = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if ([subTrip.subTitle isEqualToString:SECTION_ADD_MARK]) {
-        cell.subTitleLB.text = NSLocalizedString(@"TEXT_ADD_SUBTRIP", Nil);
-
-        UIImageView *addImg = [UIImageView newAutoLayoutView];
-        [cell.contentView addSubview:addImg];
-        [addImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:cell.subTitleLB];
-        [addImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:cell.subTitleLB];
-        [addImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
-        addImg.image = [UIImage imageNamed:@"addIcon"];
+        self.subTripCell = [tableView dequeueReusableCellWithIdentifier:SUB_TRIP_CELL forIndexPath:indexPath];
+        _subTripCell.subTitleLB.text = NSLocalizedString(@"TEXT_ADD_SUBTRIP", Nil);
+        
+        cell = _subTripCell;
     }else{
-        cell.subTitleLB.text = subTrip.subTitle;
+        self.subTripNormalCell = [tableView dequeueReusableCellWithIdentifier:SUB_TRIP_NORMAL_CELL forIndexPath:indexPath];
+        _subTripNormalCell.subTitleLB.text = subTrip.subTitle;
         
         NSDate *startTime = [NSDate dateWithTimeIntervalSince1970:[subTrip.subStartTime doubleValue]];
-        cell.subTimeLB.text = [startTime formattedDateWithFormat:@"HH:mm"];
+        _subTripNormalCell.subTimeLB.text = [startTime formattedDateWithFormat:@"HH:mm"];
+        
+        cell = _subTripNormalCell;
     }
     
     
@@ -237,15 +242,15 @@ static NSString * const SECTION_ADD_MARK = @"section";
     addSubTripVC.subDate = subTripObj.subDate;
     addSubTripVC.addSubTripDelegate = self;
     
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addSubTripVC];
+    
     if ([subTripObj.subTitle isEqualToString:SECTION_ADD_MARK]) {
-        UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addSubTripVC];
         addSubTripVC.navigationItem.title = NSLocalizedString(@"TEXT_ADD_SUBTRIP", Nil);
-        [self.navigationController presentViewController:navVC animated:YES completion:nil];
     }else{
         addSubTripVC.navigationItem.title = subTripObj.subTitle;
     }
     
-    
+    [self.navigationController presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark 新增一天

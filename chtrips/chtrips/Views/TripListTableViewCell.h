@@ -10,8 +10,10 @@
 
 @interface TripListTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *backgroundImg;
 @property (nonatomic, strong) UIImageView *frontImg;
 @property (nonatomic, strong) UILabel *nameLB;
+@property (nonatomic, strong) UILabel *dateLB;
 
 
 @end

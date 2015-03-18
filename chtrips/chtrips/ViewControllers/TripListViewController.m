@@ -12,6 +12,7 @@
 #import "SubTripListViewController.h"
 
 #import "Trip.h"
+#import "NSDate+DateTools.h"
 
 static NSString * const TRIP_LIST_CELL = @"TripListCell";
 
@@ -55,6 +56,7 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
     _tripListTV.dataSource = self;
     _tripListTV.delegate = self;
     _tripListTV.separatorStyle = UITableViewCellAccessoryNone;
+    _tripListTV.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     
     [self.tripListTV registerClass:[TripListTableViewCell class] forCellReuseIdentifier:TRIP_LIST_CELL];
 }
@@ -141,7 +143,7 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 340;
+    return 300;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -157,7 +159,13 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
     
     cell.nameLB.text = trip.tripName;
     
+    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:[trip.startDate doubleValue]];
+    
+    cell.dateLB.text = [startDate formattedDateWithFormat:@"YYYY.MM.dd"];
+    
     cell.frontImg.image = [UIImage imageWithData:trip.frontData];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
