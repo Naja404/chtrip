@@ -1,4 +1,25 @@
 PODS:
+  - AFNetworking (2.5.1):
+    - AFNetworking/NSURLConnection (= 2.5.1)
+    - AFNetworking/NSURLSession (= 2.5.1)
+    - AFNetworking/Reachability (= 2.5.1)
+    - AFNetworking/Security (= 2.5.1)
+    - AFNetworking/Serialization (= 2.5.1)
+    - AFNetworking/UIKit (= 2.5.1)
+  - AFNetworking/NSURLConnection (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.1)
+  - AFNetworking/Security (2.5.1)
+  - AFNetworking/Serialization (2.5.1)
+  - AFNetworking/UIKit (2.5.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - DateTools (1.5.0)
   - ObjectiveRecord (1.5.0):
     - ObjectiveSugar
@@ -7,12 +28,14 @@ PODS:
   - SVProgressHUD (1.1.2)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - DateTools (~> 1.5.0)
   - ObjectiveRecord (~> 1.5.0)
   - PureLayout (~> 2.0.5)
   - SVProgressHUD (~> 1.1.2)
 
 SPEC CHECKSUMS:
+  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   DateTools: 7df78f0c4719eb28cfd2d58a90fafd036e73156c
   ObjectiveRecord: 173527cdf923ee956f6b0a4430916534b54583f5
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2

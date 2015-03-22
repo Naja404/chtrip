@@ -39,6 +39,14 @@
 		E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */; };
 		E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */; };
 		E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */; };
+		E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E97184231ABAA38E005291A1 /* defaultBackground.jpg */; };
+		E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184271ABAAD96005291A1 /* AddSubTripLocationViewController.m */; };
+		E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = E971842A1ABABD23005291A1 /* CocoaSecurity.m */; };
+		E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E971842C1ABABD23005291A1 /* WTLocationManager.m */; };
+		E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184301ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m */; };
+		E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184331ABAC0E2005291A1 /* LocationAnnotation.m */; };
+		E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */; };
+		E97184391ABAC1B9005291A1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184381ABAC1B9005291A1 /* Base64.m */; };
 		E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */; };
 		E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */; };
 		E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */; };
@@ -127,6 +135,20 @@
 		E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListViewController.m; path = ViewControllers/SubTripListViewController.m; sourceTree = "<group>"; };
 		E96D4B5D1AB1952F00F7CB38 /* SubTripListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListTableViewCell.h; path = Views/SubTripListTableViewCell.h; sourceTree = "<group>"; };
 		E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListTableViewCell.m; path = Views/SubTripListTableViewCell.m; sourceTree = "<group>"; };
+		E97184231ABAA38E005291A1 /* defaultBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = defaultBackground.jpg; path = Resource/defaultBackground.jpg; sourceTree = "<group>"; };
+		E97184261ABAAD96005291A1 /* AddSubTripLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationViewController.h; path = ViewControllers/AddSubTripLocationViewController.h; sourceTree = "<group>"; };
+		E97184271ABAAD96005291A1 /* AddSubTripLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationViewController.m; path = ViewControllers/AddSubTripLocationViewController.m; sourceTree = "<group>"; };
+		E97184291ABABD23005291A1 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaSecurity.h; path = Vendors/CocoaSecurity.h; sourceTree = "<group>"; };
+		E971842A1ABABD23005291A1 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaSecurity.m; path = Vendors/CocoaSecurity.m; sourceTree = "<group>"; };
+		E971842B1ABABD23005291A1 /* WTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTLocationManager.h; path = Vendors/WTLocationManager.h; sourceTree = "<group>"; };
+		E971842C1ABABD23005291A1 /* WTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTLocationManager.m; path = Vendors/WTLocationManager.m; sourceTree = "<group>"; };
+		E971842F1ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationMapTableViewCell.h; path = Views/AddSubTripLocationMapTableViewCell.h; sourceTree = "<group>"; };
+		E97184301ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationMapTableViewCell.m; path = Views/AddSubTripLocationMapTableViewCell.m; sourceTree = "<group>"; };
+		E97184321ABAC0E2005291A1 /* LocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationAnnotation.h; path = ViewControllers/LocationAnnotation.h; sourceTree = "<group>"; };
+		E97184331ABAC0E2005291A1 /* LocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationAnnotation.m; path = ViewControllers/LocationAnnotation.m; sourceTree = "<group>"; };
+		E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GetUserLocationCenter@2x.png"; path = "Resource/GetUserLocationCenter@2x.png"; sourceTree = "<group>"; };
+		E97184371ABAC1B9005291A1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = Vendors/Base64.h; sourceTree = "<group>"; };
+		E97184381ABAC1B9005291A1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = Vendors/Base64.m; sourceTree = "<group>"; };
 		E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripViewController.h; path = ViewControllers/AddSubTripViewController.h; sourceTree = "<group>"; };
 		E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripViewController.m; path = ViewControllers/AddSubTripViewController.m; sourceTree = "<group>"; };
 		E9C131931AB2E79400E6E873 /* AddSubTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripTableViewCell.h; path = Views/AddSubTripTableViewCell.h; sourceTree = "<group>"; };
@@ -264,6 +286,10 @@
 				E90991051AAFE7E300C48688 /* AddTripViewController.m */,
 				E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */,
 				E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */,
+				E97184261ABAAD96005291A1 /* AddSubTripLocationViewController.h */,
+				E97184271ABAAD96005291A1 /* AddSubTripLocationViewController.m */,
+				E97184321ABAC0E2005291A1 /* LocationAnnotation.h */,
+				E97184331ABAC0E2005291A1 /* LocationAnnotation.m */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -300,6 +326,12 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E97184371ABAC1B9005291A1 /* Base64.h */,
+				E97184381ABAC1B9005291A1 /* Base64.m */,
+				E97184291ABABD23005291A1 /* CocoaSecurity.h */,
+				E971842A1ABABD23005291A1 /* CocoaSecurity.m */,
+				E971842B1ABABD23005291A1 /* WTLocationManager.h */,
+				E971842C1ABABD23005291A1 /* WTLocationManager.m */,
 				E96D4B491AB04F0400F7CB38 /* UIImage+Resize.h */,
 				E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */,
 				E96D4B431AB048FC00F7CB38 /* ZBActionSheetDatePicker.h */,
@@ -344,6 +376,8 @@
 				E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */,
 				E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */,
 				E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */,
+				E971842F1ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.h */,
+				E97184301ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -365,6 +399,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */,
+				E97184231ABAA38E005291A1 /* defaultBackground.jpg */,
 				E91FBCD71AB92555005CA250 /* background.png */,
 				E91FBCD81AB92555005CA250 /* background@2x.png */,
 				E91FBCD91AB92555005CA250 /* background1.png */,
@@ -474,6 +510,7 @@
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
+				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
@@ -483,6 +520,7 @@
 				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
+				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
 				E91FBCDD1AB92555005CA250 /* background1.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
@@ -539,19 +577,25 @@
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
+				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
+				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
 				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
 				E9EB9C791AB7CA5B00ED0334 /* SubTrip.m in Sources */,
+				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
+				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
 				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
+				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
+				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,

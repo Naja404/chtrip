@@ -10,6 +10,7 @@
 #import "AddSubTripTableViewCell.h"
 #import "AddSubTripLocationTableViewCell.h"
 #import "AddSubTripEndTimeTableViewCell.h"
+#import "AddSubTripLocationViewController.h"
 
 #import "NSDate-Utilities.h"
 #import "NSDate+Fomatter.h"
@@ -23,7 +24,7 @@ static NSString * const ADD_LOCATION_CELL = @"AddSubTripLocationCell";
 //static NSInteger const START_TIME_ROW = 0;
 static NSInteger const END_DATE_SECTION = 1;
 
-@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate>
+@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate, AddSubTripLocationViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *addSubTripTV;
 @property (nonatomic, strong) AddSubTripTableViewCell *addSubTripCell;
@@ -32,6 +33,8 @@ static NSInteger const END_DATE_SECTION = 1;
 @property (nonatomic, strong) ZBActionSheetDatePicker *datePicker;
 @property (nonatomic, strong) NSDate *subTime;
 @property (nonatomic, strong) NSString *keyBoardShow;
+@property (nonatomic, strong) NSString *lat;
+@property (nonatomic, strong) NSString *lng;
 
 @end
 
@@ -118,6 +121,11 @@ static NSInteger const END_DATE_SECTION = 1;
             _addSubTripLocationCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
             _addSubTripLocationCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
             _addSubTripLocationCell.inputField.delegate = self;
+            
+            UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickLocationIcon)];
+            [_addSubTripLocationCell addGestureRecognizer:onceTap];
+            
+            
             cell = _addSubTripLocationCell;
         }else{
             self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
@@ -209,8 +217,8 @@ static NSInteger const END_DATE_SECTION = 1;
                                                                             _addSubTripLocationCell.inputField.text, @"subAddress",
                                                                             self.subDate, @"subDate",
                                                                             [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subEndTime",
-                                                                            @"经纬度lat", @"subLat",
-                                                                            @"经纬度lng", @"subLng",
+                                                                            self.lat, @"subLat",
+                                                                            self.lng, @"subLng",
                                                                             [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
                                                                             _addSubTripCell.inputField.text, @"subTitle",
                                  nil];
@@ -247,6 +255,24 @@ static NSInteger const END_DATE_SECTION = 1;
 {
     self.keyBoardShow = @"NO";
 }
+
+#pragma mark 点击地址icon
+- (void) onClickLocationIcon
+{
+    AddSubTripLocationViewController *addLocationVC = [[AddSubTripLocationViewController alloc] init];
+    addLocationVC.AddSubLocationDelegate = self;
+    
+    [self.navigationController pushViewController:addLocationVC animated:YES];
+}
+
+#pragma mark 地址选择后delegata
+- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng
+{
+    _addSubTripLocationCell.inputField.text = Address;
+    self.lat = lat;
+    self.lng = lng;
+}
+
 /*
 #pragma mark - Navigation
 

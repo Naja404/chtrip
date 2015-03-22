@@ -28,6 +28,8 @@
         [_subTimeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_subTitleLB withOffset:20.0];
         [_subTimeLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:50.0];
         [_subTimeLB autoSetDimensionsToSize:CGSizeMake(200, 30)];
+        _subTimeLB.textColor = [UIColor grayColor];
+        _subTimeLB.font = [UIFont fontWithName:@"Helvetica" size:14];
         
         self.iconImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_iconImg];
@@ -35,6 +37,13 @@
         [_iconImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_subTitleLB];
         [_iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_iconImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
+        
+        self.addressLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_addressLB];
+        
+        [_addressLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_subTimeLB];
+        [_addressLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:50.0];
+        _addressLB.backgroundColor = [UIColor purpleColor];
     }
     
     return self;

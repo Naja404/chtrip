@@ -162,13 +162,37 @@ static NSString * const SECTION_ADD_MARK = @"section";
         
         NSDate *startTime = [NSDate dateWithTimeIntervalSince1970:[subTrip.subStartTime doubleValue]];
         _subTripNormalCell.subTimeLB.text = [startTime formattedDateWithFormat:@"HH:mm"];
+        _subTripNormalCell.addressLB.text = subTrip.subAddress;
+        
+        CGSize textSize = [subTrip.subAddress sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:16]}];
+        
+        [_subTripNormalCell.addressLB autoSetDimensionsToSize:CGSizeMake(textSize.width, 20)];
         
         cell = _subTripNormalCell;
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
+
+- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NSLocalizedString(@"TEXT_DELETE", Nil);
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"delete");
+    }
+}
+
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -272,6 +296,8 @@ static NSString * const SECTION_ADD_MARK = @"section";
                                  nil];
     
     [TripCD addSubTripSections:subTripData];
+    
+    [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_NEW_DAY_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
     
 }
 

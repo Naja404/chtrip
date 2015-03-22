@@ -32,7 +32,6 @@
         [_dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10.0];
         [_dateLB autoSetDimensionsToSize:CGSizeMake(300, 20)];
         _dateLB.backgroundColor = [UIColor whiteColor];
-        _dateLB.textColor = [UIColor grayColor];
         _dateLB.font = [UIFont fontWithName:@"Helvetica" size:12];
         
         self.backgroundImg = [UIImageView newAutoLayoutView];
@@ -40,7 +39,7 @@
         
         [_backgroundImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:20.0];
         [_backgroundImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20.0];
-        [_backgroundImg autoSetDimensionsToSize:CGSizeMake(200, 80)];
+        [_backgroundImg autoSetDimensionsToSize:CGSizeMake(150, 40)];
         _backgroundImg.image = [UIImage imageNamed:@"background"];
         
         self.nameLB = [UILabel newAutoLayoutView];

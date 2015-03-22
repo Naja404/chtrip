@@ -28,7 +28,7 @@
         
         [_iconImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_subTitleLB];
         [_iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
-        [_iconImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
+        [_iconImg autoSetDimensionsToSize:CGSizeMake(20, 20)];
         _iconImg.image = [UIImage imageNamed:@"addIcon"];
     }
     

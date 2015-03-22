@@ -13,5 +13,6 @@
 @property (nonatomic, strong) UILabel *subTitleLB;
 @property (nonatomic, strong) UILabel *subTimeLB;
 @property (nonatomic, strong) UIImageView *iconImg;
+@property (nonatomic, strong) UILabel *addressLB;
 
 @end

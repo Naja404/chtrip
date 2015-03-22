@@ -35,6 +35,7 @@
 "TEXT_TIME" = "时间";
 "TEXT_MONTH" = "月";
 "TEXT_DAY" = "日";
+"TEXT_DELETE" = "删除";
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";
@@ -45,3 +46,4 @@
 "TEXT_ADD_TRIP_FAILD" = "行程添加失败";
 "TEXT_ADD_TRIP_SUCCESS" = "行程添加成功";
 "TEXT_PLACE_INPUT_ADDRESS" = "请输入地址";
+"TEXT_ADD_NEW_DAY_SUCCESS" = "成功新增一天";

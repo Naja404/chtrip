@@ -163,7 +163,13 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
     
     cell.dateLB.text = [startDate formattedDateWithFormat:@"YYYY.MM.dd"];
     
-    cell.frontImg.image = [UIImage imageWithData:trip.frontData];
+    if (trip.frontData == nil) {
+        cell.frontImg.image = [UIImage imageNamed:@"defaultBackground.jpg"];
+    }else{
+        cell.frontImg.image = [UIImage imageWithData:trip.frontData];
+    }
+    
+
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

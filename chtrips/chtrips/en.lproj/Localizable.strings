@@ -34,6 +34,7 @@
 
 "TEXT_MONTH" = "/";
 "TEXT_DAY" = "";
+"TEXT_DELETE" = "Delete";
 
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";
 "INPUT_SEARCH_LOCATION" = "Plase Input Destination";
@@ -45,3 +46,4 @@
 "TEXT_ADD_TRIP_FAILD" = "Add Faild";
 "TEXT_ADD_TRIP_SUCCESS" = "Add Success";
 "TEXT_PLACE_INPUT_ADDRESS" = "Place Input Address";
+"TEXT_ADD_NEW_DAY_SUCCESS" = "Add New Day";

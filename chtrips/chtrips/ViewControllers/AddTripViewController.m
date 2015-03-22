@@ -39,6 +39,7 @@ static NSInteger const ROW_FRONT = 0;
 @property (nonatomic, strong) ZBActionSheetDatePicker *datePicker;
 @property (nonatomic, strong) ZBPhotoTaker *photoTaker;
 @property (nonatomic, strong) NSData *frontImgData;
+@property (nonatomic, strong) NSString *keyBoardShow;
 
 @end
 
@@ -163,6 +164,9 @@ static NSInteger const ROW_FRONT = 0;
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == SECTION_DATE) {
+        if ([_keyBoardShow isEqualToString:@"YES"]) {
+            [self.view endEditing:YES];
+        }
         self.datePicker = Nil;
         NSDate *date = [NSDate tomorrowNoon];
         self.datePicker = [[ZBActionSheetDatePicker alloc] initWithMode:UIDatePickerModeDate initialDate:date delegate:self];
@@ -208,6 +212,8 @@ static NSInteger const ROW_FRONT = 0;
 #pragma mark 开始编辑输入框的时候，软键盘出现，执行此事件
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    self.keyBoardShow = @"YES";
+    
     CGRect frame = textField.frame;
     int offset = frame.origin.y + 32 - (self.view.frame.size.height - 516.0);//键盘高度216
     
@@ -225,6 +231,7 @@ static NSInteger const ROW_FRONT = 0;
 #pragma mark 当用户按下return键或者按回车键，keyboard消失
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    self.keyBoardShow = @"NO";
     [textField resignFirstResponder];
     return YES;
 }
@@ -232,6 +239,7 @@ static NSInteger const ROW_FRONT = 0;
 #pragma mark 输入框编辑完成以后，将视图恢复到原始状态
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    self.keyBoardShow = @"NO";
     self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
 
