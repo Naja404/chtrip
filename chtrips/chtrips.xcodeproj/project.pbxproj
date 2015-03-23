@@ -47,6 +47,7 @@
 		E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184331ABAC0E2005291A1 /* LocationAnnotation.m */; };
 		E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */; };
 		E97184391ABAC1B9005291A1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184381ABAC1B9005291A1 /* Base64.m */; };
+		E9B170B61ABFE47E00722C2F /* EditSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */; };
 		E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */; };
 		E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */; };
 		E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */; };
@@ -149,6 +150,8 @@
 		E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GetUserLocationCenter@2x.png"; path = "Resource/GetUserLocationCenter@2x.png"; sourceTree = "<group>"; };
 		E97184371ABAC1B9005291A1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = Vendors/Base64.h; sourceTree = "<group>"; };
 		E97184381ABAC1B9005291A1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = Vendors/Base64.m; sourceTree = "<group>"; };
+		E9B170B41ABFE47E00722C2F /* EditSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripViewController.h; path = ViewControllers/EditSubTripViewController.h; sourceTree = "<group>"; };
+		E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripViewController.m; path = ViewControllers/EditSubTripViewController.m; sourceTree = "<group>"; };
 		E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripViewController.h; path = ViewControllers/AddSubTripViewController.h; sourceTree = "<group>"; };
 		E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripViewController.m; path = ViewControllers/AddSubTripViewController.m; sourceTree = "<group>"; };
 		E9C131931AB2E79400E6E873 /* AddSubTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripTableViewCell.h; path = Views/AddSubTripTableViewCell.h; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 			children = (
 				E909910B1AAFE82D00C48688 /* TripList */,
 				E90991071AAFE7F500C48688 /* Add */,
+				E9B170B31ABFE45000722C2F /* Edit */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -394,6 +398,15 @@
 				E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */,
 			);
 			name = coreData;
+			sourceTree = "<group>";
+		};
+		E9B170B31ABFE45000722C2F /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				E9B170B41ABFE47E00722C2F /* EditSubTripViewController.h */,
+				E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */,
+			);
+			name = Edit;
 			sourceTree = "<group>";
 		};
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
@@ -576,6 +589,7 @@
 			files = (
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
+				E9B170B61ABFE47E00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
 				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
 				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
@@ -741,7 +755,7 @@
 			baseConfigurationReference = 4B141F703581413DD27DD58A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
@@ -759,7 +773,7 @@
 			baseConfigurationReference = DB3812721C5D0A280CB72168 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
