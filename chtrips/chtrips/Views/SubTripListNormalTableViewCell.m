@@ -43,9 +43,11 @@
         
         [_addressLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_subTimeLB withOffset:-5.0];
         [_addressLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:50.0];
-        _addressLB.textColor = [UIColor colorWithRed:228/255.0 green:228/255.0 blue:228/255.0 alpha:1];
+        _addressLB.textColor = [UIColor colorWithRed:169/255.0 green:169/255.0 blue:169/255.0 alpha:1];
         _addressLB.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
-        _addressLB.layer.cornerRadius = 20.0f;
+        _addressLB.layer.cornerRadius = 5.0f;
+        _addressLB.layer.masksToBounds = YES;
+        
     }
     
     return self;

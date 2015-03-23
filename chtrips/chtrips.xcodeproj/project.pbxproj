@@ -321,8 +321,9 @@
 		E909910D1AAFE8EA00C48688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E96D4B271AB01AC300F7CB38 /* Add */,
 				E90991121AAFEAAD00C48688 /* TripList */,
+				E96D4B271AB01AC300F7CB38 /* Add */,
+				E9B170B71ABFF8B800722C2F /* Edit */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -405,6 +406,13 @@
 			children = (
 				E9B170B41ABFE47E00722C2F /* EditSubTripViewController.h */,
 				E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
+		E9B170B71ABFF8B800722C2F /* Edit */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Edit;
 			sourceTree = "<group>";
