@@ -14,6 +14,8 @@
 - (NSArray *) getSubTripLastDateByKeyID:(NSString *)keyID;
 - (BOOL) addTrip:(NSDictionary *) tripData;
 - (BOOL) addSubTripSections:(NSDictionary *) subTripData;
+- (BOOL) updateSubTrip:(NSDictionary *)subTripData;
+- (BOOL) addBuy:(NSDictionary *)buyData;
 - (NSString *) makeKeyID;
 
 @end

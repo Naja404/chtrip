@@ -15,6 +15,7 @@
 
 #import "NSDate+Fomatter.h"
 #import "NSDate-Utilities.h"
+#import "NSDate+DateTools.h"
 #import "ZBPhotoTaker.h"
 #import "ZBActionSheetDatePicker.h"
 
@@ -256,10 +257,14 @@ static NSInteger const ROW_FRONT = 0;
 #pragma mark 点击保存
 - (void) clickSaveBTN
 {
+    NSString *tripName = @"";
     
     if ([self.tripNameCell.tripNameInput.text isEqualToString:@""]) {
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PLACE_INPUT_TRIP_NAME", Nil) maskType:SVProgressHUDMaskTypeBlack];
-        return;
+//        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PLACE_INPUT_TRIP_NAME", Nil) maskType:SVProgressHUDMaskTypeBlack];
+//        return;
+        tripName = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"TEXT_DEFAULT_TRIPNAME", Nil), [self.startDate formattedDateWithFormat:@"YYYY.MM.dd"]];
+    }else{
+        tripName = self.tripNameCell.tripNameInput.text;
     }
     
     ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
@@ -269,7 +274,7 @@ static NSInteger const ROW_FRONT = 0;
     NSDictionary *tripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
                                                                             [NSNumber numberWithDouble:[self.startDate timeIntervalSince1970]], @"startDate",
                                                                             [NSNumber numberWithDouble:[[self.startDate setupNoonByNum:2] timeIntervalSince1970]], @"endDate",
-                                                                            self.tripNameCell.tripNameInput.text, @"tripName",
+                                                                            tripName, @"tripName",
                                                                             [self setupFrontImg], @"frontData",
                                                                             nil];
 
@@ -293,6 +298,7 @@ static NSInteger const ROW_FRONT = 0;
 {
     for (int i = 0; i < 3; i++) {
         NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
+                                                                                [TripCD makeKeyID], @"subID",
                                                                                 [NSNumber numberWithDouble:[[self.startDate setupNoonByNum:i] timeIntervalSince1970]], @"subDate",
                                                                                 @"section", @"subTitle",
                                                                                 nil];

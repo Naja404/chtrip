@@ -2,7 +2,7 @@
 //  SubTrip.h
 //  chtrips
 //
-//  Created by Hisoka on 15/3/17.
+//  Created by Hisoka on 15/3/24.
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
@@ -20,5 +20,6 @@
 @property (nonatomic, retain) NSString * subLng;
 @property (nonatomic, retain) NSNumber * subStartTime;
 @property (nonatomic, retain) NSString * subTitle;
+@property (nonatomic, retain) NSString * subID;
 
 @end

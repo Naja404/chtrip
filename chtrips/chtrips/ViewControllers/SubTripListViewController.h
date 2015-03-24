@@ -13,4 +13,5 @@
 @property (nonatomic, copy) NSString *keyID;
 @property (nonatomic, strong) NSString *tripName;
 
+
 @end

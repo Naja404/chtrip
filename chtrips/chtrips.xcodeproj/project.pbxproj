@@ -19,6 +19,29 @@
 		E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90991101AAFEAA700C48688 /* TripListTableViewCell.m */; };
 		E90991161AB013B900C48688 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991151AB013B900C48688 /* MapKit.framework */; };
 		E90991181AB013FB00C48688 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991171AB013FB00C48688 /* CoreLocation.framework */; };
+		E91396321AC0FF4C003AF385 /* BuyList.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396311AC0FF4C003AF385 /* BuyList.m */; };
+		E91396351AC0FF79003AF385 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396341AC0FF79003AF385 /* SubTrip.m */; };
+		E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396391AC11157003AF385 /* AwesomeMenu.m */; };
+		E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E913963B1AC11157003AF385 /* AwesomeMenuItem.m */; };
+		E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = E913963E1AC111B8003AF385 /* bg-addbutton-highlighted.png */; };
+		E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E913963F1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png */; };
+		E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396401AC111B8003AF385 /* bg-addbutton.png */; };
+		E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396411AC111B8003AF385 /* bg-addbutton@2x.png */; };
+		E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396421AC111B8003AF385 /* bg-menuitem-highlighted.png */; };
+		E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396431AC111B8003AF385 /* bg-menuitem-highlighted@2x.png */; };
+		E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396441AC111B8003AF385 /* bg-menuitem.png */; };
+		E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396451AC111B8003AF385 /* bg-menuitem@2x.png */; };
+		E91396541AC111B8003AF385 /* icon-plus-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396461AC111B8003AF385 /* icon-plus-highlighted.png */; };
+		E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396471AC111B8003AF385 /* icon-plus-highlighted@2x.png */; };
+		E91396561AC111B8003AF385 /* icon-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396481AC111B8003AF385 /* icon-plus.png */; };
+		E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396491AC111B8003AF385 /* icon-plus@2x.png */; };
+		E91396581AC111B8003AF385 /* icon-star.png in Resources */ = {isa = PBXBuildFile; fileRef = E913964A1AC111B8003AF385 /* icon-star.png */; };
+		E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E913964B1AC111B8003AF385 /* icon-star@2x.png */; };
+		E913965C1AC14A79003AF385 /* rightNav.png in Resources */ = {isa = PBXBuildFile; fileRef = E913965A1AC14A79003AF385 /* rightNav.png */; };
+		E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E913965B1AC14A79003AF385 /* rightNav@2x.png */; };
+		E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396611AC1526A003AF385 /* BuyListViewController.m */; };
+		E91396651AC16096003AF385 /* AddBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396641AC16096003AF385 /* AddBuyViewController.m */; };
+		E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396681AC16431003AF385 /* BuyListTableViewCell.m */; };
 		E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E91FBCD51AB91FB4005CA250 /* SubTripListNormalTableViewCell.m */; };
 		E91FBCDB1AB92555005CA250 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD71AB92555005CA250 /* background.png */; };
 		E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD81AB92555005CA250 /* background@2x.png */; };
@@ -47,7 +70,7 @@
 		E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184331ABAC0E2005291A1 /* LocationAnnotation.m */; };
 		E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */; };
 		E97184391ABAC1B9005291A1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184381ABAC1B9005291A1 /* Base64.m */; };
-		E9B170B61ABFE47E00722C2F /* EditSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */; };
+		E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */; };
 		E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */; };
 		E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */; };
 		E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */; };
@@ -56,7 +79,6 @@
 		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
 		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
 		E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */; };
-		E9EB9C791AB7CA5B00ED0334 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C781AB7CA5B00ED0334 /* SubTrip.m */; };
 		E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */; };
 		E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7E1AB8142D00ED0334 /* addIcon.png */; };
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
@@ -98,6 +120,37 @@
 		E90991141AAFEED100C48688 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E90991151AB013B900C48688 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E90991171AB013FB00C48688 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E91396301AC0FF4C003AF385 /* BuyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyList.h; path = coreData/BuyList.h; sourceTree = "<group>"; };
+		E91396311AC0FF4C003AF385 /* BuyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyList.m; path = coreData/BuyList.m; sourceTree = "<group>"; };
+		E91396331AC0FF79003AF385 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
+		E91396341AC0FF79003AF385 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
+		E91396361AC1038D003AF385 /* chtripCD 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "chtripCD 2.xcdatamodel"; sourceTree = "<group>"; };
+		E91396381AC11157003AF385 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AwesomeMenu.h; path = Vendors/AwesomeMenu.h; sourceTree = "<group>"; };
+		E91396391AC11157003AF385 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AwesomeMenu.m; path = Vendors/AwesomeMenu.m; sourceTree = "<group>"; };
+		E913963A1AC11157003AF385 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AwesomeMenuItem.h; path = Vendors/AwesomeMenuItem.h; sourceTree = "<group>"; };
+		E913963B1AC11157003AF385 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AwesomeMenuItem.m; path = Vendors/AwesomeMenuItem.m; sourceTree = "<group>"; };
+		E913963E1AC111B8003AF385 /* bg-addbutton-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-addbutton-highlighted.png"; path = "Resource/bg-addbutton-highlighted.png"; sourceTree = "<group>"; };
+		E913963F1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-addbutton-highlighted@2x.png"; path = "Resource/bg-addbutton-highlighted@2x.png"; sourceTree = "<group>"; };
+		E91396401AC111B8003AF385 /* bg-addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-addbutton.png"; path = "Resource/bg-addbutton.png"; sourceTree = "<group>"; };
+		E91396411AC111B8003AF385 /* bg-addbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-addbutton@2x.png"; path = "Resource/bg-addbutton@2x.png"; sourceTree = "<group>"; };
+		E91396421AC111B8003AF385 /* bg-menuitem-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-menuitem-highlighted.png"; path = "Resource/bg-menuitem-highlighted.png"; sourceTree = "<group>"; };
+		E91396431AC111B8003AF385 /* bg-menuitem-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-menuitem-highlighted@2x.png"; path = "Resource/bg-menuitem-highlighted@2x.png"; sourceTree = "<group>"; };
+		E91396441AC111B8003AF385 /* bg-menuitem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-menuitem.png"; path = "Resource/bg-menuitem.png"; sourceTree = "<group>"; };
+		E91396451AC111B8003AF385 /* bg-menuitem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-menuitem@2x.png"; path = "Resource/bg-menuitem@2x.png"; sourceTree = "<group>"; };
+		E91396461AC111B8003AF385 /* icon-plus-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-plus-highlighted.png"; path = "Resource/icon-plus-highlighted.png"; sourceTree = "<group>"; };
+		E91396471AC111B8003AF385 /* icon-plus-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-plus-highlighted@2x.png"; path = "Resource/icon-plus-highlighted@2x.png"; sourceTree = "<group>"; };
+		E91396481AC111B8003AF385 /* icon-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-plus.png"; path = "Resource/icon-plus.png"; sourceTree = "<group>"; };
+		E91396491AC111B8003AF385 /* icon-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-plus@2x.png"; path = "Resource/icon-plus@2x.png"; sourceTree = "<group>"; };
+		E913964A1AC111B8003AF385 /* icon-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-star.png"; path = "Resource/icon-star.png"; sourceTree = "<group>"; };
+		E913964B1AC111B8003AF385 /* icon-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-star@2x.png"; path = "Resource/icon-star@2x.png"; sourceTree = "<group>"; };
+		E913965A1AC14A79003AF385 /* rightNav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightNav.png; path = Resource/rightNav.png; sourceTree = "<group>"; };
+		E913965B1AC14A79003AF385 /* rightNav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rightNav@2x.png"; path = "Resource/rightNav@2x.png"; sourceTree = "<group>"; };
+		E91396601AC1526A003AF385 /* BuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyListViewController.h; path = ViewControllers/BuyListViewController.h; sourceTree = "<group>"; };
+		E91396611AC1526A003AF385 /* BuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyListViewController.m; path = ViewControllers/BuyListViewController.m; sourceTree = "<group>"; };
+		E91396631AC16096003AF385 /* AddBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddBuyViewController.h; path = ViewControllers/AddBuyViewController.h; sourceTree = "<group>"; };
+		E91396641AC16096003AF385 /* AddBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBuyViewController.m; path = ViewControllers/AddBuyViewController.m; sourceTree = "<group>"; };
+		E91396671AC16431003AF385 /* BuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyListTableViewCell.h; path = Views/BuyListTableViewCell.h; sourceTree = "<group>"; };
+		E91396681AC16431003AF385 /* BuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyListTableViewCell.m; path = Views/BuyListTableViewCell.m; sourceTree = "<group>"; };
 		E91FBCD41AB91FB4005CA250 /* SubTripListNormalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListNormalTableViewCell.h; path = Views/SubTripListNormalTableViewCell.h; sourceTree = "<group>"; };
 		E91FBCD51AB91FB4005CA250 /* SubTripListNormalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListNormalTableViewCell.m; path = Views/SubTripListNormalTableViewCell.m; sourceTree = "<group>"; };
 		E91FBCD71AB92555005CA250 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resource/background.png; sourceTree = "<group>"; };
@@ -150,8 +203,8 @@
 		E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GetUserLocationCenter@2x.png"; path = "Resource/GetUserLocationCenter@2x.png"; sourceTree = "<group>"; };
 		E97184371ABAC1B9005291A1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = Vendors/Base64.h; sourceTree = "<group>"; };
 		E97184381ABAC1B9005291A1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = Vendors/Base64.m; sourceTree = "<group>"; };
-		E9B170B41ABFE47E00722C2F /* EditSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripViewController.h; path = ViewControllers/EditSubTripViewController.h; sourceTree = "<group>"; };
-		E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripViewController.m; path = ViewControllers/EditSubTripViewController.m; sourceTree = "<group>"; };
+		E9B170BC1ABFFD9A00722C2F /* EditSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripViewController.h; path = ViewControllers/EditSubTripViewController.h; sourceTree = "<group>"; };
+		E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripViewController.m; path = ViewControllers/EditSubTripViewController.m; sourceTree = "<group>"; };
 		E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripViewController.h; path = ViewControllers/AddSubTripViewController.h; sourceTree = "<group>"; };
 		E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripViewController.m; path = ViewControllers/AddSubTripViewController.m; sourceTree = "<group>"; };
 		E9C131931AB2E79400E6E873 /* AddSubTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripTableViewCell.h; path = Views/AddSubTripTableViewCell.h; sourceTree = "<group>"; };
@@ -164,8 +217,6 @@
 		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
 		E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationTableViewCell.h; path = Views/AddSubTripLocationTableViewCell.h; sourceTree = "<group>"; };
 		E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationTableViewCell.m; path = Views/AddSubTripLocationTableViewCell.m; sourceTree = "<group>"; };
-		E9EB9C771AB7CA5B00ED0334 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
-		E9EB9C781AB7CA5B00ED0334 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
 		E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
 		E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
 		E9EB9C7E1AB8142D00ED0334 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addIcon.png; path = Resource/addIcon.png; sourceTree = "<group>"; };
@@ -293,6 +344,8 @@
 				E97184271ABAAD96005291A1 /* AddSubTripLocationViewController.m */,
 				E97184321ABAC0E2005291A1 /* LocationAnnotation.h */,
 				E97184331ABAC0E2005291A1 /* LocationAnnotation.m */,
+				E91396631AC16096003AF385 /* AddBuyViewController.h */,
+				E91396641AC16096003AF385 /* AddBuyViewController.m */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -312,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				E909910B1AAFE82D00C48688 /* TripList */,
+				E913965F1AC1523F003AF385 /* BuyList */,
 				E90991071AAFE7F500C48688 /* Add */,
 				E9B170B31ABFE45000722C2F /* Edit */,
 			);
@@ -322,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				E90991121AAFEAAD00C48688 /* TripList */,
+				E91396661AC16410003AF385 /* BuyList */,
 				E96D4B271AB01AC300F7CB38 /* Add */,
 				E9B170B71ABFF8B800722C2F /* Edit */,
 			);
@@ -331,6 +386,10 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E91396381AC11157003AF385 /* AwesomeMenu.h */,
+				E91396391AC11157003AF385 /* AwesomeMenu.m */,
+				E913963A1AC11157003AF385 /* AwesomeMenuItem.h */,
+				E913963B1AC11157003AF385 /* AwesomeMenuItem.m */,
 				E97184371ABAC1B9005291A1 /* Base64.h */,
 				E97184381ABAC1B9005291A1 /* Base64.m */,
 				E97184291ABABD23005291A1 /* CocoaSecurity.h */,
@@ -364,6 +423,24 @@
 			name = TripList;
 			sourceTree = "<group>";
 		};
+		E913965F1AC1523F003AF385 /* BuyList */ = {
+			isa = PBXGroup;
+			children = (
+				E91396601AC1526A003AF385 /* BuyListViewController.h */,
+				E91396611AC1526A003AF385 /* BuyListViewController.m */,
+			);
+			name = BuyList;
+			sourceTree = "<group>";
+		};
+		E91396661AC16410003AF385 /* BuyList */ = {
+			isa = PBXGroup;
+			children = (
+				E91396671AC16431003AF385 /* BuyListTableViewCell.h */,
+				E91396681AC16431003AF385 /* BuyListTableViewCell.m */,
+			);
+			name = BuyList;
+			sourceTree = "<group>";
+		};
 		E96D4B271AB01AC300F7CB38 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,10 +468,12 @@
 			isa = PBXGroup;
 			children = (
 				E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */,
+				E91396331AC0FF79003AF385 /* SubTrip.h */,
+				E91396341AC0FF79003AF385 /* SubTrip.m */,
+				E91396301AC0FF4C003AF385 /* BuyList.h */,
+				E91396311AC0FF4C003AF385 /* BuyList.m */,
 				E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */,
 				E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */,
-				E9EB9C771AB7CA5B00ED0334 /* SubTrip.h */,
-				E9EB9C781AB7CA5B00ED0334 /* SubTrip.m */,
 				E96D4B561AB1476800F7CB38 /* ChtripCDManager.h */,
 				E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */,
 			);
@@ -404,8 +483,8 @@
 		E9B170B31ABFE45000722C2F /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				E9B170B41ABFE47E00722C2F /* EditSubTripViewController.h */,
-				E9B170B51ABFE47E00722C2F /* EditSubTripViewController.m */,
+				E9B170BC1ABFFD9A00722C2F /* EditSubTripViewController.h */,
+				E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */,
 			);
 			name = Edit;
 			sourceTree = "<group>";
@@ -420,6 +499,22 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E913965A1AC14A79003AF385 /* rightNav.png */,
+				E913965B1AC14A79003AF385 /* rightNav@2x.png */,
+				E913963E1AC111B8003AF385 /* bg-addbutton-highlighted.png */,
+				E913963F1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png */,
+				E91396401AC111B8003AF385 /* bg-addbutton.png */,
+				E91396411AC111B8003AF385 /* bg-addbutton@2x.png */,
+				E91396421AC111B8003AF385 /* bg-menuitem-highlighted.png */,
+				E91396431AC111B8003AF385 /* bg-menuitem-highlighted@2x.png */,
+				E91396441AC111B8003AF385 /* bg-menuitem.png */,
+				E91396451AC111B8003AF385 /* bg-menuitem@2x.png */,
+				E91396461AC111B8003AF385 /* icon-plus-highlighted.png */,
+				E91396471AC111B8003AF385 /* icon-plus-highlighted@2x.png */,
+				E91396481AC111B8003AF385 /* icon-plus.png */,
+				E91396491AC111B8003AF385 /* icon-plus@2x.png */,
+				E913964A1AC111B8003AF385 /* icon-star.png */,
+				E913964B1AC111B8003AF385 /* icon-star@2x.png */,
 				E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */,
 				E97184231ABAA38E005291A1 /* defaultBackground.jpg */,
 				E91FBCD71AB92555005CA250 /* background.png */,
@@ -527,23 +622,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
+				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
+				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
+				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
+				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
+				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
 				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
+				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
 				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
+				E91396541AC111B8003AF385 /* icon-plus-highlighted.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
+				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
+				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
+				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
+				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
+				E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */,
+				E91396561AC111B8003AF385 /* icon-plus.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
 				E91FBCDD1AB92555005CA250 /* background1.png in Resources */,
+				E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */,
+				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,16 +708,19 @@
 			files = (
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
-				E9B170B61ABFE47E00722C2F /* EditSubTripViewController.m in Sources */,
+				E91396321AC0FF4C003AF385 /* BuyList.m in Sources */,
+				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
+				E91396651AC16096003AF385 /* AddBuyViewController.m in Sources */,
 				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
 				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
 				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
-				E9EB9C791AB7CA5B00ED0334 /* SubTrip.m in Sources */,
 				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
+				E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */,
+				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
@@ -615,7 +729,10 @@
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
 				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
+				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
+				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
+				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
@@ -864,6 +981,7 @@
 		E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E91396361AC1038D003AF385 /* chtripCD 2.xcdatamodel */,
 				E96D4B4E1AB13E4600F7CB38 /* chtripCD.xcdatamodel */,
 			);
 			currentVersion = E96D4B4E1AB13E4600F7CB38 /* chtripCD.xcdatamodel */;

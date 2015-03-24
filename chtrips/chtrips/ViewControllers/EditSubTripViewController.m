@@ -1,12 +1,13 @@
 //
-//  AddSubTripViewController.m
+//  EditSubTripViewController.m
 //  chtrips
 //
-//  Created by Hisoka on 15/3/13.
+//  Created by Hisoka on 15/3/23.
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
-#import "AddSubTripViewController.h"
+#import "EditSubTripViewController.h"
+
 #import "AddSubTripTableViewCell.h"
 #import "AddSubTripLocationTableViewCell.h"
 #import "AddSubTripEndTimeTableViewCell.h"
@@ -24,29 +25,26 @@ static NSString * const ADD_LOCATION_CELL = @"AddSubTripLocationCell";
 //static NSInteger const START_TIME_ROW = 0;
 static NSInteger const END_DATE_SECTION = 1;
 
-@interface AddSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate, AddSubTripLocationViewControllerDelegate>
+@interface EditSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate, AddSubTripLocationViewControllerDelegate>
 
-@property (nonatomic, strong) UITableView *addSubTripTV;
+@property (nonatomic, strong) UITableView *editSubTripTV;
 @property (nonatomic, strong) AddSubTripTableViewCell *addSubTripCell;
 @property (nonatomic, strong) AddSubTripEndTimeTableViewCell *addSubTripEndTimeCell;
 @property (nonatomic, strong) AddSubTripLocationTableViewCell *addSubTripLocationCell;
 @property (nonatomic, strong) ZBActionSheetDatePicker *datePicker;
-@property (nonatomic, strong) NSDate *subTime;
 @property (nonatomic, strong) NSString *keyBoardShow;
-@property (nonatomic, strong) NSString *lat;
-@property (nonatomic, strong) NSString *lng;
+
 
 @end
 
-@implementation AddSubTripViewController
+@implementation EditSubTripViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self setupAddSubTripTV];
-    
+    [self setupEditSubTripTV];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,26 +52,27 @@ static NSInteger const END_DATE_SECTION = 1;
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark 设置addSubTrip tableview
-- (void) setupAddSubTripTV
+- (void) setupEditSubTripTV
 {
     [self setupNav];
     
-    self.addSubTripTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    _addSubTripTV.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:_addSubTripTV];
+    self.editSubTripTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _editSubTripTV.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:_editSubTripTV];
     
-    _addSubTripTV.dataSource = self;
-    _addSubTripTV.delegate = self;
+    _editSubTripTV.dataSource = self;
+    _editSubTripTV.delegate = self;
     
-    [_addSubTripTV autoPinToTopLayoutGuideOfViewController:self withInset:-100.0];
-    [_addSubTripTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
-    [_addSubTripTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_addSubTripTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [_editSubTripTV autoPinToTopLayoutGuideOfViewController:self withInset:-100.0];
+    [_editSubTripTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_editSubTripTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_editSubTripTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
-    [self.addSubTripTV registerClass:[AddSubTripTableViewCell class] forCellReuseIdentifier:ADD_TRIPSUB_CELL];
-    [self.addSubTripTV registerClass:[AddSubTripLocationTableViewCell class] forCellReuseIdentifier:ADD_LOCATION_CELL];
-    [self.addSubTripTV registerClass:[AddSubTripEndTimeTableViewCell class] forCellReuseIdentifier:ADD_END_TIME_CELL];
+    [self.editSubTripTV registerClass:[AddSubTripTableViewCell class] forCellReuseIdentifier:ADD_TRIPSUB_CELL];
+    [self.editSubTripTV registerClass:[AddSubTripLocationTableViewCell class] forCellReuseIdentifier:ADD_LOCATION_CELL];
+    [self.editSubTripTV registerClass:[AddSubTripEndTimeTableViewCell class] forCellReuseIdentifier:ADD_END_TIME_CELL];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -121,6 +120,7 @@ static NSInteger const END_DATE_SECTION = 1;
             _addSubTripLocationCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
             _addSubTripLocationCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
             _addSubTripLocationCell.inputField.delegate = self;
+            _addSubTripLocationCell.inputField.text = _subAddressName;
             
             UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickLocationIcon)];
             [_addSubTripLocationCell addGestureRecognizer:onceTap];
@@ -132,6 +132,7 @@ static NSInteger const END_DATE_SECTION = 1;
             _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP", Nil);
             _addSubTripCell.inputField.delegate = self;
             _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripTitle"];
+            _addSubTripCell.inputField.text = _subTripName;
             cell = _addSubTripCell;
         }
         
@@ -166,7 +167,7 @@ static NSInteger const END_DATE_SECTION = 1;
     
     self.subTime = date;
     
-    [self.addSubTripTV reloadData];
+    [self.editSubTripTV reloadData];
 }
 #pragma mark 时间取消
 - (void) datePickerDidCancel:(ZBActionSheetDatePicker *)pickerController
@@ -178,9 +179,9 @@ static NSInteger const END_DATE_SECTION = 1;
 - (void) setupNav
 {
     UIBarButtonItem *navCancelBTN = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BTN_CANCEL", Nil)
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(navCancelBTN)];
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(navCancelBTN)];
     self.navigationItem.leftBarButtonItem = navCancelBTN;
     
     UIBarButtonItem *navSaveBTN = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BTN_SAVE", Nil)
@@ -214,24 +215,24 @@ static NSInteger const END_DATE_SECTION = 1;
     ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
     
     NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
-                                                                            [TripCD makeKeyID], @"subID",
-                                                                            _addSubTripLocationCell.inputField.text, @"subAddress",
-                                                                            self.subDate, @"subDate",
-                                                                            [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subEndTime",
-                                                                            self.lat, @"subLat",
-                                                                            self.lng, @"subLng",
-                                                                            [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
-                                                                            _addSubTripCell.inputField.text, @"subTitle",
+                                 self.subID, @"subID",
+                                 _addSubTripLocationCell.inputField.text, @"subAddress",
+                                 self.subDate, @"subDate",
+                                 [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subEndTime",
+                                 self.lat, @"subLat",
+                                 self.lng, @"subLng",
+                                 [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
+                                 _addSubTripCell.inputField.text, @"subTitle",
                                  nil];
     
     
-    if ([TripCD addSubTripSections:subTripData]) {
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+    if ([TripCD updateSubTrip:subTripData]) {
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_EDIT_TRIP_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
     }else{
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_ADD_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_EDIT_TRIP_FAILD", Nil) maskType:SVProgressHUDMaskTypeBlack];
     }
     
-    [self.addSubTripDelegate refreshTableView];
+    [self.editSubTripDelegate refreshTableView];
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -274,14 +275,5 @@ static NSInteger const END_DATE_SECTION = 1;
     self.lng = lng;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

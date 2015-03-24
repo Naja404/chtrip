@@ -2,7 +2,7 @@
 //  SubTrip.m
 //  chtrips
 //
-//  Created by Hisoka on 15/3/17.
+//  Created by Hisoka on 15/3/24.
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
@@ -19,5 +19,6 @@
 @dynamic subLng;
 @dynamic subStartTime;
 @dynamic subTitle;
+@dynamic subID;
 
 @end

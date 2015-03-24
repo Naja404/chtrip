@@ -35,11 +35,18 @@
 "TEXT_MONTH" = "/";
 "TEXT_DAY" = "";
 "TEXT_DELETE" = "Delete";
+"TEXT_DEFAULT_TRIPNAME" = "Trip";
+"TEXT_EDIT_TRIP_SUCCESS" = "Update Success";
+"TEXT_EDIT_TRIP_FAILD" = "Update Faild";
 
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";
 "INPUT_SEARCH_LOCATION" = "Plase Input Destination";
+"INPUT_BUY_LIST" = "Place Enter ";
 "TEXT_ADD_SUBTRIP" = "New SubTrip";
 "TEXT_TIME" = "Time";
+"TEXT_ADD_NEWDAY" = "Add Day";
+"TEXT_BUY_LIST" = "Buy List";
+"TEXT_BUYLIST_TITLE" = "Buy List";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";

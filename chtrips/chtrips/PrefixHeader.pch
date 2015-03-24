@@ -18,3 +18,29 @@
 #import "ObjectiveRecord.h"
 
 #endif
+
+#ifndef Chtrips_SystemInfoDefine_h
+#define Chtrips_SystemInfoDefine_h
+#define IS_IPHONE4 (([[UIScreen mainScreen] bounds].size.height-480)?NO:YES)
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+#define IS_IPHONE6 (([[UIScreen mainScreen] bounds].size.width-375)?NO:YES)
+#define IS_IPHONE6P (([[UIScreen mainScreen] bounds].size.width-414)?NO:YES)
+#define IS_OS_5_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0)
+#define IS_OS_6_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)
+#define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define IS_OS_6_OR_EALIER   ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+#define IS_OS_8_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#endif
+
+
+// awesomemenu 2015.3.24
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif

@@ -10,6 +10,7 @@
 
 #import "Trip.h"
 #import "SubTrip.h"
+#import "BuyList.h"
 
 @implementation ChtripCDManager
 
@@ -19,6 +20,11 @@
     NSArray *allTrip = [Trip allWithOrder:@"startDate DESC"];
     
     return allTrip;
+}
+
+- (SubTrip *) subTripBysubID:(NSString *)subID
+{
+    return [SubTrip find:@"subID == %@", subID];
 }
 
 #pragma mark 根据keyID获取子行程的最后一天日期
@@ -42,17 +48,41 @@
 - (BOOL) addSubTripSections:(NSDictionary *)subTripData
 {
     SubTrip *newSubTrip = [SubTrip create:subTripData];
-    
+
     return [newSubTrip save];
+}
+
+#pragma mark 更新子行程
+- (BOOL) updateSubTrip:(NSDictionary *)subTripData
+{
+    SubTrip *updateSubTrip = [self subTripBysubID:[subTripData objectForKey:@"subID"]];
+    
+//    updateSubTrip.subDate = [subTripData objectForKey:@"subDate"];
+//    updateSubTrip.subEndTime = [subTripData objectForKey:@"subEndTime"];
+//    updateSubTrip.subStartTime = [subTripData objectForKey:@"subStartTime"];
+//    updateSubTrip.subTitle = [subTripData objectForKey:@"subTitle"];
+//    updateSubTrip.subAddress = [subTripData objectForKey:@"subAddress"];
+//    updateSubTrip.subLat = [subTripData objectForKey:@"subLat"];
+//    updateSubTrip.subLng = [subTripData objectForKey:@"subLng"];
+    [updateSubTrip update:subTripData];
+
+    return [updateSubTrip save];
+}
+
+#pragma mark 添加购物清单
+- (BOOL) addBuy:(NSDictionary *)buyData
+{
+    BuyList *buy = [BuyList create:buyData];
+    
+    return [buy save];
 }
 
 #pragma mark 通过时间戳创建keyID
 - (NSString *) makeKeyID
 {
-    UInt64 unixTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    UInt64 unixTime = [[NSDate date] timeIntervalSince1970] * 1000 + ((arc4random() % 501) + 500);
     
     return [NSString stringWithFormat:@"%llu", unixTime];
 }
-
 
 @end
