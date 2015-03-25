@@ -77,6 +77,28 @@
     return [buy save];
 }
 
+#pragma mark 获取购物清单更新数据
+- (BuyList *) buyListWithbuyID:(NSString *)buyID
+{
+    return [BuyList find:@"buyID == %@", buyID];
+}
+
+#pragma mark 更新购物清单状态
+- (BOOL) updateBuy:(NSDictionary *)buyData
+{
+    BuyList *updateBuyList = [self buyListWithbuyID:[buyData objectForKey:@"buyID"]];
+    
+    [updateBuyList update:buyData];
+    
+    return [updateBuyList save];
+}
+
+#pragma mark 删除子行程
+- (void) deleteSubTrip:(NSString *)keyID subID:(NSString *)subID
+{
+    
+}
+
 #pragma mark 通过时间戳创建keyID
 - (NSString *) makeKeyID
 {

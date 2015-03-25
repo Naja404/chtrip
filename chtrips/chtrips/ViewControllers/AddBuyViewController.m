@@ -33,7 +33,7 @@
 #pragma mark 设置输入框
 - (void) setupContentInput
 {
-//    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelNav)];
     
@@ -55,6 +55,7 @@
     ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
     
     NSDictionary *buyData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
+                                                                        [TripCD makeKeyID], @"buyID",
                                                                         _contentInput.text, @"content",
                                                                         [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]], @"createdTime",
                                                                         @"0", @"checkStatus",

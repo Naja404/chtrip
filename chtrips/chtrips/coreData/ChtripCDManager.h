@@ -16,6 +16,7 @@
 - (BOOL) addSubTripSections:(NSDictionary *) subTripData;
 - (BOOL) updateSubTrip:(NSDictionary *)subTripData;
 - (BOOL) addBuy:(NSDictionary *)buyData;
+- (BOOL) updateBuy:(NSDictionary *)buyData;
 - (NSString *) makeKeyID;
 
 @end

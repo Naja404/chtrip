@@ -473,18 +473,18 @@ static NSString * const SECTION_ADD_MARK = @"section";
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
     UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
     
-    UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
+//    UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+                                                               ContentImage:[UIImage imageNamed:@"day"]
                                                     highlightedContentImage:nil];
     AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+                                                               ContentImage:[UIImage imageNamed:@"buyList"]
                                                     highlightedContentImage:nil];
     AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+                                                               ContentImage:[UIImage imageNamed:@"trash"]
                                                     highlightedContentImage:nil];
     NSArray *menuItems = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, nil];
     
@@ -525,7 +525,6 @@ static NSString * const SECTION_ADD_MARK = @"section";
 
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
-    NSLog(@"Select the index : %d",idx);
     
     switch (idx) {
         case 0:
@@ -552,7 +551,9 @@ static NSString * const SECTION_ADD_MARK = @"section";
 #pragma mark 删除行程
 - (void) deleteTrip
 {
-    NSLog(@"delete trip");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_ALERT", Nil) message:NSLocalizedString(@"TEXT_CONFIRM_DELETE_ALL_TRIP", Nil) delegate:self cancelButtonTitle:NSLocalizedString(@"BTN_CANCEL", Nil) otherButtonTitles:NSLocalizedString(@"BTN_CONFIRM", Nil), nil];
+    
+    [alert show];
 }
 
 @end

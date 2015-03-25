@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chtrips/ViewControllers/EditSubTripViewController.m"
-            timestampString = "448792250.25026"
+            timestampString = "448968813.35195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-navSaveBTN"
             landmarkType = "5">
          </BreakpointContent>

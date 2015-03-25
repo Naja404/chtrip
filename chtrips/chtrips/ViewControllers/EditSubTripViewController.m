@@ -12,6 +12,7 @@
 #import "AddSubTripLocationTableViewCell.h"
 #import "AddSubTripEndTimeTableViewCell.h"
 #import "AddSubTripLocationViewController.h"
+#import "EditSubTripDeleteTableViewCell.h"
 
 #import "NSDate-Utilities.h"
 #import "NSDate+Fomatter.h"
@@ -22,18 +23,19 @@
 static NSString * const ADD_TRIPSUB_CELL = @"AddSubTripCell";
 static NSString * const ADD_END_TIME_CELL = @"AddSubTripEndTimeCell";
 static NSString * const ADD_LOCATION_CELL = @"AddSubTripLocationCell";
+static NSString * const EDIT_DELETE_CELL = @"EditSubTripDeleteCell";
 //static NSInteger const START_TIME_ROW = 0;
-static NSInteger const END_DATE_SECTION = 1;
+//static NSInteger const END_DATE_SECTION = 1;
 
-@interface EditSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate, AddSubTripLocationViewControllerDelegate>
+@interface EditSubTripViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBActionSheetDatePickerDelegate, AddSubTripLocationViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *editSubTripTV;
 @property (nonatomic, strong) AddSubTripTableViewCell *addSubTripCell;
 @property (nonatomic, strong) AddSubTripEndTimeTableViewCell *addSubTripEndTimeCell;
 @property (nonatomic, strong) AddSubTripLocationTableViewCell *addSubTripLocationCell;
+@property (nonatomic, strong) EditSubTripDeleteTableViewCell *editSubTripDeleteCell;
 @property (nonatomic, strong) ZBActionSheetDatePicker *datePicker;
 @property (nonatomic, strong) NSString *keyBoardShow;
-
 
 @end
 
@@ -73,11 +75,12 @@ static NSInteger const END_DATE_SECTION = 1;
     [self.editSubTripTV registerClass:[AddSubTripTableViewCell class] forCellReuseIdentifier:ADD_TRIPSUB_CELL];
     [self.editSubTripTV registerClass:[AddSubTripLocationTableViewCell class] forCellReuseIdentifier:ADD_LOCATION_CELL];
     [self.editSubTripTV registerClass:[AddSubTripEndTimeTableViewCell class] forCellReuseIdentifier:ADD_END_TIME_CELL];
+    [self.editSubTripTV registerClass:[EditSubTripDeleteTableViewCell class] forCellReuseIdentifier:EDIT_DELETE_CELL];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,45 +100,52 @@ static NSInteger const END_DATE_SECTION = 1;
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    
-    if (indexPath.section == END_DATE_SECTION) {
-        self.addSubTripEndTimeCell = [tableView dequeueReusableCellWithIdentifier:ADD_END_TIME_CELL forIndexPath:indexPath];
-        
-        _addSubTripEndTimeCell.titleLB.text = NSLocalizedString(@"TEXT_TIME", Nil);
-        _addSubTripEndTimeCell.timeLB.textColor = [UIColor blueColor];
-        
-        if (_subTime == nil) {
-            _addSubTripEndTimeCell.timeLB.text = @"12:00";
-        }else{
-            _addSubTripEndTimeCell.timeLB.text = [_subTime hourAndMinute];
-        }
-        
-        cell = _addSubTripEndTimeCell;
-        
-    }else{
-        
-        
-        if (indexPath.row == 1) {
-            self.addSubTripLocationCell = [tableView dequeueReusableCellWithIdentifier:ADD_LOCATION_CELL forIndexPath:indexPath];
-            _addSubTripLocationCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
-            _addSubTripLocationCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
-            _addSubTripLocationCell.inputField.delegate = self;
-            _addSubTripLocationCell.inputField.text = _subAddressName;
+    switch (indexPath.section) {
+        case 0:
+            if (indexPath.row == 1) {
+                self.addSubTripLocationCell = [tableView dequeueReusableCellWithIdentifier:ADD_LOCATION_CELL forIndexPath:indexPath];
+                _addSubTripLocationCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP_LOCATION", Nil);
+                _addSubTripLocationCell.iconImgView.image = [UIImage imageNamed:@"tripLocation"];
+                _addSubTripLocationCell.inputField.delegate = self;
+                _addSubTripLocationCell.inputField.text = _subAddressName;
+                
+                UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickLocationIcon)];
+                [_addSubTripLocationCell addGestureRecognizer:onceTap];
+                
+                
+                cell = _addSubTripLocationCell;
+            }else{
+                self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
+                _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP", Nil);
+                _addSubTripCell.inputField.delegate = self;
+                _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripTitle"];
+                _addSubTripCell.inputField.text = _subTripName;
+                cell = _addSubTripCell;
+            }
             
-            UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickLocationIcon)];
-            [_addSubTripLocationCell addGestureRecognizer:onceTap];
+            break;
+        case 1:
+            self.addSubTripEndTimeCell = [tableView dequeueReusableCellWithIdentifier:ADD_END_TIME_CELL forIndexPath:indexPath];
             
+            _addSubTripEndTimeCell.titleLB.text = NSLocalizedString(@"TEXT_TIME", Nil);
+            _addSubTripEndTimeCell.timeLB.textColor = [UIColor blueColor];
             
-            cell = _addSubTripLocationCell;
-        }else{
-            self.addSubTripCell = [tableView dequeueReusableCellWithIdentifier:ADD_TRIPSUB_CELL forIndexPath:indexPath];
-            _addSubTripCell.inputField.placeholder = NSLocalizedString(@"TEXT_SUB_TRIP", Nil);
-            _addSubTripCell.inputField.delegate = self;
-            _addSubTripCell.iconImgView.image = [UIImage imageNamed:@"tripTitle"];
-            _addSubTripCell.inputField.text = _subTripName;
-            cell = _addSubTripCell;
-        }
-        
+            if (_subTime == nil) {
+                _addSubTripEndTimeCell.timeLB.text = @"12:00";
+            }else{
+                _addSubTripEndTimeCell.timeLB.text = [_subTime hourAndMinute];
+            }
+            
+            cell = _addSubTripEndTimeCell;
+            break;
+        case 2:
+            self.editSubTripDeleteCell = [tableView dequeueReusableCellWithIdentifier:EDIT_DELETE_CELL forIndexPath:indexPath];
+            [_editSubTripDeleteCell.deleteBTN addTarget:self action:@selector(onClickDeleteBTN:) forControlEvents:UIControlEventTouchDown];
+            _editSubTripDeleteCell.backgroundColor = [UIColor redColor];
+            cell = _editSubTripDeleteCell;
+            break;
+        default:
+            break;
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -275,5 +285,21 @@ static NSInteger const END_DATE_SECTION = 1;
     self.lng = lng;
 }
 
+#pragma mark 删除行程按钮
+- (void) onClickDeleteBTN:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_ALERT", Nil) message:NSLocalizedString(@"TEXT_CONFIRM_DELETE_TRIP", Nil) delegate:self cancelButtonTitle:NSLocalizedString(@"BTN_CANCEL", Nil) otherButtonTitles:NSLocalizedString(@"BTN_CONFIRM", Nil), nil];
+    
+    [alert show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+//        ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
+        NSLog(@"button index is 1");
+        
+    }
+}
 
 @end

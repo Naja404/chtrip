@@ -17,6 +17,7 @@
 "BTN_CANCEL" = "取消";
 "BTN_CAMERA" = "拍照";
 "BTN_ALBUM" = "相册";
+"BTN_CONFIRM" = "确定";
 
 // text
 "TEXT_APP_TITLE" = "彩虹Town";
@@ -46,6 +47,8 @@
 "TEXT_BUY_LIST" = "欲购清单";
 "TEXT_BUYLIST_TITLE" = "欲购清单";
 "INPUT_BUY_LIST" = "请输入想要购买的宝贝";
+"TEXT_DELETE_TRIP" = "删除该行程";
+"TEXT_ALERT" = "提示";
 
 // alert info
 
@@ -54,3 +57,6 @@
 "TEXT_ADD_TRIP_SUCCESS" = "行程添加成功";
 "TEXT_PLACE_INPUT_ADDRESS" = "请输入地址";
 "TEXT_ADD_NEW_DAY_SUCCESS" = "成功新增一天";
+"TEXT_CONFIRM_DELETE_TRIP" = "确认删除该行程?";
+"TEXT_CONFIRM_DELETE_ALL_TRIP" = "确定删除所有行程?";
+

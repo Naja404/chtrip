@@ -17,6 +17,7 @@
 "BTN_CANCEL" = "Cancel";
 "BTN_CAMERA" = "Camera";
 "BTN_ALBUM" = "Album";
+"BTN_CONFIRM" = "Confirm";
 
 // text
 "TEXT_APP_TITLE" = "彩虹Town";
@@ -47,6 +48,8 @@
 "TEXT_ADD_NEWDAY" = "Add Day";
 "TEXT_BUY_LIST" = "Buy List";
 "TEXT_BUYLIST_TITLE" = "Buy List";
+"TEXT_DELETE_TRIP" = "Delete Trip";
+"TEXT_ALERT" = "Noitc";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";
@@ -54,3 +57,5 @@
 "TEXT_ADD_TRIP_SUCCESS" = "Add Success";
 "TEXT_PLACE_INPUT_ADDRESS" = "Place Input Address";
 "TEXT_ADD_NEW_DAY_SUCCESS" = "Add New Day";
+"TEXT_CONFIRM_DELETE_TRIP" = "Confirm Delete This Trip ?";
+"TEXT_CONFIRM_DELETE_ALL_TRIP" = "Confirm Delete All Trip ?";

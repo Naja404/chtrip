@@ -19,7 +19,6 @@
 		E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90991101AAFEAA700C48688 /* TripListTableViewCell.m */; };
 		E90991161AB013B900C48688 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991151AB013B900C48688 /* MapKit.framework */; };
 		E90991181AB013FB00C48688 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991171AB013FB00C48688 /* CoreLocation.framework */; };
-		E91396321AC0FF4C003AF385 /* BuyList.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396311AC0FF4C003AF385 /* BuyList.m */; };
 		E91396351AC0FF79003AF385 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396341AC0FF79003AF385 /* SubTrip.m */; };
 		E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396391AC11157003AF385 /* AwesomeMenu.m */; };
 		E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E913963B1AC11157003AF385 /* AwesomeMenuItem.m */; };
@@ -42,6 +41,14 @@
 		E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396611AC1526A003AF385 /* BuyListViewController.m */; };
 		E91396651AC16096003AF385 /* AddBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396641AC16096003AF385 /* AddBuyViewController.m */; };
 		E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396681AC16431003AF385 /* BuyListTableViewCell.m */; };
+		E913966E1AC2607E003AF385 /* buyList.png in Resources */ = {isa = PBXBuildFile; fileRef = E913966A1AC2607E003AF385 /* buyList.png */; };
+		E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E913966B1AC2607E003AF385 /* buyList@2x.png */; };
+		E91396701AC2607E003AF385 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = E913966C1AC2607E003AF385 /* trash.png */; };
+		E91396711AC2607E003AF385 /* trash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E913966D1AC2607E003AF385 /* trash@2x.png */; };
+		E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396721AC261F0003AF385 /* checkboxChecked.png */; };
+		E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396731AC261F0003AF385 /* checkboxUncheck.png */; };
+		E913967B1AC28371003AF385 /* BuyList.m in Sources */ = {isa = PBXBuildFile; fileRef = E913967A1AC28371003AF385 /* BuyList.m */; };
+		E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E913967F1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m */; };
 		E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E91FBCD51AB91FB4005CA250 /* SubTripListNormalTableViewCell.m */; };
 		E91FBCDB1AB92555005CA250 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD71AB92555005CA250 /* background.png */; };
 		E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD81AB92555005CA250 /* background@2x.png */; };
@@ -120,8 +127,6 @@
 		E90991141AAFEED100C48688 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E90991151AB013B900C48688 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E90991171AB013FB00C48688 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E91396301AC0FF4C003AF385 /* BuyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyList.h; path = coreData/BuyList.h; sourceTree = "<group>"; };
-		E91396311AC0FF4C003AF385 /* BuyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyList.m; path = coreData/BuyList.m; sourceTree = "<group>"; };
 		E91396331AC0FF79003AF385 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
 		E91396341AC0FF79003AF385 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
 		E91396361AC1038D003AF385 /* chtripCD 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "chtripCD 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -151,6 +156,16 @@
 		E91396641AC16096003AF385 /* AddBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBuyViewController.m; path = ViewControllers/AddBuyViewController.m; sourceTree = "<group>"; };
 		E91396671AC16431003AF385 /* BuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyListTableViewCell.h; path = Views/BuyListTableViewCell.h; sourceTree = "<group>"; };
 		E91396681AC16431003AF385 /* BuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyListTableViewCell.m; path = Views/BuyListTableViewCell.m; sourceTree = "<group>"; };
+		E913966A1AC2607E003AF385 /* buyList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buyList.png; path = Resource/buyList.png; sourceTree = "<group>"; };
+		E913966B1AC2607E003AF385 /* buyList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buyList@2x.png"; path = "Resource/buyList@2x.png"; sourceTree = "<group>"; };
+		E913966C1AC2607E003AF385 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = Resource/trash.png; sourceTree = "<group>"; };
+		E913966D1AC2607E003AF385 /* trash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash@2x.png"; path = "Resource/trash@2x.png"; sourceTree = "<group>"; };
+		E91396721AC261F0003AF385 /* checkboxChecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkboxChecked.png; path = Resource/checkboxChecked.png; sourceTree = "<group>"; };
+		E91396731AC261F0003AF385 /* checkboxUncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkboxUncheck.png; path = Resource/checkboxUncheck.png; sourceTree = "<group>"; };
+		E91396791AC28371003AF385 /* BuyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyList.h; path = coreData/BuyList.h; sourceTree = "<group>"; };
+		E913967A1AC28371003AF385 /* BuyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyList.m; path = coreData/BuyList.m; sourceTree = "<group>"; };
+		E913967E1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripDeleteTableViewCell.h; path = Views/EditSubTripDeleteTableViewCell.h; sourceTree = "<group>"; };
+		E913967F1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripDeleteTableViewCell.m; path = Views/EditSubTripDeleteTableViewCell.m; sourceTree = "<group>"; };
 		E91FBCD41AB91FB4005CA250 /* SubTripListNormalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListNormalTableViewCell.h; path = Views/SubTripListNormalTableViewCell.h; sourceTree = "<group>"; };
 		E91FBCD51AB91FB4005CA250 /* SubTripListNormalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListNormalTableViewCell.m; path = Views/SubTripListNormalTableViewCell.m; sourceTree = "<group>"; };
 		E91FBCD71AB92555005CA250 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resource/background.png; sourceTree = "<group>"; };
@@ -468,10 +483,10 @@
 			isa = PBXGroup;
 			children = (
 				E96D4B4D1AB13E4600F7CB38 /* chtripCD.xcdatamodeld */,
+				E91396791AC28371003AF385 /* BuyList.h */,
+				E913967A1AC28371003AF385 /* BuyList.m */,
 				E91396331AC0FF79003AF385 /* SubTrip.h */,
 				E91396341AC0FF79003AF385 /* SubTrip.m */,
-				E91396301AC0FF4C003AF385 /* BuyList.h */,
-				E91396311AC0FF4C003AF385 /* BuyList.m */,
 				E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */,
 				E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */,
 				E96D4B561AB1476800F7CB38 /* ChtripCDManager.h */,
@@ -492,6 +507,8 @@
 		E9B170B71ABFF8B800722C2F /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				E913967E1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.h */,
+				E913967F1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m */,
 			);
 			name = Edit;
 			sourceTree = "<group>";
@@ -499,6 +516,12 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E91396721AC261F0003AF385 /* checkboxChecked.png */,
+				E91396731AC261F0003AF385 /* checkboxUncheck.png */,
+				E913966A1AC2607E003AF385 /* buyList.png */,
+				E913966B1AC2607E003AF385 /* buyList@2x.png */,
+				E913966C1AC2607E003AF385 /* trash.png */,
+				E913966D1AC2607E003AF385 /* trash@2x.png */,
 				E913965A1AC14A79003AF385 /* rightNav.png */,
 				E913965B1AC14A79003AF385 /* rightNav@2x.png */,
 				E913963E1AC111B8003AF385 /* bg-addbutton-highlighted.png */,
@@ -624,6 +647,7 @@
 			files = (
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
+				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
@@ -643,12 +667,17 @@
 				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
 				E91396541AC111B8003AF385 /* icon-plus-highlighted.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
+				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
+				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
+				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
+				E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */,
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
+				E91396701AC2607E003AF385 /* trash.png in Resources */,
 				E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */,
 				E91396561AC111B8003AF385 /* icon-plus.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
@@ -708,7 +737,6 @@
 			files = (
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
-				E91396321AC0FF4C003AF385 /* BuyList.m in Sources */,
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
 				E91396651AC16096003AF385 /* AddBuyViewController.m in Sources */,
@@ -725,11 +753,13 @@
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
+				E913967B1AC28371003AF385 /* BuyList.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
 				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
+				E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
 				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,

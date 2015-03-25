@@ -11,6 +11,7 @@
 #import "BuyListTableViewCell.h"
 
 #import "BuyList.h"
+#import "ChtripCDManager.h"
 
 static NSString * const BUY_LIST_CELL = @"BuyListCell";
 
@@ -141,6 +142,21 @@ static NSString * const BUY_LIST_CELL = @"BuyListCell";
     
     cell.contentLB.text = buy.content;
     
+    if ([buy.checkStatus isEqualToString:@"1"]) {
+        cell.checkBoxImg.image = [UIImage imageNamed:@"checkboxChecked"];
+        cell.contentLB.textColor = [UIColor grayColor];
+    }else{
+        cell.checkBoxImg.image = [UIImage imageNamed:@"checkboxUncheck"];
+        cell.contentLB.textColor = [UIColor blackColor];
+    }
+    
+    cell.buyID = buy.buyID;
+    cell.checkStatus = buy.checkStatus;
+    
+    UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickCheckBox:)];
+    cell.checkBoxImg.userInteractionEnabled = YES;
+    [cell.checkBoxImg addGestureRecognizer:onceTap];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -162,5 +178,32 @@ static NSString * const BUY_LIST_CELL = @"BuyListCell";
 
 }
 
+#pragma mark 点击复选按钮
+- (void) onClickCheckBox:(UITapGestureRecognizer *) gr
+{
+    BuyListTableViewCell *cell = (BuyListTableViewCell *) [[[gr view] superview] superview];
+    
+    ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
+    
+    NSString *checkStatus = @"1";
+    
+    if ([cell.checkStatus isEqualToString:@"1"]) {
+        checkStatus = @"0";
+    }
+    
+    NSDictionary *buyData = [[NSDictionary alloc] initWithObjectsAndKeys:cell.buyID, @"buyID",
+                                                                        checkStatus, @"checkStatus",
+                                                                        nil];
+    if ([tripCD updateBuy:buyData]) {
+        if ([checkStatus isEqualToString:@"1"]) {
+            cell.checkBoxImg.image = [UIImage imageNamed:@"checkboxChecked"];
+            cell.contentLB.textColor = [UIColor grayColor];
+        }else{
+            cell.checkBoxImg.image = [UIImage imageNamed:@"checkboxUncheck"];
+            cell.contentLB.textColor = [UIColor blackColor];
+        }
+    }
+    
+}
 
 @end

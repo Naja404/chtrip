@@ -14,6 +14,7 @@ Date|Summy
 2015.3.18|1.修改首页样式
 2015.3.19|1.添加地址选择页面
 2015.3.24|1.添加行程默认封面 <br/>2.修改添加天的方式<br/>3.添加欲购清单
+2015.3.25|1.完善awsomemenu<br/>2.修改coredata <br/>3.完成欲购清单
 
 
 #TripList-table
@@ -44,6 +45,8 @@ subStartTime|double|
 Attribute|type|
 ---|---|
 keyID|String
+buyID|String
 content|String
+quantity|String
 createdTime|Double
 checkStatus|String
