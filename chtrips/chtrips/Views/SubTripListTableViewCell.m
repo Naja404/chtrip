@@ -22,14 +22,22 @@
         [_subTitleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:50.0];
         [_subTitleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_subTitleLB autoSetDimensionsToSize:CGSizeMake(200, 30)];
+        
+        self.lineLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_lineLB];
+        
+        [_lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:24.0];
+        [_lineLB autoSetDimensionsToSize:CGSizeMake(2, 80)];
+        _lineLB.backgroundColor = [UIColor grayColor];
 
         self.iconImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_iconImg];
         
-        [_iconImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_subTitleLB];
+        [_iconImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_lineLB withOffset:-9.0];
         [_iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_iconImg autoSetDimensionsToSize:CGSizeMake(20, 20)];
         _iconImg.image = [UIImage imageNamed:@"addIcon"];
+
     }
     
     return self;

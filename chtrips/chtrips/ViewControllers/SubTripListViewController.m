@@ -207,23 +207,27 @@ static NSString * const SECTION_ADD_MARK = @"section";
     return cell;
 }
 
-- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (NSString *) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NSLocalizedString(@"TEXT_DELETE", Nil);
-}
-
-- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"delete");
-    }
-}
-
+//- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return UITableViewCellEditingStyleDelete;
+//}
+//
+//- (NSString *) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return NSLocalizedString(@"TEXT_DELETE", Nil);
+//}
+//
+//- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        NSLog(@"delete");
+//    }
+//}
+//
+//- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return YES;
+//}
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -263,6 +267,17 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:dayIcon withOffset:20.0];
     [dateLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:autoSectionView];
     [dateLB autoSetDimensionsToSize:CGSizeMake(200, 20)];
+    
+    UIButton *delBTN = [UIButton newAutoLayoutView];
+    [sectionView addSubview:delBTN];
+    [delBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:sectionView withOffset:-20.0];
+    [delBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:sectionView];
+    [delBTN autoSetDimensionsToSize:CGSizeMake(20, 20)];
+    [delBTN setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
+    [delBTN addTarget:self action:@selector(onClickDelBTN:) forControlEvents:UIControlEventTouchDown];
+    [delBTN setTag:section + 1];
+
+    
     
     NSArray *sections = [self.fetchedResultsController sections];
     id <NSFetchedResultsSectionInfo> sectionInfo = nil;
@@ -556,4 +571,22 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [alert show];
 }
 
+#pragma mark section删除icon
+- (void) onClickDelBTN:(id)sender
+{
+    
+    UIButton *delBTN = sender;
+    
+    NSArray *sections = [self.fetchedResultsController sections];
+    id <NSFetchedResultsSectionInfo> sectionInfo = nil;
+    
+    sectionInfo = [sections objectAtIndex:delBTN.tag - 1];
+    SubTrip *subTripObj = [sectionInfo objects][0];
+    
+    
+    
+}
+
 @end
+
+

@@ -177,7 +177,9 @@ static NSString * const EDIT_DELETE_CELL = @"EditSubTripDeleteCell";
     
     self.subTime = date;
     
-    [self.editSubTripTV reloadData];
+    _addSubTripEndTimeCell.timeLB.text = [self.subTime hourAndMinute];
+    
+//    [self.editSubTripTV reloadData];
 }
 #pragma mark 时间取消
 - (void) datePickerDidCancel:(ZBActionSheetDatePicker *)pickerController
@@ -226,13 +228,13 @@ static NSString * const EDIT_DELETE_CELL = @"EditSubTripDeleteCell";
     
     NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
                                  self.subID, @"subID",
+                                 _addSubTripCell.inputField.text, @"subTitle",
                                  _addSubTripLocationCell.inputField.text, @"subAddress",
-                                 self.subDate, @"subDate",
+                                 [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
                                  [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subEndTime",
+                                 self.subDate, @"subDate",
                                  self.lat, @"subLat",
                                  self.lng, @"subLng",
-                                 [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
-                                 _addSubTripCell.inputField.text, @"subTitle",
                                  nil];
     
     
@@ -296,9 +298,12 @@ static NSString * const EDIT_DELETE_CELL = @"EditSubTripDeleteCell";
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-//        ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
-        NSLog(@"button index is 1");
+        ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
+        [tripCD deleteSubTrip:self.keyID subID:self.subID];
         
+        [self.editSubTripDelegate refreshTableView];
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

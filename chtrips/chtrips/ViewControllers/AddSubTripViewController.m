@@ -215,13 +215,14 @@ static NSInteger const END_DATE_SECTION = 1;
     
     NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:self.keyID, @"keyID",
                                                                             [TripCD makeKeyID], @"subID",
-                                                                            _addSubTripLocationCell.inputField.text, @"subAddress",
                                                                             self.subDate, @"subDate",
                                                                             [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subEndTime",
-                                                                            self.lat, @"subLat",
-                                                                            self.lng, @"subLng",
                                                                             [NSNumber numberWithDouble:[_subTime timeIntervalSince1970]], @"subStartTime",
                                                                             _addSubTripCell.inputField.text, @"subTitle",
+                                                                            _addSubTripLocationCell.inputField.text, @"subAddress",
+                                                                            self.lat, @"subLat",
+                                                                            self.lng, @"subLng",
+
                                  nil];
     
     

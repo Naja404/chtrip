@@ -17,6 +17,7 @@
 - (BOOL) updateSubTrip:(NSDictionary *)subTripData;
 - (BOOL) addBuy:(NSDictionary *)buyData;
 - (BOOL) updateBuy:(NSDictionary *)buyData;
+- (void) deleteSubTrip:(NSString *)keyID subID:(NSString *)subID;
 - (NSString *) makeKeyID;
 
 @end

@@ -48,6 +48,21 @@
         _addressLB.layer.cornerRadius = 5.0f;
         _addressLB.layer.masksToBounds = YES;
         
+        self.lineLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_lineLB];
+        
+        [_lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:24.0];
+        [_lineLB autoSetDimensionsToSize:CGSizeMake(2, 80)];
+        _lineLB.backgroundColor = [UIColor grayColor];
+        
+        self.redMindImg = [UIImageView newAutoLayoutView];
+        [self.contentView addSubview:_redMindImg];
+        
+        [_redMindImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_lineLB withOffset:-4.0];
+        [_redMindImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+        [_redMindImg autoSetDimensionsToSize:CGSizeMake(10, 10)];
+        _redMindImg.image = [UIImage imageNamed:@"redmind"];
+        
     }
     
     return self;

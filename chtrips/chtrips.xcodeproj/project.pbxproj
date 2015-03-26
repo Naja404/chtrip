@@ -54,6 +54,11 @@
 		E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD81AB92555005CA250 /* background@2x.png */; };
 		E91FBCDD1AB92555005CA250 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD91AB92555005CA250 /* background1.png */; };
 		E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCDA1AB92555005CA250 /* background1@2x.png */; };
+		E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2431AC3F5E300247B87 /* bluepoint.png */; };
+		E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2441AC3F5E300247B87 /* redpoint.jpg */; };
+		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
+		E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2491AC3F6B400247B87 /* redmind.png */; };
+		E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF24A1AC3F6B400247B87 /* redmind@2x.png */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
 		E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */; };
 		E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */; };
@@ -172,6 +177,11 @@
 		E91FBCD81AB92555005CA250 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resource/background@2x.png"; sourceTree = "<group>"; };
 		E91FBCD91AB92555005CA250 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background1.png; path = Resource/background1.png; sourceTree = "<group>"; };
 		E91FBCDA1AB92555005CA250 /* background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background1@2x.png"; path = "Resource/background1@2x.png"; sourceTree = "<group>"; };
+		E93CF2431AC3F5E300247B87 /* bluepoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluepoint.png; path = Resource/bluepoint.png; sourceTree = "<group>"; };
+		E93CF2441AC3F5E300247B87 /* redpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = redpoint.jpg; path = Resource/redpoint.jpg; sourceTree = "<group>"; };
+		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
+		E93CF2491AC3F6B400247B87 /* redmind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redmind.png; path = Resource/redmind.png; sourceTree = "<group>"; };
+		E93CF24A1AC3F6B400247B87 /* redmind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redmind@2x.png"; path = "Resource/redmind@2x.png"; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -516,6 +526,11 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E93CF2491AC3F6B400247B87 /* redmind.png */,
+				E93CF24A1AC3F6B400247B87 /* redmind@2x.png */,
+				E93CF2431AC3F5E300247B87 /* bluepoint.png */,
+				E93CF2441AC3F5E300247B87 /* redpoint.jpg */,
+				E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */,
 				E91396721AC261F0003AF385 /* checkboxChecked.png */,
 				E91396731AC261F0003AF385 /* checkboxUncheck.png */,
 				E913966A1AC2607E003AF385 /* buyList.png */,
@@ -645,15 +660,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */,
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
+				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
 				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
+				E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
 				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
@@ -671,10 +689,12 @@
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
+				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
+				E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */,
 				E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */,
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
 				E91396701AC2607E003AF385 /* trash.png in Resources */,

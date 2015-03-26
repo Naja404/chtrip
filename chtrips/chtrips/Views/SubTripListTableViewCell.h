@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UILabel *subTitleLB;
 @property (nonatomic, strong) UIImageView *iconImg;
+@property (nonatomic, strong) UILabel *lineLB;
 
 @end

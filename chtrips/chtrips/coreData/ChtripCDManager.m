@@ -96,7 +96,7 @@
 #pragma mark 删除子行程
 - (void) deleteSubTrip:(NSString *)keyID subID:(NSString *)subID
 {
-    
+    [[SubTrip find:@"keyID == %@ AND subID == %@", keyID, subID] delete];
 }
 
 #pragma mark 通过时间戳创建keyID
