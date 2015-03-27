@@ -529,8 +529,8 @@ static NSString * const SECTION_ADD_MARK = @"section";
         menuX = 315;
         menuY = 550;
     }else if (IS_IPHONE6P){
-        menuX = 415;
-        menuY = 620;
+        menuX = 345;
+        menuY = 650;
     }
     
     menu.startPoint = CGPointMake(menuX, menuY);
