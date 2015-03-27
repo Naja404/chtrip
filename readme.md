@@ -41,7 +41,7 @@ subLng|String|
 subTitle|String|
 subStartTime|double|
 
-##BuyList
+##BuyList-table
 Attribute|type|
 ---|---|
 keyID|String
@@ -50,3 +50,23 @@ content|String
 quantity|String
 createdTime|Double
 checkStatus|String
+
+##问题汇总
+日期|描述|状态
+---|---|---|
+2015-3-27|iPhone6Plus首页列表偏移|-
+-|iPhone6Plus子行程页面“加号”偏移|-
+-|子行程时间未排序|-
+-|地址添加页面search换成icon|-
+-|行程名透明，日期浮动在图片下|-
+
+
+##待考虑问题
+描述|状态
+---|---|
+阅览模式和编辑模式|-
+行程城市名|-
+
+
+
+

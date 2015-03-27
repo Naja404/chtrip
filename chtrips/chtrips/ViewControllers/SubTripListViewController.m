@@ -258,7 +258,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [dayNumLB autoSetDimensionsToSize:CGSizeMake(20, 20)];
     dayNumLB.text = [NSString stringWithFormat:@"%d", section + 1];
     dayNumLB.textColor = [UIColor redColor];
-    dayNumLB.backgroundColor = [UIColor whiteColor];
+    dayNumLB.backgroundColor = [UIColor clearColor];
     
     UILabel *dateLB = [UILabel newAutoLayoutView];
     [autoSectionView addSubview:dateLB];

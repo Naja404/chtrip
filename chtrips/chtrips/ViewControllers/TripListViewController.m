@@ -158,9 +158,11 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.nameLB.text = trip.tripName;
-    cell.nameLB.font = [UIFont fontWithName:@"AppleGothic" size:16.0];
+    cell.nameLB.font = [UIFont fontWithName:@"AppleGothic" size:20.0];
     
     NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:[trip.startDate doubleValue]];
+    
+    cell.remindImg.image = [UIImage imageNamed:@"bluepoint"];
     
     cell.dateLB.text = [startDate formattedDateWithFormat:@"YYYY.MM.dd"];
     

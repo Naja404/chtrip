@@ -59,6 +59,8 @@
 		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
 		E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2491AC3F6B400247B87 /* redmind.png */; };
 		E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF24A1AC3F6B400247B87 /* redmind@2x.png */; };
+		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
+		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
 		E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */; };
 		E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */; };
@@ -182,6 +184,8 @@
 		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
 		E93CF2491AC3F6B400247B87 /* redmind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redmind.png; path = Resource/redmind.png; sourceTree = "<group>"; };
 		E93CF24A1AC3F6B400247B87 /* redmind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redmind@2x.png"; path = "Resource/redmind@2x.png"; sourceTree = "<group>"; };
+		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
+		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E946B8ED1AC5453A00701854 /* redpoint.png */,
+				E946B8EE1AC5453A00701854 /* yellowpoint.png */,
 				E93CF2491AC3F6B400247B87 /* redmind.png */,
 				E93CF24A1AC3F6B400247B87 /* redmind@2x.png */,
 				E93CF2431AC3F5E300247B87 /* bluepoint.png */,
@@ -673,6 +679,7 @@
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
 				E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
+				E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */,
 				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
@@ -696,6 +703,7 @@
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
 				E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */,
 				E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */,
+				E946B8EF1AC5453A00701854 /* redpoint.png in Resources */,
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
 				E91396701AC2607E003AF385 /* trash.png in Resources */,
 				E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */,
