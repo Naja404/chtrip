@@ -85,6 +85,20 @@
 		E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */; };
 		E97184391ABAC1B9005291A1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184381ABAC1B9005291A1 /* Base64.m */; };
 		E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */; };
+		E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B901AA1AC93D6B001F4EA0 /* DiscoveryViewController.m */; };
+		E9B901AE1AC93DBC001F4EA0 /* ShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B901AD1AC93DBC001F4EA0 /* ShoppingViewController.m */; };
+		E9B901B11AC93E21001F4EA0 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B901B01AC93E21001F4EA0 /* PlayViewController.m */; };
+		E9B901B41AC93E3C001F4EA0 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B901B31AC93E3C001F4EA0 /* MyViewController.m */; };
+		E9B901BF1AC9492D001F4EA0 /* tab_discovery.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901B51AC9492D001F4EA0 /* tab_discovery.png */; };
+		E9B901C01AC9492D001F4EA0 /* tab_discovery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901B61AC9492D001F4EA0 /* tab_discovery@2x.png */; };
+		E9B901C11AC9492D001F4EA0 /* tab_my.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901B71AC9492D001F4EA0 /* tab_my.png */; };
+		E9B901C21AC9492D001F4EA0 /* tab_my@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901B81AC9492D001F4EA0 /* tab_my@2x.png */; };
+		E9B901C31AC9492D001F4EA0 /* tab_play.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901B91AC9492D001F4EA0 /* tab_play.png */; };
+		E9B901C41AC9492D001F4EA0 /* tab_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901BA1AC9492D001F4EA0 /* tab_play@2x.png */; };
+		E9B901C51AC9492D001F4EA0 /* tab_shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901BB1AC9492D001F4EA0 /* tab_shopping.png */; };
+		E9B901C61AC9492D001F4EA0 /* tab_shopping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901BC1AC9492D001F4EA0 /* tab_shopping@2x.png */; };
+		E9B901C71AC9492D001F4EA0 /* tab_trip.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901BD1AC9492D001F4EA0 /* tab_trip.png */; };
+		E9B901C81AC9492D001F4EA0 /* tab_trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B901BE1AC9492D001F4EA0 /* tab_trip@2x.png */; };
 		E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */; };
 		E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131941AB2E79400E6E873 /* AddSubTripTableViewCell.m */; };
 		E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C131971AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m */; };
@@ -234,6 +248,24 @@
 		E97184381ABAC1B9005291A1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = Vendors/Base64.m; sourceTree = "<group>"; };
 		E9B170BC1ABFFD9A00722C2F /* EditSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripViewController.h; path = ViewControllers/EditSubTripViewController.h; sourceTree = "<group>"; };
 		E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripViewController.m; path = ViewControllers/EditSubTripViewController.m; sourceTree = "<group>"; };
+		E9B901A91AC93D6B001F4EA0 /* DiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryViewController.h; path = ViewControllers/Discovery/DiscoveryViewController.h; sourceTree = "<group>"; };
+		E9B901AA1AC93D6B001F4EA0 /* DiscoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryViewController.m; path = ViewControllers/Discovery/DiscoveryViewController.m; sourceTree = "<group>"; };
+		E9B901AC1AC93DBC001F4EA0 /* ShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingViewController.h; path = ViewControllers/Shopping/ShoppingViewController.h; sourceTree = "<group>"; };
+		E9B901AD1AC93DBC001F4EA0 /* ShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingViewController.m; path = ViewControllers/Shopping/ShoppingViewController.m; sourceTree = "<group>"; };
+		E9B901AF1AC93E21001F4EA0 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayViewController.h; path = ViewControllers/Play/PlayViewController.h; sourceTree = "<group>"; };
+		E9B901B01AC93E21001F4EA0 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayViewController.m; path = ViewControllers/Play/PlayViewController.m; sourceTree = "<group>"; };
+		E9B901B21AC93E3C001F4EA0 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyViewController.h; path = ViewControllers/My/MyViewController.h; sourceTree = "<group>"; };
+		E9B901B31AC93E3C001F4EA0 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyViewController.m; path = ViewControllers/My/MyViewController.m; sourceTree = "<group>"; };
+		E9B901B51AC9492D001F4EA0 /* tab_discovery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_discovery.png; path = Resource/tab_discovery.png; sourceTree = "<group>"; };
+		E9B901B61AC9492D001F4EA0 /* tab_discovery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_discovery@2x.png"; path = "Resource/tab_discovery@2x.png"; sourceTree = "<group>"; };
+		E9B901B71AC9492D001F4EA0 /* tab_my.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_my.png; path = Resource/tab_my.png; sourceTree = "<group>"; };
+		E9B901B81AC9492D001F4EA0 /* tab_my@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_my@2x.png"; path = "Resource/tab_my@2x.png"; sourceTree = "<group>"; };
+		E9B901B91AC9492D001F4EA0 /* tab_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_play.png; path = Resource/tab_play.png; sourceTree = "<group>"; };
+		E9B901BA1AC9492D001F4EA0 /* tab_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_play@2x.png"; path = "Resource/tab_play@2x.png"; sourceTree = "<group>"; };
+		E9B901BB1AC9492D001F4EA0 /* tab_shopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_shopping.png; path = Resource/tab_shopping.png; sourceTree = "<group>"; };
+		E9B901BC1AC9492D001F4EA0 /* tab_shopping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_shopping@2x.png"; path = "Resource/tab_shopping@2x.png"; sourceTree = "<group>"; };
+		E9B901BD1AC9492D001F4EA0 /* tab_trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_trip.png; path = Resource/tab_trip.png; sourceTree = "<group>"; };
+		E9B901BE1AC9492D001F4EA0 /* tab_trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_trip@2x.png"; path = "Resource/tab_trip@2x.png"; sourceTree = "<group>"; };
 		E9C131901AB2DBD500E6E873 /* AddSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripViewController.h; path = ViewControllers/AddSubTripViewController.h; sourceTree = "<group>"; };
 		E9C131911AB2DBD500E6E873 /* AddSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripViewController.m; path = ViewControllers/AddSubTripViewController.m; sourceTree = "<group>"; };
 		E9C131931AB2E79400E6E873 /* AddSubTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripTableViewCell.h; path = Views/AddSubTripTableViewCell.h; sourceTree = "<group>"; };
@@ -393,10 +425,11 @@
 		E909910C1AAFE8CC00C48688 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E909910B1AAFE82D00C48688 /* TripList */,
-				E913965F1AC1523F003AF385 /* BuyList */,
-				E90991071AAFE7F500C48688 /* Add */,
-				E9B170B31ABFE45000722C2F /* Edit */,
+				E9B901A81AC93D12001F4EA0 /* My */,
+				E9B901A71AC93D08001F4EA0 /* Play */,
+				E9B901A61AC93CF1001F4EA0 /* Shopping */,
+				E9B901A51AC93CC8001F4EA0 /* Discovery */,
+				E9B901A41AC93A8F001F4EA0 /* Trip */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -527,9 +560,66 @@
 			name = Edit;
 			sourceTree = "<group>";
 		};
+		E9B901A41AC93A8F001F4EA0 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				E909910B1AAFE82D00C48688 /* TripList */,
+				E913965F1AC1523F003AF385 /* BuyList */,
+				E90991071AAFE7F500C48688 /* Add */,
+				E9B170B31ABFE45000722C2F /* Edit */,
+			);
+			name = Trip;
+			sourceTree = "<group>";
+		};
+		E9B901A51AC93CC8001F4EA0 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				E9B901A91AC93D6B001F4EA0 /* DiscoveryViewController.h */,
+				E9B901AA1AC93D6B001F4EA0 /* DiscoveryViewController.m */,
+			);
+			name = Discovery;
+			sourceTree = "<group>";
+		};
+		E9B901A61AC93CF1001F4EA0 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				E9B901AC1AC93DBC001F4EA0 /* ShoppingViewController.h */,
+				E9B901AD1AC93DBC001F4EA0 /* ShoppingViewController.m */,
+			);
+			name = Shopping;
+			sourceTree = "<group>";
+		};
+		E9B901A71AC93D08001F4EA0 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				E9B901AF1AC93E21001F4EA0 /* PlayViewController.h */,
+				E9B901B01AC93E21001F4EA0 /* PlayViewController.m */,
+			);
+			name = Play;
+			sourceTree = "<group>";
+		};
+		E9B901A81AC93D12001F4EA0 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				E9B901B21AC93E3C001F4EA0 /* MyViewController.h */,
+				E9B901B31AC93E3C001F4EA0 /* MyViewController.m */,
+			);
+			name = My;
+			sourceTree = "<group>";
+		};
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9B901B51AC9492D001F4EA0 /* tab_discovery.png */,
+				E9B901B61AC9492D001F4EA0 /* tab_discovery@2x.png */,
+				E9B901B71AC9492D001F4EA0 /* tab_my.png */,
+				E9B901B81AC9492D001F4EA0 /* tab_my@2x.png */,
+				E9B901B91AC9492D001F4EA0 /* tab_play.png */,
+				E9B901BA1AC9492D001F4EA0 /* tab_play@2x.png */,
+				E9B901BB1AC9492D001F4EA0 /* tab_shopping.png */,
+				E9B901BC1AC9492D001F4EA0 /* tab_shopping@2x.png */,
+				E9B901BD1AC9492D001F4EA0 /* tab_trip.png */,
+				E9B901BE1AC9492D001F4EA0 /* tab_trip@2x.png */,
 				E946B8ED1AC5453A00701854 /* redpoint.png */,
 				E946B8EE1AC5453A00701854 /* yellowpoint.png */,
 				E93CF2491AC3F6B400247B87 /* redmind.png */,
@@ -678,8 +768,11 @@
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
 				E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */,
+				E9B901C71AC9492D001F4EA0 /* tab_trip.png in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
+				E9B901C01AC9492D001F4EA0 /* tab_discovery@2x.png in Resources */,
 				E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */,
+				E9B901C11AC9492D001F4EA0 /* tab_my.png in Resources */,
 				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
@@ -689,7 +782,12 @@
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
+				E9B901C51AC9492D001F4EA0 /* tab_shopping.png in Resources */,
 				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
+				E9B901C21AC9492D001F4EA0 /* tab_my@2x.png in Resources */,
+				E9B901C31AC9492D001F4EA0 /* tab_play.png in Resources */,
+				E9B901C61AC9492D001F4EA0 /* tab_shopping@2x.png in Resources */,
+				E9B901C81AC9492D001F4EA0 /* tab_trip@2x.png in Resources */,
 				E91396541AC111B8003AF385 /* icon-plus-highlighted.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
@@ -700,6 +798,7 @@
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
+				E9B901BF1AC9492D001F4EA0 /* tab_discovery.png in Resources */,
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
 				E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */,
 				E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */,
@@ -713,6 +812,7 @@
 				E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */,
 				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
+				E9B901C41AC9492D001F4EA0 /* tab_play@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,17 +885,21 @@
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
 				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
+				E9B901B41AC93E3C001F4EA0 /* MyViewController.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
 				E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
 				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
+				E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
+				E9B901B11AC93E21001F4EA0 /* PlayViewController.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
+				E9B901AE1AC93DBC001F4EA0 /* ShoppingViewController.m in Sources */,
 				E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */,
 				E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */,
 				E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */,

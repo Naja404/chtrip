@@ -28,10 +28,15 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
 @implementation TripListViewController
 
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     [self setupTripTV];
     
     [self setupNavBTN];
@@ -77,6 +82,8 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
 {
     AddTripViewController *addTrip = [[AddTripViewController alloc] init];
     addTrip.delegate = self;
+    
+    addTrip.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:addTrip animated:YES];
 }

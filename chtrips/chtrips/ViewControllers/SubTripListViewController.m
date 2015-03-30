@@ -24,7 +24,7 @@ static NSString * const SUB_TRIP_CELL = @"SubTripListCell";
 static NSString * const SUB_TRIP_NORMAL_CELL = @"SubTripNormalCell";
 static NSString * const SECTION_ADD_MARK = @"section";
 
-@interface SubTripListViewController ()<NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, AddSubTripViewControllerDelegate, EditSubTripViewControllerDelegate, AwesomeMenuDelegate>
+@interface SubTripListViewController ()<NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate,AddSubTripViewControllerDelegate, EditSubTripViewControllerDelegate, AwesomeMenuDelegate>
 {
     bool rightNavFlag;
 
@@ -44,6 +44,12 @@ static NSString * const SECTION_ADD_MARK = @"section";
 @end
 
 @implementation SubTripListViewController
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.hidesBottomBarWhenPushed = YES;
+    self.tabBarController.tabBar.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -248,12 +254,13 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [dayIcon autoSetDimensionsToSize:CGSizeMake(50, 50)];
     
     dayIcon.image = [UIImage imageNamed:@"day"];
+    dayIcon.backgroundColor = [UIColor clearColor];
     
     // day 图标上的数字
     UILabel *dayNumLB = [UILabel newAutoLayoutView];
     [autoSectionView addSubview:dayNumLB];
     
-    [dayNumLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:autoSectionView withOffset:18.0];
+    [dayNumLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:autoSectionView withOffset:19.0];
     [dayNumLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:autoSectionView withOffset:-5.0];
     [dayNumLB autoSetDimensionsToSize:CGSizeMake(20, 20)];
     dayNumLB.text = [NSString stringWithFormat:@"%d", section + 1];
@@ -264,7 +271,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
     [autoSectionView addSubview:dateLB];
     
 //    [dateLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:autoSectionView];
-    [dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:dayIcon withOffset:20.0];
+    [dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:dayIcon withOffset:10.0];
     [dateLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:autoSectionView];
     [dateLB autoSetDimensionsToSize:CGSizeMake(200, 20)];
     
@@ -286,10 +293,10 @@ static NSString * const SECTION_ADD_MARK = @"section";
     SubTrip *subTripObj = [sectionInfo objects][0];
     
     NSDate *dateTime = [NSDate dateWithTimeIntervalSince1970:[subTripObj.subDate doubleValue]];
+
     
-//    dateLB.text = [NSString stringWithFormat:@"%@", subTripObj.subDate];
-    
-    dateLB.text = [dateTime formattedDateWithFormat:[NSString stringWithFormat:@"MM%@dd%@", NSLocalizedString(@"TEXT_MONTH", Nil), NSLocalizedString(@"TEXT_DAY", Nil)]];
+//    dateLB.text = [dateTime formattedDateWithFormat:[NSString stringWithFormat:@"MM%@dd%@", NSLocalizedString(@"TEXT_MONTH", Nil), NSLocalizedString(@"TEXT_DAY", Nil)]];
+    dateLB.text = [dateTime monthAndDayWithDescription];
     dateLB.textColor = [UIColor grayColor];
 
     return sectionView;
@@ -575,14 +582,20 @@ static NSString * const SECTION_ADD_MARK = @"section";
 - (void) onClickDelBTN:(id)sender
 {
     
-    UIButton *delBTN = sender;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_ALERT", Nil) message:NSLocalizedString(@"TEXT_CONFIRM_DELETE_ALL_TRIP", Nil) delegate:self cancelButtonTitle:NSLocalizedString(@"BTN_CANCEL", Nil) otherButtonTitles:NSLocalizedString(@"BTN_CONFIRM", Nil), nil];
     
-    NSArray *sections = [self.fetchedResultsController sections];
-    id <NSFetchedResultsSectionInfo> sectionInfo = nil;
+    [alert show];
     
-    sectionInfo = [sections objectAtIndex:delBTN.tag - 1];
-    SubTrip *subTripObj = [sectionInfo objects][0];
-    
+//    UIButton *delBTN = sender;
+//    
+//    NSArray *sections = [self.fetchedResultsController sections];
+//    id <NSFetchedResultsSectionInfo> sectionInfo = nil;
+//    
+//    sectionInfo = [sections objectAtIndex:delBTN.tag - 1];
+//    SubTrip *subTripObj = [sectionInfo objects][0];
+//    
+//    ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
+//    [tripCD deletesubTripWithDay:self.keyID subDate:[subTripObj.subDate stringValue]];
     
     
 }

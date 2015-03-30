@@ -18,6 +18,7 @@
 - (BOOL) addBuy:(NSDictionary *)buyData;
 - (BOOL) updateBuy:(NSDictionary *)buyData;
 - (void) deleteSubTrip:(NSString *)keyID subID:(NSString *)subID;
+- (void) deletesubTripWithDay:(NSString *)keyID subDate:(NSString *)subDate;
 - (NSString *) makeKeyID;
 
 @end

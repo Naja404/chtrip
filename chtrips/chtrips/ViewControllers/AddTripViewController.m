@@ -196,7 +196,8 @@ static NSInteger const ROW_FRONT = 0;
     if ([selectTitle isEqualToString:NSLocalizedString(@"BTN_CAMERA", Nil)]) {
         [_photoTaker takePhotoFrom:ZBPhotoTakerSourceFromCamera allowsEditing:YES finished:^(UIImage *image) {
             _tripFrontCell.frontImgView.image = image;
-            _frontImgData = UIImageJPEGRepresentation(image, 1);
+//            _frontImgData = UIImageJPEGRepresentation(image, 1);
+            _frontImgData = UIImagePNGRepresentation(image);
             [_addTripTV reloadData];
         }];
     }
@@ -204,7 +205,8 @@ static NSInteger const ROW_FRONT = 0;
     if ([selectTitle isEqualToString:NSLocalizedString(@"BTN_ALBUM", Nil)]) {
         [_photoTaker takePhotoFrom:ZBPhotoTakerSourceFromGallery allowsEditing:YES finished:^(UIImage *image) {
             _tripFrontCell.frontImgView.image = image;
-            _frontImgData = UIImageJPEGRepresentation(image, 1);
+//            _frontImgData = UIImageJPEGRepresentation(image, 1);
+            _frontImgData = UIImagePNGRepresentation(image);
             [_addTripTV reloadData];
         }];
     }

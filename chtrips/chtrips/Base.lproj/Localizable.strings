@@ -45,6 +45,15 @@
 "TEXT_BUYLIST_TITLE" = "欲购清单";
 "TEXT_DELETE_TRIP" = "删除该行程";
 "TEXT_ALERT" = "提示";
+"TEXT_YESTERDAY" = "昨天";
+"TEXT_TODAY" = "今天";
+"TEXT_TOMORROW" = "明天";
+"TEXT_DISCOVERY" = "发现";
+"TEXT_SHOPPING" = "购物";
+"TEXT_PLAY" = "吃住行";
+"TEXT_TRIP" = "行程";
+"TEXT_MY" = "我的";
+
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";

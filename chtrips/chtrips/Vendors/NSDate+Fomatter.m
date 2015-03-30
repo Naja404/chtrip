@@ -124,15 +124,15 @@
     NSString *descString = nil;
     
     if ([self isYesterday]) {
-        descString = NSLocalizedString(@"yesterday", nil);
+        descString = NSLocalizedString(@"TEXT_YESTERDAY", nil);
     }else
     
     if ([self isToday]) {
-        descString = NSLocalizedString(@"today", nil);
+        descString = NSLocalizedString(@"TEXT_TODAY", nil);
     }else
     
     if ([self isTomorrow]) {
-        descString = NSLocalizedString(@"tomorrow", nil);
+        descString = NSLocalizedString(@"TEXT_TOMORROW", nil);
     }
     
     if (descString) {

@@ -99,6 +99,24 @@
     [[SubTrip find:@"keyID == %@ AND subID == %@", keyID, subID] delete];
 }
 
+#pragma mark 删除整天行程
+- (void) deletesubTripWithDay:(NSString *)keyID subDate:(NSString *)subDate
+{
+    
+    NSArray *subTripArr = [SubTrip where:@"keyID == %@ AND subDate == %@", keyID, subDate];
+    
+    if (![subTripArr isKindOfClass:[NSArray class]]) {
+        NSLog(@"no");
+    }
+    
+    for (NSArray *trips in subTripArr) {
+        
+            NSLog(@"%@", [trips objectAtIndex:2]);
+//        [self deleteSubTrip:[trips objectForKey:@"keyID"] subID:[trips objectForKey:@"subID"]];
+    }
+    
+}
+
 #pragma mark 通过时间戳创建keyID
 - (NSString *) makeKeyID
 {

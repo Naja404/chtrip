@@ -50,6 +50,14 @@
 "TEXT_BUYLIST_TITLE" = "Buy List";
 "TEXT_DELETE_TRIP" = "Delete Trip";
 "TEXT_ALERT" = "Noitc";
+"TEXT_YESTERDAY" = "Yesterday";
+"TEXT_TODAY" = "Today";
+"TEXT_TOMORROW" = "Tomorrow";
+"TEXT_DISCOVERY" = "Discovery";
+"TEXT_SHOPPING" = "Shopping";
+"TEXT_PLAY" = "Play";
+"TEXT_TRIP" = "Trip";
+"TEXT_MY" = "My";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";
