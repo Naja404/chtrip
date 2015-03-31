@@ -63,7 +63,10 @@
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";
 "TEXT_ADD_TRIP_FAILD" = "Add Faild";
 "TEXT_ADD_TRIP_SUCCESS" = "Add Success";
-"TEXT_PLACE_INPUT_ADDRESS" = "Place Input Address";
+"TEXT_PLACE_INPUT_ADDRESS" = "Plase Input Address";
 "TEXT_ADD_NEW_DAY_SUCCESS" = "Add New Day";
 "TEXT_CONFIRM_DELETE_TRIP" = "Confirm Delete This Trip ?";
 "TEXT_CONFIRM_DELETE_ALL_TRIP" = "Confirm Delete All Trip ?";
+"TEXT_SEARCH_NOT_EMPTY" = "Plase Enter Search Content";
+
+

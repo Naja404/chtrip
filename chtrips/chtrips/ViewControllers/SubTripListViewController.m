@@ -122,8 +122,10 @@ static NSString * const SECTION_ADD_MARK = @"section";
     //[fetchRequest setFetchBatchSize:10];
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"subDate" ascending:YES];
+    //按子行程时间顺序排列 2015-3-31
+    NSSortDescriptor *sortDescriptorASC = [NSSortDescriptor sortDescriptorWithKey:@"subStartTime" ascending:YES];
     
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, sortDescriptorASC, nil]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                     managedObjectContext:[[CoreDataManager sharedManager] managedObjectContext]

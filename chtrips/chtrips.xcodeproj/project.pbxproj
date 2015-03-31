@@ -112,6 +112,8 @@
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
 		E9EB9C841AB8150900ED0334 /* day.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C821AB8150900ED0334 /* day.png */; };
 		E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C831AB8150900ED0334 /* day@2x.png */; };
+		E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F5CE941ACA3E0D00FDE3B0 /* search.png */; };
+		E9F5CE971ACA3E0D00FDE3B0 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F5CE951ACA3E0D00FDE3B0 /* search@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +286,8 @@
 		E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addIcon@2x.png"; path = "Resource/addIcon@2x.png"; sourceTree = "<group>"; };
 		E9EB9C821AB8150900ED0334 /* day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = day.png; path = Resource/day.png; sourceTree = "<group>"; };
 		E9EB9C831AB8150900ED0334 /* day@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "day@2x.png"; path = "Resource/day@2x.png"; sourceTree = "<group>"; };
+		E9F5CE941ACA3E0D00FDE3B0 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = Resource/search.png; sourceTree = "<group>"; };
+		E9F5CE951ACA3E0D00FDE3B0 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search@2x.png"; path = "Resource/search@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,10 +441,7 @@
 		E909910D1AAFE8EA00C48688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E90991121AAFEAAD00C48688 /* TripList */,
-				E91396661AC16410003AF385 /* BuyList */,
-				E96D4B271AB01AC300F7CB38 /* Add */,
-				E9B170B71ABFF8B800722C2F /* Edit */,
+				E9F5CE931ACA383200FDE3B0 /* Trip */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -610,6 +611,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9F5CE941ACA3E0D00FDE3B0 /* search.png */,
+				E9F5CE951ACA3E0D00FDE3B0 /* search@2x.png */,
 				E9B901B51AC9492D001F4EA0 /* tab_discovery.png */,
 				E9B901B61AC9492D001F4EA0 /* tab_discovery@2x.png */,
 				E9B901B71AC9492D001F4EA0 /* tab_my.png */,
@@ -665,6 +668,17 @@
 				E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		E9F5CE931ACA383200FDE3B0 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				E90991121AAFEAAD00C48688 /* TripList */,
+				E91396661AC16410003AF385 /* BuyList */,
+				E96D4B271AB01AC300F7CB38 /* Add */,
+				E9B170B71ABFF8B800722C2F /* Edit */,
+			);
+			name = Trip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -759,6 +773,7 @@
 				E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */,
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
+				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
 				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
@@ -778,6 +793,7 @@
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
+				E9F5CE971ACA3E0D00FDE3B0 /* search@2x.png in Resources */,
 				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,

@@ -188,26 +188,43 @@ static NSString * const BASE_DOMAIN = @"http://api.cc2me.com/";
 
 - (void) setSearchBtn {
     
-    self.searchField = [[UITextField alloc] initWithFrame:CGRectMake(20, 70, self.view.frame.size.width - 50, 30)];
+    UIView *searchBar = [[UIView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, 30)];
+    [self.view addSubview:searchBar];
+    
+    self.searchField = [UITextField newAutoLayoutView];
+    [searchBar addSubview:_searchField];
+    
+    [_searchField autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:searchBar];
+    [_searchField autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:searchBar withOffset:20.0];
+    [_searchField autoSetDimensionsToSize:CGSizeMake(self.view.frame.size.width - 60, 30)];
     _searchField.delegate = self;
     _searchField.borderStyle = UITextAutocapitalizationTypeWords;
     _searchField.backgroundColor = [UIColor whiteColor];
     _searchField.placeholder = NSLocalizedString(@"INPUT_SEARCH_LOCATION", Nil);
     _searchField.returnKeyType = UIReturnKeyDone;
-    [self.view addSubview:_searchField];
     
-    self.searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 70, 50, 30)];
-    _searchBtn.backgroundColor = [UIColor blackColor];
-    [_searchBtn setTitle:NSLocalizedString(@"BTN_SEARCH", Nil) forState:UIControlStateNormal];
     
+    self.searchBtn = [UIButton newAutoLayoutView];
+    [searchBar addSubview:_searchBtn];
+    
+    [_searchBtn autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:searchBar];
+    [_searchBtn autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_searchField];
+    [_searchBtn autoSetDimensionsToSize:CGSizeMake(20, 30)];
+    
+    [_searchBtn setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+//    [_searchBtn setTitle:NSLocalizedString(@"BTN_SEARCH", Nil) forState:UIControlStateNormal];
     [_searchBtn addTarget:self action:@selector(searchLocation) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_searchBtn];
     
 }
 
 - (void) searchLocation
 {
     [self.searchField resignFirstResponder];
+    
+    if ([_searchField.text isEqualToString:@""]) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_SEARCH_NOT_EMPTY", Nil) maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:@"3ffd59f6-d5c6-12b2-d930-683c5ecd8f8e" forKey:@"ssid"];

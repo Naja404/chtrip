@@ -68,6 +68,7 @@
 "TEXT_ADD_NEW_DAY_SUCCESS" = "成功新增一天";
 "TEXT_CONFIRM_DELETE_TRIP" = "确认删除该行程?";
 "TEXT_CONFIRM_DELETE_ALL_TRIP" = "确定删除所有行程?";
+"TEXT_SEARCH_NOT_EMPTY" = "请填写搜索内容";
 
 
 
