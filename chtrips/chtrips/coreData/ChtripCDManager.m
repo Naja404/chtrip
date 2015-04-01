@@ -100,19 +100,83 @@
 }
 
 #pragma mark 删除整天行程
-- (void) deletesubTripWithDay:(NSString *)keyID subDate:(NSString *)subDate
+- (NSString *) deletesubTripWithDay:(NSString *)keyID subDate:(NSString *)subDate isAll:(BOOL)isAll
 {
+    // 是否要删除全部行程
+    if (!isAll) {
+        NSUInteger subTripCount = [SubTrip countWhere:@"keyID == %@ AND subTitle == %@", keyID, @"section"];
+        
+        if ((int)subTripCount <= 1) {
+            return NSLocalizedString(@"TEXT_NOT_DELETE_LAST_DAY", Nil);
+        }
+    }
     
     NSArray *subTripArr = [SubTrip where:@"keyID == %@ AND subDate == %@", keyID, subDate];
     
     if (![subTripArr isKindOfClass:[NSArray class]]) {
-        NSLog(@"no");
+        return NSLocalizedString(@"TEXT_DELETE_FAILD", Nil);
     }
     
-    for (NSArray *trips in subTripArr) {
+    for (SubTrip *trips in subTripArr) {
+        [self deleteSubTrip:trips.keyID subID:trips.subID];
+    }
+    
+    if (!isAll) {
+        [self updateSubTripWithDay:keyID subDate:subDate];
+    }
+    
+    return NSLocalizedString(@"TEXT_DELETE_SUCCESS", Nil);
+}
+
+#pragma mark 删除行程下的欲购清单
+- (void) deleteBuyList:(NSString *)keyID buyID:(NSString *)buyID
+{
+    [[BuyList find:@"keyID == %@ AND buyID == %@", keyID, buyID] delete];
+}
+
+#pragma mark 删除整条行程
+- (void) deleteTrip:(NSString *)keyID
+{
+    NSArray *subTripArr = [SubTrip where:@"keyID == %@", keyID];
+    
+    // 删除子行程
+    for (SubTrip *trips in subTripArr) {
+        [self deletesubTripWithDay:keyID subDate:[NSString stringWithFormat:@"%@", trips.subDate] isAll:YES];
+    }
+    
+    // 删除欲购清单
+    NSArray *buyListArr = [BuyList where:@"keyID == %@", keyID];
+    
+    for (BuyList *buys in buyListArr) {
+        [self deleteBuyList:buys.keyID buyID:buys.buyID];
+    }
+    
+    // 删除行程
+    
+    [[Trip find:@"keyID == %@", keyID] delete];
+}
+
+#pragma mark 更新删除后的天事件
+- (void) updateSubTripWithDay:(NSString *)keyID subDate:(NSString *)subDate
+{
+    NSString *whereStr = [NSString stringWithFormat:@"keyID == %@ AND subDate > %@", keyID, subDate];
+    NSArray *subTripArr = [SubTrip where:whereStr order:@{@"subDate": @"ASC"}];
+    
+    for (SubTrip *trips in subTripArr) {
+
+        int newSubDate = [trips.subDate doubleValue] - 3600 * 24;
+        int newSubStartTime = [trips.subStartTime doubleValue] - 3600 * 24;
         
-            NSLog(@"%@", [trips objectAtIndex:2]);
-//        [self deleteSubTrip:[trips objectForKey:@"keyID"] subID:[trips objectForKey:@"subID"]];
+        if ([trips.subTitle isEqualToString:@"section"]) {
+            newSubStartTime = 0;
+        }
+        
+        NSDictionary *updateTrip = [[NSDictionary alloc] initWithObjectsAndKeys:trips.subID, @"subID",
+                                                                                [NSNumber numberWithDouble:newSubDate], @"subDate",
+                                                                                [NSNumber  numberWithDouble:newSubStartTime], @"subStartTime",
+                                                                                [NSNumber  numberWithDouble:newSubStartTime], @"subEndTime",
+                                                                                nil];
+        [self updateSubTrip:updateTrip];
     }
     
 }

@@ -12,6 +12,7 @@
 #import "AddSubTripViewController.h"
 #import "EditSubTripViewController.h"
 #import "BuyListViewController.h"
+#import "TripListViewController.h"
 
 #import "NSDate+Fomatter.h"
 #import "NSDate-Utilities.h"
@@ -149,14 +150,32 @@ static NSString * const SECTION_ADD_MARK = @"section";
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [_subTripTV reloadData];
+//    [_subTripTV endUpdates];
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
+//    [_subTripTV beginUpdates];
+}
+
+- (void) controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.subTripTV;
     
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
     
 }
 
@@ -576,6 +595,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
 - (void) deleteTrip
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_ALERT", Nil) message:NSLocalizedString(@"TEXT_CONFIRM_DELETE_ALL_TRIP", Nil) delegate:self cancelButtonTitle:NSLocalizedString(@"BTN_CANCEL", Nil) otherButtonTitles:NSLocalizedString(@"BTN_CONFIRM", Nil), nil];
+    alert.tag = 1;
     
     [alert show];
 }
@@ -584,23 +604,58 @@ static NSString * const SECTION_ADD_MARK = @"section";
 - (void) onClickDelBTN:(id)sender
 {
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_ALERT", Nil) message:NSLocalizedString(@"TEXT_CONFIRM_DELETE_ALL_TRIP", Nil) delegate:self cancelButtonTitle:NSLocalizedString(@"BTN_CANCEL", Nil) otherButtonTitles:NSLocalizedString(@"BTN_CONFIRM", Nil), nil];
-    
-    [alert show];
-    
-//    UIButton *delBTN = sender;
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TEXT_ALERT", Nil) message:NSLocalizedString(@"TEXT_CONFIRM_DELETE_ALL_TRIP", Nil) delegate:self cancelButtonTitle:NSLocalizedString(@"BTN_CANCEL", Nil) otherButtonTitles:NSLocalizedString(@"BTN_CONFIRM", Nil), nil];
+//    alert.tag = 2;
 //    
-//    NSArray *sections = [self.fetchedResultsController sections];
-//    id <NSFetchedResultsSectionInfo> sectionInfo = nil;
-//    
-//    sectionInfo = [sections objectAtIndex:delBTN.tag - 1];
-//    SubTrip *subTripObj = [sectionInfo objects][0];
-//    
-//    ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
-//    [tripCD deletesubTripWithDay:self.keyID subDate:[subTripObj.subDate stringValue]];
+//    [alert show];
     
+    
+    UIButton *delBTN = sender;
+    
+    NSArray *sections = [self.fetchedResultsController sections];
+    id <NSFetchedResultsSectionInfo> sectionInfo = nil;
+    
+    sectionInfo = [sections objectAtIndex:delBTN.tag - 1];
+    SubTrip *subTripObj = [sectionInfo objects][0];
+    
+    ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
+    NSString *delString = [tripCD deletesubTripWithDay:self.keyID subDate:[subTripObj.subDate stringValue] isAll:NO];
+    
+    [SVProgressHUD showInfoWithStatus:delString maskType:SVProgressHUDMaskTypeBlack];
     
 }
+
+#pragma mark uialertview delegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 1:
+            switch (buttonIndex) {
+                case 1:
+                    [self deleteAllTrip];
+                    break;
+                    
+                default:
+                    break;
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark 删除所有子行程
+- (void) deleteAllTrip
+{
+    ChtripCDManager *tripCD = [[ChtripCDManager alloc] init];
+    [tripCD deleteTrip:self.keyID];
+    
+    [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_DELETE_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 @end
 

@@ -127,20 +127,28 @@ static NSString * const TRIP_LIST_CELL = @"TripListCell";
 {
     UITableView *tableView = self.tripListTV;
     
-    if (type == NSFetchedResultsChangeInsert) {
-        [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeMove:
+            
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        default:
+            break;
     }
 }
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tripListTV reloadData];
-    [self.tripListTV endUpdates];
+//    [self.tripListTV endUpdates];
 }
 
 - (void) controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tripListTV beginUpdates];
+//    [self.tripListTV beginUpdates];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView

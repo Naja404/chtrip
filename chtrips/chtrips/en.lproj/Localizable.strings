@@ -68,5 +68,8 @@
 "TEXT_CONFIRM_DELETE_TRIP" = "Confirm Delete This Trip ?";
 "TEXT_CONFIRM_DELETE_ALL_TRIP" = "Confirm Delete All Trip ?";
 "TEXT_SEARCH_NOT_EMPTY" = "Plase Enter Search Content";
+"TEXT_NOT_DELETE_LAST_DAY" = "至少有一天行程";
+"TEXT_DELETE_FAILD" = "删除失败";
+"TEXT_DELETE_SUCCESS" = "删除成功";
 
 

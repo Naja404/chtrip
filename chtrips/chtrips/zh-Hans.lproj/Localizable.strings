@@ -42,11 +42,11 @@
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";
+"INPUT_BUY_LIST" = "请输入想要购买的宝贝";
 "TEXT_ADD_SUBTRIP" = "添加一个行程";
 "TEXT_ADD_NEWDAY" = "加一天";
 "TEXT_BUY_LIST" = "欲购清单";
 "TEXT_BUYLIST_TITLE" = "欲购清单";
-"INPUT_BUY_LIST" = "请输入想要购买的宝贝";
 "TEXT_DELETE_TRIP" = "删除该行程";
 "TEXT_ALERT" = "提示";
 "TEXT_YESTERDAY" = "昨天";
@@ -68,4 +68,8 @@
 "TEXT_CONFIRM_DELETE_TRIP" = "确认删除该行程?";
 "TEXT_CONFIRM_DELETE_ALL_TRIP" = "确定删除所有行程?";
 "TEXT_SEARCH_NOT_EMPTY" = "请填写搜索内容";
+"TEXT_NOT_DELETE_LAST_DAY" = "至少有一天行程";
+"TEXT_DELETE_FAILD" = "删除失败";
+"TEXT_DELETE_SUCCESS" = "删除成功";
+
 
