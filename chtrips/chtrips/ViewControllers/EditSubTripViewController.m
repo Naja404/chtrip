@@ -280,9 +280,14 @@ static NSString * const EDIT_DELETE_CELL = @"EditSubTripDeleteCell";
 }
 
 #pragma mark 地址选择后delegata
-- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng
+- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng Name:(NSString *)Name
 {
     _addSubTripLocationCell.inputField.text = Address;
+    
+    if ([_addSubTripCell.inputField.text isEqualToString:@""]) {
+        _addSubTripCell.inputField.text = Name;
+    }
+    
     self.lat = lat;
     self.lng = lng;
 }

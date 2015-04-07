@@ -306,7 +306,7 @@ static NSString * const BASE_DOMAIN = @"http://api.cc2me.com/";
 - (void) navSaveBTN
 {
     
-    [self.AddSubLocationDelegate setupSubLocationText:_addressLocation Lat:_latLocation Lng:_lngLocation];
+    [self.AddSubLocationDelegate setupSubLocationText:_addressLocation Lat:_latLocation Lng:_lngLocation Name:_nameLocation];
     
     [self.navigationController popViewControllerAnimated:YES];
     

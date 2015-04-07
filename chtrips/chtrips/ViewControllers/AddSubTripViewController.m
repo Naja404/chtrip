@@ -268,9 +268,14 @@ static NSInteger const END_DATE_SECTION = 1;
 }
 
 #pragma mark 地址选择后delegata
-- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng
+- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng Name:(NSString *)Name
 {
     _addSubTripLocationCell.inputField.text = Address;
+    
+    if ([_addSubTripCell.inputField.text isEqualToString:@""]) {
+        _addSubTripCell.inputField.text = Name;
+    }
+    
     self.lat = lat;
     self.lng = lng;
 }

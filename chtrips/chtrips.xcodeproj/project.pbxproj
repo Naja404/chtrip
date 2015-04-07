@@ -213,6 +213,9 @@
 		E93CF24A1AC3F6B400247B87 /* redmind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redmind@2x.png"; path = "Resource/redmind@2x.png"; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
+		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		E95103561AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E95103571AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -786,6 +789,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = E90990CD1AAFD6D600C48688;
 			productRefGroup = E90990D71AAFD6D600C48688 /* Products */;
@@ -994,6 +998,7 @@
 			children = (
 				E90990E41AAFD6D600C48688 /* Base */,
 				E96D4B201AB0160400F7CB38 /* zh-Hans */,
+				E95103551AD3807500D98D08 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1003,6 +1008,7 @@
 			children = (
 				E90990E91AAFD6D600C48688 /* Base */,
 				E96D4B211AB0160400F7CB38 /* zh-Hans */,
+				E95103561AD3807600D98D08 /* ja */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -1013,6 +1019,7 @@
 				E96D4B231AB016BE00F7CB38 /* Base */,
 				E96D4B251AB016C100F7CB38 /* en */,
 				E96D4B261AB016C500F7CB38 /* zh-Hans */,
+				E95103571AD3807600D98D08 /* ja */,
 			);
 			name = Localizable.strings;
 			path = chtrips;
@@ -1038,7 +1045,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1055,9 +1063,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3a47c0ce-f43e-44f0-9bcc-2d1dfe41fe83";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1079,7 +1088,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1090,8 +1100,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "3a47c0ce-f43e-44f0-9bcc-2d1dfe41fe83";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1102,15 +1113,15 @@
 			baseConfigurationReference = 4B141F703581413DD27DD58A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
 				INFOPLIST_FILE = chtrips/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3a47c0ce-f43e-44f0-9bcc-2d1dfe41fe83";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
@@ -1120,15 +1131,15 @@
 			baseConfigurationReference = DB3812721C5D0A280CB72168 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
 				INFOPLIST_FILE = chtrips/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3a47c0ce-f43e-44f0-9bcc-2d1dfe41fe83";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};
 			name = Release;

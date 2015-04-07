@@ -10,7 +10,7 @@
 
 @protocol AddSubTripLocationViewControllerDelegate <NSObject>
 
-- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng;
+- (void) setupSubLocationText:(NSString *)Address Lat:(NSString *)lat Lng:(NSString *)lng Name:(NSString *)Name;
 
 @end
 

@@ -1,0 +1,78 @@
+/* 
+  Localizable.strings
+  chtrips
+
+  Created by Hisoka on 15/3/11.
+  Copyright (c) 2015年 HSK.ltd. All rights reserved.
+*/
+
+// btn
+"BTN_EDIT_ICON" = "編集";
+"BTN_DEL_ICON" = "削除";
+"BTN_COPY_ICON" = "コピー";
+"BTN_BACK" = "戻る";
+"BTN_SAVE" = "保存";
+"BTN_SEARCH" = "検索";
+"BTN_CHOOSE_PICTURE" = "写真を選択";
+"BTN_CANCEL" = "キャンセル";
+"BTN_CAMERA" = "写真を撮る";
+"BTN_ALBUM" = "アルバム";
+"BTN_CONFIRM" = "確定";
+
+// text
+"TEXT_APP_TITLE" = "nijiGo";
+"TEXT_MY_ALL_PLAN" = "すべてのスケジュール";
+"TEXT_ADDPREVIEW_DEFAULT_NOTE" = "”Day1”をクリック、目的地を追加";
+"TEXT_START_DATE" = "到着時間";
+"TEXT_END_DATE" = "出発時間";
+"TEXT_ADD_FRONT_IMAGE" = "カバーを追加";
+"TEXT_LOCATION_CURRENT_TITLE" = "私の位置";
+"TEXT_PLACE_INPUT" = "内容を入れてください";
+"TEXT_CONFIRM_ADD_LOCATION" = "追加してもいい";
+"TEXT_ADD_LOCATION" = "目的地を追加";
+"TEXT_ADD_SUBTRIP" = "目的地を追加";
+"TEXT_SUB_TRIP_LOCATION" = "住所";
+"TEXT_SUB_TRIP" = "目的地名";
+"TEXT_TIME" = "時間";
+"TEXT_MONTH" = "月";
+"TEXT_DAY" = "日";
+"TEXT_DELETE" = "削除";
+"TEXT_DEFAULT_TRIPNAME" = "トリップ";
+"TEXT_EDIT_TRIP_SUCCESS" = "更新されました";
+"TEXT_EDIT_TRIP_FAILD" = "更新が失敗しました";
+"TEXT_ADD_NEWDAY" = "一日を増やす";
+"TEXT_BUY_LIST" = "買い物リスト";
+"TEXT_BUYLIST_TITLE" = "買い物リスト";
+"TEXT_DELETE_TRIP" = "スケジュールを削除";
+"TEXT_ALERT" = "注意";
+"TEXT_YESTERDAY" = "昨日";
+"TEXT_TODAY" = "今日";
+"TEXT_TOMORROW" = "明日";
+"TEXT_DISCOVERY" = "人気";
+"TEXT_SHOPPING" = "買い物";
+"TEXT_PLAY" = "アクティビティ";
+"TEXT_TRIP" = "スケジュール";
+"TEXT_MY" = "アカウント";
+
+
+"INPUT_ADD_TRIP_NAME" = "スケジュール名を入れてください";
+"INPUT_SEARCH_LOCATION" = "目的地を入れてください";
+"INPUT_BUY_LIST" = "商品名を入れてください";
+
+// alert info
+
+"TEXT_PLACE_INPUT_TRIP_NAME" = "目的地目を入れてください";
+"TEXT_ADD_TRIP_FAILD" = "目的地が追加できませんでした";
+"TEXT_ADD_TRIP_SUCCESS" = "目的に追加されました";
+"TEXT_PLACE_INPUT_ADDRESS" = "住所を入れてください";
+"TEXT_ADD_NEW_DAY_SUCCESS" = "１日が追加されました";
+"TEXT_CONFIRM_DELETE_TRIP" = "この目的地を削除しますか？";
+"TEXT_CONFIRM_DELETE_ALL_TRIP" = "すべてのスケジュールを削除しますか？";
+"TEXT_SEARCH_NOT_EMPTY" = "検索の内容を入れてください";
+"TEXT_NOT_DELETE_LAST_DAY" = "少なくとも一日が必要です";
+"TEXT_DELETE_FAILD" = "削除できませんでした";
+"TEXT_DELETE_SUCCESS" = "削除完了しました";
+
+
+
+

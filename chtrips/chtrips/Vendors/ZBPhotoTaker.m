@@ -50,7 +50,8 @@
 - (UIImage *)imageWithImage:(UIImage *)image
                    toSize:(CGSize)size
 {
-    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+//    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    NSData *imageData = UIImagePNGRepresentation(image);
     UIImage *qualifyChangedImage = [UIImage imageWithData:imageData];
     CGSize sizeResizeTo = size;
     UIImage *resizedImage = [qualifyChangedImage resizedImageToFitInSize:sizeResizeTo scaleIfSmaller:NO];
@@ -73,8 +74,8 @@
         size = _sizeWanted;
     }else{
         if(_allowsEditing){
-            size = (CGSize){200,200};
-        }else{
+//            size = (CGSize){200,200};
+//        }else{
             size = (CGSize){480,640};
         }
     }

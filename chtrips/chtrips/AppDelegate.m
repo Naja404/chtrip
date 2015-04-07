@@ -35,52 +35,53 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     // tab bar modify 2015.3.30
-    DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
-    discoveryVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_DISCOVERY", Nil) image:[UIImage imageNamed:@"tab_discovery"] tag:1];
-    
-    ShoppingViewController *shoppingVC = [[ShoppingViewController alloc] init];
-    shoppingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_SHOPPING", Nil) image:[UIImage imageNamed:@"tab_shopping"] tag:2];
-    
-    
-    PlayViewController *playVC = [[PlayViewController alloc] init];
-    playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"tab_play"] tag:3];
-    
-    TripListViewController *tripVC = [[TripListViewController alloc] init];
-    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tab_trip"] tag:4];
-    
-    MyViewController *myVC = [[MyViewController alloc] init];
-    myVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_MY", Nil) image:[UIImage imageNamed:@"tab_my"] tag:5];
-    
-    discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
-    shoppingNav = [[UINavigationController alloc] initWithRootViewController:shoppingVC];
-    playNav = [[UINavigationController alloc] initWithRootViewController:playVC];
-    tripNav = [[UINavigationController alloc] initWithRootViewController:tripVC];
-    myNav = [[UINavigationController alloc] initWithRootViewController:myVC];
-    
-    NSArray *navArr = @[discoveryNav, shoppingNav, playNav, tripNav, myNav];
-    
-    tabBarController = [[UITabBarController alloc] init];
-    [tabBarController.tabBar setSelectedImageTintColor:[UIColor redColor]];
-    [tabBarController setViewControllers:navArr animated:YES];
+//    DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
+//    discoveryVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_DISCOVERY", Nil) image:[UIImage imageNamed:@"tab_discovery"] tag:1];
+//    
+//    ShoppingViewController *shoppingVC = [[ShoppingViewController alloc] init];
+//    shoppingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_SHOPPING", Nil) image:[UIImage imageNamed:@"tab_shopping"] tag:2];
+//    
+//    
+//    PlayViewController *playVC = [[PlayViewController alloc] init];
+//    playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"tab_play"] tag:3];
+//    
+//    TripListViewController *tripVC = [[TripListViewController alloc] init];
+//    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tab_trip"] tag:4];
+//    
+//    MyViewController *myVC = [[MyViewController alloc] init];
+//    myVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_MY", Nil) image:[UIImage imageNamed:@"tab_my"] tag:5];
+//    
+//    discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
+//    shoppingNav = [[UINavigationController alloc] initWithRootViewController:shoppingVC];
+//    playNav = [[UINavigationController alloc] initWithRootViewController:playVC];
+//    tripNav = [[UINavigationController alloc] initWithRootViewController:tripVC];
+//    myNav = [[UINavigationController alloc] initWithRootViewController:myVC];
+//    
+//    NSArray *navArr = @[discoveryNav, shoppingNav, playNav, tripNav, myNav];
+//    
+//    tabBarController = [[UITabBarController alloc] init];
+//    [tabBarController.tabBar setSelectedImageTintColor:[UIColor redColor]];
+//    [tabBarController setViewControllers:navArr animated:YES];
 
     
-//    TripListViewController *rootView = [[TripListViewController alloc] init];
-//    
-//    UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:rootView];
+    TripListViewController *rootView = [[TripListViewController alloc] init];
     
-//    self.window.rootViewController = rootNav;
+    UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:rootView];
     
-//    rootNav.navigationBar.backgroundColor = [UIColor whiteColor];
-//    rootNav.navigationBar.tintColor = [UIColor grayColor];
-//    rootNav.navigationBar.barStyle = UIBarStyleDefault;
-//    rootNav.delegate = self;
-    tripNav.delegate = self;
+    self.window.rootViewController = rootNav;
+    
+    rootNav.navigationBar.backgroundColor = [UIColor whiteColor];
+    rootNav.navigationBar.tintColor = [UIColor grayColor];
+    rootNav.navigationBar.barStyle = UIBarStyleDefault;
+    rootNav.delegate = self;
+//    tripNav.delegate = self;
     
     [self setupCoreDataManager];
     
     [self.window makeKeyAndVisible];
     
-    [self.window setRootViewController:tabBarController];
+//    [self.window setRootViewController:tabBarController];
+    [self.window setRootViewController:rootNav];
     
     return YES;
 }
