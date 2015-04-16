@@ -59,6 +59,8 @@
 		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
 		E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2491AC3F6B400247B87 /* redmind.png */; };
 		E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF24A1AC3F6B400247B87 /* redmind@2x.png */; };
+		E93F6D321ADF879B0047A468 /* CHMenuPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D311ADF879B0047A468 /* CHMenuPicker.m */; };
+		E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D341ADF87B70047A468 /* CHMenuPickerView.m */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
@@ -215,6 +217,10 @@
 		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
 		E93CF2491AC3F6B400247B87 /* redmind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redmind.png; path = Resource/redmind.png; sourceTree = "<group>"; };
 		E93CF24A1AC3F6B400247B87 /* redmind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redmind@2x.png"; path = "Resource/redmind@2x.png"; sourceTree = "<group>"; };
+		E93F6D301ADF879B0047A468 /* CHMenuPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHMenuPicker.h; path = Vendors/CHMenuPicker.h; sourceTree = "<group>"; };
+		E93F6D311ADF879B0047A468 /* CHMenuPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHMenuPicker.m; path = Vendors/CHMenuPicker.m; sourceTree = "<group>"; };
+		E93F6D331ADF87B70047A468 /* CHMenuPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHMenuPickerView.h; path = Vendors/CHMenuPickerView.h; sourceTree = "<group>"; };
+		E93F6D341ADF87B70047A468 /* CHMenuPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHMenuPickerView.m; path = Vendors/CHMenuPickerView.m; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
 		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -502,6 +508,10 @@
 				E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */,
 				E96D4B361AB0236300F7CB38 /* NSDate+Fomatter.h */,
 				E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */,
+				E93F6D301ADF879B0047A468 /* CHMenuPicker.h */,
+				E93F6D311ADF879B0047A468 /* CHMenuPicker.m */,
+				E93F6D331ADF87B70047A468 /* CHMenuPickerView.h */,
+				E93F6D341ADF87B70047A468 /* CHMenuPickerView.m */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -957,6 +967,7 @@
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
 				E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */,
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
+				E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
@@ -968,6 +979,7 @@
 				E9B901B41AC93E3C001F4EA0 /* MyViewController.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
+				E93F6D321ADF879B0047A468 /* CHMenuPicker.m in Sources */,
 				E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
 				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
@@ -1061,8 +1073,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1082,7 +1094,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3a47c0ce-f43e-44f0-9bcc-2d1dfe41fe83";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1104,8 +1116,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1118,7 +1130,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "3a47c0ce-f43e-44f0-9bcc-2d1dfe41fe83";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1130,8 +1142,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
 				INFOPLIST_FILE = chtrips/Info.plist;
@@ -1149,8 +1161,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
 				INFOPLIST_FILE = chtrips/Info.plist;

@@ -7,8 +7,11 @@
 //
 
 #import "ShoppingViewController.h"
+#import "CHMenuPicker.h"
 
-@interface ShoppingViewController ()
+@interface ShoppingViewController ()<CHMenuPickerDelegate>
+
+@property (nonatomic, strong) CHMenuPicker *menuScroll;
 
 @end
 
@@ -17,22 +20,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Shopping";
-    // Do any additional setup after loading the view.
+    [self setupScrollView];
 }
+
+#pragma mark 初始化样式
+- (void) setupScrollView {
+    
+    self.menuScroll = [[CHMenuPicker alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
+    self.menuScroll.menuPickerView.frame = CGRectMake(0, 60, [UIScreen mainScreen].bounds.size.width, 40);
+    self.menuScroll.menuPickerView.backgroundColor = [UIColor grayColor];
+    self.menuScroll.delegate = self;
+    
+    
+    [self.view addSubview:self.menuScroll.menuPickerView];
+    
+}
+
+- (void) CHMenuPicker:(CHMenuPicker *)menu didSelectMenu:(unsigned int)menuNum {
+    NSLog(@"select menu item is %d", menuNum);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
