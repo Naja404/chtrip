@@ -7,41 +7,69 @@
 //
 
 #import "ShoppingViewController.h"
-#import "CHMenuPicker.h"
+#import "ShoppingPopularityViewController.h"
+#import "ShoppingBoutiqueViewController.h"
 
-@interface ShoppingViewController ()<CHMenuPickerDelegate>
-
-@property (nonatomic, strong) CHMenuPicker *menuScroll;
+@interface ShoppingViewController ()<ShoppingPageViewControllerDataSource, ShoppingPageViewControllerDelegate>
 
 @end
 
 @implementation ShoppingViewController
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Shopping";
-    [self setupScrollView];
+//    self.navigationItem.title = @"Shopping";
 }
 
-#pragma mark 初始化样式
-- (void) setupScrollView {
+- (instancetype) init {
+    self = [super init];
     
-    self.menuScroll = [[CHMenuPicker alloc] init];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-
-    self.menuScroll.menuPickerView.frame = CGRectMake(0, 60, [UIScreen mainScreen].bounds.size.width, 40);
-    self.menuScroll.menuPickerView.backgroundColor = [UIColor grayColor];
-    self.menuScroll.delegate = self;
+    if (self) {
+        NSArray *titleArr = @[@"人气", @"特惠", @"精品", @"分类", @"活动", @"商圈"];
+        self.navTitlesArr = [NSMutableArray arrayWithArray:titleArr];
+        self.dataSource = self;
+        self.delegate = self;
+    }
     
-    
-    [self.view addSubview:self.menuScroll.menuPickerView];
-    
+    return self;
 }
 
-- (void) CHMenuPicker:(CHMenuPicker *)menu didSelectMenu:(unsigned int)menuNum {
-    NSLog(@"select menu item is %d", menuNum);
+- (NSInteger) numOfPages {
+    return self.navTitlesArr.count;
 }
 
+- (float) widthOfNav {
+    return 60.0;
+}
+
+- (NSString *) titleOfNavAtIndex:(NSInteger)index {
+    return [self.navTitlesArr objectAtIndex:index];
+}
+
+- (UIViewController *) viewPageController:(ShoppingPageViewController *)shoppingPageViewController contentViewControllerForNavAtIndex:(NSInteger)index {
+    
+    if (index == 0) {
+        ShoppingPopularityViewController *pageVC = [[ShoppingPopularityViewController alloc] init];
+        return pageVC;
+    }else{
+        ShoppingBoutiqueViewController *pageVC = [[ShoppingBoutiqueViewController alloc] init];
+        pageVC.textStr = [self.navTitlesArr objectAtIndex:index];
+        return pageVC;
+    }
+}
+
+- (BOOL) canPageViewControllerRecycle {
+    return NO;
+}
+
+- (BOOL) canPageViewControllerAnimation {
+    return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

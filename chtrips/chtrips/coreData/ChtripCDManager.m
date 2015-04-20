@@ -181,6 +181,28 @@
     
 }
 
+#pragma mark 生成一条默认行程数据
+- (void) makeDefaultTripData {
+    NSString *keyID = [self makeKeyID];
+    NSDictionary *tripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
+                              [NSNumber numberWithDouble:1429358400.000], @"startDate",
+                              [NSNumber numberWithDouble:1429531200.000], @"endDate",
+                              @"Trip 2015-04-18", @"tripName",
+                              nil];
+    [self addTrip:tripData];
+    
+    for (int i = 0; i < 3; i++) {
+        double unixtimes = 1429358400 + (3600*24) * i;
+        NSDictionary *subTripData = [[NSDictionary alloc] initWithObjectsAndKeys:keyID, @"keyID",
+                                     [self makeKeyID], @"subID",
+                                     [NSNumber numberWithDouble:unixtimes], @"subDate",
+                                     @"section", @"subTitle",
+                                     nil];
+        
+        [self addSubTripSections:subTripData];
+    }
+}
+
 #pragma mark 通过时间戳创建keyID
 - (NSString *) makeKeyID
 {

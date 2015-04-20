@@ -13,6 +13,7 @@
 #import "TripListViewController.h"
 #import "MyViewController.h"
 
+#import "ChtripCDManager.h"
 
 @interface AppDelegate ()
 
@@ -31,9 +32,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [self setupCoreDataManager];
+    
+    // 判断是否第一次启动
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
+        [self setupDefaultTripData];
+        NSLog(@"第一次启动");
+    }else{
+        NSLog(@"不是第一次启动");
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+///////////////////////////////////
     // tab bar modify 2015.3.30
     DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
     discoveryVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_DISCOVERY", Nil) image:[UIImage imageNamed:@"tab_discovery"] tag:1];
@@ -62,6 +75,14 @@
     tabBarController = [[UITabBarController alloc] init];
     [tabBarController.tabBar setSelectedImageTintColor:[UIColor redColor]];
     [tabBarController setViewControllers:navArr animated:YES];
+    
+    tripNav.delegate = self;
+   
+    
+    [self.window makeKeyAndVisible];
+    
+    [self.window setRootViewController:tabBarController];
+///////////////////////////////////
 
     // tab bar modify 2015.4.13
 //    TripListViewController *rootView = [[TripListViewController alloc] init];
@@ -74,13 +95,7 @@
 //    rootNav.navigationBar.tintColor = [UIColor grayColor];
 //    rootNav.navigationBar.barStyle = UIBarStyleDefault;
 //    rootNav.delegate = self;
-    tripNav.delegate = self;
-    
-    [self setupCoreDataManager];
-    
-    [self.window makeKeyAndVisible];
-    
-    [self.window setRootViewController:tabBarController];
+//
 //    [self.window setRootViewController:rootNav];
     
     return YES;
@@ -89,6 +104,13 @@
 - (void) setupCoreDataManager
 {
     [CoreDataManager sharedManager].modelName = @"chtripCD";
+}
+
+- (void) setupDefaultTripData {
+//    makeDefaultTripData
+    ChtripCDManager *TripCD = [[ChtripCDManager alloc] init];
+    
+    [TripCD makeDefaultTripData];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

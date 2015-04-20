@@ -81,7 +81,7 @@ static CGFloat const HeightForMenuView = 40.0;
 
 #pragma mark 菜单点击事件
 - (void) menuViewTapped:(UITapGestureRecognizer *)gesture {
-    CHMenuPickerView *menuView = (CHMenuPickerView *)gesture.view;
+//    CHMenuPickerView *menuView = (CHMenuPickerView *)gesture.view;
     
     NSLog(@"tap menu view");
 }

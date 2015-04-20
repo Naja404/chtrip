@@ -61,6 +61,9 @@
 		E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF24A1AC3F6B400247B87 /* redmind@2x.png */; };
 		E93F6D321ADF879B0047A468 /* CHMenuPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D311ADF879B0047A468 /* CHMenuPicker.m */; };
 		E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D341ADF87B70047A468 /* CHMenuPickerView.m */; };
+		E93F6D381AE0D7C10047A468 /* ShoppingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D371AE0D7C10047A468 /* ShoppingPageViewController.m */; };
+		E93F6D3B1AE0E24A0047A468 /* ShoppingPopularityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D3A1AE0E24A0047A468 /* ShoppingPopularityViewController.m */; };
+		E93F6D3E1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
@@ -120,6 +123,13 @@
 		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
 		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
 		E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */; };
+		E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */; };
+		E9E023221AE2028B0054F03D /* productDemo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E0231F1AE2028B0054F03D /* productDemo1.png */; };
+		E9E023231AE2028B0054F03D /* productDemo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023201AE2028B0054F03D /* productDemo2.png */; };
+		E9E023241AE2028B0054F03D /* productDemo3.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023211AE2028B0054F03D /* productDemo3.png */; };
+		E9E023271AE20C650054F03D /* chinaFlagIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023251AE20C650054F03D /* chinaFlagIcon.png */; };
+		E9E023281AE20C650054F03D /* japanFlagIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023261AE20C650054F03D /* japanFlagIcon.png */; };
+		E9E0232C1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */; };
 		E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */; };
 		E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7E1AB8142D00ED0334 /* addIcon.png */; };
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
@@ -127,10 +137,6 @@
 		E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C831AB8150900ED0334 /* day@2x.png */; };
 		E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F5CE941ACA3E0D00FDE3B0 /* search.png */; };
 		E9F5CE971ACA3E0D00FDE3B0 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F5CE951ACA3E0D00FDE3B0 /* search@2x.png */; };
-		E9FEFD071AD4DB9D0012EA46 /* Launch_ip4.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FEFD041AD4DB9D0012EA46 /* Launch_ip4.png */; };
-		E9FEFD081AD4DB9D0012EA46 /* Launch_ip5.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FEFD051AD4DB9D0012EA46 /* Launch_ip5.png */; };
-		E9FEFD091AD4DB9D0012EA46 /* Launch_ip6.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FEFD061AD4DB9D0012EA46 /* Launch_ip6.png */; };
-		E9FEFD0C1AD4F1050012EA46 /* Launch_ip5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FEFD0B1AD4F1050012EA46 /* Launch_ip5@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +227,12 @@
 		E93F6D311ADF879B0047A468 /* CHMenuPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHMenuPicker.m; path = Vendors/CHMenuPicker.m; sourceTree = "<group>"; };
 		E93F6D331ADF87B70047A468 /* CHMenuPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHMenuPickerView.h; path = Vendors/CHMenuPickerView.h; sourceTree = "<group>"; };
 		E93F6D341ADF87B70047A468 /* CHMenuPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHMenuPickerView.m; path = Vendors/CHMenuPickerView.m; sourceTree = "<group>"; };
+		E93F6D361AE0D7C10047A468 /* ShoppingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPageViewController.h; path = ViewControllers/Shopping/ShoppingPageViewController.h; sourceTree = "<group>"; };
+		E93F6D371AE0D7C10047A468 /* ShoppingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPageViewController.m; path = ViewControllers/Shopping/ShoppingPageViewController.m; sourceTree = "<group>"; };
+		E93F6D391AE0E24A0047A468 /* ShoppingPopularityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityViewController.h; path = ViewControllers/Shopping/ShoppingPopularityViewController.h; sourceTree = "<group>"; };
+		E93F6D3A1AE0E24A0047A468 /* ShoppingPopularityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityViewController.m; path = ViewControllers/Shopping/ShoppingPopularityViewController.m; sourceTree = "<group>"; };
+		E93F6D3C1AE0E5E30047A468 /* ShoppingBoutiqueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingBoutiqueViewController.h; path = ViewControllers/Shopping/ShoppingBoutiqueViewController.h; sourceTree = "<group>"; };
+		E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingBoutiqueViewController.m; path = ViewControllers/Shopping/ShoppingBoutiqueViewController.m; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
 		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -315,6 +327,15 @@
 		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
 		E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationTableViewCell.h; path = Views/AddSubTripLocationTableViewCell.h; sourceTree = "<group>"; };
 		E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationTableViewCell.m; path = Views/AddSubTripLocationTableViewCell.m; sourceTree = "<group>"; };
+		E9E0231B1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityTableViewCell.h; path = Views/Shopping/ShoppingPopularityTableViewCell.h; sourceTree = "<group>"; };
+		E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityTableViewCell.m; path = Views/Shopping/ShoppingPopularityTableViewCell.m; sourceTree = "<group>"; };
+		E9E0231F1AE2028B0054F03D /* productDemo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = productDemo1.png; path = Resource/productDemo1.png; sourceTree = "<group>"; };
+		E9E023201AE2028B0054F03D /* productDemo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = productDemo2.png; path = Resource/productDemo2.png; sourceTree = "<group>"; };
+		E9E023211AE2028B0054F03D /* productDemo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = productDemo3.png; path = Resource/productDemo3.png; sourceTree = "<group>"; };
+		E9E023251AE20C650054F03D /* chinaFlagIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chinaFlagIcon.png; path = Resource/chinaFlagIcon.png; sourceTree = "<group>"; };
+		E9E023261AE20C650054F03D /* japanFlagIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = japanFlagIcon.png; path = Resource/japanFlagIcon.png; sourceTree = "<group>"; };
+		E9E0232A1AE2388A0054F03D /* ShoppingPopularityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityDetailViewController.h; path = ViewControllers/Shopping/ShoppingPopularityDetailViewController.h; sourceTree = "<group>"; };
+		E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityDetailViewController.m; path = ViewControllers/Shopping/ShoppingPopularityDetailViewController.m; sourceTree = "<group>"; };
 		E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
 		E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
 		E9EB9C7E1AB8142D00ED0334 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addIcon.png; path = Resource/addIcon.png; sourceTree = "<group>"; };
@@ -323,10 +344,6 @@
 		E9EB9C831AB8150900ED0334 /* day@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "day@2x.png"; path = "Resource/day@2x.png"; sourceTree = "<group>"; };
 		E9F5CE941ACA3E0D00FDE3B0 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = Resource/search.png; sourceTree = "<group>"; };
 		E9F5CE951ACA3E0D00FDE3B0 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search@2x.png"; path = "Resource/search@2x.png"; sourceTree = "<group>"; };
-		E9FEFD041AD4DB9D0012EA46 /* Launch_ip4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Launch_ip4.png; path = Resource/Launch_ip4.png; sourceTree = "<group>"; };
-		E9FEFD051AD4DB9D0012EA46 /* Launch_ip5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Launch_ip5.png; path = Resource/Launch_ip5.png; sourceTree = "<group>"; };
-		E9FEFD061AD4DB9D0012EA46 /* Launch_ip6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Launch_ip6.png; path = Resource/Launch_ip6.png; sourceTree = "<group>"; };
-		E9FEFD0B1AD4F1050012EA46 /* Launch_ip5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Launch_ip5@2x.png"; path = "Resource/Launch_ip5@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +497,7 @@
 		E909910D1AAFE8EA00C48688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0231E1AE1E9FD0054F03D /* Shopping */,
 				E9F5CE931ACA383200FDE3B0 /* Trip */,
 			);
 			name = Views;
@@ -629,6 +647,14 @@
 			children = (
 				E9B901AC1AC93DBC001F4EA0 /* ShoppingViewController.h */,
 				E9B901AD1AC93DBC001F4EA0 /* ShoppingViewController.m */,
+				E93F6D361AE0D7C10047A468 /* ShoppingPageViewController.h */,
+				E93F6D371AE0D7C10047A468 /* ShoppingPageViewController.m */,
+				E93F6D391AE0E24A0047A468 /* ShoppingPopularityViewController.h */,
+				E93F6D3A1AE0E24A0047A468 /* ShoppingPopularityViewController.m */,
+				E93F6D3C1AE0E5E30047A468 /* ShoppingBoutiqueViewController.h */,
+				E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */,
+				E9E0232A1AE2388A0054F03D /* ShoppingPopularityDetailViewController.h */,
+				E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */,
 			);
 			name = Shopping;
 			sourceTree = "<group>";
@@ -654,10 +680,11 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				E9FEFD0B1AD4F1050012EA46 /* Launch_ip5@2x.png */,
-				E9FEFD041AD4DB9D0012EA46 /* Launch_ip4.png */,
-				E9FEFD051AD4DB9D0012EA46 /* Launch_ip5.png */,
-				E9FEFD061AD4DB9D0012EA46 /* Launch_ip6.png */,
+				E9E023251AE20C650054F03D /* chinaFlagIcon.png */,
+				E9E023261AE20C650054F03D /* japanFlagIcon.png */,
+				E9E0231F1AE2028B0054F03D /* productDemo1.png */,
+				E9E023201AE2028B0054F03D /* productDemo2.png */,
+				E9E023211AE2028B0054F03D /* productDemo3.png */,
 				E9899F781ACCF713009722C4 /* Icon-40.png */,
 				E9899F791ACCF713009722C4 /* Icon-40@2x.png */,
 				E9899F7A1ACCF713009722C4 /* Icon-60.png */,
@@ -726,6 +753,15 @@
 				E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		E9E0231E1AE1E9FD0054F03D /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0231B1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.h */,
+				E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */,
+			);
+			name = Shopping;
 			sourceTree = "<group>";
 		};
 		E9F5CE931ACA383200FDE3B0 /* Trip */ = {
@@ -830,17 +866,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */,
-				E9FEFD081AD4DB9D0012EA46 /* Launch_ip5.png in Resources */,
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
 				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
+				E9E023281AE20C650054F03D /* japanFlagIcon.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
 				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
-				E9FEFD0C1AD4F1050012EA46 /* Launch_ip5@2x.png in Resources */,
 				E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */,
+				E9E023271AE20C650054F03D /* chinaFlagIcon.png in Resources */,
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
 				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9899F851ACCF713009722C4 /* Icon-60.png in Resources */,
@@ -872,7 +908,7 @@
 				E91396541AC111B8003AF385 /* icon-plus-highlighted.png in Resources */,
 				E9899F841ACCF713009722C4 /* Icon-40@2x.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
-				E9FEFD091AD4DB9D0012EA46 /* Launch_ip6.png in Resources */,
+				E9E023231AE2028B0054F03D /* productDemo2.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
@@ -895,14 +931,15 @@
 				E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */,
 				E91396561AC111B8003AF385 /* icon-plus.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
+				E9E023241AE2028B0054F03D /* productDemo3.png in Resources */,
 				E9899F8A1ACCF713009722C4 /* Icon-Small@2x.png in Resources */,
-				E9FEFD071AD4DB9D0012EA46 /* Launch_ip4.png in Resources */,
 				E91FBCDD1AB92555005CA250 /* background1.png in Resources */,
 				E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */,
 				E9899F861ACCF713009722C4 /* Icon-60@2x.png in Resources */,
 				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
 				E9B901C41AC9492D001F4EA0 /* tab_play@2x.png in Resources */,
+				E9E023221AE2028B0054F03D /* productDemo1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +996,7 @@
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
 				E91396651AC16096003AF385 /* AddBuyViewController.m in Sources */,
 				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
+				E9E0232C1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m in Sources */,
 				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
 				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
@@ -972,6 +1010,8 @@
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
+				E93F6D3E1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m in Sources */,
+				E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */,
 				E913967B1AC28371003AF385 /* BuyList.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
@@ -986,6 +1026,7 @@
 				E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
+				E93F6D3B1AE0E24A0047A468 /* ShoppingPopularityViewController.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
@@ -998,6 +1039,7 @@
 				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
+				E93F6D381AE0D7C10047A468 /* ShoppingPageViewController.m in Sources */,
 				E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

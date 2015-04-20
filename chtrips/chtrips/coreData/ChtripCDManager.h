@@ -20,6 +20,7 @@
 - (void) deleteSubTrip:(NSString *)keyID subID:(NSString *)subID;
 - (NSString *) deletesubTripWithDay:(NSString *)keyID subDate:(NSString *)subDate isAll:(BOOL)isAll;
 - (void) deleteTrip:(NSString *)keyID;
+- (void) makeDefaultTripData;
 - (NSString *) makeKeyID;
 
 @end

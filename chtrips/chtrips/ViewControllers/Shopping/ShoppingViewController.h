@@ -6,8 +6,9 @@
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
+#import "ShoppingPageViewController.h"
 
-@interface ShoppingViewController : UIViewController
+@interface ShoppingViewController : ShoppingPageViewController
 
 @end
