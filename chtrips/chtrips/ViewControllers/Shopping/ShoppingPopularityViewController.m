@@ -108,6 +108,7 @@ static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
     
     ShoppingPopularityDetailViewController *detailPopulaVC = [[ShoppingPopularityDetailViewController alloc] init];
     detailPopulaVC.navigationItem.title = [[self.tableData objectAtIndex:indexPath.row] objectForKey:@"title_zh"];
+    detailPopulaVC.dicData = [[NSDictionary alloc] initWithDictionary:[self.tableData objectAtIndex:indexPath.row]];
     
     [self.navigationController pushViewController:detailPopulaVC animated:YES];
 }

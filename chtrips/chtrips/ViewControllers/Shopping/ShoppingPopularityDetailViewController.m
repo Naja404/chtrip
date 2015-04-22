@@ -7,10 +7,15 @@
 //
 
 #import "ShoppingPopularityDetailViewController.h"
+#import "ShoppingDetailTitleTableViewCell.h"
+#import "ShoppingDetailPictureTableViewCell.h"
 
-@interface ShoppingPopularityDetailViewController ()<UIScrollViewDelegate>
+static NSString * const SHOP_DETAIL_TITLE_CELL = @"shopDetailTitleCell";
+static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
-@property (nonatomic, strong) UIScrollView *detailScrollView;
+@interface ShoppingPopularityDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *populaDetailTV;
 
 @end
 
@@ -34,23 +39,27 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply
                                                                                            target:self
                                                                                            action:@selector(navShareClick)];
-    [self setupDetailScrollView];
+    [self setupDetailTV];
     [self setupBuyBar];
     
 }
 
-- (void) setupDetailScrollView {
-    UIView *backgroundView = [UIView newAutoLayoutView];
-    [self.view addSubview:backgroundView];
+- (void) setupDetailTV {
+    self.populaDetailTV = [UITableView newAutoLayoutView];
+    [self.view addSubview:_populaDetailTV];
     
-    [backgroundView autoPinToTopLayoutGuideOfViewController:self withInset:0];
-    [backgroundView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
-    [backgroundView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [backgroundView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-40];
+    [_populaDetailTV autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
+    [_populaDetailTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_populaDetailTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_populaDetailTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
-    backgroundView.backgroundColor = [UIColor blackColor];
+    _populaDetailTV.dataSource = self;
+    _populaDetailTV.delegate = self;
+    _populaDetailTV.separatorStyle = UITableViewCellAccessoryNone;
+    _populaDetailTV.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     
-//    self.detailScrollView = [];
+    [self.populaDetailTV registerClass:[ShoppingDetailTitleTableViewCell class] forCellReuseIdentifier:SHOP_DETAIL_TITLE_CELL];
+    [self.populaDetailTV registerClass:[ShoppingDetailPictureTableViewCell class] forCellReuseIdentifier:SHOP_DETAIL_IMAGE_CELL];
 }
 
 - (void) setupBuyBar {
@@ -103,6 +112,33 @@
     priceZHLB.text = @"966.12";
     priceZHLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
 
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 200;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (indexPath.row == 0) {
+        ShoppingDetailPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_DETAIL_IMAGE_CELL forIndexPath:indexPath];
+        return cell;
+    }else{
+        ShoppingDetailTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_DETAIL_TITLE_CELL forIndexPath:indexPath];
+        
+        cell.titleZHLB.text = [self.dicData objectForKey:@"title_zh"];
+        cell.titleJPLB.text = [self.dicData objectForKey:@"title_jp"];
+        cell.summaryLB.text = [self.dicData objectForKey:@"summary"];
+        return cell;
+    }
 }
 
 #pragma mark 分享按钮

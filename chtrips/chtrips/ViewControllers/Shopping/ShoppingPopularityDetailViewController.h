@@ -10,4 +10,6 @@
 
 @interface ShoppingPopularityDetailViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *dicData;
+
 @end
