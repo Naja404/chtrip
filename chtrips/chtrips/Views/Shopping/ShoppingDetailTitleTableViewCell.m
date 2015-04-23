@@ -43,6 +43,13 @@
         _summaryLB.font = [UIFont fontWithName:@"Georgia-Italic" size:20];
         _summaryLB.textColor = [UIColor redColor];
         _summaryLB.backgroundColor = [UIColor blackColor];
+        _summaryLB.numberOfLines = 0;
+        _summaryLB.lineBreakMode = NSLineBreakByWordWrapping;
+        
+//        NSAttributedString *summaryAtt = [[NSAttributedString alloc] initWithString:_summaryLB.text];
+//        NSRange summaryRange = NSMakeRange(0, summaryAtt.length);
+//        NSDictionary *summaryRangeDic = [];
+
         
     }
     

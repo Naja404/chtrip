@@ -136,7 +136,8 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
         
         cell.titleZHLB.text = [self.dicData objectForKey:@"title_zh"];
         cell.titleJPLB.text = [self.dicData objectForKey:@"title_jp"];
-        cell.summaryLB.text = [self.dicData objectForKey:@"summary"];
+//        cell.summaryLB.text = [self.dicData objectForKey:@"summary"];
+        cell.summaryLB.text = @"澳洲夜晚在高速公路开车务必当心，袋鼠的趋光性有时候会冲着开车灯的汽车冲过来，如果你撞死袋鼠，你当然不会受罚，但是你的车你是得赔钱的.两个国家有上限10公里的限速，比如限速110，你可以开120，但是并不建议这么做，这两个国家的罚单非常昂贵。";
         return cell;
     }
 }

@@ -52,7 +52,7 @@
     _pageControl.center = CGPointMake(CONTENT_VIEW_WIDTH / 2, 180);
     _pageControl.bounds = CGRectMake(0, 0, 16*(self.imgArr.count-1)+16, 16);
     _pageControl.numberOfPages = self.imgArr.count;
-    _pageControl.pageIndicatorTintColor = [UIColor blackColor];
+    _pageControl.pageIndicatorTintColor = [UIColor colorWithRed:184.0/255 green:184.0/255 blue:184.0/255 alpha:1];
     _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
     _pageControl.enabled = NO;
     
