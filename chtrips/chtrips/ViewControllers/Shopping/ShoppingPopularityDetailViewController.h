@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSDictionary *dicData;
 
+@property (nonatomic, strong) NSMutableDictionary *TVheightDic;
+
 @end

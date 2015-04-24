@@ -10,6 +10,8 @@
 #import "ShoppingDetailTitleTableViewCell.h"
 #import "ShoppingDetailPictureTableViewCell.h"
 
+#import <ShareSDK/shareSDK.h>
+
 static NSString * const SHOP_DETAIL_TITLE_CELL = @"shopDetailTitleCell";
 static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
@@ -38,7 +40,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply
                                                                                            target:self
-                                                                                           action:@selector(navShareClick)];
+                                                                                           action:@selector(navShareClick:)];
     [self setupDetailTV];
     [self setupBuyBar];
     
@@ -58,6 +60,8 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     _populaDetailTV.separatorStyle = UITableViewCellAccessoryNone;
     _populaDetailTV.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     
+    self.TVheightDic = [[NSMutableDictionary alloc] init];
+    
     [self.populaDetailTV registerClass:[ShoppingDetailTitleTableViewCell class] forCellReuseIdentifier:SHOP_DETAIL_TITLE_CELL];
     [self.populaDetailTV registerClass:[ShoppingDetailPictureTableViewCell class] forCellReuseIdentifier:SHOP_DETAIL_IMAGE_CELL];
 }
@@ -70,7 +74,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 //    [buyBar autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [buyBar autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [buyBar autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
-    [buyBar autoSetDimensionsToSize:CGSizeMake(self.view.frame.size.width, 40)];
+    [buyBar autoSetDimensionsToSize:CGSizeMake(self.view.frame.size.width, 44)];
     buyBar.backgroundColor = [UIColor whiteColor];
     
     UIButton *shopCartBTN = [UIButton newAutoLayoutView];
@@ -119,7 +123,10 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+//    return 200;
+    NSString *height = [self.TVheightDic objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]];
+    return [height floatValue];
+    
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -130,21 +137,64 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
     if (indexPath.row == 0) {
         ShoppingDetailPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_DETAIL_IMAGE_CELL forIndexPath:indexPath];
+        [self.TVheightDic setValue:@"200" forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         ShoppingDetailTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_DETAIL_TITLE_CELL forIndexPath:indexPath];
-        
-        cell.titleZHLB.text = [self.dicData objectForKey:@"title_zh"];
-        cell.titleJPLB.text = [self.dicData objectForKey:@"title_jp"];
+//        cell.titleZHLB.text = [self.dicData objectForKey:@"title_zh"];
+//        cell.titleJPLB.text = [self.dicData objectForKey:@"title_jp"];
 //        cell.summaryLB.text = [self.dicData objectForKey:@"summary"];
-        cell.summaryLB.text = @"澳洲夜晚在高速公路开车务必当心，袋鼠的趋光性有时候会冲着开车灯的汽车冲过来，如果你撞死袋鼠，你当然不会受罚，但是你的车你是得赔钱的.两个国家有上限10公里的限速，比如限速110，你可以开120，但是并不建议这么做，这两个国家的罚单非常昂贵。";
+//        cell.summaryLB.text = @"澳洲夜晚在高速公路开车务必当心，袋鼠的趋光性有时候会冲着开车灯的汽车冲过来，如果你撞死袋鼠，你当然不会受罚，但是你的车你是得赔钱的.两个国家有上限10公里的限速，比如限速110，你可以开120，但是并不建议这么做，这两个国家的罚单非常昂贵。";
+        
+        CGFloat cellHeight = [cell setTextWithHeight:[self.dicData objectForKey:@"title_zh"] titleJP:[self.dicData objectForKey:@"title_jp"] summary:@"澳洲夜晚在高速公路开车务必当心，袋鼠的趋光性有时候会冲着开车灯的汽车冲过来，如果你撞死袋鼠，你当然不会受罚，但是你的车你是得赔钱的.两个国家有上限10公里的限速，比如限速110，你可以开120，但是并不建议这么做，这两个国家的罚单非常昂贵。"];
+        
+        [self.TVheightDic setValue:[NSString stringWithFormat:@"%f", cellHeight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
 
 #pragma mark 分享按钮
-- (void) navShareClick {
+- (void) navShareClick:(id)sender {
     NSLog(@"share btn click");
+    
+    //1、构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"要分享的内容"
+                                       defaultContent:@"默认内容"
+                                                image:nil
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:@"这是一条演示信息"
+                                            mediaType:SSPublishContentMediaTypeText];
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithBarButtonItem:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSResponseStateSuccess) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                    message:nil
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil, nil];
+                                    [alert show];
+                                }else if (state == SSResponseStateFail){
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                                    message:[NSString stringWithFormat:@"失败描述：%@",[error errorDescription]]
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil, nil];
+                                    [alert show];
+                                }
+                            }];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

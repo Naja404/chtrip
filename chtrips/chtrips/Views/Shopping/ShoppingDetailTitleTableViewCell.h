@@ -14,4 +14,6 @@
 @property (nonatomic, strong) UILabel *titleJPLB;
 @property (nonatomic, strong) UILabel *summaryLB;
 
+- (CGFloat) setTextWithHeight:(NSString *)titleZH titleJP:(NSString *)titleJP summary:(NSString *)summary;
+
 @end
