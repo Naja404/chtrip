@@ -161,6 +161,8 @@
 		E9D0FB121AEA369D00CC9664 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FB111AEA369D00CC9664 /* libstdc++.dylib */; };
 		E9D0FB141AEA36B500CC9664 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FB131AEA36B500CC9664 /* libsqlite3.dylib */; };
 		E9D0FB161AEA398200CC9664 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FB151AEA398200CC9664 /* ImageIO.framework */; };
+		E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */; };
+		E9D0FB1C1AEA4B2B00CC9664 /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */; };
 		E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */; };
 		E9E023221AE2028B0054F03D /* productDemo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E0231F1AE2028B0054F03D /* productDemo1.png */; };
 		E9E023231AE2028B0054F03D /* productDemo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023201AE2028B0054F03D /* productDemo2.png */; };
@@ -411,6 +413,9 @@
 		E9D0FB111AEA369D00CC9664 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		E9D0FB131AEA36B500CC9664 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		E9D0FB151AEA398200CC9664 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		E9D0FB181AEA46CA00CC9664 /* MyAvatarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAvatarTableViewCell.h; path = Views/My/MyAvatarTableViewCell.h; sourceTree = "<group>"; };
+		E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAvatarTableViewCell.m; path = Views/My/MyAvatarTableViewCell.m; sourceTree = "<group>"; };
+		E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avatar.jpg; path = Resource/avatar.jpg; sourceTree = "<group>"; };
 		E9E0231B1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityTableViewCell.h; path = Views/Shopping/ShoppingPopularityTableViewCell.h; sourceTree = "<group>"; };
 		E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityTableViewCell.m; path = Views/Shopping/ShoppingPopularityTableViewCell.m; sourceTree = "<group>"; };
 		E9E0231F1AE2028B0054F03D /* productDemo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = productDemo1.png; path = Resource/productDemo1.png; sourceTree = "<group>"; };
@@ -624,6 +629,7 @@
 		E909910D1AAFE8EA00C48688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E9D0FB171AEA467C00CC9664 /* My */,
 				E9E0231E1AE1E9FD0054F03D /* Shopping */,
 				E9F5CE931ACA383200FDE3B0 /* Trip */,
 			);
@@ -808,6 +814,7 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */,
 				E9E023251AE20C650054F03D /* chinaFlagIcon.png */,
 				E9E023261AE20C650054F03D /* japanFlagIcon.png */,
 				E9E0231F1AE2028B0054F03D /* productDemo1.png */,
@@ -982,6 +989,15 @@
 				E9D0FAE51AEA2FA900CC9664 /* ShareSDKShareActionSheet.framework */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		E9D0FB171AEA467C00CC9664 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				E9D0FB181AEA46CA00CC9664 /* MyAvatarTableViewCell.h */,
+				E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */,
+			);
+			name = My;
 			sourceTree = "<group>";
 		};
 		E9E0231E1AE1E9FD0054F03D /* Shopping */ = {
@@ -1175,6 +1191,7 @@
 				E9899F861ACCF713009722C4 /* Icon-60@2x.png in Resources */,
 				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
+				E9D0FB1C1AEA4B2B00CC9664 /* avatar.jpg in Resources */,
 				E9B901C41AC9492D001F4EA0 /* tab_play@2x.png in Resources */,
 				E9D0FAFB1AEA2FA900CC9664 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				E9E023221AE2028B0054F03D /* productDemo1.png in Resources */,
@@ -1276,6 +1293,7 @@
 				E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */,
 				E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */,
 				E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */,
+				E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */,
 				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
