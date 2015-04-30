@@ -58,6 +58,11 @@
 "TEXT_PLAY" = "Play";
 "TEXT_TRIP" = "Trip";
 "TEXT_MY" = "My";
+"TEXT_CELL_BUY_LIST" = "Buy List";
+"TEXT_MY_WANT_GO" = "Like To Go";
+"TEXT_FAVORITES" = "Favorites";
+"TEXT_ABOUT_US" = "About Us";
+"TEXT_FEEDBACK" = "FeedBack";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";

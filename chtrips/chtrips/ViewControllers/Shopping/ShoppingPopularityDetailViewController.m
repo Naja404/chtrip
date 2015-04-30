@@ -15,9 +15,12 @@
 static NSString * const SHOP_DETAIL_TITLE_CELL = @"shopDetailTitleCell";
 static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
+
 @interface ShoppingPopularityDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *populaDetailTV;
+@property (nonatomic, strong) UIView *proimgView;
+@property (nonatomic) double angle;
 
 @end
 
@@ -84,6 +87,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     [shopCartBTN autoSetDimensionsToSize:CGSizeMake(120, 30)];
     [shopCartBTN setTitle:@"加入扫货清单" forState:UIControlStateNormal];
     shopCartBTN.backgroundColor = [UIColor redColor];
+    [shopCartBTN addTarget:self action:@selector(addBuyList) forControlEvents:UIControlEventTouchDown];
 
     UIImageView *priceJPImg = [UIImageView newAutoLayoutView];
     [buyBar addSubview:priceJPImg];
@@ -202,6 +206,36 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void) addBuyList {
+    self.proimgView= [UIView newAutoLayoutView];
+    [self.view addSubview:_proimgView];
+    [_proimgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
+    [_proimgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_proimgView autoSetDimensionsToSize:CGSizeMake(140, 140)];
+    
+    UIImageView *proImg = [UIImageView newAutoLayoutView];
+    [_proimgView addSubview:proImg];
+    
+    [proImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_proimgView];
+    [proImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_proimgView];
+    [proImg autoSetDimensionsToSize:CGSizeMake(140, 140)];
+    proImg.image = [UIImage imageNamed:@"productDemo1"];
+    
+    CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI * 2);
+    
+    _proimgView.transform = transform;
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(transformAction) userInfo:nil repeats:YES];
+}
+
+- (void) transformAction {
+    _angle = _angle + 0.01;
+    if (_angle > 6.28) {
+        _angle = 0;
+    }
+    CGAffineTransform transform = CGAffineTransformMakeRotation(_angle);
+    self.proimgView.transform = transform;
+}
 /*
 #pragma mark - Navigation
 

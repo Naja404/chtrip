@@ -163,6 +163,12 @@
 		E9D0FB161AEA398200CC9664 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FB151AEA398200CC9664 /* ImageIO.framework */; };
 		E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */; };
 		E9D0FB1C1AEA4B2B00CC9664 /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */; };
+		E9D98EC21AEDDA5A004805E5 /* MyNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */; };
+		E9D98EC81AEDE9C7004805E5 /* iconAboutUs.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98EC31AEDE9C7004805E5 /* iconAboutUs.png */; };
+		E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98EC41AEDE9C7004805E5 /* iconBuyList.png */; };
+		E9D98ECB1AEDE9C7004805E5 /* iconFeedBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98EC61AEDE9C7004805E5 /* iconFeedBack.png */; };
+		E9D98ECC1AEDE9C7004805E5 /* iconLikeGo.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98EC71AEDE9C7004805E5 /* iconLikeGo.png */; };
+		E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98ECD1AEDEAFD004805E5 /* iconFavorites.png */; };
 		E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */; };
 		E9E023221AE2028B0054F03D /* productDemo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E0231F1AE2028B0054F03D /* productDemo1.png */; };
 		E9E023231AE2028B0054F03D /* productDemo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023201AE2028B0054F03D /* productDemo2.png */; };
@@ -416,6 +422,13 @@
 		E9D0FB181AEA46CA00CC9664 /* MyAvatarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAvatarTableViewCell.h; path = Views/My/MyAvatarTableViewCell.h; sourceTree = "<group>"; };
 		E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAvatarTableViewCell.m; path = Views/My/MyAvatarTableViewCell.m; sourceTree = "<group>"; };
 		E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avatar.jpg; path = Resource/avatar.jpg; sourceTree = "<group>"; };
+		E9D98EC01AEDDA5A004805E5 /* MyNormalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyNormalTableViewCell.h; path = Views/My/MyNormalTableViewCell.h; sourceTree = "<group>"; };
+		E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyNormalTableViewCell.m; path = Views/My/MyNormalTableViewCell.m; sourceTree = "<group>"; };
+		E9D98EC31AEDE9C7004805E5 /* iconAboutUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAboutUs.png; path = Resource/iconAboutUs.png; sourceTree = "<group>"; };
+		E9D98EC41AEDE9C7004805E5 /* iconBuyList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconBuyList.png; path = Resource/iconBuyList.png; sourceTree = "<group>"; };
+		E9D98EC61AEDE9C7004805E5 /* iconFeedBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconFeedBack.png; path = Resource/iconFeedBack.png; sourceTree = "<group>"; };
+		E9D98EC71AEDE9C7004805E5 /* iconLikeGo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconLikeGo.png; path = Resource/iconLikeGo.png; sourceTree = "<group>"; };
+		E9D98ECD1AEDEAFD004805E5 /* iconFavorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconFavorites.png; path = Resource/iconFavorites.png; sourceTree = "<group>"; };
 		E9E0231B1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityTableViewCell.h; path = Views/Shopping/ShoppingPopularityTableViewCell.h; sourceTree = "<group>"; };
 		E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityTableViewCell.m; path = Views/Shopping/ShoppingPopularityTableViewCell.m; sourceTree = "<group>"; };
 		E9E0231F1AE2028B0054F03D /* productDemo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = productDemo1.png; path = Resource/productDemo1.png; sourceTree = "<group>"; };
@@ -814,6 +827,11 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9D98ECD1AEDEAFD004805E5 /* iconFavorites.png */,
+				E9D98EC31AEDE9C7004805E5 /* iconAboutUs.png */,
+				E9D98EC41AEDE9C7004805E5 /* iconBuyList.png */,
+				E9D98EC61AEDE9C7004805E5 /* iconFeedBack.png */,
+				E9D98EC71AEDE9C7004805E5 /* iconLikeGo.png */,
 				E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */,
 				E9E023251AE20C650054F03D /* chinaFlagIcon.png */,
 				E9E023261AE20C650054F03D /* japanFlagIcon.png */,
@@ -996,6 +1014,8 @@
 			children = (
 				E9D0FB181AEA46CA00CC9664 /* MyAvatarTableViewCell.h */,
 				E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */,
+				E9D98EC01AEDDA5A004805E5 /* MyNormalTableViewCell.h */,
+				E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1132,6 +1152,7 @@
 				E9899F851ACCF713009722C4 /* Icon-60.png in Resources */,
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
+				E9D98EC81AEDE9C7004805E5 /* iconAboutUs.png in Resources */,
 				E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */,
 				E9B901C71AC9492D001F4EA0 /* tab_trip.png in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
@@ -1141,10 +1162,12 @@
 				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
+				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
 				E9F5CE971ACA3E0D00FDE3B0 /* search@2x.png in Resources */,
 				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
+				E9D98ECB1AEDE9C7004805E5 /* iconFeedBack.png in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
@@ -1161,6 +1184,7 @@
 				E9E023231AE2028B0054F03D /* productDemo2.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
+				E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */,
 				E9D0FAF11AEA2FA900CC9664 /* ShareSDKLocalizable.strings in Resources */,
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
@@ -1195,6 +1219,7 @@
 				E9B901C41AC9492D001F4EA0 /* tab_play@2x.png in Resources */,
 				E9D0FAFB1AEA2FA900CC9664 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				E9E023221AE2028B0054F03D /* productDemo1.png in Resources */,
+				E9D98ECC1AEDE9C7004805E5 /* iconLikeGo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,6 +1311,7 @@
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
+				E9D98EC21AEDDA5A004805E5 /* MyNormalTableViewCell.m in Sources */,
 				E9B901B11AC93E21001F4EA0 /* PlayViewController.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
 				E9B901AE1AC93DBC001F4EA0 /* ShoppingViewController.m in Sources */,

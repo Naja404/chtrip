@@ -53,7 +53,11 @@
 "TEXT_PLAY" = "吃住行";
 "TEXT_TRIP" = "行程";
 "TEXT_MY" = "我的";
-
+"TEXT_CELL_BUY_LIST" = "扫货清单";
+"TEXT_MY_WANT_GO" = "我想去";
+"TEXT_FAVORITES" = "收藏";
+"TEXT_ABOUT_US" = "关于我们";
+"TEXT_FEEDBACK" = "意见反馈";
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";

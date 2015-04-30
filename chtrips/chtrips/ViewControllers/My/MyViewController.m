@@ -8,8 +8,10 @@
 
 #import "MyViewController.h"
 #import "MyAvatarTableViewCell.h"
+#import "MyNormalTableViewCell.h"
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
+static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -41,6 +43,7 @@ static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
     _myTV.delegate = self;
     
     [self.myTV registerClass:[MyAvatarTableViewCell class] forCellReuseIdentifier:MY_AVATAR_CELL];
+    [self.myTV registerClass:[MyNormalTableViewCell class] forCellReuseIdentifier:MY_NORMAL_CELL];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -65,18 +68,59 @@ static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
     }
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 25;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MyAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_AVATAR_CELL forIndexPath:indexPath];
+
     
     if (indexPath.section == 0 && indexPath.row == 0) {
-
-    }else{
-        cell.avatarImg.image = nil;
+        MyAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_AVATAR_CELL forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+    }else {
+        MyNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_NORMAL_CELL forIndexPath:indexPath];
+        
+        NSString *titleText = nil;
+        NSString *imgPath = nil;
+        
+        if (indexPath.section == 1) {
+            if (indexPath.row == 0) {
+                titleText = @"TEXT_CELL_BUY_LIST";
+                imgPath = @"iconBuyList";
+            }else if (indexPath.row == 1){
+                titleText = @"TEXT_MY_WANT_GO";
+                imgPath = @"iconLikeGo";
+            }else if (indexPath.row == 2){
+                titleText = @"TEXT_FAVORITES";
+                imgPath = @"iconFavorites";
+            }
+        }
+        
+        if (indexPath.section == 2) {
+            if (indexPath.row == 0) {
+                titleText = @"TEXT_ABOUT_US";
+                imgPath = @"iconAboutUs";
+            }else if (indexPath.row == 1){
+                titleText = @"TEXT_FEEDBACK";
+                imgPath = @"iconFeedBack";
+            }
+        }
+        
+        cell.titleLB.text = NSLocalizedString(titleText, nil);
+        cell.iconImg.image = [UIImage imageNamed:imgPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;// 右侧箭头
+        
+        return cell;
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

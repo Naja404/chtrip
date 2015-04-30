@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Play";
+    [self setupSegmentedControl];
+
     // Do any additional setup after loading the view.
 }
 
@@ -25,14 +26,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) setupSegmentedControl {
+    UISegmentedControl *segmented = [[UISegmentedControl alloc] initWithItems:@[@"吃",@"住",@"行"]];
+    segmented.frame = CGRectMake(20.0, 20.0, 250, 25);
+    segmented.selectedSegmentIndex = 1;
+    self.navigationItem.titleView = segmented;
 }
-*/
 
 @end
