@@ -9,6 +9,8 @@
 #import "ShoppingPopularityViewController.h"
 #import "ShoppingPopularityTableViewCell.h"
 #import "ShoppingPopularityDetailViewController.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
 
@@ -23,8 +25,20 @@ static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getProductList];
     [self setupPopulaTV];
     
+}
+
+#pragma mark 获取产品列表
+- (void) getProductList {
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.atniwo.com/"]];
+    [manager GET:@"Product/proList" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON is %@ ", responseObject);
+        self.tableData = [[NSMutableArray alloc] initWithArray:[[responseObject objectForKey:@"data"] objectForKey:@"proList"]];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error is %@ ", error);
+    }];
 }
 
 #pragma mark 设置人气列表
@@ -40,7 +54,7 @@ static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
     _popularityTV.dataSource = self;
     _popularityTV.delegate = self;
     
-    [self makeTableViewData];
+//    [self makeTableViewData];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [_popularityTV addSubview:refreshControl];
@@ -66,8 +80,9 @@ static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
     
 //    NSArray *cellData = [[NSArray alloc] initWithArray:[self.tableData objectAtIndex:indexPath.row]];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.tableData objectAtIndex:indexPath.row]];
-    
-    cell.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [cellData objectForKey:@"image"]]];
+    NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
+//    cell.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [cellData objectForKey:@"image"]]];
+    [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
     cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
     cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
     cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
