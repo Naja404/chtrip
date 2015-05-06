@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - DateTools (1.5.0)
+  - INTUAnimationEngine (1.2.0)
   - ObjectiveRecord (1.5.0):
     - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - DateTools (~> 1.5.0)
+  - INTUAnimationEngine (~> 1.2.0)
   - ObjectiveRecord (~> 1.5.0)
   - PureLayout (~> 2.0.5)
   - SVProgressHUD (~> 1.1.2)
@@ -37,6 +39,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
+  INTUAnimationEngine: df23efaa0244dbccc1aaad122ccd8196af6881ca
   ObjectiveRecord: f290d17272e476b3c881300910e98284200c54b6
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   PureLayout: a0fe75f1cf485801e7e00b723b8a3c32dca558e2

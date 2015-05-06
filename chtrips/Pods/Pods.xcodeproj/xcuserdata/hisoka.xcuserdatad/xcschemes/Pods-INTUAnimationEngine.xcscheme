@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "28FDA831250ECF253E543F3B"
-               BuildableName = "libPods-ObjectiveRecord.a"
-               BlueprintName = "Pods-ObjectiveRecord"
+               BlueprintIdentifier = "7D7193ED5322D136094C9DB1"
+               BuildableName = "libPods-INTUAnimationEngine.a"
+               BlueprintName = "Pods-INTUAnimationEngine"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

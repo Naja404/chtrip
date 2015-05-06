@@ -9,11 +9,14 @@
 #import "ShoppingPopularityDetailViewController.h"
 #import "ShoppingDetailTitleTableViewCell.h"
 #import "ShoppingDetailPictureTableViewCell.h"
+#import "INTUAnimationEngine.h"
 
 #import <ShareSDK/shareSDK.h>
 
 static NSString * const SHOP_DETAIL_TITLE_CELL = @"shopDetailTitleCell";
 static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
+static const CGFloat kAnimationDuration = 2.0; // in seconds
+
 
 
 @interface ShoppingPopularityDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -21,6 +24,21 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 @property (nonatomic, strong) UITableView *populaDetailTV;
 @property (nonatomic, strong) UIView *proimgView;
 @property (nonatomic) double angle;
+@property (nonatomic, assign) INTUAnimationID animationID;
+
+@property (nonatomic, assign) CGPoint startCenter;
+@property (nonatomic, assign) CGPoint endCenter;
+
+@property (nonatomic, assign) CGFloat startCornerRadius;
+@property (nonatomic, assign) CGFloat endCornerRadius;
+
+@property (nonatomic, strong) UIColor *startColor;
+@property (nonatomic, strong) UIColor *endColor;
+
+@property (nonatomic, assign) CGFloat startRotation;
+@property (nonatomic, assign) CGFloat endRotation;
+
+@property (nonatomic, strong) NSArray *textAlignmentValues;
 
 @end
 
@@ -101,7 +119,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     [priceJPLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:priceJPImg withOffset:2];
     [priceJPLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:buyBar withOffset:8];
     [priceJPLB autoSetDimensionsToSize:CGSizeMake(70, 20)];
-    priceJPLB.text = @"1000.29";
+    priceJPLB.text = [self.dicData objectForKey:@"price_jp"];
     priceJPLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
 
     
@@ -117,7 +135,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     [priceZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:priceZHImg withOffset:2];
     [priceZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:buyBar withOffset:8];
     [priceZHLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
-    priceZHLB.text = @"966.12";
+    priceZHLB.text = [self.dicData objectForKey:@"price_zh"];
     priceZHLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
 
 }
@@ -141,6 +159,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
     if (indexPath.row == 0) {
         ShoppingDetailPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_DETAIL_IMAGE_CELL forIndexPath:indexPath];
+        
         [self.TVheightDic setValue:@"200" forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -151,7 +170,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 //        cell.summaryLB.text = [self.dicData objectForKey:@"summary"];
 //        cell.summaryLB.text = @"澳洲夜晚在高速公路开车务必当心，袋鼠的趋光性有时候会冲着开车灯的汽车冲过来，如果你撞死袋鼠，你当然不会受罚，但是你的车你是得赔钱的.两个国家有上限10公里的限速，比如限速110，你可以开120，但是并不建议这么做，这两个国家的罚单非常昂贵。";
         
-        CGFloat cellHeight = [cell setTextWithHeight:[self.dicData objectForKey:@"title_zh"] titleJP:[self.dicData objectForKey:@"title_jp"] summary:@"澳洲夜晚在高速公路开车务必当心，袋鼠的趋光性有时候会冲着开车灯的汽车冲过来，如果你撞死袋鼠，你当然不会受罚，但是你的车你是得赔钱的.两个国家有上限10公里的限速，比如限速110，你可以开120，但是并不建议这么做，这两个国家的罚单非常昂贵。"];
+        CGFloat cellHeight = [cell setTextWithHeight:[self.dicData objectForKey:@"title_zh"] titleJP:[self.dicData objectForKey:@"title_jp"] summary:[self.dicData objectForKey:@"description_zh"]];
         
         [self.TVheightDic setValue:[NSString stringWithFormat:@"%f", cellHeight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -206,7 +225,49 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark 加入购物车特效
+- (void) addBuyListAnimation {
+    self.animationID = [INTUAnimationEngine animateWithDuration:kAnimationDuration
+                                                          delay:0.0
+                                                         easing:INTUEaseInOutQuadratic
+                                                        options:INTUAnimationOptionRepeat | INTUAnimationOptionAutoreverse
+                                                     animations:^(CGFloat progress) {
+                                                         [self addBuyList];
+                                                         self.proimgView.center = INTUInterpolateCGPoint(self.startCenter, self.endCenter, progress);
+
+                                                         self.proimgView.layer.cornerRadius = INTUInterpolateCGFloat(self.startCornerRadius, self.endCornerRadius, progress);
+                                                         
+//                                                         self.proimgView.backgroundColor = INTUInterpolate(self.startColor, self.endColor, progress);
+                                                         CGFloat rotationAngle = INTUInterpolateCGFloat(self.startRotation, self.endRotation, progress);
+                                                         self.proimgView.transform = CGAffineTransformMakeRotation(rotationAngle);
+                                                         
+                                                         
+                                                         
+                                                         
+                                                     }
+                                                     completion:^(BOOL finished) {
+                                                        self.animationID = NSNotFound;
+                                                     }];
+}
+
 - (void) addBuyList {
+    self.startCenter = CGPointMake(self.view.center.x * 0.6, self.view.center.y * 0.4);
+    self.endCenter = CGPointMake(self.view.center.x * 1.2, self.view.center.y * 1.3);
+    
+    self.startCornerRadius = 0.0;
+    self.endCornerRadius = 40.0;
+    
+    // Use the HSB color space for better interpolation results than RGB color space ([UIColor colorWithRed:blue:green:alpha:])
+    self.startColor = [UIColor colorWithHue:1.0 saturation:1.0 brightness:1.0 alpha:1.0];
+    self.endColor = [UIColor colorWithHue:0.7 saturation:1.0 brightness:1.0 alpha:1.0];
+    
+    // For a CGAffineTransform or CATransform3D, interpolate the amount of rotation, scale, etc instead of the transform (matrix) itself
+    self.startRotation = 0.0;
+    self.endRotation = M_PI_4 / 2.0;
+    
+    // NSTextAlignment can't be linearly interpolated because it is a few discrete values
+    self.textAlignmentValues = @[@(NSTextAlignmentLeft), @(NSTextAlignmentCenter), @(NSTextAlignmentRight)];
+    
     self.proimgView= [UIView newAutoLayoutView];
     [self.view addSubview:_proimgView];
     [_proimgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
@@ -225,7 +286,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     
     _proimgView.transform = transform;
     
-    [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(transformAction) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.0005 target:self selector:@selector(transformAction) userInfo:nil repeats:YES];
 }
 
 - (void) transformAction {

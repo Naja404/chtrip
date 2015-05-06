@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_DateTools 5
 #define COCOAPODS_VERSION_PATCH_DateTools 0
 
+// INTUAnimationEngine
+#define COCOAPODS_POD_AVAILABLE_INTUAnimationEngine
+#define COCOAPODS_VERSION_MAJOR_INTUAnimationEngine 1
+#define COCOAPODS_VERSION_MINOR_INTUAnimationEngine 2
+#define COCOAPODS_VERSION_PATCH_INTUAnimationEngine 0
+
 // ObjectiveRecord
 #define COCOAPODS_POD_AVAILABLE_ObjectiveRecord
 #define COCOAPODS_VERSION_MAJOR_ObjectiveRecord 1

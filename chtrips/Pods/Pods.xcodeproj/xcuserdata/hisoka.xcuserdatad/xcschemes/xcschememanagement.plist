@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-INTUAnimationEngine.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ObjectiveRecord.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>006D68568BB489EA4F9A822B</key>
+		<key>03C94BF55A80C309B23FE561</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5433F64A14ABC3387436DCA8</key>
+		<key>0D7C23353B54A1625F60B5DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>57D7497A8C7D86E75523F0C1</key>
+		<key>1ADADEA993C6852FFCA2EA01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>610A11B331444E7A3868EA72</key>
+		<key>1F1ACA741F1BBB905D564BC2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CDCC23A8086C1C1445CF085</key>
+		<key>28FDA831250ECF253E543F3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EC82D47D2DDA041A1B79970</key>
+		<key>44023BA64272E2D8CA9D7A31</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB7567584D45FD639E8E1EF7</key>
+		<key>7D7193ED5322D136094C9DB1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD1BB02AC3135279F2A2BDBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
