@@ -7,6 +7,8 @@
 //
 
 #import "ShoppingDetailPictureTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
+
 
 #define CONTENT_VIEW_WIDTH self.contentView.frame.size.width
 
@@ -16,7 +18,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        [self setupImgScrollView];
+//        [self setupImgScrollView];
     }
     
     return self;
@@ -26,7 +28,7 @@
     self.imgScrollView = [UIScrollView newAutoLayoutView];
     [self.contentView addSubview:_imgScrollView];
     
-    self.imgArr = [[NSArray alloc] initWithObjects:@"1", @"2", @"3", nil];
+//    self.imgArr = [[NSArray alloc] initWithObjects:@"1", @"2", @"3", nil];
     
     [_imgScrollView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
     [_imgScrollView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
@@ -42,7 +44,11 @@
     for (int i = 0; i < [self.imgArr count]; i++) {
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.frame = CGRectMake(CONTENT_VIEW_WIDTH * i + (CONTENT_VIEW_WIDTH - 200) / 2, 0, 200, 200);
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"productDemo%d", i + 1]];
+//        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"productDemo%d", i + 1]];
+        NSURL *imageUrl = [NSURL URLWithString:[self.imgArr objectAtIndex:i]];
+        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+
+//        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imgArr objectAtIndex:i]]];
         
         [_imgScrollView addSubview:imgView];
     }

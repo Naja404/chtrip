@@ -14,4 +14,5 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *imgArr;
 
+- (void) setupImgScrollView;
 @end

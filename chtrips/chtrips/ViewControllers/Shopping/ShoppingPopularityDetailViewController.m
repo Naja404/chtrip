@@ -9,36 +9,19 @@
 #import "ShoppingPopularityDetailViewController.h"
 #import "ShoppingDetailTitleTableViewCell.h"
 #import "ShoppingDetailPictureTableViewCell.h"
-#import "INTUAnimationEngine.h"
 
 #import <ShareSDK/shareSDK.h>
 
 static NSString * const SHOP_DETAIL_TITLE_CELL = @"shopDetailTitleCell";
 static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
-static const CGFloat kAnimationDuration = 2.0; // in seconds
 
-
-
-@interface ShoppingPopularityDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ShoppingPopularityDetailViewController ()<UITableViewDataSource, UITableViewDelegate>{
+    CALayer *_layer;
+}
 
 @property (nonatomic, strong) UITableView *populaDetailTV;
 @property (nonatomic, strong) UIView *proimgView;
 @property (nonatomic) double angle;
-@property (nonatomic, assign) INTUAnimationID animationID;
-
-@property (nonatomic, assign) CGPoint startCenter;
-@property (nonatomic, assign) CGPoint endCenter;
-
-@property (nonatomic, assign) CGFloat startCornerRadius;
-@property (nonatomic, assign) CGFloat endCornerRadius;
-
-@property (nonatomic, strong) UIColor *startColor;
-@property (nonatomic, strong) UIColor *endColor;
-
-@property (nonatomic, assign) CGFloat startRotation;
-@property (nonatomic, assign) CGFloat endRotation;
-
-@property (nonatomic, strong) NSArray *textAlignmentValues;
 
 @end
 
@@ -53,6 +36,8 @@ static const CGFloat kAnimationDuration = 2.0; // in seconds
     [super viewDidLoad];
     
     [self setupDetailStyle];
+    
+//    [self drawControllerViewLayer];
     
     // Do any additional setup after loading the view.
 }
@@ -158,8 +143,11 @@ static const CGFloat kAnimationDuration = 2.0; // in seconds
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.row == 0) {
+
         ShoppingDetailPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_DETAIL_IMAGE_CELL forIndexPath:indexPath];
-        
+    
+        cell.imgArr = [self.dicData objectForKey:@"path"];
+        [cell setupImgScrollView];
         [self.TVheightDic setValue:@"200" forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -225,50 +213,46 @@ static const CGFloat kAnimationDuration = 2.0; // in seconds
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark 加入购物车特效
-- (void) addBuyListAnimation {
-    self.animationID = [INTUAnimationEngine animateWithDuration:kAnimationDuration
-                                                          delay:0.0
-                                                         easing:INTUEaseInOutQuadratic
-                                                        options:INTUAnimationOptionRepeat | INTUAnimationOptionAutoreverse
-                                                     animations:^(CGFloat progress) {
-                                                         [self addBuyList];
-                                                         self.proimgView.center = INTUInterpolateCGPoint(self.startCenter, self.endCenter, progress);
+//- (void) drawControllerViewLayer {
+//    _layer = [[CALayer alloc] init];
+//    _layer.bounds = CGRectMake(0, 60, 140, 140);
+//    _layer.position = CGPointMake(50, 200);
+//    _layer.contents = (id)[UIImage imageNamed:@"productDemo1"].CGImage;
+//    [self.view.layer addSublayer:_layer];
+//}
+//
+//- (void) translatonAnimation:(CGPoint)location {
+//    CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+//    basicAnimation.toValue = [NSValue valueWithCGPoint:location];
+//    basicAnimation.duration = 0.5;
+//    basicAnimation.delegate = self;
+//    [basicAnimation setValue:[NSValue valueWithCGPoint:location] forKey:@"basicAnimation"];
+//    [_layer addAnimation:basicAnimation forKey:@"basicAnimation_Translation"];
+//}
+//
+//- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = touches.anyObject;
+//    CGPoint location = [touch locationInView:self.view];
+//    [self translatonAnimation:location];
+//}
+//
+//- (void) rotationAnimation {
+//    CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+//    basicAnimation.toValue = [NSNumber numberWithFloat:M_PI_2 * 3];
+//    basicAnimation.duration = 6.0;
+//    basicAnimation.autoreverses = YES;
+//    
+//    [_layer addAnimation:basicAnimation forKey:@"basicAnimation_Rotation"];
+//}
 
-                                                         self.proimgView.layer.cornerRadius = INTUInterpolateCGFloat(self.startCornerRadius, self.endCornerRadius, progress);
-                                                         
-//                                                         self.proimgView.backgroundColor = INTUInterpolate(self.startColor, self.endColor, progress);
-                                                         CGFloat rotationAngle = INTUInterpolateCGFloat(self.startRotation, self.endRotation, progress);
-                                                         self.proimgView.transform = CGAffineTransformMakeRotation(rotationAngle);
-                                                         
-                                                         
-                                                         
-                                                         
-                                                     }
-                                                     completion:^(BOOL finished) {
-                                                        self.animationID = NSNotFound;
-                                                     }];
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+
 }
 
 - (void) addBuyList {
-    self.startCenter = CGPointMake(self.view.center.x * 0.6, self.view.center.y * 0.4);
-    self.endCenter = CGPointMake(self.view.center.x * 1.2, self.view.center.y * 1.3);
-    
-    self.startCornerRadius = 0.0;
-    self.endCornerRadius = 40.0;
-    
-    // Use the HSB color space for better interpolation results than RGB color space ([UIColor colorWithRed:blue:green:alpha:])
-    self.startColor = [UIColor colorWithHue:1.0 saturation:1.0 brightness:1.0 alpha:1.0];
-    self.endColor = [UIColor colorWithHue:0.7 saturation:1.0 brightness:1.0 alpha:1.0];
-    
-    // For a CGAffineTransform or CATransform3D, interpolate the amount of rotation, scale, etc instead of the transform (matrix) itself
-    self.startRotation = 0.0;
-    self.endRotation = M_PI_4 / 2.0;
-    
-    // NSTextAlignment can't be linearly interpolated because it is a few discrete values
-    self.textAlignmentValues = @[@(NSTextAlignmentLeft), @(NSTextAlignmentCenter), @(NSTextAlignmentRight)];
     
     self.proimgView= [UIView newAutoLayoutView];
+
     [self.view addSubview:_proimgView];
     [_proimgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
     [_proimgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
