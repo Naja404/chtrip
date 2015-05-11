@@ -9,6 +9,7 @@
 #import "MyViewController.h"
 #import "MyAvatarTableViewCell.h"
 #import "MyNormalTableViewCell.h"
+#import "MyFeedBackViewController.h"
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
@@ -121,6 +122,14 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
         return cell;
     }
     
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    MyFeedBackViewController *myFeedback = [[MyFeedBackViewController alloc] init];
+    myFeedback.navigationItem.title = NSLocalizedString(@"TEXT_FEEDBACK", Nil);
+    [self.navigationController pushViewController:myFeedback animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
