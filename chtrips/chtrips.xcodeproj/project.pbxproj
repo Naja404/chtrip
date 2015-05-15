@@ -54,6 +54,7 @@
 		E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD81AB92555005CA250 /* background@2x.png */; };
 		E91FBCDD1AB92555005CA250 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD91AB92555005CA250 /* background1.png */; };
 		E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCDA1AB92555005CA250 /* background1@2x.png */; };
+		E937AD011B064A2900D5386A /* MyAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E937AD001B064A2900D5386A /* MyAboutUsViewController.m */; };
 		E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2431AC3F5E300247B87 /* bluepoint.png */; };
 		E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2441AC3F5E300247B87 /* redpoint.jpg */; };
 		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
@@ -265,6 +266,9 @@
 		E91FBCD81AB92555005CA250 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resource/background@2x.png"; sourceTree = "<group>"; };
 		E91FBCD91AB92555005CA250 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background1.png; path = Resource/background1.png; sourceTree = "<group>"; };
 		E91FBCDA1AB92555005CA250 /* background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background1@2x.png"; path = "Resource/background1@2x.png"; sourceTree = "<group>"; };
+		E937ACFE1B0640F900D5386A /* StyleDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleDefine.h; path = Utils/Defines/StyleDefine.h; sourceTree = "<group>"; };
+		E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAboutUsViewController.h; path = ViewControllers/My/MyAboutUsViewController.h; sourceTree = "<group>"; };
+		E937AD001B064A2900D5386A /* MyAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAboutUsViewController.m; path = ViewControllers/My/MyAboutUsViewController.m; sourceTree = "<group>"; };
 		E93CF2431AC3F5E300247B87 /* bluepoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluepoint.png; path = Resource/bluepoint.png; sourceTree = "<group>"; };
 		E93CF2441AC3F5E300247B87 /* redpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = redpoint.jpg; path = Resource/redpoint.jpg; sourceTree = "<group>"; };
 		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
@@ -558,6 +562,7 @@
 		E90990D81AAFD6D600C48688 /* chtrips */ = {
 			isa = PBXGroup;
 			children = (
+				E937ACFC1B06408800D5386A /* Utils */,
 				E9C131991AB2F1C400E6E873 /* Resource */,
 				E96D4B4C1AB13E2000F7CB38 /* coreData */,
 				E909910E1AAFE8FA00C48688 /* Vendors */,
@@ -715,6 +720,22 @@
 			name = BuyList;
 			sourceTree = "<group>";
 		};
+		E937ACFC1B06408800D5386A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E937ACFD1B0640A900D5386A /* Defines */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		E937ACFD1B0640A900D5386A /* Defines */ = {
+			isa = PBXGroup;
+			children = (
+				E937ACFE1B0640F900D5386A /* StyleDefine.h */,
+			);
+			name = Defines;
+			sourceTree = "<group>";
+		};
 		E96D4B271AB01AC300F7CB38 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +844,8 @@
 			children = (
 				E9B901B21AC93E3C001F4EA0 /* MyViewController.h */,
 				E9B901B31AC93E3C001F4EA0 /* MyViewController.m */,
+				E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */,
+				E937AD001B064A2900D5386A /* MyAboutUsViewController.m */,
 				E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */,
 				E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */,
 			);
@@ -1330,6 +1353,7 @@
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
 				E93F6D381AE0D7C10047A468 /* ShoppingPageViewController.m in Sources */,
+				E937AD011B064A2900D5386A /* MyAboutUsViewController.m in Sources */,
 				E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@
 #import "MyAvatarTableViewCell.h"
 #import "MyNormalTableViewCell.h"
 #import "MyFeedBackViewController.h"
+#import "MyAboutUsViewController.h"
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
@@ -127,9 +128,17 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    MyFeedBackViewController *myFeedback = [[MyFeedBackViewController alloc] init];
-    myFeedback.navigationItem.title = NSLocalizedString(@"TEXT_FEEDBACK", Nil);
-    [self.navigationController pushViewController:myFeedback animated:YES];
+    if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            MyAboutUsViewController *myAboutUs = [[MyAboutUsViewController alloc] init];
+            myAboutUs.navigationItem.title = NSLocalizedString(@"TEXT_ABOUT_US", Nil);
+            [self.navigationController pushViewController:myAboutUs animated:YES];
+        }else{
+            MyFeedBackViewController *myFeedback = [[MyFeedBackViewController alloc] init];
+            myFeedback.navigationItem.title = NSLocalizedString(@"TEXT_FEEDBACK", Nil);
+            [self.navigationController pushViewController:myFeedback animated:YES];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

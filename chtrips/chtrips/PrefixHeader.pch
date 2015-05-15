@@ -13,9 +13,6 @@
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-#import "PureLayout.h"
-#import "SVProgressHUD.h"
-#import "ObjectiveRecord.h"
 
 #endif
 
@@ -45,6 +42,10 @@
 #endif
 
 #ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "StyleDefine.h"
+    #import "PureLayout.h"
+    #import "SVProgressHUD.h"
+    #import "ObjectiveRecord.h"
 #endif

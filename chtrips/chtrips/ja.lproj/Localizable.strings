@@ -18,6 +18,7 @@
 "BTN_CAMERA" = "写真を撮る";
 "BTN_ALBUM" = "アルバム";
 "BTN_CONFIRM" = "確定";
+"BTN_SUBMIT" = "確定";
 
 // text
 "TEXT_APP_TITLE" = "nijiGo";
@@ -58,6 +59,8 @@
 "TEXT_FAVORITES" = "收藏";
 "TEXT_ABOUT_US" = "关于我们";
 "TEXT_FEEDBACK" = "意见反馈";
+"TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
+"TEXT_FEEDBACK_SEND_SUCCESS" = "反馈成功";
 
 
 "INPUT_ADD_TRIP_NAME" = "スケジュール名を入れてください";

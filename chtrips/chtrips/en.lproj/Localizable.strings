@@ -18,6 +18,7 @@
 "BTN_CAMERA" = "Camera";
 "BTN_ALBUM" = "Album";
 "BTN_CONFIRM" = "Confirm";
+"BTN_SUBMIT" = "Submit";
 
 // text
 "TEXT_APP_TITLE" = "nijiGo";
@@ -63,6 +64,9 @@
 "TEXT_FAVORITES" = "Favorites";
 "TEXT_ABOUT_US" = "About Us";
 "TEXT_FEEDBACK" = "FeedBack";
+"TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
+"TEXT_FEEDBACK_SEND_SUCCESS" = "反馈成功";
+
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";

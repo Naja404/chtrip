@@ -18,6 +18,7 @@
 "BTN_CAMERA" = "拍照";
 "BTN_ALBUM" = "相册";
 "BTN_CONFIRM" = "确定";
+"BTN_SUBMIT" = "提交";
 
 // text
 "TEXT_APP_TITLE" = "彩虹Go";
@@ -62,6 +63,9 @@
 "TEXT_FAVORITES" = "收藏";
 "TEXT_ABOUT_US" = "关于我们";
 "TEXT_FEEDBACK" = "意见反馈";
+"TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
+"TEXT_FEEDBACK_SEND_SUCCESS" = "反馈成功";
+
 
 // alert info
 
