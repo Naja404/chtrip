@@ -251,26 +251,29 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
 - (void) addBuyList {
     
-    self.proimgView= [UIView newAutoLayoutView];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
 
-    [self.view addSubview:_proimgView];
-    [_proimgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
-    [_proimgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
-    [_proimgView autoSetDimensionsToSize:CGSizeMake(140, 140)];
-    
-    UIImageView *proImg = [UIImageView newAutoLayoutView];
-    [_proimgView addSubview:proImg];
-    
-    [proImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_proimgView];
-    [proImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_proimgView];
-    [proImg autoSetDimensionsToSize:CGSizeMake(140, 140)];
-    proImg.image = [UIImage imageNamed:@"productDemo1"];
-    
-    CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI * 2);
-    
-    _proimgView.transform = transform;
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.0005 target:self selector:@selector(transformAction) userInfo:nil repeats:YES];
+//
+//    self.proimgView= [UIView newAutoLayoutView];
+//
+//    [self.view addSubview:_proimgView];
+//    [_proimgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
+//    [_proimgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+//    [_proimgView autoSetDimensionsToSize:CGSizeMake(140, 140)];
+//    
+//    UIImageView *proImg = [UIImageView newAutoLayoutView];
+//    [_proimgView addSubview:proImg];
+//    
+//    [proImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_proimgView];
+//    [proImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_proimgView];
+//    [proImg autoSetDimensionsToSize:CGSizeMake(140, 140)];
+//    proImg.image = [UIImage imageNamed:@"productDemo1"];
+//    
+//    CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI * 2);
+//    
+//    _proimgView.transform = transform;
+//    
+//    [NSTimer scheduledTimerWithTimeInterval:0.0005 target:self selector:@selector(transformAction) userInfo:nil repeats:YES];
 }
 
 - (void) transformAction {

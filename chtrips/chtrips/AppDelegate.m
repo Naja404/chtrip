@@ -257,7 +257,9 @@
 #endif
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    self.deviceToken = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
     NSLog(@"divice token :%@", deviceToken);
+    
 }
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{

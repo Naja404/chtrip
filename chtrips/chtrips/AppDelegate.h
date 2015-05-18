@@ -15,6 +15,7 @@
      UINavigationController *playNav;
      UINavigationController *tripNav;
      UINavigationController *myNav;
+    NSString *deviceToken;
     
 }
 
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UINavigationController *playNav;
 @property (nonatomic, strong) UINavigationController *tripNav;
 @property (nonatomic, strong) UINavigationController *myNav;
+@property (nonatomic, retain) NSString *deviceToken;
 
 @end
 
