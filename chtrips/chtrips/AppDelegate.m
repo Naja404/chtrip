@@ -38,6 +38,7 @@
 @synthesize playNav;
 @synthesize tripNav;
 @synthesize myNav;
+@synthesize deviceTokens;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -52,6 +53,7 @@
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
         [self setupDefaultTripData];
+        self.deviceTokens = @"first";
         NSLog(@"第一次启动");
     }else{
         NSLog(@"不是第一次启动");
@@ -257,13 +259,41 @@
 #endif
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    self.deviceToken = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
-    NSLog(@"divice token :%@", deviceToken);
+    if ([self.deviceTokens isEqualToString:@"first"]) {
+        self.deviceTokens = (NSString *) deviceToken;
+        [self setupSSIDWithApi:self.deviceTokens success:^{
+            NSLog(@"success setupSSIDWithApi");
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"failure setupSSIDWithApi");
+        }];
+        NSLog(@"第一次token");
+    }
+    
+    NSLog(@"divice token :%@", (NSString *)deviceToken);
     
 }
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     NSLog(@"device error:%@", error);
+}
+
+// 设置用户ssid
+- (HttpManager *) setupSSIDWithApi:(NSString *)deviceToken
+                           success:(void(^)())success
+                           failure:(FailureBlock)failure {
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:deviceToken forKey:@"token"];
+    
+    HttpManager *manager = [[HttpManager instance] requestWithMethod:@"Util/setToken"
+                                                        parameters:paramter
+                                                           success:^(NSDictionary *result) {
+                                                               success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+    
+    return manager;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

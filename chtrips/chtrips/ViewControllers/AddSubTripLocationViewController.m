@@ -17,9 +17,9 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-static NSString * const BASE_DOMAIN = @"http://api.cc2me.com/";
+static NSString * const CC_BASE_DOMAIN = @"http://api.cc2me.com/";
 
-#define BASE_URL BASE_DOMAIN
+#define BASE_URL CC_BASE_DOMAIN
 
 @interface AddSubTripLocationViewController ()<UITextFieldDelegate, UIActionSheetDelegate>
 

@@ -7,10 +7,9 @@
 //
 
 #import "MyFeedBackViewController.h"
-#import "AppDelegate.h"
 #import "AFNetworking.h"
 
-@interface MyFeedBackViewController () <UITextViewDelegate, UIApplicationDelegate>
+@interface MyFeedBackViewController () <UITextViewDelegate>
 
 @property (nonatomic, strong) UITextView *textView;
 
@@ -66,13 +65,12 @@
     if (trimedText.length == 0) {
         return;
     }
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+
     
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:trimedText forKey:@"content"];
-//    [parameters setObject:appDelegate.deviceToken forKey:@"token"];
+//    [parameters setObject:appDelegate.deviceTokens forKey:@"token"];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.atniwo.com/"]];
     [manager GET:@"Util/feedback" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {

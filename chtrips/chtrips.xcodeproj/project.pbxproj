@@ -178,6 +178,8 @@
 		E9E023271AE20C650054F03D /* chinaFlagIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023251AE20C650054F03D /* chinaFlagIcon.png */; };
 		E9E023281AE20C650054F03D /* japanFlagIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E023261AE20C650054F03D /* japanFlagIcon.png */; };
 		E9E0232C1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */; };
+		E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3951B119D8B00A352CD /* HttpManager.m */; };
+		E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */; };
 		E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */; };
 		E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7E1AB8142D00ED0334 /* addIcon.png */; };
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
@@ -445,6 +447,10 @@
 		E9E023261AE20C650054F03D /* japanFlagIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = japanFlagIcon.png; path = Resource/japanFlagIcon.png; sourceTree = "<group>"; };
 		E9E0232A1AE2388A0054F03D /* ShoppingPopularityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityDetailViewController.h; path = ViewControllers/Shopping/ShoppingPopularityDetailViewController.h; sourceTree = "<group>"; };
 		E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityDetailViewController.m; path = ViewControllers/Shopping/ShoppingPopularityDetailViewController.m; sourceTree = "<group>"; };
+		E9E4A3941B119D8B00A352CD /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpManager.h; path = Utils/HttpManager.h; sourceTree = "<group>"; };
+		E9E4A3951B119D8B00A352CD /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpManager.m; path = Utils/HttpManager.m; sourceTree = "<group>"; };
+		E9E4A3971B11E12800A352CD /* DeviceTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceTokenManager.h; path = Utils/DeviceTokenManager.h; sourceTree = "<group>"; };
+		E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceTokenManager.m; path = Utils/DeviceTokenManager.m; sourceTree = "<group>"; };
 		E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
 		E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
 		E9EB9C7E1AB8142D00ED0334 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addIcon.png; path = Resource/addIcon.png; sourceTree = "<group>"; };
@@ -724,6 +730,10 @@
 			isa = PBXGroup;
 			children = (
 				E937ACFD1B0640A900D5386A /* Defines */,
+				E9E4A3941B119D8B00A352CD /* HttpManager.h */,
+				E9E4A3951B119D8B00A352CD /* HttpManager.m */,
+				E9E4A3971B11E12800A352CD /* DeviceTokenManager.h */,
+				E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1333,6 +1343,8 @@
 				E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
 				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
+				E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */,
+				E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */,
 				E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
