@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7D7193ED5322D136094C9DB1"
+               BlueprintIdentifier = "A843469DF00FB9F1B2F0FA11"
                BuildableName = "libPods-INTUAnimationEngine.a"
                BlueprintName = "Pods-INTUAnimationEngine"
                ReferencedContainer = "container:Pods.xcodeproj">

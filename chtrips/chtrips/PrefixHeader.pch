@@ -50,4 +50,5 @@
     #import "SVProgressHUD.h"
     #import "ObjectiveRecord.h"
     #import "HttpManager.h"
+    #import "CHSSID.h"
 #endif

@@ -67,6 +67,9 @@
 		E93F6D3E1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
+		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
+		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
+		E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99E21B1AE8C1003FB7FF /* CHSSID.m */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
 		E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */; };
 		E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */; };
@@ -291,6 +294,12 @@
 		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		E95103561AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E95103571AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuyListViewController.h; path = ViewControllers/My/MyBuyListViewController.h; sourceTree = "<group>"; };
+		E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBuyListViewController.m; path = ViewControllers/My/MyBuyListViewController.m; sourceTree = "<group>"; };
+		E95A99DB1B1ADD1E003FB7FF /* MyBuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuyListTableViewCell.h; path = Views/My/MyBuyListTableViewCell.h; sourceTree = "<group>"; };
+		E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBuyListTableViewCell.m; path = Views/My/MyBuyListTableViewCell.m; sourceTree = "<group>"; };
+		E95A99E11B1AE8C1003FB7FF /* CHSSID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHSSID.h; path = Utils/CHSSID.h; sourceTree = "<group>"; };
+		E95A99E21B1AE8C1003FB7FF /* CHSSID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHSSID.m; path = Utils/CHSSID.m; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -734,6 +743,8 @@
 				E9E4A3951B119D8B00A352CD /* HttpManager.m */,
 				E9E4A3971B11E12800A352CD /* DeviceTokenManager.h */,
 				E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */,
+				E95A99E11B1AE8C1003FB7FF /* CHSSID.h */,
+				E95A99E21B1AE8C1003FB7FF /* CHSSID.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -858,6 +869,8 @@
 				E937AD001B064A2900D5386A /* MyAboutUsViewController.m */,
 				E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */,
 				E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */,
+				E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */,
+				E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1054,6 +1067,8 @@
 				E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */,
 				E9D98EC01AEDDA5A004805E5 /* MyNormalTableViewCell.h */,
 				E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */,
+				E95A99DB1B1ADD1E003FB7FF /* MyBuyListTableViewCell.h */,
+				E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1322,9 +1337,11 @@
 				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
+				E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */,
 				E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */,
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */,
+				E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
@@ -1361,6 +1378,7 @@
 				E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */,
 				E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */,
 				E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */,
+				E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */,
 				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
@@ -1519,8 +1537,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chtrips/Vendors/ShareSDK/Connection",
@@ -1530,7 +1548,7 @@
 					"$(PROJECT_DIR)/chtrips/Vendors/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/chtrips/PrefixHeader.pch";
 				INFOPLIST_FILE = chtrips/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1552,8 +1570,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chtrips/Vendors/ShareSDK/Connection",
@@ -1563,7 +1581,7 @@
 					"$(PROJECT_DIR)/chtrips/Vendors/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/hisoka/WorkSpace/application/chtrips/chtrips/chtrips/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/chtrips/PrefixHeader.pch";
 				INFOPLIST_FILE = chtrips/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

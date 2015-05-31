@@ -285,10 +285,15 @@
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:deviceToken forKey:@"token"];
     
+    NSLog(@"paramter is %@", paramter);
+    
     HttpManager *manager = [[HttpManager instance] requestWithMethod:@"Util/setToken"
                                                         parameters:paramter
                                                            success:^(NSDictionary *result) {
                                                                success();
+                                                               NSDictionary *data = [[NSDictionary alloc] initWithDictionary:[result objectForKey:@"data"]];
+                                                               NSLog(@"result is %@", result);
+                                                               [CHSSID setSSID:[data objectForKey:@"ssid"]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(operation, error);
     }];

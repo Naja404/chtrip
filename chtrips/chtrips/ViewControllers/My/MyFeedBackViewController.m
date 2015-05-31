@@ -70,7 +70,7 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:trimedText forKey:@"content"];
-//    [parameters setObject:appDelegate.deviceTokens forKey:@"token"];
+    [parameters setObject:[CHSSID SSID] forKey:@"token"];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.atniwo.com/"]];
     [manager GET:@"Util/feedback" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {

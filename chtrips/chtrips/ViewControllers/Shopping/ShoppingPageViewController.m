@@ -8,8 +8,6 @@
 
 #import "ShoppingPageViewController.h"
 
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define navHeight 80.0
 
 @interface ShoppingPageViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>

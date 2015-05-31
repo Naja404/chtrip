@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "chtrips/ViewControllers/My/MyFeedBackViewController.m"
-            timestampString = "454159388.178057"
+            filePath = "chtrips/AppDelegate.m"
+            timestampString = "454758298.795127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-submit"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "-setupSSIDWithApi:success:failure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "chtrips/AppDelegate.m"
+            timestampString = "454758255.259186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "-setupSSIDWithApi:success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

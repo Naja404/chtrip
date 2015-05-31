@@ -11,6 +11,7 @@
 #import "MyNormalTableViewCell.h"
 #import "MyFeedBackViewController.h"
 #import "MyAboutUsViewController.h"
+#import "MyBuyListViewController.h"
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
@@ -22,6 +23,11 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 @end
 
 @implementation MyViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -127,6 +133,18 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            MyBuyListViewController *myBuyList = [[MyBuyListViewController alloc] init];
+            myBuyList.navigationItem.title = NSLocalizedString(@"TEXT_CELL_BUY_LIST", Nil);
+            [self.navigationController pushViewController:myBuyList animated:YES];
+        }else if (indexPath.row == 1){
+            
+        }else{
+            
+        }
+    }
     
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {

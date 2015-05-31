@@ -251,29 +251,21 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 
 - (void) addBuyList {
     
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[self.dicData objectForKey:@"pid"] forKey:@"product_id"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/addBuyList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                        [SVProgressHUD showSuccessWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+    }];
 
-//
-//    self.proimgView= [UIView newAutoLayoutView];
-//
-//    [self.view addSubview:_proimgView];
-//    [_proimgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
-//    [_proimgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
-//    [_proimgView autoSetDimensionsToSize:CGSizeMake(140, 140)];
-//    
-//    UIImageView *proImg = [UIImageView newAutoLayoutView];
-//    [_proimgView addSubview:proImg];
-//    
-//    [proImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_proimgView];
-//    [proImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_proimgView];
-//    [proImg autoSetDimensionsToSize:CGSizeMake(140, 140)];
-//    proImg.image = [UIImage imageNamed:@"productDemo1"];
-//    
-//    CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI * 2);
-//    
-//    _proimgView.transform = transform;
-//    
-//    [NSTimer scheduledTimerWithTimeInterval:0.0005 target:self selector:@selector(transformAction) userInfo:nil repeats:YES];
+//    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+    
+//    HttpManager *manager = [[HttpManager instance] ];
 }
 
 - (void) transformAction {
