@@ -66,6 +66,7 @@
 "TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
 "TEXT_FEEDBACK_SEND_SUCCESS" = "反馈成功";
 "TEXT_ADD_BUYLIST_SUCCESS" = "成功添加清单";
+"TEXT_NOT_BUYLIST" = "暂无扫货清单,赶快去添加吧";
 
 
 // alert info

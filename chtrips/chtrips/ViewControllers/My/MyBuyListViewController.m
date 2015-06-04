@@ -109,7 +109,11 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 #pragma mark 下拉刷新
 - (void)refresh:(UIRefreshControl *)control {
     [control endRefreshing];
-    [self.buyListTV reloadData];
+    if ([self.buyListData count] > 0) {
+        [self.buyListTV reloadData];
+    }else{
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_NOT_BUYLIST", Nil) maskType:SVProgressHUDMaskTypeBlack];
+    }
 }
 
 #pragma mark 获取扫货清单数据

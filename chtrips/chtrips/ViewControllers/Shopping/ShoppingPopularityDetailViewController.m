@@ -253,14 +253,14 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
-    [paramter setObject:[self.dicData objectForKey:@"pid"] forKey:@"product_id"];
-    
+    [paramter setObject:[self.dicData objectForKey:@"pid"] forKey:@"pid"];
+    NSLog(@"paramter is %@", paramter);
     [[HttpManager instance] requestWithMethod:@"User/addBuyList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                        [SVProgressHUD showSuccessWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                        [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
     }];
 
 //    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
