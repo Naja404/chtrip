@@ -67,6 +67,7 @@
 		E93F6D3E1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
+		E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */; };
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
 		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
 		E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99E21B1AE8C1003FB7FF /* CHSSID.m */; };
@@ -291,6 +292,8 @@
 		E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingBoutiqueViewController.m; path = ViewControllers/Shopping/ShoppingBoutiqueViewController.m; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
+		E94DA2841B23EE3700F87B42 /* DiscoveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryTableViewCell.h; path = Views/Discovery/DiscoveryTableViewCell.h; sourceTree = "<group>"; };
+		E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryTableViewCell.m; path = Views/Discovery/DiscoveryTableViewCell.m; sourceTree = "<group>"; };
 		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		E95103561AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E95103571AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -665,6 +668,7 @@
 		E909910D1AAFE8EA00C48688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E94DA2871B23EE3D00F87B42 /* Discovery */,
 				E9D0FB171AEA467C00CC9664 /* My */,
 				E9E0231E1AE1E9FD0054F03D /* Shopping */,
 				E9F5CE931ACA383200FDE3B0 /* Trip */,
@@ -755,6 +759,15 @@
 				E937ACFE1B0640F900D5386A /* StyleDefine.h */,
 			);
 			name = Defines;
+			sourceTree = "<group>";
+		};
+		E94DA2871B23EE3D00F87B42 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				E94DA2841B23EE3700F87B42 /* DiscoveryTableViewCell.h */,
+				E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */,
+			);
+			name = Discovery;
 			sourceTree = "<group>";
 		};
 		E96D4B271AB01AC300F7CB38 /* Add */ = {
@@ -1336,6 +1349,7 @@
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
 				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
+				E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */,
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,
 				E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */,
 				E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */,
