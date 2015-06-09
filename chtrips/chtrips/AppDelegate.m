@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import "DiscoveryViewController.h"
-#import "ShoppingViewController.h"
+//#import "ShoppingViewController.h"
+#import "ShoppingDGViewController.h"
 #import "PlayViewController.h"
 #import "TripListViewController.h"
 #import "MyViewController.h"
@@ -67,7 +68,7 @@
     DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
     discoveryVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_DISCOVERY", Nil) image:[UIImage imageNamed:@"tab_discovery"] tag:1];
     
-    ShoppingViewController *shoppingVC = [[ShoppingViewController alloc] init];
+    ShoppingDGViewController *shoppingVC = [[ShoppingDGViewController alloc] init];
     shoppingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_SHOPPING", Nil) image:[UIImage imageNamed:@"tab_shopping"] tag:2];
     
     

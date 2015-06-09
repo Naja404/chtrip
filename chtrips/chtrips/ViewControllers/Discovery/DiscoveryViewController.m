@@ -8,14 +8,18 @@
 
 #import "DiscoveryViewController.h"
 #import "DiscoveryTableViewCell.h"
+#import "DiscoveryDetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
-@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UITableView *discoveryTV;
 @property (nonatomic, strong) NSMutableDictionary *discoveryTVData;
 @property (nonatomic, strong) UIView *discoveryHV;
+@property (nonatomic, strong) UIScrollView *adScrollView;
+@property (nonatomic, strong) UIPageControl *adPageControl;
 
 @end
 
@@ -55,14 +59,60 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 - (void) setupDiscoveryTVHeaderView {
 //    self.discoveryHV = [[UIView alloc] initForAutoLayout];
     self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    
+    self.adScrollView = [UIScrollView newAutoLayoutView];
+    [self.discoveryHV addSubview:_adScrollView];
+    
+    [_adScrollView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoveryHV];
+    [_adScrollView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoveryHV];
+    [_adScrollView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_discoveryHV];
+    [_adScrollView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_discoveryHV];
+    [_adScrollView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_discoveryHV];
+    _adScrollView.contentSize = CGSizeMake(ScreenWidth * 3, _adScrollView.frame.size.height);
+    _adScrollView.delegate = self;
+    _adScrollView.showsHorizontalScrollIndicator = NO;
+    
+    // 设置分页
+    _adScrollView.pagingEnabled = YES;
+    
+    for (int i = 0; i < 3; i++) {
+        UIImageView *imgView = [[UIImageView alloc] init];
+        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 200);
+        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
+//        NSURL *imageUrl = [NSURL URLWithString:[self.imgArr objectAtIndex:i]];
+//        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+        
+//                imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imgArr objectAtIndex:i]]];
+        
+        [_adScrollView addSubview:imgView];
+    
+    }
+    
+    self.adPageControl = [[UIPageControl alloc] init];
+    
+//    self.adPageControl = [UIPageControl newAutoLayoutView];
+    
+    _adPageControl.center = CGPointMake(ScreenWidth / 2, 180);
+    _adPageControl.bounds = CGRectMake(0, 0, 16*(3-1)+16, 16);
+    _adPageControl.numberOfPages = 3;
+    _adPageControl.pageIndicatorTintColor = [UIColor colorWithRed:184.0/255 green:184.0/255 blue:184.0/255 alpha:1];
+    _adPageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    _adPageControl.enabled = NO;
+    
+    [_discoveryHV addSubview:_adPageControl];
 
-    _discoveryHV.backgroundColor = [UIColor grayColor];
+    _discoveryHV.backgroundColor = [UIColor clearColor];
     
     self.discoveryTV.tableHeaderView = _discoveryHV;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    int page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    _adPageControl.currentPage = page;
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 10;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -78,6 +128,14 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     DiscoveryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DISCOVERY_CELL forIndexPath:indexPath];
     cell.textLabel.text = @"产品";
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
