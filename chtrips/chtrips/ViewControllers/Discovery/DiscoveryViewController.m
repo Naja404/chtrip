@@ -9,6 +9,7 @@
 #import "DiscoveryViewController.h"
 #import "DiscoveryTableViewCell.h"
 #import "DiscoveryDetailViewController.h"
+#import "CHAutoSlideScrollView.h"
 #import "UIImageView+AFNetworking.h"
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
@@ -20,6 +21,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 @property (nonatomic, strong) UIView *discoveryHV;
 @property (nonatomic, strong) UIScrollView *adScrollView;
 @property (nonatomic, strong) UIPageControl *adPageControl;
+@property (nonatomic, strong) CHAutoSlideScrollView *kvScrollView;
 
 @end
 
@@ -52,8 +54,40 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     [self.discoveryTV registerClass:[DiscoveryTableViewCell class] forCellReuseIdentifier:DISCOVERY_CELL];
     
-    [self setupDiscoveryTVHeaderView];
+    [self setupKV];
     
+}
+
+- (void) setupKV {
+    NSMutableArray *viewsArray = [@[] mutableCopy];
+    
+    for (int i = 0; i < 3; ++i) {
+        UIImageView *imgView = [[UIImageView alloc] init];
+        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 200);
+        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
+        [viewsArray addObject:imgView];
+    }
+    
+    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+
+    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) animationDuration:5];
+    
+    [self.discoveryHV removeFromSuperview];
+    
+    self.kvScrollView.totalPagesCount = ^NSInteger(void){
+        return viewsArray.count;
+    };
+    
+    self.kvScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        return viewsArray[pageIndex];
+    };
+    
+    self.kvScrollView.TapActionBlock = ^(NSInteger pageIndex){
+        NSLog(@"点击了第%d个kv", pageIndex);
+    };
+    
+    [self.discoveryHV addSubview:self.kvScrollView];
+    self.discoveryTV.tableHeaderView = _discoveryHV;
 }
 
 - (void) setupDiscoveryTVHeaderView {
@@ -126,7 +160,10 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DiscoveryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DISCOVERY_CELL forIndexPath:indexPath];
-    cell.textLabel.text = @"产品";
+    cell.titleLB.text = @"松本清特惠专场";
+    cell.leftLB.text = @"剩余 20 天";
+    cell.bgImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad0%d.jpg", indexPath.row]];
+    
     return cell;
 }
 

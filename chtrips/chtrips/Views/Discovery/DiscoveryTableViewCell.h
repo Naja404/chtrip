@@ -10,4 +10,8 @@
 
 @interface DiscoveryTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *bgImg;
+@property (nonatomic, strong) UILabel *titleLB;
+@property (nonatomic, strong) UILabel *leftLB;
+
 @end
