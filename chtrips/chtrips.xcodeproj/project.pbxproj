@@ -67,6 +67,13 @@
 		E93F6D3E1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
+		E947EE721B2B0B8200012957 /* CHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E947EE711B2B0B8200012957 /* CHMenuViewController.m */; };
+		E947EE751B2B11A300012957 /* ShoppingPopProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E947EE741B2B11A300012957 /* ShoppingPopProductViewController.m */; };
+		E947EE781B2B11C000012957 /* ShoppingPopShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E947EE771B2B11C000012957 /* ShoppingPopShopViewController.m */; };
+		E947EE7F1B2B18AE00012957 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E947EE7B1B2B18AE00012957 /* DOPDropDownMenu.m */; };
+		E947EE801B2B18AE00012957 /* icon_chose_arrow_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E947EE7C1B2B18AE00012957 /* icon_chose_arrow_nor@2x.png */; };
+		E947EE811B2B18AE00012957 /* icon_chose_arrow_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E947EE7D1B2B18AE00012957 /* icon_chose_arrow_sel@2x.png */; };
+		E947EE821B2B18AE00012957 /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E947EE7E1B2B18AE00012957 /* icon_chose_bottom@2x.png */; };
 		E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */; };
 		E959EF381B25D2A0006CB977 /* DiscoveryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */; };
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
@@ -306,6 +313,17 @@
 		E93F6D3D1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingBoutiqueViewController.m; path = ViewControllers/Shopping/ShoppingBoutiqueViewController.m; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
+		E947EE701B2B0B8200012957 /* CHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHMenuViewController.h; path = Vendors/TableMenu/CHMenuViewController.h; sourceTree = "<group>"; };
+		E947EE711B2B0B8200012957 /* CHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHMenuViewController.m; path = Vendors/TableMenu/CHMenuViewController.m; sourceTree = "<group>"; };
+		E947EE731B2B11A300012957 /* ShoppingPopProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopProductViewController.h; path = ViewControllers/Shopping/ShoppingPopProductViewController.h; sourceTree = "<group>"; };
+		E947EE741B2B11A300012957 /* ShoppingPopProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopProductViewController.m; path = ViewControllers/Shopping/ShoppingPopProductViewController.m; sourceTree = "<group>"; };
+		E947EE761B2B11C000012957 /* ShoppingPopShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopShopViewController.h; path = ViewControllers/Shopping/ShoppingPopShopViewController.h; sourceTree = "<group>"; };
+		E947EE771B2B11C000012957 /* ShoppingPopShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopShopViewController.m; path = ViewControllers/Shopping/ShoppingPopShopViewController.m; sourceTree = "<group>"; };
+		E947EE7A1B2B18AE00012957 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DOPDropDownMenu.h; path = Vendors/DOPDropDownMenu/DOPDropDownMenu.h; sourceTree = "<group>"; };
+		E947EE7B1B2B18AE00012957 /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DOPDropDownMenu.m; path = Vendors/DOPDropDownMenu/DOPDropDownMenu.m; sourceTree = "<group>"; };
+		E947EE7C1B2B18AE00012957 /* icon_chose_arrow_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_chose_arrow_nor@2x.png"; path = "Vendors/DOPDropDownMenu/icon_chose_arrow_nor@2x.png"; sourceTree = "<group>"; };
+		E947EE7D1B2B18AE00012957 /* icon_chose_arrow_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_chose_arrow_sel@2x.png"; path = "Vendors/DOPDropDownMenu/icon_chose_arrow_sel@2x.png"; sourceTree = "<group>"; };
+		E947EE7E1B2B18AE00012957 /* icon_chose_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_chose_bottom@2x.png"; path = "Vendors/DOPDropDownMenu/icon_chose_bottom@2x.png"; sourceTree = "<group>"; };
 		E94DA2841B23EE3700F87B42 /* DiscoveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryTableViewCell.h; path = Views/Discovery/DiscoveryTableViewCell.h; sourceTree = "<group>"; };
 		E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryTableViewCell.m; path = Views/Discovery/DiscoveryTableViewCell.m; sourceTree = "<group>"; };
 		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -712,6 +730,8 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E947EE791B2B188F00012957 /* DropMenu */,
+				E947EE6F1B2B0B1900012957 /* TableMenu */,
 				E9DE1A891B29C5330040BFA6 /* AutoSlideScroll */,
 				E9D0FABE1AEA2FA900CC9664 /* ShareSDK */,
 				E91396381AC11157003AF385 /* AwesomeMenu.h */,
@@ -793,6 +813,27 @@
 				E937ACFE1B0640F900D5386A /* StyleDefine.h */,
 			);
 			name = Defines;
+			sourceTree = "<group>";
+		};
+		E947EE6F1B2B0B1900012957 /* TableMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E947EE701B2B0B8200012957 /* CHMenuViewController.h */,
+				E947EE711B2B0B8200012957 /* CHMenuViewController.m */,
+			);
+			name = TableMenu;
+			sourceTree = "<group>";
+		};
+		E947EE791B2B188F00012957 /* DropMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E947EE7A1B2B18AE00012957 /* DOPDropDownMenu.h */,
+				E947EE7B1B2B18AE00012957 /* DOPDropDownMenu.m */,
+				E947EE7C1B2B18AE00012957 /* icon_chose_arrow_nor@2x.png */,
+				E947EE7D1B2B18AE00012957 /* icon_chose_arrow_sel@2x.png */,
+				E947EE7E1B2B18AE00012957 /* icon_chose_bottom@2x.png */,
+			);
+			name = DropMenu;
 			sourceTree = "<group>";
 		};
 		E94DA2871B23EE3D00F87B42 /* Discovery */ = {
@@ -898,6 +939,10 @@
 				E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */,
 				E9DE1A861B2738000040BFA6 /* ShoppingDGViewController.h */,
 				E9DE1A871B2738000040BFA6 /* ShoppingDGViewController.m */,
+				E947EE731B2B11A300012957 /* ShoppingPopProductViewController.h */,
+				E947EE741B2B11A300012957 /* ShoppingPopProductViewController.m */,
+				E947EE761B2B11C000012957 /* ShoppingPopShopViewController.h */,
+				E947EE771B2B11C000012957 /* ShoppingPopShopViewController.m */,
 			);
 			name = Shopping;
 			sourceTree = "<group>";
@@ -1270,6 +1315,7 @@
 				E9E023281AE20C650054F03D /* japanFlagIcon.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
 				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
+				E947EE801B2B18AE00012957 /* icon_chose_arrow_nor@2x.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
 				E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */,
 				E9E023271AE20C650054F03D /* chinaFlagIcon.png in Resources */,
@@ -1290,6 +1336,7 @@
 				E9DE1AA61B29F1000040BFA6 /* ad02.jpg in Resources */,
 				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
+				E947EE821B2B18AE00012957 /* icon_chose_bottom@2x.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
@@ -1333,6 +1380,7 @@
 				E9D0FAF51AEA2FA900CC9664 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */,
 				E946B8EF1AC5453A00701854 /* redpoint.png in Resources */,
+				E947EE811B2B18AE00012957 /* icon_chose_arrow_sel@2x.png in Resources */,
 				E9DE1A851B2734AC0040BFA6 /* ad3.jpg in Resources */,
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
 				E91396701AC2607E003AF385 /* trash.png in Resources */,
@@ -1405,6 +1453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E947EE781B2B11C000012957 /* ShoppingPopShopViewController.m in Sources */,
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
@@ -1427,6 +1476,7 @@
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */,
 				E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */,
+				E947EE751B2B11A300012957 /* ShoppingPopProductViewController.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
@@ -1453,6 +1503,7 @@
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E93F6D3B1AE0E24A0047A468 /* ShoppingPopularityViewController.m in Sources */,
+				E947EE721B2B0B8200012957 /* CHMenuViewController.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9DE1A9E1B29D2620040BFA6 /* CHAutoSlideScrollView.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
@@ -1467,6 +1518,7 @@
 				E96D4B4F1AB13E4600F7CB38 /* chtripCD.xcdatamodeld in Sources */,
 				E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */,
 				E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */,
+				E947EE7F1B2B18AE00012957 /* DOPDropDownMenu.m in Sources */,
 				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
