@@ -8,16 +8,26 @@
 
 #import "ShoppingDGViewController.h"
 #import "DOPDropDownMenu.h"
+#import "ShoppingDGTableViewCell.h"
+#import "ShoppingPopularityTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface ShoppingDGViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate>
+static NSString * const SHOP_CELL = @"ShoppingDGCell";
+static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
+
+@interface ShoppingDGViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UISegmentedControl *shopSegmented;
 @property (nonatomic, strong) NSArray *classifys;
 @property (nonatomic, strong) NSArray *cates;
 @property (nonatomic, strong) NSArray *movices;
 @property (nonatomic, strong) NSArray *hostels;
 @property (nonatomic, strong) NSArray *areas;
-
 @property (nonatomic, strong) NSArray *sorts;
+
+@property (nonatomic, strong) UITableView *shopTV;
+@property (nonatomic, strong) NSMutableArray *shopData;
+@property (nonatomic, strong) UIRefreshControl *refreshTV;
+
 @end
 
 @implementation ShoppingDGViewController
@@ -26,14 +36,33 @@
     [super viewDidLoad];
     [self setupSegmentedControl];
     [self setupDOPMenu];
+    
+    [self getProductList];
+    [self setupShopList];
     // Do any additional setup after loading the view.
 }
 
 - (void) setupSegmentedControl {
     self.shopSegmented = [[UISegmentedControl alloc] initWithItems:@[@"人气商品",@"商家"]];
     _shopSegmented.frame = CGRectMake(20.0, 20.0, 150, 30);
-    _shopSegmented.selectedSegmentIndex = 1;
+    _shopSegmented.selectedSegmentIndex = 0;
+    [_shopSegmented addTarget:self action:@selector(shopSegmentAction:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _shopSegmented;
+}
+
+- (void) shopSegmentAction:(id)sender {
+    int selectIndex = _shopSegmented.selectedSegmentIndex;
+    [self.refreshTV beginRefreshing];
+    
+    [self.shopData removeAllObjects];
+    
+    if (selectIndex == 1) {
+        [self getShopList];
+    }else{
+        [self getProductList];
+    }
+    [self.refreshTV endRefreshing];
+    [self.shopTV reloadData];
 }
 
 - (void) setupDOPMenu {
@@ -114,14 +143,117 @@
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
     if (indexPath.item >= 0) {
-         NSLog(@"点击了 %ld - %ld - %ld 项目",indexPath.column,indexPath.row,indexPath.item);
     }else {
-         NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
     }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark 获取产品列表
+- (void) getProductList {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    
+    [[HttpManager instance] requestWithMethod:@"Product/proList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"proList"]];
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          
+                                      }];
+    
+}
+
+#pragma mark 获取商家列表
+- (void) getShopList {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    
+    [[HttpManager instance] requestWithMethod:@"Product/shopList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSLog(@"shoplist data is %@", result);
+                                          self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                          
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          
+                                      }];
+}
+
+#pragma mark shop tableview
+- (void) setupShopList {
+    self.shopTV = [UITableView newAutoLayoutView];
+    [self.view addSubview:_shopTV];
+    
+    [_shopTV autoPinToTopLayoutGuideOfViewController:self withInset:44];
+    [_shopTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_shopTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_shopTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    
+    _shopTV.delegate = self;
+    _shopTV.dataSource = self;
+    
+    self.refreshTV = [[UIRefreshControl alloc] init];
+    [_shopTV addSubview:_refreshTV];
+    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.shopTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:SHOP_POP_CELL];
+    [self.shopTV registerClass:[ShoppingDGTableViewCell class] forCellReuseIdentifier:SHOP_CELL];
+    [self.shopTV reloadData];
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.shopData count];
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    int selectIndex = _shopSegmented.selectedSegmentIndex;
+    
+    if (selectIndex == 1) {
+        ShoppingDGTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_CELL forIndexPath:indexPath];
+        
+        NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
+        
+        NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"img_url"]];
+        [cell.shopImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+        cell.title.text = [cellData objectForKey:@"name"];
+        cell.address.text = [cellData objectForKey:@"address"];
+        
+        return cell;
+    }else{
+        ShoppingPopularityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_POP_CELL forIndexPath:indexPath];
+        
+        NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
+        
+        NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
+        
+        [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+        cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
+        cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
+        cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
+        cell.priceJPLB.text = [cellData objectForKey:@"price_jp"];
+        cell.summaryLB.text = [cellData objectForKey:@"summary"];
+        return cell;
+    }
+
+}
+
+
+- (void) refresh:(UIRefreshControl *)control {
+    [control endRefreshing];
+    [self.shopTV reloadData];
 }
 
 /*

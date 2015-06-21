@@ -137,6 +137,7 @@
 		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
 		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
 		E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */; };
+		E9CA8DD31B370F88001F5887 /* ShoppingDGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */; };
 		E9CF01ED1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */; };
 		E9CF01F01AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EF1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m */; };
 		E9D0FAE61AEA2FA900CC9664 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FAC01AEA2FA900CC9664 /* CopyConnection.framework */; };
@@ -428,6 +429,8 @@
 		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
 		E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationTableViewCell.h; path = Views/AddSubTripLocationTableViewCell.h; sourceTree = "<group>"; };
 		E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationTableViewCell.m; path = Views/AddSubTripLocationTableViewCell.m; sourceTree = "<group>"; };
+		E9CA8DD11B370F88001F5887 /* ShoppingDGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDGTableViewCell.h; path = Views/Shopping/ShoppingDGTableViewCell.h; sourceTree = "<group>"; };
+		E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDGTableViewCell.m; path = Views/Shopping/ShoppingDGTableViewCell.m; sourceTree = "<group>"; };
 		E9CF01EB1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailTitleTableViewCell.h; path = Views/Shopping/ShoppingDetailTitleTableViewCell.h; sourceTree = "<group>"; };
 		E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDetailTitleTableViewCell.m; path = Views/Shopping/ShoppingDetailTitleTableViewCell.m; sourceTree = "<group>"; };
 		E9CF01EE1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailPictureTableViewCell.h; path = Views/Shopping/ShoppingDetailPictureTableViewCell.h; sourceTree = "<group>"; };
@@ -1200,6 +1203,8 @@
 				E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */,
 				E9CF01EE1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.h */,
 				E9CF01EF1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m */,
+				E9CA8DD11B370F88001F5887 /* ShoppingDGTableViewCell.h */,
+				E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */,
 			);
 			name = Shopping;
 			sourceTree = "<group>";
@@ -1454,6 +1459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E947EE781B2B11C000012957 /* ShoppingPopShopViewController.m in Sources */,
+				E9CA8DD31B370F88001F5887 /* ShoppingDGTableViewCell.m in Sources */,
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
