@@ -11,6 +11,7 @@
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) UIButton *popBTN;
 
 @end
 
@@ -19,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUrlPage];
+    [self setupPopBTN];
 
     // Do any additional setup after loading the view.
 }
@@ -40,6 +42,22 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.atniwo.com/web.php"]];
     [self.webView loadRequest:request];
+}
+
+- (void) setupPopBTN {
+    self.popBTN = [UIButton newAutoLayoutView];
+    [self.view addSubview:_popBTN];
+    
+    [_popBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
+    [_popBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20];
+    [_popBTN autoSetDimensionsToSize:CGSizeMake(30, 30)];
+
+    [_popBTN setBackgroundImage:[UIImage imageNamed:@"arrowLeft"] forState:UIControlStateNormal];
+    [_popBTN addTarget:self action:@selector(popToDiscovery) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) popToDiscovery {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 /*
 #pragma mark - Navigation

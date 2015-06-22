@@ -19,15 +19,20 @@
         
         [_bgImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
         [_bgImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
-        [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 100)];
+        [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 200)];
         
         
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];
         
-        [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
-        [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20];
-        [_titleLB autoSetDimensionsToSize:CGSizeMake(120, 20)];
+        [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+        [_titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
+        
+//        [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
+//        [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20];
+        [_titleLB autoSetDimensionsToSize:CGSizeMake(180, 20)];
+        _titleLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
+        _titleLB.textAlignment = NSTextAlignmentCenter;
         
         self.leftLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_leftLB];

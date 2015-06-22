@@ -11,10 +11,11 @@
 #import "DiscoveryDetailViewController.h"
 #import "CHAutoSlideScrollView.h"
 #import "UIImageView+AFNetworking.h"
+#import "JHChainableAnimations.h"
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
-@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UITableView *discoveryTV;
 @property (nonatomic, strong) NSMutableDictionary *discoveryTVData;
@@ -22,6 +23,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 @property (nonatomic, strong) UIScrollView *adScrollView;
 @property (nonatomic, strong) UIPageControl *adPageControl;
 @property (nonatomic, strong) CHAutoSlideScrollView *kvScrollView;
+@property (nonatomic, strong) UIView *searchView;
+@property (nonatomic, strong) UITextField *searchField;
 
 @end
 
@@ -30,20 +33,85 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Discovery";
+    self.navigationController.navigationBarHidden = YES;
     [self setupDiscoveryTV];
+    [self setupSearchNav];
+//    [self setupLogo];
+    
+
     // Do any additional setup after loading the view.
 }
+
+- (void) setupLogo {
+    UIView *imgView = [UIView newAutoLayoutView];
+    [self.view addSubview:imgView];
+    
+    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:50];
+    [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [imgView autoSetDimensionsToSize:CGSizeMake(200, 200)];
+    imgView.backgroundColor = [UIColor grayColor];
+    
+    UIImageView *imgbg = [UIImageView newAutoLayoutView];
+    [imgView addSubview:imgbg];
+    
+    [imgbg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:imgView];
+    [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
+    [imgbg autoSetDimensionsToSize:CGSizeMake(200, 200)];
+    imgbg.image = [UIImage imageNamed:@"11.pic.jpg"];
+    imgView.rotate(360).animate(10.0);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void) setupSearchNav {
+
+    self.searchView = [UIView newAutoLayoutView];
+    [self.view addSubview:_searchView];
+    
+    [_searchView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
+    [_searchView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_searchView autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 44)];
+    
+    _searchView.backgroundColor = [UIColor whiteColor];
+
+    UIImageView *bgView = [UIImageView newAutoLayoutView];
+    [self.searchView addSubview:bgView];
+    
+    
+    [bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-20];
+    [bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
+    [bgView autoSetDimensionsToSize:CGSizeMake(180, 25)];
+    bgView.image = [UIImage imageNamed:@"searchBarbg"];
+    
+    UIImageView *iconView = [UIImageView newAutoLayoutView];
+    [self.searchView addSubview:iconView];
+    
+    [iconView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:bgView withOffset:5];
+    [iconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
+    [iconView autoSetDimensionsToSize:CGSizeMake(15, 15)];
+    iconView.image = [UIImage imageNamed:@"searchIcon"];
+    
+    self.searchField = [UITextField newAutoLayoutView];
+    [self.searchView addSubview:_searchField];
+    
+    [_searchField autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-15];
+    [_searchField autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
+    [_searchField autoSetDimensionsToSize:CGSizeMake(150, 30)];
+    _searchField.placeholder = @"彩虹Go!";
+    
+    
+}
+
 - (void) setupDiscoveryTV {
     self.discoveryTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_discoveryTV];
     
-    [_discoveryTV autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
+//    [_discoveryTV autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
+    [_discoveryTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:44];
     [_discoveryTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_discoveryTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_discoveryTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
@@ -70,7 +138,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
 
-    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) animationDuration:5];
+    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200) animationDuration:5];
     
     [self.discoveryHV removeFromSuperview];
     
@@ -154,7 +222,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 200;
 }
 
 
@@ -175,5 +243,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.searchField resignFirstResponder];
+}
 
 @end

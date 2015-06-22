@@ -14,7 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-INTUAnimationEngine.xcscheme</key>
+		<key>Pods-JHChainableAnimations.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2EBF304BABAE198691637A1C</key>
+		<key>3544BABF5ABBA9A1EA57BBDD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D9CB26C32AEB51CFB91B967</key>
+		<key>49987BAA2914FC7669B0B970</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B001B97C4D4F77F6C7AB3D7</key>
+		<key>60A6D8ED24705B8A700C273C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>707B437878C7D32A7B54BF93</key>
+		<key>72A8FF544ECD74DBEE82FC67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A843469DF00FB9F1B2F0FA11</key>
+		<key>9A4D821F2E04DC9AFE77F56F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A99DCEF1B3CD2C0A1A15726E</key>
+		<key>B3E9BB1F89A7DF0AF6FA2A22</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3822FA081C9B7DA01FF14DF</key>
+		<key>EAEE052FAD177BBCFEF0E290</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4D75B8E16D51218A406495E</key>
+		<key>EDFA337F46EECCB306555AB9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5E43F28CF2BDC0A70CBEC05</key>
+		<key>F67991E5FA32442A563B1A7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

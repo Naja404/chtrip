@@ -18,4 +18,6 @@
 ///普通文字格式
 #define FONT_TEXT [UIFont fontWithName:@"Arial" size:16.0f];
 
+#define BLACK_FONT_TEXT [UIFont fontWithName:@"Arial Black" size:20.0f];
+
 #endif

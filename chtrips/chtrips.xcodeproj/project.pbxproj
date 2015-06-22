@@ -79,6 +79,8 @@
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
 		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
 		E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99E21B1AE8C1003FB7FF /* CHSSID.m */; };
+		E95C88EF1B385B6C00E3B050 /* searchBarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */; };
+		E95C88F11B385C7000E3B050 /* searchIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C88F01B385C7000E3B050 /* searchIcon@2x.png */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
 		E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */; };
 		E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */; };
@@ -114,6 +116,9 @@
 		E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F811ACCF713009722C4 /* iTunesArtwork.png */; };
 		E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */; };
 		E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */; };
+		E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */; };
+		E9B0F6821B38282000D83E83 /* 11.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F6801B38282000D83E83 /* 11.pic.jpg */; };
+		E9B0F6831B38282000D83E83 /* star82.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F6811B38282000D83E83 /* star82.png */; };
 		E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */; };
 		E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B901AA1AC93D6B001F4EA0 /* DiscoveryViewController.m */; };
 		E9B901AE1AC93DBC001F4EA0 /* ShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B901AD1AC93DBC001F4EA0 /* ShoppingViewController.m */; };
@@ -338,6 +343,8 @@
 		E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBuyListTableViewCell.m; path = Views/My/MyBuyListTableViewCell.m; sourceTree = "<group>"; };
 		E95A99E11B1AE8C1003FB7FF /* CHSSID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHSSID.h; path = Utils/CHSSID.h; sourceTree = "<group>"; };
 		E95A99E21B1AE8C1003FB7FF /* CHSSID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHSSID.m; path = Utils/CHSSID.m; sourceTree = "<group>"; };
+		E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchBarbg@2x.png"; path = "Resource/searchBarbg@2x.png"; sourceTree = "<group>"; };
+		E95C88F01B385C7000E3B050 /* searchIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchIcon@2x.png"; path = "Resource/searchIcon@2x.png"; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -397,6 +404,9 @@
 		E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Resource/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFeedBackViewController.h; path = ViewControllers/My/MyFeedBackViewController.h; sourceTree = "<group>"; };
 		E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFeedBackViewController.m; path = ViewControllers/My/MyFeedBackViewController.m; sourceTree = "<group>"; };
+		E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowLeft@2x.png"; path = "Resource/arrowLeft@2x.png"; sourceTree = "<group>"; };
+		E9B0F6801B38282000D83E83 /* 11.pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 11.pic.jpg; path = Resource/11.pic.jpg; sourceTree = "<group>"; };
+		E9B0F6811B38282000D83E83 /* star82.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star82.png; path = Resource/star82.png; sourceTree = "<group>"; };
 		E9B170BC1ABFFD9A00722C2F /* EditSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripViewController.h; path = ViewControllers/EditSubTripViewController.h; sourceTree = "<group>"; };
 		E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripViewController.m; path = ViewControllers/EditSubTripViewController.m; sourceTree = "<group>"; };
 		E9B901A91AC93D6B001F4EA0 /* DiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryViewController.h; path = ViewControllers/Discovery/DiscoveryViewController.h; sourceTree = "<group>"; };
@@ -977,6 +987,11 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E95C88F01B385C7000E3B050 /* searchIcon@2x.png */,
+				E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */,
+				E9B0F6801B38282000D83E83 /* 11.pic.jpg */,
+				E9B0F6811B38282000D83E83 /* star82.png */,
+				E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */,
 				E9DE1A9F1B29F1000040BFA6 /* ad01.jpg */,
 				E9DE1AA01B29F1000040BFA6 /* ad02.jpg */,
 				E9DE1AA11B29F1000040BFA6 /* ad03.jpg */,
@@ -1329,8 +1344,10 @@
 				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9899F851ACCF713009722C4 /* Icon-60.png in Resources */,
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
+				E95C88EF1B385B6C00E3B050 /* searchBarbg@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
 				E9D98EC81AEDE9C7004805E5 /* iconAboutUs.png in Resources */,
+				E9B0F6821B38282000D83E83 /* 11.pic.jpg in Resources */,
 				E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */,
 				E9B901C71AC9492D001F4EA0 /* tab_trip.png in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
@@ -1368,8 +1385,10 @@
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */,
+				E95C88F11B385C7000E3B050 /* searchIcon@2x.png in Resources */,
 				E9D0FAF11AEA2FA900CC9664 /* ShareSDKLocalizable.strings in Resources */,
 				E9DE1AA71B29F1000040BFA6 /* ad03.jpg in Resources */,
+				E9B0F6831B38282000D83E83 /* star82.png in Resources */,
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
 				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
@@ -1396,6 +1415,7 @@
 				E91396561AC111B8003AF385 /* icon-plus.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
 				E9E023241AE2028B0054F03D /* productDemo3.png in Resources */,
+				E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */,
 				E9899F8A1ACCF713009722C4 /* Icon-Small@2x.png in Resources */,
 				E91FBCDD1AB92555005CA250 /* background1.png in Resources */,
 				E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */,
