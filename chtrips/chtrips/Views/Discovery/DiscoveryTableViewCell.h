@@ -13,5 +13,6 @@
 @property (nonatomic, strong) UIImageView *bgImg;
 @property (nonatomic, strong) UILabel *titleLB;
 @property (nonatomic, strong) UILabel *leftLB;
+@property (nonatomic, strong) UILabel *buyBTN;
 
 @end

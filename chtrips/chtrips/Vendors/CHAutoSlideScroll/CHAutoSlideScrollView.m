@@ -36,8 +36,10 @@
             
             UIImage *normalDotImage = [UIImage imageNamed:@"yellowpoint"];
             UIImage *highlightDotImage = [UIImage imageNamed:@"redpoint"];
-            CGFloat pageControlWidth = totalPageCounts * normalDotImage.size.width + (totalPageCounts - 1) * dotGapWidth;
-            CGRect pageControlFram = CGRectMake(CGRectGetMidX(self.scrollView.frame) - 0.5 *pageControlWidth, 0.9 * CGRectGetHeight(self.scrollView.frame), pageControlWidth, normalDotImage.size.height);
+            
+//            CGFloat pageControlWidth = totalPageCounts * normalDotImage.size.width + (totalPageCounts - 1) * dotGapWidth;
+//            CGRect pageControlFram = CGRectMake(CGRectGetMidX(self.scrollView.frame) - 0.5 *pageControlWidth, 0.9 * CGRectGetHeight(self.scrollView.frame), pageControlWidth, normalDotImage.size.height);
+            CGRect pageControlFram = CGRectMake(0, 0, ScreenWidth, 5);
             
             _pageControl = [[CHAutoSlidePageControl alloc] initWithFrame:pageControlFram
                                                              normalImage:normalDotImage
@@ -258,9 +260,5 @@
         self.TapActionBlock(self.currentPageIndex);
     }
 }
-
-
-
-
 
 @end

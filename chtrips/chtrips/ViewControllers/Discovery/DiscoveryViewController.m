@@ -36,29 +36,40 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     self.navigationController.navigationBarHidden = YES;
     [self setupDiscoveryTV];
     [self setupSearchNav];
-//    [self setupLogo];
+    [self setupLogo];
     
 
     // Do any additional setup after loading the view.
 }
 
 - (void) setupLogo {
-    UIView *imgView = [UIView newAutoLayoutView];
-    [self.view addSubview:imgView];
     
-    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:50];
-    [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
-    [imgView autoSetDimensionsToSize:CGSizeMake(200, 200)];
+    UIView *imgView = [UIView newAutoLayoutView];
+    [self.searchView addSubview:imgView];
+    
+    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:20];
+    [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
+    [imgView autoSetDimensionsToSize:CGSizeMake(60, 40)];
     imgView.backgroundColor = [UIColor grayColor];
+    imgView.clipsToBounds = YES;
     
     UIImageView *imgbg = [UIImageView newAutoLayoutView];
     [imgView addSubview:imgbg];
     
-    [imgbg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:imgView];
+    [imgbg autoAlignAxis:ALAxisVertical toSameAxisOfView:imgView];
     [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
-    [imgbg autoSetDimensionsToSize:CGSizeMake(200, 200)];
+    [imgbg autoSetDimensionsToSize:CGSizeMake(80, 80)];
     imgbg.image = [UIImage imageNamed:@"11.pic.jpg"];
-    imgView.rotate(360).animate(10.0);
+    imgbg.clipsToBounds = YES;
+    imgbg.rotate(360).animate(20.0);
+    
+    UIImageView *imgLogo = [UIImageView newAutoLayoutView];
+    [imgView addSubview:imgLogo];
+    
+    [imgLogo autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:imgView];
+    [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
+    [imgLogo autoSetDimensionsToSize:CGSizeMake(60, 40)];
+    imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
 }
 
 
@@ -129,16 +140,16 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 - (void) setupKV {
     NSMutableArray *viewsArray = [@[] mutableCopy];
     
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 4; ++i) {
         UIImageView *imgView = [[UIImageView alloc] init];
-        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 200);
+        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 123);
         imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
         [viewsArray addObject:imgView];
     }
     
-    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 123)];
 
-    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200) animationDuration:5];
+    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 123) animationDuration:5];
     
     [self.discoveryHV removeFromSuperview];
     
@@ -222,7 +233,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return 210;
 }
 
 
@@ -240,11 +251,18 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
     
+    if (indexPath.row == 1) {
+        detail.webUrl = @"http://api.atniwo.com/web.php";
+    }else{
+        detail.webUrl = @"http://api.atniwo.com/product.html";
+    }
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.searchField resignFirstResponder];
 }
+
 
 @end

@@ -10,4 +10,6 @@
 
 @interface DiscoveryDetailViewController : UIViewController
 
+@property (nonatomic, strong) NSString *webUrl;
+
 @end

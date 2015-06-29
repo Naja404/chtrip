@@ -66,20 +66,20 @@
 ///////////////////////////////////
     // tab bar modify 2015.3.30
     DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
-    discoveryVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_DISCOVERY", Nil) image:[UIImage imageNamed:@"tab_discovery"] tag:1];
+    discoveryVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_DISCOVERY", Nil) image:[UIImage imageNamed:@"discoveryGray"] tag:1];
     
     ShoppingDGViewController *shoppingVC = [[ShoppingDGViewController alloc] init];
-    shoppingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_SHOPPING", Nil) image:[UIImage imageNamed:@"tab_shopping"] tag:2];
+    shoppingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_SHOPPING", Nil) image:[UIImage imageNamed:@"buyGray"] tag:2];
     
     
     PlayViewController *playVC = [[PlayViewController alloc] init];
-    playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"tab_play"] tag:3];
+    playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"worthGray"] tag:3];
     
     TripListViewController *tripVC = [[TripListViewController alloc] init];
-    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tab_trip"] tag:4];
+    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tripGray"] tag:4];
     
     MyViewController *myVC = [[MyViewController alloc] init];
-    myVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_MY", Nil) image:[UIImage imageNamed:@"tab_my"] tag:5];
+    myVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_MY", Nil) image:[UIImage imageNamed:@"myGray"] tag:5];
     
     discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
     shoppingNav = [[UINavigationController alloc] initWithRootViewController:shoppingVC];
