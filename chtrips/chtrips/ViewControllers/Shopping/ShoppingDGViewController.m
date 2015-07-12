@@ -192,7 +192,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [_shopTV autoPinToTopLayoutGuideOfViewController:self withInset:44];
     [_shopTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_shopTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_shopTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [_shopTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:44];
     
     _shopTV.delegate = self;
     _shopTV.dataSource = self;

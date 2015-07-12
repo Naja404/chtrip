@@ -12,6 +12,7 @@
 #import "CHAutoSlideScrollView.h"
 #import "UIImageView+AFNetworking.h"
 #import "JHChainableAnimations.h"
+#import "SearchViewController.h"
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
@@ -29,6 +30,11 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 @end
 
 @implementation DiscoveryViewController
+
+- (void) viewWillAppear:(BOOL)animated
+{
+//    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -142,14 +148,14 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     for (int i = 0; i < 4; ++i) {
         UIImageView *imgView = [[UIImageView alloc] init];
-        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 123);
+        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 142);
         imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
         [viewsArray addObject:imgView];
     }
     
-    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 123)];
+    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 142)];
 
-    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 123) animationDuration:5];
+    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 142) animationDuration:5];
     
     [self.discoveryHV removeFromSuperview];
     
@@ -233,7 +239,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 210;
+    return 294;
 }
 
 
@@ -242,7 +248,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     cell.titleLB.text = @"松本清特惠专场";
     cell.leftLB.text = @"剩余 20 天";
     cell.bgImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad0%d.jpg", indexPath.row]];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -257,10 +263,13 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         detail.webUrl = @"http://api.atniwo.com/product.html";
     }
     
+    self.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
     [self.searchField resignFirstResponder];
 }
 

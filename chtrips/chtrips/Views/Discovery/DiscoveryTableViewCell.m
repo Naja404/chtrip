@@ -18,9 +18,17 @@
         [self.contentView addSubview:_bgImg];
         
         [_bgImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
-        [_bgImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:25];
-        [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 185)];
+        [_bgImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:13];
+        [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 281)];
         
+        self.discoverImg = [UIImageView newAutoLayoutView];
+        [self.bgImg addSubview:_discoverImg];
+        
+        [_discoverImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.bgImg];
+        [_discoverImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.bgImg];
+        [_discoverImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.bgImg];
+        [_discoverImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.bgImg];
+        _discoverImg.alpha = 0.5;
         
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];

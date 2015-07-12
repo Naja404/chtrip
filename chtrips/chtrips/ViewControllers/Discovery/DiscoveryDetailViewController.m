@@ -7,20 +7,33 @@
 //
 
 #import "DiscoveryDetailViewController.h"
+#import "WebViewJavascriptBridge.h"
 
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIButton *popBTN;
+@property WebViewJavascriptBridge *bridge;
 
 @end
 
 @implementation DiscoveryDetailViewController
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.hidesBottomBarWhenPushed = YES;
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
+//    self.tabBarController.tabBar.hidden = YES;
     [super viewDidLoad];
     [self setupUrlPage];
-    [self setupPopBTN];
+//    [self setupPopBTN];
 
     // Do any additional setup after loading the view.
 }
@@ -42,6 +55,15 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
+    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"what data is %@", data);
+        if ([data isEqualToString:@"backBTN"]) {
+            [self popToDiscovery];
+        }
+        responseCallback(@"call back");
+    }];
+    
+    
 }
 
 - (void) setupPopBTN {

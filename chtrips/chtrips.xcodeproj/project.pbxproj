@@ -79,6 +79,8 @@
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
 		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
 		E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99E21B1AE8C1003FB7FF /* CHSSID.m */; };
+		E95C3D001B4970E40010EF58 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = E95C3CFE1B4970E40010EF58 /* WebViewJavascriptBridge.js.txt */; };
+		E95C3D011B4970E40010EF58 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C3CFF1B4970E40010EF58 /* WebViewJavascriptBridge.m */; };
 		E95C88EF1B385B6C00E3B050 /* searchBarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */; };
 		E95C88F11B385C7000E3B050 /* searchIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C88F01B385C7000E3B050 /* searchIcon@2x.png */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
@@ -105,6 +107,12 @@
 		E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */; };
 		E97184391ABAC1B9005291A1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184381ABAC1B9005291A1 /* Base64.m */; };
 		E98438581B386495003AA6B2 /* goLogoEmpty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98438571B386495003AA6B2 /* goLogoEmpty@3x.png */; };
+		E98999411B52A671008C9392 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98999401B52A671008C9392 /* SearchViewController.m */; };
+		E98999441B52AA8C008C9392 /* PlayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E98999431B52AA8C008C9392 /* PlayTableViewCell.m */; };
+		E98999471B52AFD4008C9392 /* playdemoPro.png in Resources */ = {isa = PBXBuildFile; fileRef = E98999461B52AFD4008C9392 /* playdemoPro.png */; };
+		E98999491B52B3E5008C9392 /* starProRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E98999481B52B3E5008C9392 /* starProRed.png */; };
+		E989994C1B52B91A008C9392 /* jpImg.png in Resources */ = {isa = PBXBuildFile; fileRef = E989994A1B52B91A008C9392 /* jpImg.png */; };
+		E989994D1B52B91A008C9392 /* zhImg.png in Resources */ = {isa = PBXBuildFile; fileRef = E989994B1B52B91A008C9392 /* zhImg.png */; };
 		E9899F831ACCF713009722C4 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F781ACCF713009722C4 /* Icon-40.png */; };
 		E9899F841ACCF713009722C4 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F791ACCF713009722C4 /* Icon-40@2x.png */; };
 		E9899F851ACCF713009722C4 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F7A1ACCF713009722C4 /* Icon-60.png */; };
@@ -351,6 +359,9 @@
 		E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBuyListTableViewCell.m; path = Views/My/MyBuyListTableViewCell.m; sourceTree = "<group>"; };
 		E95A99E11B1AE8C1003FB7FF /* CHSSID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHSSID.h; path = Utils/CHSSID.h; sourceTree = "<group>"; };
 		E95A99E21B1AE8C1003FB7FF /* CHSSID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHSSID.m; path = Utils/CHSSID.m; sourceTree = "<group>"; };
+		E95C3CFD1B4970E40010EF58 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		E95C3CFE1B4970E40010EF58 /* WebViewJavascriptBridge.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebViewJavascriptBridge.js.txt; sourceTree = "<group>"; };
+		E95C3CFF1B4970E40010EF58 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchBarbg@2x.png"; path = "Resource/searchBarbg@2x.png"; sourceTree = "<group>"; };
 		E95C88F01B385C7000E3B050 /* searchIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchIcon@2x.png"; path = "Resource/searchIcon@2x.png"; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -400,6 +411,14 @@
 		E97184371ABAC1B9005291A1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = Vendors/Base64.h; sourceTree = "<group>"; };
 		E97184381ABAC1B9005291A1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = Vendors/Base64.m; sourceTree = "<group>"; };
 		E98438571B386495003AA6B2 /* goLogoEmpty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "goLogoEmpty@3x.png"; path = "Resource/goLogoEmpty@3x.png"; sourceTree = "<group>"; };
+		E989993F1B52A671008C9392 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ViewControllers/Discovery/SearchViewController.h; sourceTree = "<group>"; };
+		E98999401B52A671008C9392 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/Discovery/SearchViewController.m; sourceTree = "<group>"; };
+		E98999421B52AA8C008C9392 /* PlayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayTableViewCell.h; path = Views/Play/PlayTableViewCell.h; sourceTree = "<group>"; };
+		E98999431B52AA8C008C9392 /* PlayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayTableViewCell.m; path = Views/Play/PlayTableViewCell.m; sourceTree = "<group>"; };
+		E98999461B52AFD4008C9392 /* playdemoPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playdemoPro.png; path = Resource/playdemoPro.png; sourceTree = "<group>"; };
+		E98999481B52B3E5008C9392 /* starProRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starProRed.png; path = Resource/starProRed.png; sourceTree = "<group>"; };
+		E989994A1B52B91A008C9392 /* jpImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jpImg.png; path = Resource/jpImg.png; sourceTree = "<group>"; };
+		E989994B1B52B91A008C9392 /* zhImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zhImg.png; path = Resource/zhImg.png; sourceTree = "<group>"; };
 		E9899F781ACCF713009722C4 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "Resource/Icon-40.png"; sourceTree = "<group>"; };
 		E9899F791ACCF713009722C4 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "Resource/Icon-40@2x.png"; sourceTree = "<group>"; };
 		E9899F7A1ACCF713009722C4 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60.png"; path = "Resource/Icon-60.png"; sourceTree = "<group>"; };
@@ -748,6 +767,7 @@
 		E909910D1AAFE8EA00C48688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E98999451B52AA93008C9392 /* Play */,
 				E94DA2871B23EE3D00F87B42 /* Discovery */,
 				E9D0FB171AEA467C00CC9664 /* My */,
 				E9E0231E1AE1E9FD0054F03D /* Shopping */,
@@ -759,6 +779,7 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */,
 				E947EE791B2B188F00012957 /* DropMenu */,
 				E947EE6F1B2B0B1900012957 /* TableMenu */,
 				E9DE1A891B29C5330040BFA6 /* AutoSlideScroll */,
@@ -874,6 +895,17 @@
 			name = Discovery;
 			sourceTree = "<group>";
 		};
+		E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				E95C3CFD1B4970E40010EF58 /* WebViewJavascriptBridge.h */,
+				E95C3CFE1B4970E40010EF58 /* WebViewJavascriptBridge.js.txt */,
+				E95C3CFF1B4970E40010EF58 /* WebViewJavascriptBridge.m */,
+			);
+			name = WebViewJavascriptBridge;
+			path = Vendors/WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 		E96D4B271AB01AC300F7CB38 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -913,6 +945,15 @@
 			name = coreData;
 			sourceTree = "<group>";
 		};
+		E98999451B52AA93008C9392 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				E98999421B52AA8C008C9392 /* PlayTableViewCell.h */,
+				E98999431B52AA8C008C9392 /* PlayTableViewCell.m */,
+			);
+			name = Play;
+			sourceTree = "<group>";
+		};
 		E9B170B31ABFE45000722C2F /* Edit */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +990,8 @@
 				E9B901AA1AC93D6B001F4EA0 /* DiscoveryViewController.m */,
 				E959EF361B25D2A0006CB977 /* DiscoveryDetailViewController.h */,
 				E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */,
+				E989993F1B52A671008C9392 /* SearchViewController.h */,
+				E98999401B52A671008C9392 /* SearchViewController.m */,
 			);
 			name = Discovery;
 			sourceTree = "<group>";
@@ -1003,6 +1046,10 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E989994A1B52B91A008C9392 /* jpImg.png */,
+				E989994B1B52B91A008C9392 /* zhImg.png */,
+				E98999481B52B3E5008C9392 /* starProRed.png */,
+				E98999461B52AFD4008C9392 /* playdemoPro.png */,
 				E9F1C8BD1B41829C008FFD28 /* ad00.jpg */,
 				E9F1C8BB1B418247008FFD28 /* ad4.jpg */,
 				E9F1C8B71B403C39008FFD28 /* buyGray@3x.png */,
@@ -1353,6 +1400,7 @@
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
+				E95C3D001B4970E40010EF58 /* WebViewJavascriptBridge.js.txt in Resources */,
 				E9F1C8BE1B41829C008FFD28 /* ad00.jpg in Resources */,
 				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
 				E9DE1A841B2734AC0040BFA6 /* ad2.jpg in Resources */,
@@ -1390,11 +1438,13 @@
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
+				E989994C1B52B91A008C9392 /* jpImg.png in Resources */,
 				E9DE1AA51B29F1000040BFA6 /* ad01.jpg in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
 				E9F5CE971ACA3E0D00FDE3B0 /* search@2x.png in Resources */,
 				E90990EA1AAFD6D600C48688 /* LaunchScreen.xib in Resources */,
 				E9D98ECB1AEDE9C7004805E5 /* iconFeedBack.png in Resources */,
+				E98999471B52AFD4008C9392 /* playdemoPro.png in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
@@ -1421,6 +1471,7 @@
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
 				E9F1C8B51B403BDD008FFD28 /* tripGray@3x.png in Resources */,
 				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
+				E989994D1B52B91A008C9392 /* zhImg.png in Resources */,
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
@@ -1448,6 +1499,7 @@
 				E9E023241AE2028B0054F03D /* productDemo3.png in Resources */,
 				E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */,
 				E9899F8A1ACCF713009722C4 /* Icon-Small@2x.png in Resources */,
+				E98999491B52B3E5008C9392 /* starProRed.png in Resources */,
 				E91FBCDD1AB92555005CA250 /* background1.png in Resources */,
 				E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */,
 				E9899F861ACCF713009722C4 /* Icon-60@2x.png in Resources */,
@@ -1547,6 +1599,7 @@
 				E9DE1A981B29C73C0040BFA6 /* CHAutoSlidePageControl.m in Sources */,
 				E96D4B391AB0236300F7CB38 /* NSDate+Fomatter.m in Sources */,
 				E9C131981AB2E83F00E6E873 /* AddSubTripEndTimeTableViewCell.m in Sources */,
+				E98999411B52A671008C9392 /* SearchViewController.m in Sources */,
 				E9B901B41AC93E3C001F4EA0 /* MyViewController.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
@@ -1561,12 +1614,14 @@
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E93F6D3B1AE0E24A0047A468 /* ShoppingPopularityViewController.m in Sources */,
+				E95C3D011B4970E40010EF58 /* WebViewJavascriptBridge.m in Sources */,
 				E947EE721B2B0B8200012957 /* CHMenuViewController.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9DE1A9E1B29D2620040BFA6 /* CHAutoSlideScrollView.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
 				E9D98EC21AEDDA5A004805E5 /* MyNormalTableViewCell.m in Sources */,
+				E98999441B52AA8C008C9392 /* PlayTableViewCell.m in Sources */,
 				E9B901B11AC93E21001F4EA0 /* PlayViewController.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
 				E9B901AE1AC93DBC001F4EA0 /* ShoppingViewController.m in Sources */,

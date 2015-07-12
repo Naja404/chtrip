@@ -38,7 +38,7 @@
         self.normalDotImage = [self setColorToImage:1 green:139 blue:10];
 //        self.highlightedDotImage = hImage;
 //        self.highlightedDotImage = [self setColorToImage:255 green:156 blue:0];
-        self.highlightedDotImage = [self setColorToImage:6 green:0 blue:0];
+        self.highlightedDotImage = [self setColorToImage:7 green:0 blue:0];
 
         self.showSize = ScreenWidth / self.pageNumbers;
         UIImageView *dotImageView_h = [[UIImageView alloc] initWithImage:self.highlightedDotImage];
@@ -102,18 +102,34 @@
     
     CGSize imageSize = CGSizeMake(imageWidth, 5);
     UIGraphicsBeginImageContextWithOptions(imageSize, 0, [UIScreen mainScreen].scale);
-//    [[UIColor colorWithRed:red green:green blue:blue alpha:1] set];
-    if (red == 1) {
-        [[UIColor yellowColor] set];
-    }else if(red == 2){
-        [[UIColor blueColor] set];
-    }else if(red == 3){
-        [[UIColor greenColor] set];
-    }else if(red == 4){
-        [[UIColor grayColor] set];
-    }else{
-        [[UIColor redColor] set];
+
+    switch (red) {
+        case 1:
+//            [[UIColor colorWithRed:255 green:17 blue:0 alpha:1] set];
+            [[UIColor redColor] set];
+            break;
+        case 2:
+//            [[UIColor colorWithRed:255 green:156 blue:0 alpha:1] set];
+            [[UIColor orangeColor] set];
+            break;
+        case 3:
+//           [[UIColor colorWithRed:255 green:242 blue:0 alpha:1] set];
+            [[UIColor yellowColor] set];
+            break;
+        case 4:
+//           [[UIColor colorWithRed:118 green:239 blue:0 alpha:1] set];
+            [[UIColor greenColor] set];
+            break;
+        case 5:
+//            [[UIColor colorWithRed:19 green:100 blue:217 alpha:1] set];
+            [[UIColor blueColor] set];
+            break;
+        default:
+//            [[UIColor colorWithRed:218 green:218 blue:218 alpha:1] set];
+            [[UIColor grayColor] set];
+            break;
     }
+    
     UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height));
     UIImage *pressedColorImg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
