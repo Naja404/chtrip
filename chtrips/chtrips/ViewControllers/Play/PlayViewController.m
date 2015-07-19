@@ -9,6 +9,7 @@
 #import "PlayViewController.h"
 #import "PlayTableViewCell.h"
 #import "DOPDropDownMenu.h"
+#import "PlayDetailViewController.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 
@@ -28,6 +29,10 @@ static NSString * const PLAY_CELL = @"playCell";
 @end
 
 @implementation PlayViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -177,6 +182,20 @@ static NSString * const PLAY_CELL = @"playCell";
     cell.zhLB.text = @"3,111RMB";
     
     return cell;
+    
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+    detailVC.webUrl = @"http://api.atniwo.com/shop.html";
+    detailVC.navigationItem.title = @"高岛屋";
+    UIBarButtonItem *backBTN = [[UIBarButtonItem alloc] init];
+    backBTN.title = @"";
+    backBTN.image = [UIImage imageNamed:@"arrowLeft"];
+    self.navigationItem.backBarButtonItem = backBTN;
+    [self.navigationController pushViewController:detailVC animated:YES];
     
 }
 

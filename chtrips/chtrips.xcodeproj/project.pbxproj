@@ -225,6 +225,7 @@
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
 		E9EB9C841AB8150900ED0334 /* day.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C821AB8150900ED0334 /* day.png */; };
 		E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C831AB8150900ED0334 /* day@2x.png */; };
+		E9F0E0B41B5BE5B900999AFA /* PlayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */; };
 		E9F1C8B31B403BDD008FFD28 /* discoveryGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8AE1B403BDC008FFD28 /* discoveryGray@3x.png */; };
 		E9F1C8B41B403BDD008FFD28 /* myGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8AF1B403BDD008FFD28 /* myGray@3x.png */; };
 		E9F1C8B51B403BDD008FFD28 /* tripGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8B01B403BDD008FFD28 /* tripGray@3x.png */; };
@@ -561,6 +562,8 @@
 		E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addIcon@2x.png"; path = "Resource/addIcon@2x.png"; sourceTree = "<group>"; };
 		E9EB9C821AB8150900ED0334 /* day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = day.png; path = Resource/day.png; sourceTree = "<group>"; };
 		E9EB9C831AB8150900ED0334 /* day@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "day@2x.png"; path = "Resource/day@2x.png"; sourceTree = "<group>"; };
+		E9F0E0B21B5BE5B900999AFA /* PlayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayDetailViewController.h; path = ViewControllers/Play/PlayDetailViewController.h; sourceTree = "<group>"; };
+		E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayDetailViewController.m; path = ViewControllers/Play/PlayDetailViewController.m; sourceTree = "<group>"; };
 		E9F1C8AE1B403BDC008FFD28 /* discoveryGray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "discoveryGray@3x.png"; path = "Resource/discoveryGray@3x.png"; sourceTree = "<group>"; };
 		E9F1C8AF1B403BDD008FFD28 /* myGray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "myGray@3x.png"; path = "Resource/myGray@3x.png"; sourceTree = "<group>"; };
 		E9F1C8B01B403BDD008FFD28 /* tripGray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripGray@3x.png"; path = "Resource/tripGray@3x.png"; sourceTree = "<group>"; };
@@ -1024,6 +1027,8 @@
 			children = (
 				E9B901AF1AC93E21001F4EA0 /* PlayViewController.h */,
 				E9B901B01AC93E21001F4EA0 /* PlayViewController.m */,
+				E9F0E0B21B5BE5B900999AFA /* PlayDetailViewController.h */,
+				E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */,
 			);
 			name = Play;
 			sourceTree = "<group>";
@@ -1611,6 +1616,7 @@
 				E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */,
 				E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */,
 				E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */,
+				E9F0E0B41B5BE5B900999AFA /* PlayDetailViewController.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E93F6D3B1AE0E24A0047A468 /* ShoppingPopularityViewController.m in Sources */,
