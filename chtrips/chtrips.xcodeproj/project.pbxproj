@@ -75,6 +75,9 @@
 		E947EE811B2B18AE00012957 /* icon_chose_arrow_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E947EE7D1B2B18AE00012957 /* icon_chose_arrow_sel@2x.png */; };
 		E947EE821B2B18AE00012957 /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E947EE7E1B2B18AE00012957 /* icon_chose_bottom@2x.png */; };
 		E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */; };
+		E9516E521B6FAFFB00E01C1F /* jpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9516E501B6FAFFB00E01C1F /* jpImg@2x.png */; };
+		E9516E531B6FAFFB00E01C1F /* zhImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9516E511B6FAFFB00E01C1F /* zhImg@2x.png */; };
+		E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9516E551B6FB98600E01C1F /* ShoppingDGDetailViewController.m */; };
 		E959EF381B25D2A0006CB977 /* DiscoveryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */; };
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
 		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
@@ -111,8 +114,6 @@
 		E98999441B52AA8C008C9392 /* PlayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E98999431B52AA8C008C9392 /* PlayTableViewCell.m */; };
 		E98999471B52AFD4008C9392 /* playdemoPro.png in Resources */ = {isa = PBXBuildFile; fileRef = E98999461B52AFD4008C9392 /* playdemoPro.png */; };
 		E98999491B52B3E5008C9392 /* starProRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E98999481B52B3E5008C9392 /* starProRed.png */; };
-		E989994C1B52B91A008C9392 /* jpImg.png in Resources */ = {isa = PBXBuildFile; fileRef = E989994A1B52B91A008C9392 /* jpImg.png */; };
-		E989994D1B52B91A008C9392 /* zhImg.png in Resources */ = {isa = PBXBuildFile; fileRef = E989994B1B52B91A008C9392 /* zhImg.png */; };
 		E9899F831ACCF713009722C4 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F781ACCF713009722C4 /* Icon-40.png */; };
 		E9899F841ACCF713009722C4 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F791ACCF713009722C4 /* Icon-40@2x.png */; };
 		E9899F851ACCF713009722C4 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F7A1ACCF713009722C4 /* Icon-60.png */; };
@@ -124,6 +125,7 @@
 		E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F801ACCF713009722C4 /* Icon@3x.png */; };
 		E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F811ACCF713009722C4 /* iTunesArtwork.png */; };
 		E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */; };
+		E9A18E861B65273D00FA66EC /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A18E851B65273D00FA66EC /* share@3x.png */; };
 		E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */; };
 		E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */; };
 		E9B0F6821B38282000D83E83 /* 11.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F6801B38282000D83E83 /* 11.pic.jpg */; };
@@ -151,6 +153,9 @@
 		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
 		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
 		E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */; };
+		E9CA46BF1B6DF6C00010C838 /* cityMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46BE1B6DF6C00010C838 /* cityMenu.m */; };
+		E9CA46C21B6E42E90010C838 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */; };
+		E9CA46C51B6E60630010C838 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46C41B6E60630010C838 /* PopoverView.m */; };
 		E9CA8DD31B370F88001F5887 /* ShoppingDGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */; };
 		E9CF01ED1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */; };
 		E9CF01F01AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EF1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m */; };
@@ -352,6 +357,10 @@
 		E95103551AD3807500D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		E95103561AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E95103571AD3807600D98D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9516E501B6FAFFB00E01C1F /* jpImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jpImg@2x.png"; path = "Resource/jpImg@2x.png"; sourceTree = "<group>"; };
+		E9516E511B6FAFFB00E01C1F /* zhImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zhImg@2x.png"; path = "Resource/zhImg@2x.png"; sourceTree = "<group>"; };
+		E9516E541B6FB98600E01C1F /* ShoppingDGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDGDetailViewController.h; path = ViewControllers/Shopping/ShoppingDGDetailViewController.h; sourceTree = "<group>"; };
+		E9516E551B6FB98600E01C1F /* ShoppingDGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDGDetailViewController.m; path = ViewControllers/Shopping/ShoppingDGDetailViewController.m; sourceTree = "<group>"; };
 		E959EF361B25D2A0006CB977 /* DiscoveryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryDetailViewController.h; path = ViewControllers/Discovery/DiscoveryDetailViewController.h; sourceTree = "<group>"; };
 		E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryDetailViewController.m; path = ViewControllers/Discovery/DiscoveryDetailViewController.m; sourceTree = "<group>"; };
 		E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuyListViewController.h; path = ViewControllers/My/MyBuyListViewController.h; sourceTree = "<group>"; };
@@ -418,8 +427,6 @@
 		E98999431B52AA8C008C9392 /* PlayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayTableViewCell.m; path = Views/Play/PlayTableViewCell.m; sourceTree = "<group>"; };
 		E98999461B52AFD4008C9392 /* playdemoPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playdemoPro.png; path = Resource/playdemoPro.png; sourceTree = "<group>"; };
 		E98999481B52B3E5008C9392 /* starProRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starProRed.png; path = Resource/starProRed.png; sourceTree = "<group>"; };
-		E989994A1B52B91A008C9392 /* jpImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jpImg.png; path = Resource/jpImg.png; sourceTree = "<group>"; };
-		E989994B1B52B91A008C9392 /* zhImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zhImg.png; path = Resource/zhImg.png; sourceTree = "<group>"; };
 		E9899F781ACCF713009722C4 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "Resource/Icon-40.png"; sourceTree = "<group>"; };
 		E9899F791ACCF713009722C4 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "Resource/Icon-40@2x.png"; sourceTree = "<group>"; };
 		E9899F7A1ACCF713009722C4 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60.png"; path = "Resource/Icon-60.png"; sourceTree = "<group>"; };
@@ -431,6 +438,7 @@
 		E9899F801ACCF713009722C4 /* Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@3x.png"; path = "Resource/Icon@3x.png"; sourceTree = "<group>"; };
 		E9899F811ACCF713009722C4 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = Resource/iTunesArtwork.png; sourceTree = "<group>"; };
 		E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Resource/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		E9A18E851B65273D00FA66EC /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@3x.png"; path = "Resource/share@3x.png"; sourceTree = "<group>"; };
 		E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFeedBackViewController.h; path = ViewControllers/My/MyFeedBackViewController.h; sourceTree = "<group>"; };
 		E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFeedBackViewController.m; path = ViewControllers/My/MyFeedBackViewController.m; sourceTree = "<group>"; };
 		E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowLeft@2x.png"; path = "Resource/arrowLeft@2x.png"; sourceTree = "<group>"; };
@@ -468,6 +476,12 @@
 		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
 		E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationTableViewCell.h; path = Views/AddSubTripLocationTableViewCell.h; sourceTree = "<group>"; };
 		E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationTableViewCell.m; path = Views/AddSubTripLocationTableViewCell.m; sourceTree = "<group>"; };
+		E9CA46BD1B6DF6C00010C838 /* cityMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cityMenu.h; path = Vendors/cityMenu.h; sourceTree = "<group>"; };
+		E9CA46BE1B6DF6C00010C838 /* cityMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cityMenu.m; path = Vendors/cityMenu.m; sourceTree = "<group>"; };
+		E9CA46C01B6E42E90010C838 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSegmentedControl.h; path = Vendors/HMSegmentedControl.h; sourceTree = "<group>"; };
+		E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSegmentedControl.m; path = Vendors/HMSegmentedControl.m; sourceTree = "<group>"; };
+		E9CA46C31B6E60630010C838 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverView.h; path = Vendors/PopoverView.h; sourceTree = "<group>"; };
+		E9CA46C41B6E60630010C838 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverView.m; path = Vendors/PopoverView.m; sourceTree = "<group>"; };
 		E9CA8DD11B370F88001F5887 /* ShoppingDGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDGTableViewCell.h; path = Views/Shopping/ShoppingDGTableViewCell.h; sourceTree = "<group>"; };
 		E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDGTableViewCell.m; path = Views/Shopping/ShoppingDGTableViewCell.m; sourceTree = "<group>"; };
 		E9CF01EB1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailTitleTableViewCell.h; path = Views/Shopping/ShoppingDetailTitleTableViewCell.h; sourceTree = "<group>"; };
@@ -782,6 +796,9 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E9CA46C01B6E42E90010C838 /* HMSegmentedControl.h */,
+				E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */,
+				E9A18E801B64D3B400FA66EC /* cityMenu */,
 				E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */,
 				E947EE791B2B188F00012957 /* DropMenu */,
 				E947EE6F1B2B0B1900012957 /* TableMenu */,
@@ -957,6 +974,17 @@
 			name = Play;
 			sourceTree = "<group>";
 		};
+		E9A18E801B64D3B400FA66EC /* cityMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E9CA46C31B6E60630010C838 /* PopoverView.h */,
+				E9CA46C41B6E60630010C838 /* PopoverView.m */,
+				E9CA46BD1B6DF6C00010C838 /* cityMenu.h */,
+				E9CA46BE1B6DF6C00010C838 /* cityMenu.m */,
+			);
+			name = cityMenu;
+			sourceTree = "<group>";
+		};
 		E9B170B31ABFE45000722C2F /* Edit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,6 +1042,8 @@
 				E9E0232B1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m */,
 				E9DE1A861B2738000040BFA6 /* ShoppingDGViewController.h */,
 				E9DE1A871B2738000040BFA6 /* ShoppingDGViewController.m */,
+				E9516E541B6FB98600E01C1F /* ShoppingDGDetailViewController.h */,
+				E9516E551B6FB98600E01C1F /* ShoppingDGDetailViewController.m */,
 				E947EE731B2B11A300012957 /* ShoppingPopProductViewController.h */,
 				E947EE741B2B11A300012957 /* ShoppingPopProductViewController.m */,
 				E947EE761B2B11C000012957 /* ShoppingPopShopViewController.h */,
@@ -1051,8 +1081,9 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				E989994A1B52B91A008C9392 /* jpImg.png */,
-				E989994B1B52B91A008C9392 /* zhImg.png */,
+				E9516E501B6FAFFB00E01C1F /* jpImg@2x.png */,
+				E9516E511B6FAFFB00E01C1F /* zhImg@2x.png */,
+				E9A18E851B65273D00FA66EC /* share@3x.png */,
 				E98999481B52B3E5008C9392 /* starProRed.png */,
 				E98999461B52AFD4008C9392 /* playdemoPro.png */,
 				E9F1C8BD1B41829C008FFD28 /* ad00.jpg */,
@@ -1421,6 +1452,7 @@
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
 				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9899F851ACCF713009722C4 /* Icon-60.png in Resources */,
+				E9A18E861B65273D00FA66EC /* share@3x.png in Resources */,
 				E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */,
 				E95C88EF1B385B6C00E3B050 /* searchBarbg@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
@@ -1443,7 +1475,6 @@
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
-				E989994C1B52B91A008C9392 /* jpImg.png in Resources */,
 				E9DE1AA51B29F1000040BFA6 /* ad01.jpg in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
 				E9F5CE971ACA3E0D00FDE3B0 /* search@2x.png in Resources */,
@@ -1451,6 +1482,7 @@
 				E9D98ECB1AEDE9C7004805E5 /* iconFeedBack.png in Resources */,
 				E98999471B52AFD4008C9392 /* playdemoPro.png in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
+				E9516E531B6FAFFB00E01C1F /* zhImg@2x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
 				E9B901C51AC9492D001F4EA0 /* tab_shopping.png in Resources */,
@@ -1476,7 +1508,6 @@
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
 				E9F1C8B51B403BDD008FFD28 /* tripGray@3x.png in Resources */,
 				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
-				E989994D1B52B91A008C9392 /* zhImg.png in Resources */,
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
@@ -1514,6 +1545,7 @@
 				E9DE1AA81B29F1000040BFA6 /* ad04.jpg in Resources */,
 				E9B901C41AC9492D001F4EA0 /* tab_play@2x.png in Resources */,
 				E9D0FAFB1AEA2FA900CC9664 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				E9516E521B6FAFFB00E01C1F /* jpImg@2x.png in Resources */,
 				E9E023221AE2028B0054F03D /* productDemo1.png in Resources */,
 				E9D98ECC1AEDE9C7004805E5 /* iconLikeGo.png in Resources */,
 				E9F1C8B41B403BDD008FFD28 /* myGray@3x.png in Resources */,
@@ -1570,6 +1602,7 @@
 				E947EE781B2B11C000012957 /* ShoppingPopShopViewController.m in Sources */,
 				E9CA8DD31B370F88001F5887 /* ShoppingDGTableViewCell.m in Sources */,
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
+				E9CA46BF1B6DF6C00010C838 /* cityMenu.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
@@ -1591,6 +1624,7 @@
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */,
 				E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */,
+				E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */,
 				E947EE751B2B11A300012957 /* ShoppingPopProductViewController.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
@@ -1612,6 +1646,8 @@
 				E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
 				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
+				E9CA46C51B6E60630010C838 /* PopoverView.m in Sources */,
+				E9CA46C21B6E42E90010C838 /* HMSegmentedControl.m in Sources */,
 				E9DE1A881B2738000040BFA6 /* ShoppingDGViewController.m in Sources */,
 				E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */,
 				E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */,

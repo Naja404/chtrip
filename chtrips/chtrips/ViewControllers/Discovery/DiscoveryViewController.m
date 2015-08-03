@@ -34,6 +34,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 - (void) viewWillAppear:(BOOL)animated
 {
 //    self.tabBarController.tabBar.hidden = NO;
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (void)viewDidLoad {
@@ -264,6 +265,10 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     }
     
     self.hidesBottomBarWhenPushed = YES;
+   
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrowLeft"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
     [self.navigationController pushViewController:detail animated:YES];
 }

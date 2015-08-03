@@ -10,10 +10,12 @@
 #import "PlayTableViewCell.h"
 #import "DOPDropDownMenu.h"
 #import "PlayDetailViewController.h"
+#import "PopoverView.h"
+#import "HMSegmentedControl.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 
-@interface PlayViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface PlayViewController () <DOPDropDownMenuDataSource, DOPDropDownMenuDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UISegmentedControl *shopSegmented;
 @property (nonatomic, strong) NSArray *classifys;
 @property (nonatomic, strong) NSArray *cates;
@@ -26,19 +28,27 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) NSMutableArray *playData;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
 
+
+@property (nonatomic, strong) UIButton *cityBTN;
+
+@property (nonatomic, strong) UIView *cateMenuView;
+
 @end
 
 @implementation PlayViewController
 
 - (void) viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupSegmentedControl];
+    [self setupCityBTN];
     [self setupDOPMenu];
     [self setupPlayList];
+    [self setupCityMenu];
+    [self setupCateMenu];
 
     // Do any additional setup after loading the view.
 }
@@ -48,11 +58,60 @@ static NSString * const PLAY_CELL = @"playCell";
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setupSegmentedControl {
-    UISegmentedControl *segmented = [[UISegmentedControl alloc] initWithItems:@[@"城市"]];
-    segmented.frame = CGRectMake(20.0, 20.0, 60, 30);
-    segmented.selectedSegmentIndex = 0;
-    self.navigationItem.titleView = segmented;
+- (void) setupCityMenu {
+
+}
+
+- (void) setupCityBTN {
+    self.cityBTN = [UIButton newAutoLayoutView];
+    
+    [self.view addSubview:_cityBTN];
+   
+    [_cityBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:25];
+//    [_cityBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.navigationController.view];
+    [_cityBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [_cityBTN autoSetDimensionsToSize:CGSizeMake(50, 25)];
+    [_cityBTN setTitle:@"城市" forState:UIControlStateNormal];
+    _cityBTN.backgroundColor = [UIColor redColor];
+    _cityBTN.layer.cornerRadius = 5;
+    
+    [_cityBTN addTarget:self action:@selector(showCityMenu:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void) showCityMenu:(UIButton *)sender {
+    CGPoint point = CGPointMake(sender.frame.origin.x + sender.frame.size.width/2, sender.frame.origin.y + sender.frame.size.height);
+    NSArray *titles = @[@"东京", @"奈良", @"横滨", @"大阪"];
+    PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:titles images:nil];
+    pop.selectRowAtIndex = ^(NSInteger index){
+        NSLog(@"select index:%d", index);
+        self.cityBTN.titleLabel.text = [titles objectAtIndex:index];
+    };
+    [pop show];
+    
+}
+
+
+
+- (void) setupCateMenu {
+    self.cateMenuView = [UIView newAutoLayoutView];
+    [self.view addSubview:_cateMenuView];
+    
+    [_cateMenuView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:64];
+    [_cateMenuView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_cateMenuView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_cateMenuView autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 30)];
+    _cateMenuView.backgroundColor = MENU_DEFAULT_COLOR;
+    
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"美食", @"酒店", @"景点"]];
+    [segmentedControl setFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+    [segmentedControl setBackgroundColor:[UIColor colorWithRed:237/255.0 green:239/255.0 blue:240/255.0 alpha:1]];
+    [segmentedControl setSelectionIndicatorMode:HMSelectionIndicatorResizesToStringWidth];
+    [segmentedControl setIndexChangeBlock:^(NSUInteger index) {
+        NSLog(@"select index %i", index);
+    }];
+    [self.cateMenuView addSubview:segmentedControl];
+
 }
 
 - (void) setupDOPMenu {
@@ -73,6 +132,11 @@ static NSString * const PLAY_CELL = @"playCell";
     [menu selectDefalutIndexPath];
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+}
 #pragma mark DOPMenu
 
 - (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
@@ -142,7 +206,7 @@ static NSString * const PLAY_CELL = @"playCell";
     self.playTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_playTV];
     
-    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:44];
+    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:64];
     [_playTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_playTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_playTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];

@@ -17,9 +17,9 @@
         self.shopImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_shopImg];
         
-        [_shopImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:10];
-        [_shopImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
-        [_shopImg autoSetDimensionsToSize:CGSizeMake(100, 100)];
+        [_shopImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+        [_shopImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
+        [_shopImg autoSetDimensionsToSize:CGSizeMake(75, 60)];
         
         self.title = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_title];

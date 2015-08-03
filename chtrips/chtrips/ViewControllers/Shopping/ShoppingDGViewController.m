@@ -11,6 +11,7 @@
 #import "ShoppingDGTableViewCell.h"
 #import "ShoppingPopularityTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ShoppingDGDetailViewController.h"
 
 static NSString * const SHOP_CELL = @"ShoppingDGCell";
 static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
@@ -31,6 +32,10 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 @end
 
 @implementation ShoppingDGViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -192,10 +197,11 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [_shopTV autoPinToTopLayoutGuideOfViewController:self withInset:44];
     [_shopTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_shopTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_shopTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:44];
+    [_shopTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];
     
     _shopTV.delegate = self;
     _shopTV.dataSource = self;
+    _shopTV.separatorStyle = UITableViewCellAccessoryNone;
     
     self.refreshTV = [[UIRefreshControl alloc] init];
     [_shopTV addSubview:_refreshTV];
@@ -211,7 +217,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    return 85;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -244,10 +250,27 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
         cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
         cell.priceJPLB.text = [cellData objectForKey:@"price_jp"];
-        cell.summaryLB.text = [cellData objectForKey:@"summary"];
+//        cell.summaryLB.text = [cellData objectForKey:@"summary"];
         return cell;
     }
 
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
+    
+    ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
+    NSLog(@"indexPath is %@", indexPath);
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+    UIBarButtonItem *backBTN = [[UIBarButtonItem alloc] init];
+    backBTN.title = @"";
+    backBTN.image = [UIImage imageNamed:@"arrowLeft"];
+    self.navigationItem.backBarButtonItem = backBTN;
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
 }
 
 

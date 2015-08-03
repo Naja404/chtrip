@@ -1,39 +1,38 @@
 //
-//  PlayDetailViewController.m
+//  ShoppingDGDetailViewController.m
 //  chtrips
 //
-//  Created by Hisoka on 15/7/19.
+//  Created by Hisoka on 15/8/3.
 //  Copyright (c) 2015年 HSK.ltd. All rights reserved.
 //
 
-#import "PlayDetailViewController.h"
+#import "ShoppingDGDetailViewController.h"
+#import "WebViewJavascriptBridge.h"
 
-@interface PlayDetailViewController ()<UIWebViewDelegate>
+@interface ShoppingDGDetailViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) UIButton *popBTN;
+@property WebViewJavascriptBridge *bridge;
 
 @end
 
-@implementation PlayDetailViewController
+@implementation ShoppingDGDetailViewController
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBarHidden = NO;
+- (void) viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-//    self.navigationController.navigationBarHidden = YES;
-//    self.tabBarController.tabBar.hidden = NO;
-
+- (void) viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = NO;
+    self.tabBarController.tabBar.hidden = NO;
     [SVProgressHUD dismiss];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUrlPage];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -46,16 +45,25 @@
     self.webView = [[UIWebView alloc] initForAutoLayout];
     [self.view addSubview:_webView];
     
-//    [_webView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
-    [_webView autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
+    //    [_webView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
+    
+    [_webView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
     [_webView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_webView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_webView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:50.0];
+    [_webView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
     self.webView.delegate = self;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
+    
+    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"what data is %@", data);
+        if ([data isEqualToString:@"backBTN"]) {
+            [self popToShoppingDG];
+        }
+        responseCallback(@"call back");
+    }];
     
 }
 
@@ -66,19 +74,7 @@
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
     [SVProgressHUD dismiss];
 }
-- (void) setupPopBTN {
-    self.popBTN = [UIButton newAutoLayoutView];
-    [self.view addSubview:_popBTN];
-    
-    [_popBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
-    [_popBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20];
-    [_popBTN autoSetDimensionsToSize:CGSizeMake(30, 30)];
-    
-    [_popBTN setBackgroundImage:[UIImage imageNamed:@"arrowLeft"] forState:UIControlStateNormal];
-    [_popBTN addTarget:self action:@selector(popToDiscovery) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void) popToDiscovery {
+- (void) popToShoppingDG {
     [self.navigationController popViewControllerAnimated:YES];
 }
 /*

@@ -22,19 +22,24 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.tabBarController.hidesBottomBarWhenPushed = YES;
+//    self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+//    self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidLoad {
-//    self.tabBarController.tabBar.hidden = YES;
+//    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+//    [self.navigationController.navigationBar setTintColor:[UIColor grayColor]];
     [super viewDidLoad];
     [self setupUrlPage];
 //    [self setupPopBTN];
 
+    [self setNavBar];
     // Do any additional setup after loading the view.
 }
 
@@ -42,6 +47,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) setNavBar {
+
+    
+}
+
+
 - (void) setupUrlPage{
     self.webView = [[UIWebView alloc] initForAutoLayout];
     [self.view addSubview:_webView];
@@ -64,6 +76,14 @@
     }];
     
     
+}
+
+- (void) webViewDidStartLoad:(UIWebView *)webView {
+    [SVProgressHUD show];
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView {
+    [SVProgressHUD dismiss];
 }
 
 - (void) setupPopBTN {

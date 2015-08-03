@@ -22,4 +22,6 @@
 
 #define BLACK_FONT_TEXT [UIFont fontWithName:@"Arial Black" size:20.0f];
 
+#define MENU_DEFAULT_COLOR [UIColor colorWithRed:237/255.0 green:239/255.0 blue:240/255.0 alpha:1];
+
 #endif
