@@ -12,6 +12,7 @@
 #import "PlayDetailViewController.h"
 #import "PopoverView.h"
 #import "HMSegmentedControl.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 
@@ -27,6 +28,7 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) UITableView *playTV;
 @property (nonatomic, strong) NSMutableArray *playData;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
+@property (nonatomic, strong) NSString *selectIndex;
 
 
 @property (nonatomic, strong) UIButton *cityBTN;
@@ -43,7 +45,10 @@ static NSString * const PLAY_CELL = @"playCell";
 }
 
 - (void)viewDidLoad {
+    self.selectIndex = @"2";
+    
     [super viewDidLoad];
+    [self getShopList];
     [self setupCityBTN];
     [self setupDOPMenu];
     [self setupPlayList];
@@ -60,6 +65,24 @@ static NSString * const PLAY_CELL = @"playCell";
 
 - (void) setupCityMenu {
 
+}
+
+#pragma mark 获取商家列表
+- (void) getShopList {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:self.selectIndex forKey:@"shopType"];
+    
+    [[HttpManager instance] requestWithMethod:@"Product/shopList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSLog(@"shoplist data is %@", result);
+                                          self.playData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                          
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          
+                                      }];
 }
 
 - (void) setupCityBTN {
@@ -108,10 +131,18 @@ static NSString * const PLAY_CELL = @"playCell";
     [segmentedControl setBackgroundColor:[UIColor colorWithRed:237/255.0 green:239/255.0 blue:240/255.0 alpha:1]];
     [segmentedControl setSelectionIndicatorMode:HMSelectionIndicatorResizesToStringWidth];
     [segmentedControl setIndexChangeBlock:^(NSUInteger index) {
-        NSLog(@"select index %i", index);
+        self.selectIndex = [NSString stringWithFormat:@"%d", (index + 2)];
+        [self reloadShopTVData];
+        NSLog(@"select index %i", (index + 2));
     }];
     [self.cateMenuView addSubview:segmentedControl];
 
+}
+
+- (void) reloadShopTVData {
+    [self getShopList];
+    [self.playTV reloadData];
+    
 }
 
 - (void) setupDOPMenu {
@@ -213,6 +244,7 @@ static NSString * const PLAY_CELL = @"playCell";
     
     _playTV.delegate = self;
     _playTV.dataSource = self;
+    _playTV.separatorStyle = UITableViewCellAccessoryNone;
     
     self.refreshTV = [[UIRefreshControl alloc] init];
     [_playTV addSubview:_refreshTV];
@@ -234,14 +266,20 @@ static NSString * const PLAY_CELL = @"playCell";
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [self.playData count];
-    return 15;
+    return [self.playData count];
+//    return 15;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PlayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_CELL];
-    cell.bigTitleLB.text = @"猫棒小吃";
-    cell.avgLB.text = @"27$/人";
+    
+    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
+    
+    NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
+    [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+    
+    cell.bigTitleLB.text = [cellData objectForKey:@"name"];
+    cell.avgLB.text = [cellData objectForKey:@"avg_price"];
     cell.jpLB.text = @"74,123JPY";
     cell.zhLB.text = @"3,111RMB";
     
@@ -253,12 +291,15 @@ static NSString * const PLAY_CELL = @"playCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
-    detailVC.webUrl = @"http://api.atniwo.com/shop.html";
-    detailVC.navigationItem.title = @"高岛屋";
+    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
+    
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+    detailVC.navigationItem.title = [cellData objectForKey:@"name"];
     UIBarButtonItem *backBTN = [[UIBarButtonItem alloc] init];
     backBTN.title = @"";
     backBTN.image = [UIImage imageNamed:@"arrowLeft"];
     self.navigationItem.backBarButtonItem = backBTN;
+    detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     
 }

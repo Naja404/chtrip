@@ -55,6 +55,7 @@
 		E91FBCDD1AB92555005CA250 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD91AB92555005CA250 /* background1.png */; };
 		E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCDA1AB92555005CA250 /* background1@2x.png */; };
 		E937AD011B064A2900D5386A /* MyAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E937AD001B064A2900D5386A /* MyAboutUsViewController.m */; };
+		E93AFC241B78F15B00B41F61 /* UIViewController+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */; };
 		E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2431AC3F5E300247B87 /* bluepoint.png */; };
 		E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2441AC3F5E300247B87 /* redpoint.jpg */; };
 		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
@@ -324,6 +325,8 @@
 		E937ACFE1B0640F900D5386A /* StyleDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleDefine.h; path = Utils/Defines/StyleDefine.h; sourceTree = "<group>"; };
 		E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAboutUsViewController.h; path = ViewControllers/My/MyAboutUsViewController.h; sourceTree = "<group>"; };
 		E937AD001B064A2900D5386A /* MyAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAboutUsViewController.m; path = ViewControllers/My/MyAboutUsViewController.m; sourceTree = "<group>"; };
+		E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BackItem.h"; path = "Vendors/UIViewController+BackItem.h"; sourceTree = "<group>"; };
+		E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackItem.m"; path = "Vendors/UIViewController+BackItem.m"; sourceTree = "<group>"; };
 		E93CF2431AC3F5E300247B87 /* bluepoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluepoint.png; path = Resource/bluepoint.png; sourceTree = "<group>"; };
 		E93CF2441AC3F5E300247B87 /* redpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = redpoint.jpg; path = Resource/redpoint.jpg; sourceTree = "<group>"; };
 		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
@@ -796,6 +799,8 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */,
+				E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */,
 				E9CA46C01B6E42E90010C838 /* HMSegmentedControl.h */,
 				E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */,
 				E9A18E801B64D3B400FA66EC /* cityMenu */,
@@ -1603,6 +1608,7 @@
 				E9CA8DD31B370F88001F5887 /* ShoppingDGTableViewCell.m in Sources */,
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E9CA46BF1B6DF6C00010C838 /* cityMenu.m in Sources */,
+				E93AFC241B78F15B00B41F61 /* UIViewController+BackItem.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,

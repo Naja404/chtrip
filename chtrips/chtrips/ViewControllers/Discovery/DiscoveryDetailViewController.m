@@ -22,7 +22,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.tabBarController.hidesBottomBarWhenPushed = YES;
-//    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
 }

@@ -74,9 +74,9 @@
     
     PlayViewController *playVC = [[PlayViewController alloc] init];
     playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"worthGray"] tag:3];
-    
-    TripListViewController *tripVC = [[TripListViewController alloc] init];
-    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tripGray"] tag:4];
+//    
+//    TripListViewController *tripVC = [[TripListViewController alloc] init];
+//    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tripGray"] tag:4];
     
     MyViewController *myVC = [[MyViewController alloc] init];
     myVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_MY", Nil) image:[UIImage imageNamed:@"myGray"] tag:5];
@@ -84,10 +84,10 @@
     discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
     shoppingNav = [[UINavigationController alloc] initWithRootViewController:shoppingVC];
     playNav = [[UINavigationController alloc] initWithRootViewController:playVC];
-    tripNav = [[UINavigationController alloc] initWithRootViewController:tripVC];
+//    tripNav = [[UINavigationController alloc] initWithRootViewController:tripVC];
     myNav = [[UINavigationController alloc] initWithRootViewController:myVC];
     
-    NSArray *navArr = @[discoveryNav, shoppingNav, playNav, tripNav, myNav];
+    NSArray *navArr = @[discoveryNav, shoppingNav, playNav, myNav];
     
     tabBarController = [[UITabBarController alloc] init];
     [tabBarController.tabBar setSelectedImageTintColor:[UIColor redColor]];

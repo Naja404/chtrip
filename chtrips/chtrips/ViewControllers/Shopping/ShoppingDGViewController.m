@@ -176,6 +176,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (void) getShopList {
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:@"2" forKey:@"shopType"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
@@ -268,7 +269,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     backBTN.title = @"";
     backBTN.image = [UIImage imageNamed:@"arrowLeft"];
     self.navigationItem.backBarButtonItem = backBTN;
-    self.hidesBottomBarWhenPushed = YES;
+    detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     
 }

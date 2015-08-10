@@ -26,7 +26,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
 //    self.navigationController.navigationBarHidden = YES;
 //    self.tabBarController.tabBar.hidden = NO;
-
     [SVProgressHUD dismiss];
 }
 
@@ -46,11 +45,10 @@
     self.webView = [[UIWebView alloc] initForAutoLayout];
     [self.view addSubview:_webView];
     
-//    [_webView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
-    [_webView autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
+    [_webView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
     [_webView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_webView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_webView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:50.0];
+    [_webView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
     self.webView.delegate = self;
     
