@@ -264,7 +264,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         detail.webUrl = @"http://api.atniwo.com/product.html";
     }
     
-    self.hidesBottomBarWhenPushed = YES;
+    // self.hidesBottomBarWhenPushed = YES;
+    detail.hidesBottomBarWhenPushed = YES;
    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrowLeft"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
