@@ -68,6 +68,7 @@
 "TEXT_FEEDBACK_SEND_SUCCESS" = "反馈成功";
 "TEXT_ADD_BUYLIST_SUCCESS" = "成功添加清单";
 "TEXT_NOT_BUYLIST" = "暂无扫货清单,赶快去添加吧";
+"TEXT_REFERENCE_PRICE" = "Ref Price";
 
 
 // alert text

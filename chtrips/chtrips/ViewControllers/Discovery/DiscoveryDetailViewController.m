@@ -8,6 +8,7 @@
 
 #import "DiscoveryDetailViewController.h"
 #import "WebViewJavascriptBridge.h"
+#import "UIViewController+BackItem.h"
 
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 
@@ -28,8 +29,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-//    self.navigationController.navigationBarHidden = YES;
-    self.tabBarController.tabBar.hidden = NO;
+    [SVProgressHUD dismiss];
 }
 
 - (void)viewDidLoad {
@@ -37,6 +37,8 @@
 //    [self.navigationController.navigationBar setTintColor:[UIColor grayColor]];
     [super viewDidLoad];
     [self setupUrlPage];
+    [self customizeBackItem];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 //    [self setupPopBTN];
 
     [self setNavBar];
@@ -67,13 +69,13 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
-    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"what data is %@", data);
-        if ([data isEqualToString:@"backBTN"]) {
-            [self popToDiscovery];
-        }
-        responseCallback(@"call back");
-    }];
+//    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"what data is %@", data);
+//        if ([data isEqualToString:@"backBTN"]) {
+//            [self popToDiscovery];
+//        }
+//        responseCallback(@"call back");
+//    }];
     
     
 }

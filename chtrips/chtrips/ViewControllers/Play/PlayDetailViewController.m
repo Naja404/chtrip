@@ -7,6 +7,7 @@
 //
 
 #import "PlayDetailViewController.h"
+#import "UIViewController+BackItem.h"
 
 @interface PlayDetailViewController ()<UIWebViewDelegate>
 
@@ -32,7 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUrlPage];
+    [self customizeBackItem];
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     // Do any additional setup after loading the view.
 }
 

@@ -42,22 +42,23 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [self setupSegmentedControl];
     [self setupDOPMenu];
     
-    [self getProductList];
     [self setupShopList];
-    // Do any additional setup after loading the view.
+    [self getProductList];
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void) setupSegmentedControl {
     self.shopSegmented = [[UISegmentedControl alloc] initWithItems:@[@"人气商品",@"商家"]];
     _shopSegmented.frame = CGRectMake(20.0, 20.0, 150, 30);
     _shopSegmented.selectedSegmentIndex = 0;
+    _shopSegmented.tintColor = [UIColor redColor];
     [_shopSegmented addTarget:self action:@selector(shopSegmentAction:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _shopSegmented;
 }
 
 - (void) shopSegmentAction:(id)sender {
     int selectIndex = _shopSegmented.selectedSegmentIndex;
-    [self.refreshTV beginRefreshing];
     
     [self.shopData removeAllObjects];
     
@@ -66,8 +67,6 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     }else{
         [self getProductList];
     }
-    [self.refreshTV endRefreshing];
-    [self.shopTV reloadData];
 }
 
 - (void) setupDOPMenu {
@@ -158,36 +157,47 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 #pragma mark 获取产品列表
 - (void) getProductList {
+    [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     
     [[HttpManager instance] requestWithMethod:@"Product/proList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
+                                          NSLog(@"Productlist data is %@", result);
                                           self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"proList"]];
+                                          [self.shopTV reloadData];
+                                          [SVProgressHUD dismiss];
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          
+                                          [SVProgressHUD dismiss];
                                       }];
-    
+
 }
 
 #pragma mark 获取商家列表
 - (void) getShopList {
+    
+    [SVProgressHUD show];
+    
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
-    [paramter setObject:@"2" forKey:@"shopType"];
+    [paramter setObject:@"1" forKey:@"shopType"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"shoplist data is %@", result);
                                           self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                          [self.shopTV reloadData];
+                                          [SVProgressHUD dismiss];
                                           
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD dismiss];
                                           
                                       }];
+
 }
 
 #pragma mark shop tableview
@@ -222,7 +232,12 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.shopData count];
+
+    if ([self.shopData count] <= 0) {
+        return 0;
+    }else{
+        return [self.shopData count];
+    }
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -233,10 +248,25 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
         
-        NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"img_url"]];
-        [cell.shopImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
-        cell.title.text = [cellData objectForKey:@"name"];
-        cell.address.text = [cellData objectForKey:@"address"];
+        NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
+        
+        [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        cell.bigTitleLB.text = [cellData objectForKey:@"name"];
+        cell.avgLB.text = [cellData objectForKey:@"avg_price"];
+        cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
+        cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
+        
+        NSInteger starSize = [[cellData objectForKey:@"avg_rating"] intValue];
+        
+        UIImageView *grayStar = [UIImageView newAutoLayoutView];
+        [cell.contentView addSubview:grayStar];
+        
+        [grayStar autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:cell.bigTitleLB withOffset:starSize];
+        [grayStar autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:cell.bigTitleLB withOffset:5];
+        [grayStar autoSetDimensionsToSize:CGSizeMake(85 - starSize, 18)];
+        grayStar.backgroundColor = [UIColor whiteColor];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     }else{
@@ -246,12 +276,13 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
         
-        [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+        [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
         cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
         cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
         cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
         cell.priceJPLB.text = [cellData objectForKey:@"price_jp"];
-//        cell.summaryLB.text = [cellData objectForKey:@"summary"];
+        cell.summaryLB.text = [cellData objectForKey:@"summary_zh"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 
@@ -264,11 +295,14 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
     NSLog(@"indexPath is %@", indexPath);
-    detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
-    UIBarButtonItem *backBTN = [[UIBarButtonItem alloc] init];
-    backBTN.title = @"";
-    backBTN.image = [UIImage imageNamed:@"arrowLeft"];
-    self.navigationItem.backBarButtonItem = backBTN;
+    if (self.shopSegmented.selectedSegmentIndex == 1) {
+        detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+        detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+    }else{
+        detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+        detailVC.navigationItem.title = [cellData objectForKey:@"title_zh"];
+    }
+
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     
@@ -276,8 +310,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 
 - (void) refresh:(UIRefreshControl *)control {
+    [control beginRefreshing];
     [control endRefreshing];
-    [self.shopTV reloadData];
 }
 
 /*

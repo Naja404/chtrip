@@ -13,7 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "JHChainableAnimations.h"
 #import "SearchViewController.h"
-#import "UIViewController+BackItem.h"
+
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
@@ -34,8 +34,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBarHidden = YES;
-//    self.tabBarController.tabBar.hidden = NO;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
 
@@ -269,7 +268,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     detail.hidesBottomBarWhenPushed = YES;
 
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrowLeft"] style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrowLeft"] style:UIBarButtonItemStylePlain target:nil action:nil];
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
     [self.navigationController pushViewController:detail animated:YES];

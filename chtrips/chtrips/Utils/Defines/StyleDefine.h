@@ -24,4 +24,8 @@
 
 #define MENU_DEFAULT_COLOR [UIColor colorWithRed:237/255.0 green:239/255.0 blue:240/255.0 alpha:1];
 
+#define GRAY_FONT_COLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+
+#define BLACK_FONT_COLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
+
 #endif

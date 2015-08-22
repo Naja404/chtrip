@@ -14,29 +14,65 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.shopImg = [UIImageView newAutoLayoutView];
-        [self.contentView addSubview:_shopImg];
+        self.proImg = [UIImageView newAutoLayoutView];
+        [self.contentView addSubview:_proImg];
         
-        [_shopImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
-        [_shopImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
-        [_shopImg autoSetDimensionsToSize:CGSizeMake(75, 60)];
+        [_proImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
+        [_proImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+        [_proImg autoSetDimensionsToSize:CGSizeMake(75, 60)];
         
-        self.title = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_title];
+        _proImg.image = [UIImage imageNamed:@"playdemoPro"];
         
-        [_title autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_shopImg withOffset:20];
-        [_title autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:20];
-        [_title autoSetDimensionsToSize:CGSizeMake(120, 20)];
-        _title.font = [UIFont fontWithName:@"Arial" size:18];
+        self.bigTitleLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_bigTitleLB];
         
-        self.address = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_address];
+        [_bigTitleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_proImg withOffset:10];
+        [_bigTitleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:10];
+        [_bigTitleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 75 - 10 - 10 - 10, 20)];
+        _bigTitleLB.textColor = BLACK_FONT_COLOR;
         
-        [_address autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_shopImg withOffset:20];
-        [_address autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-10];
-        [_address autoSetDimensionsToSize:CGSizeMake(100, 15)];
-        _address.font = [UIFont fontWithName:@"Arial" size:12];
-        _address.textColor = [UIColor grayColor];
+        self.starImg = [UIImageView newAutoLayoutView];
+        [self.contentView addSubview:_starImg];
+        
+        [_starImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_bigTitleLB];
+        [_starImg autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_bigTitleLB withOffset:5];
+        [_starImg autoSetDimensionsToSize:CGSizeMake(85, 18)];
+        //        _starImg.backgroundColor = [UIColor blackColor];
+        _starImg.image = [UIImage imageNamed:@"starProRed"];
+        
+        self.avgLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_avgLB];
+        
+        [_avgLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_starImg withOffset:20];
+        [_avgLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_starImg];
+        [_avgLB autoSetDimensionsToSize:CGSizeMake(80, 20)];
+        _avgLB.textColor = BLACK_FONT_COLOR;
+        
+        self.bgLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_bgLB];
+        
+        [_bgLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:1];
+        [_bgLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
+        [_bgLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 1)];
+        _bgLB.backgroundColor = [UIColor colorWithRed:216/255.0 green:212/255.0 blue:212/255.0 alpha:1];
+        
+        self.areaLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_areaLB];
+        
+        [_areaLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_bigTitleLB];
+        [_areaLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_starImg withOffset:5];
+        [_areaLB autoSetDimensionsToSize:CGSizeMake(85, 18)];
+        _areaLB.font = PLAY_FONT_TEXT;
+        _areaLB.textColor = GRAY_FONT_COLOR;
+        
+        self.cateLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_cateLB];
+        
+        [_cateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_areaLB withOffset:5];
+        [_cateLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_starImg withOffset:5];
+        [_cateLB autoSetDimensionsToSize:CGSizeMake(85, 18)];
+        _cateLB.font = PLAY_FONT_TEXT;
+        _cateLB.textColor = GRAY_FONT_COLOR;
     }
     
     return self;

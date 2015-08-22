@@ -17,10 +17,7 @@
 @property (nonatomic, strong) UILabel *starMaskLB;
 @property (nonatomic, strong) UILabel *avgLB;
 @property (nonatomic, strong) UILabel *bgLB;
-@property (nonatomic, strong) UILabel *proposeLB;
-@property (nonatomic, strong) UIImageView *jpImg;
-@property (nonatomic, strong) UIImageView *zhImg;
-@property (nonatomic, strong) UILabel *jpLB;
-@property (nonatomic, strong) UILabel *zhLB;
+@property (nonatomic, strong) UILabel *areaLB;
+@property (nonatomic, strong) UILabel *cateLB;
 
 @end
