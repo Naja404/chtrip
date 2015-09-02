@@ -13,11 +13,12 @@
 #import "UIImageView+AFNetworking.h"
 #import "JHChainableAnimations.h"
 #import "SearchViewController.h"
+#import "SKSplashIcon.h"
 
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
-@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIScrollViewDelegate, UITextFieldDelegate>
+@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, SKSplashDelegate>
 
 @property (nonatomic, strong) UITableView *discoveryTV;
 @property (nonatomic, strong) NSMutableArray *discoveryTVData;
@@ -29,6 +30,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 @property (nonatomic, strong) UITextField *searchField;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
 
+@property (strong, nonatomic) SKSplashView *splashView;
+@property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 
 @end
 
@@ -42,6 +45,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self twitterSplash];
     self.navigationItem.title = @"Discovery";
     self.navigationController.navigationBarHidden = YES;
     [self setupDiscoveryTV];
@@ -52,13 +56,50 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     // Do any additional setup after loading the view.
 }
+#pragma mark 启动动画
+
+- (void) twitterSplash
+{
+    //Setting the background
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+//    imageView.image = [UIImage imageNamed:@"twitter background.png"];
+//    imageView.image = [UIImage imageNamed:@"Launch_ip5.png"];
+//    [self.view addSubview:imageView];
+    //Twitter style splash
+    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"Launch_ip5.png"] animationType:SKIconAnimationTypeBounce];
+    UIColor *twitterColor = [UIColor colorWithRed:0.25098 green:0.6 blue:1.0 alpha:1.0];
+    _splashView = [[SKSplashView alloc] initWithSplashIcon:twitterSplashIcon backgroundColor:twitterColor animationType:SKSplashAnimationTypeNone];
+    _splashView.delegate = self; //Optional -> if you want to receive updates on animation beginning/end
+    _splashView.animationDuration = 2; //Optional -> set animation duration. Default: 1s
+    [self.view addSubview:_splashView];
+    [_splashView startAnimation];
+}
+
+
+#pragma mark - Delegate methods
+
+- (void) splashView:(SKSplashView *)splashView didBeginAnimatingWithDuration:(float)duration
+{
+    NSLog(@"Started animating from delegate");
+    //To start activity animation when splash animation starts
+    [_indicatorView startAnimating];
+}
+
+- (void) splashViewDidEndAnimating:(SKSplashView *)splashView
+{
+    NSLog(@"Stopped animating from delegate");
+    //To stop activity animation when splash animation ends
+    [_indicatorView stopAnimating];
+    
+    
+}
 
 #pragma mark 获取专辑列表
 
 - (void) getAlbumList {
     [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
     [[HttpManager instance] requestWithMethod:@"Product/albumList"
                                    parameters:paramter
@@ -322,5 +363,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [self getAlbumList];
     [control endRefreshing];
 }
+
 
 @end

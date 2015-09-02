@@ -10,7 +10,6 @@
 #import "ShoppingDetailTitleTableViewCell.h"
 #import "ShoppingDetailPictureTableViewCell.h"
 
-#import <ShareSDK/shareSDK.h>
 
 static NSString * const SHOP_DETAIL_TITLE_CELL = @"shopDetailTitleCell";
 static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
@@ -170,42 +169,6 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 - (void) navShareClick:(id)sender {
     NSLog(@"share btn click");
     
-    //1、构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:@"要分享的内容"
-                                       defaultContent:@"默认内容"
-                                                image:nil
-                                                title:@"ShareSDK"
-                                                  url:@"http://www.mob.com"
-                                          description:@"这是一条演示信息"
-                                            mediaType:SSPublishContentMediaTypeText];
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithBarButtonItem:sender arrowDirect:UIPopoverArrowDirectionUp];
-    
-    [ShareSDK showShareActionSheet:container
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:YES
-                       authOptions:nil
-                      shareOptions:nil
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSResponseStateSuccess) {
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                                    message:nil
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"OK"
-                                                                          otherButtonTitles:nil, nil];
-                                    [alert show];
-                                }else if (state == SSResponseStateFail){
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                                    message:[NSString stringWithFormat:@"失败描述：%@",[error errorDescription]]
-                                                                                   delegate:self
-                                                                          cancelButtonTitle:@"OK"
-                                                                          otherButtonTitles:nil, nil];
-                                    [alert show];
-                                }
-                            }];
-
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -252,7 +215,8 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
 - (void) addBuyList {
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:[self.dicData objectForKey:@"pid"] forKey:@"pid"];
     NSLog(@"paramter is %@", paramter);
     [[HttpManager instance] requestWithMethod:@"User/addBuyList"

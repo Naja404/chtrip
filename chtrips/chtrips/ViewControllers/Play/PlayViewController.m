@@ -65,7 +65,8 @@ static NSString * const PLAY_CELL = @"playCell";
 - (void) getShopList {
     [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:self.selectIndex forKey:@"shopType"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"

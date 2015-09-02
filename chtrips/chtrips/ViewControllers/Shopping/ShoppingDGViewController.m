@@ -159,7 +159,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (void) getProductList {
     [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
     [[HttpManager instance] requestWithMethod:@"Product/proList"
                                    parameters:paramter
@@ -181,7 +182,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [SVProgressHUD show];
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:@"1" forKey:@"shopType"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"

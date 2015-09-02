@@ -19,7 +19,7 @@
         
         [_bgImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
         [_bgImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:13];
-        [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 281)];
+        [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, ScreenWidth)];
         
         self.discoverImg = [UIImageView newAutoLayoutView];
         [self.bgImg addSubview:_discoverImg];
@@ -28,7 +28,8 @@
         [_discoverImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.bgImg];
         [_discoverImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.bgImg];
         [_discoverImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.bgImg];
-        _discoverImg.alpha = 0.5;
+        _discoverImg.backgroundColor = [UIColor blackColor];
+        _discoverImg.alpha = 0.3;
         
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];
@@ -54,18 +55,18 @@
         _leftLB.textAlignment = NSTextAlignmentCenter;
         _leftLB.textColor = [UIColor whiteColor];
         
-        self.buyBTN = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_buyBTN];
+//        self.buyBTN = [UILabel newAutoLayoutView];
+//        [self.contentView addSubview:_buyBTN];
         
-        [_buyBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.leftLB withOffset:40];
-        [_buyBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
-        [_buyBTN autoSetDimensionsToSize:CGSizeMake(120, 25)];
+//        [_buyBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.leftLB withOffset:40];
+//        [_buyBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
+//        [_buyBTN autoSetDimensionsToSize:CGSizeMake(120, 25)];
 //        _buyBTN.backgroundColor = [UIColor colorWithRed:250 green:139 blue:10 alpha:1];
-        _buyBTN.backgroundColor = [UIColor blueColor];
-        _buyBTN.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0f];
-        _buyBTN.text = @"开抢啦!";
-        _buyBTN.textColor = [UIColor whiteColor];
-        _buyBTN.textAlignment = NSTextAlignmentCenter;
+//        _buyBTN.backgroundColor = [UIColor blueColor];
+//        _buyBTN.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0f];
+//        _buyBTN.text = @"开抢啦!";
+//        _buyBTN.textColor = [UIColor whiteColor];
+//        _buyBTN.textAlignment = NSTextAlignmentCenter;
         
     }
     

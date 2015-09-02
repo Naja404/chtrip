@@ -120,7 +120,8 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 - (void) getBuyList{
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
     [[HttpManager instance] requestWithMethod:@"User/getBuyList"
                                    parameters:paramter
