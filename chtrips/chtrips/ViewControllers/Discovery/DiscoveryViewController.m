@@ -266,9 +266,17 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         detail.webUrl = @"http://api.atniwo.com/product.html";
     }
     
+<<<<<<< HEAD
     detail.hidesBottomBarWhenPushed = YES;
 
 //    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrowLeft"] style:UIBarButtonItemStylePlain target:nil action:nil];
+=======
+    // self.hidesBottomBarWhenPushed = YES;
+    detail.hidesBottomBarWhenPushed = YES;
+   
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrowLeft"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+>>>>>>> 158ec7cb634839f61f09de253dee69b5786b4b7f
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
     [self.navigationController pushViewController:detail animated:YES];
