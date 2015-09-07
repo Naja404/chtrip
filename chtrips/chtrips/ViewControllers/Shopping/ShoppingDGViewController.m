@@ -12,6 +12,7 @@
 #import "ShoppingPopularityTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ShoppingDGDetailViewController.h"
+#import "PlayDetailViewController.h"
 
 static NSString * const SHOP_CELL = @"ShoppingDGCell";
 static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
@@ -29,6 +30,9 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 @property (nonatomic, strong) NSMutableArray *shopData;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
 
+@property (nonatomic, strong) NSString *proNextPageNum;
+@property (nonatomic, strong) NSString *shopNextPageNum;
+
 @end
 
 @implementation ShoppingDGViewController
@@ -39,11 +43,16 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.proNextPageNum = @"1";
+    self.shopNextPageNum = @"1";
+    
     [self setupSegmentedControl];
     [self setupDOPMenu];
     
     [self setupShopList];
-    [self getProductList];
+//    [self getProductList:self.proNextPageNum];
+    [self refresh];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
@@ -58,15 +67,10 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 - (void) shopSegmentAction:(id)sender {
-    int selectIndex = _shopSegmented.selectedSegmentIndex;
     
-    [self.shopData removeAllObjects];
+//    [self.shopData removeAllObjects];
     
-    if (selectIndex == 1) {
-        [self getShopList];
-    }else{
-        [self getProductList];
-    }
+    [self refresh];
 }
 
 - (void) setupDOPMenu {
@@ -156,46 +160,73 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 #pragma mark 获取产品列表
-- (void) getProductList {
+- (void) getProductList:(NSString *)PageNum {
     [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
 //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:PageNum forKey:@"pageNum"];
     
     [[HttpManager instance] requestWithMethod:@"Product/proList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"Productlist data is %@", result);
-                                          self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"proList"]];
-                                          [self.shopTV reloadData];
+                                          if ([PageNum isEqualToString:@"1"]) {
+                                              self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"proList"]];
+                                              [self.shopTV reloadData];
+                                              [self.shopTV.header endRefreshing];
+                                          }else{
+                                              [self.shopData addObjectsFromArray:[[result objectForKey:@"data"] objectForKey:@"proList"]];
+                                              [self.shopTV reloadData];
+                                              [self.shopTV.footer endRefreshing];
+                                          }
+                                          
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"1"]) {
+                                              self.proNextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                          }
                                           [SVProgressHUD dismiss];
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [self.shopTV.header endRefreshing];
+                                          [self.shopTV.footer endRefreshing];
                                           [SVProgressHUD dismiss];
                                       }];
 
 }
 
 #pragma mark 获取商家列表
-- (void) getShopList {
+- (void) getShopList:(NSString *)PageNum {
     
     [SVProgressHUD show];
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:@"1" forKey:@"shopType"];
+    [paramter setObject:PageNum forKey:@"pageNum"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"shoplist data is %@", result);
-                                          self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
-                                          [self.shopTV reloadData];
+                                          if ([PageNum isEqualToString:@"1"]) {
+                                              self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                              [self.shopTV reloadData];
+                                              [self.shopTV.header endRefreshing];
+                                          }else{
+                                              [self.shopData addObjectsFromArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                              [self.shopTV reloadData];
+                                              [self.shopTV.footer endRefreshing];
+                                          }
+                                          
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"1"]) {
+                                              self.shopNextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                          }
                                           [SVProgressHUD dismiss];
                                           
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [self.shopTV.header endRefreshing];
+                                          [self.shopTV.footer endRefreshing];
                                           [SVProgressHUD dismiss];
                                           
                                       }];
@@ -215,10 +246,6 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     _shopTV.delegate = self;
     _shopTV.dataSource = self;
     _shopTV.separatorStyle = UITableViewCellAccessoryNone;
-    
-    self.refreshTV = [[UIRefreshControl alloc] init];
-    [_shopTV addSubview:_refreshTV];
-    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     [self.shopTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:SHOP_POP_CELL];
     [self.shopTV registerClass:[ShoppingDGTableViewCell class] forCellReuseIdentifier:SHOP_CELL];
@@ -295,26 +322,63 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
     
-    ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
-    NSLog(@"indexPath is %@", indexPath);
     if (self.shopSegmented.selectedSegmentIndex == 1) {
+        PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+
         detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+        detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
         detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+        detailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
+
     }else{
+        ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
+
         detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+        detailVC.pid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"pid"]];
+        detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"price_zh"]];
         detailVC.navigationItem.title = [cellData objectForKey:@"title_zh"];
+        detailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
+
     }
 
-    detailVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailVC animated:YES];
     
 }
 
 
-- (void) refresh:(UIRefreshControl *)control {
-    [control beginRefreshing];
-    [control endRefreshing];
+- (void) refresh {
+    
+        self.shopTV.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            self.shopNextPageNum = @"1";
+            self.proNextPageNum = @"1";
+            
+            if (self.shopSegmented.selectedSegmentIndex == 1) {
+                [self getShopList:self.shopNextPageNum];
+            }else{
+                [self getProductList:self.proNextPageNum];
+            }
+        }];
+    
+    [self.shopTV.header beginRefreshing];
+
 }
+
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
+        int selectIndex = _shopSegmented.selectedSegmentIndex;
+        [self.shopTV.footer beginRefreshing];
+        
+        self.shopTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            if (selectIndex == 1) {
+                [self getShopList:self.shopNextPageNum];
+            }else{
+                [self getProductList:self.proNextPageNum];
+            }
+        }];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

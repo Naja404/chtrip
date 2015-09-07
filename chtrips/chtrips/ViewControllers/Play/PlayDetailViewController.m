@@ -34,6 +34,7 @@
     [super viewDidLoad];
     [self setupUrlPage];
     [self customizeBackItem];
+    [self setupAddWantGo];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     // Do any additional setup after loading the view.
@@ -42,6 +43,38 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark 添加到我想去
+- (void) setupAddWantGo {
+    UIButton *addWantGoBTN = [UIButton newAutoLayoutView];
+    [self.view addSubview:addWantGoBTN];
+    
+    [addWantGoBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [addWantGoBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [addWantGoBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [addWantGoBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
+    
+    [addWantGoBTN setTitle:@"我想去" forState:UIControlStateNormal];
+    addWantGoBTN.backgroundColor = WANT_GO_COLOR;
+    [addWantGoBTN addTarget:self action:@selector(addWantGoAction) forControlEvents:UIControlEventTouchDown];
+    
+}
+
+#pragma mark 我想去事件
+- (void) addWantGoAction {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:self.sid forKey:@"sid"];
+    NSLog(@"paramter is %@", paramter);
+    [[HttpManager instance] requestWithMethod:@"User/addWantGo"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_WANT_GO", Nil) maskType:SVProgressHUDMaskTypeBlack];
+                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
 }
 
 - (void) setupUrlPage {

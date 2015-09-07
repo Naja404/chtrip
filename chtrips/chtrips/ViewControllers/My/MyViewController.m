@@ -12,6 +12,7 @@
 #import "MyFeedBackViewController.h"
 #import "MyAboutUsViewController.h"
 #import "MyBuyListViewController.h"
+#import "MyWantListViewController.h"
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
@@ -62,7 +63,7 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
     if (section == 0) {
         return 1;
     }else if(section == 1){
-        return 3;
+        return 2;
     }else{
         return 2;
     }
@@ -105,9 +106,6 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
             }else if (indexPath.row == 1){
                 titleText = @"TEXT_MY_WANT_GO";
                 imgPath = @"iconLikeGo";
-            }else if (indexPath.row == 2){
-                titleText = @"TEXT_FAVORITES";
-                imgPath = @"iconFavorites";
             }
         }
         
@@ -138,9 +136,13 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
         if (indexPath.row == 0) {
             MyBuyListViewController *myBuyList = [[MyBuyListViewController alloc] init];
             myBuyList.navigationItem.title = NSLocalizedString(@"TEXT_CELL_BUY_LIST", Nil);
+            myBuyList.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myBuyList animated:YES];
         }else if (indexPath.row == 1){
-            
+            MyWantListViewController *myWantList = [[MyWantListViewController alloc] init];
+            myWantList.navigationItem.title = NSLocalizedString(@"TEXT_CELL_WANT_LIST", Nil);
+            myWantList.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myWantList animated:YES];
         }else{
             
         }
@@ -150,10 +152,12 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
         if (indexPath.row == 0) {
             MyAboutUsViewController *myAboutUs = [[MyAboutUsViewController alloc] init];
             myAboutUs.navigationItem.title = NSLocalizedString(@"TEXT_ABOUT_US", Nil);
+            myAboutUs.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myAboutUs animated:YES];
         }else{
             MyFeedBackViewController *myFeedback = [[MyFeedBackViewController alloc] init];
             myFeedback.navigationItem.title = NSLocalizedString(@"TEXT_FEEDBACK", Nil);
+            myFeedback.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myFeedback animated:YES];
         }
     }

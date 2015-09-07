@@ -11,5 +11,6 @@
 @interface PlayDetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *webUrl;
+@property (nonatomic, strong) NSString *sid;
 
 @end

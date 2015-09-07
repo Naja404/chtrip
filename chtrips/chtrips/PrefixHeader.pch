@@ -51,4 +51,5 @@
     #import "ObjectiveRecord.h"
     #import "HttpManager.h"
     #import "CHSSID.h"
+    #import "MJRefresh.h"
 #endif

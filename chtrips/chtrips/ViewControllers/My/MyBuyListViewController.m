@@ -10,6 +10,7 @@
 #import "MyBuyListTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ShoppingPopularityDetailViewController.h"
+#import "ShoppingPopularityTableViewCell.h"
 
 static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
@@ -20,21 +21,21 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 @property (nonatomic, strong) NSMutableArray *buyListData;
 @property (nonatomic, strong) UILabel *priceZH;
 @property (nonatomic, strong) UILabel *priceJP;
+@property (nonatomic, strong) UIRefreshControl *refreshTV;
 
 @end
 
 @implementation MyBuyListViewController
 
-- (void) viewWillAppear:(BOOL)animated{
-    
-    self.tabBarController.tabBar.hidden = YES;
+- (void)viewWillDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getBuyList];
     [self setupBuyListTV];
-
+    [self refresh:self.refreshTV];
     // Do any additional setup after loading the view.
 }
 
@@ -58,12 +59,14 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
     _buyListTV.dataSource = self;
     _buyListTV.delegate = self;
+    _buyListTV.separatorStyle = UITableViewCellAccessoryNone;
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [_buyListTV addSubview:refreshControl];
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    self.refreshTV= [[UIRefreshControl alloc] init];
+    [_buyListTV addSubview:self.refreshTV];
     
-    [self.buyListTV registerClass:[MyBuyListTableViewCell class] forCellReuseIdentifier:MY_BUYLIST_CELL];
+    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.buyListTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:MY_BUYLIST_CELL];
     
     // 设置总计栏
     UIView *totalBar = [UIView newAutoLayoutView];
@@ -106,20 +109,12 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
 }
 
-#pragma mark 下拉刷新
-- (void)refresh:(UIRefreshControl *)control {
-    [control endRefreshing];
-    if ([self.buyListData count] > 0) {
-        [self.buyListTV reloadData];
-    }else{
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_NOT_BUYLIST", Nil) maskType:SVProgressHUDMaskTypeBlack];
-    }
-}
 
 #pragma mark 获取扫货清单数据
 - (void) getBuyList{
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [SVProgressHUD show];
 //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
@@ -129,9 +124,13 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                           self.buyListData = [[result objectForKey:@"data"] objectForKey:@"list"];
                                           self.priceZH.text = [NSString stringWithFormat:@"¥ %@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
                                           self.priceJP.text = [NSString stringWithFormat:@"円 %@", [[result objectForKey:@"data"] objectForKey:@"price_jp_total"]];
+                                          [self.buyListTV reloadData];
+                                          [SVProgressHUD dismiss];
+
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          
+                                          [SVProgressHUD dismiss];
+
                                       }];
 }
 
@@ -141,7 +140,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    return 85;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -149,20 +148,29 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MyBuyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_BUYLIST_CELL forIndexPath:indexPath];
+    ShoppingPopularityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_BUYLIST_CELL forIndexPath:indexPath];
     
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.buyListData objectAtIndex:indexPath.row]];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
 
-    [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
+    [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
     cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
     cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
     cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
     cell.priceJPLB.text = [cellData objectForKey:@"price_jp"];
-    cell.summaryLB.text = [cellData objectForKey:@"summary"];
+    cell.summaryLB.text = [cellData objectForKey:@"summary_zh"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     
     return cell;
+}
+
+#pragma mark 下拉刷新
+- (void) refresh:(UIRefreshControl *)control {
+    [control beginRefreshing];
+    [self getBuyList];
+    [control endRefreshing];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) UIWebView *webView;
 @property WebViewJavascriptBridge *bridge;
+@property (nonatomic, strong) UIView *addBuyListV;
+
 
 @end
 
@@ -35,6 +37,8 @@
     [super viewDidLoad];
     [self setupUrlPage];
     [self customizeBackItem];
+    [self setupAddBuyList];
+    
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     // Do any additional setup after loading the view.
 }
@@ -42,6 +46,77 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) setupAddBuyList {
+    self.addBuyListV = [UIView newAutoLayoutView];
+    [self.view addSubview:_addBuyListV];
+    
+    [_addBuyListV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [_addBuyListV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_addBuyListV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_addBuyListV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 80)];
+    
+    
+    UIButton *addBuyBTN = [UIButton newAutoLayoutView];
+    [self.addBuyListV addSubview:addBuyBTN];
+    
+    [addBuyBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.addBuyListV];
+    [addBuyBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.addBuyListV];
+    [addBuyBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.addBuyListV];
+    [addBuyBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
+    addBuyBTN.backgroundColor = ADD_BUY_LIST_COLOR;
+    [addBuyBTN setTitle:@"加入扫货清单" forState:UIControlStateNormal];
+    [addBuyBTN addTarget:self action:@selector(addBuyListAction) forControlEvents:UIControlEventTouchDown];
+    
+    UIView *priceV = [UIView newAutoLayoutView];
+    [self.addBuyListV addSubview:priceV];
+    
+    [priceV autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:addBuyBTN];
+    [priceV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_addBuyListV];
+    [priceV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_addBuyListV];
+    [priceV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_addBuyListV];
+    priceV.backgroundColor = GRAY_FONT_COLOR;
+    
+    UILabel *refLB = [UILabel newAutoLayoutView];
+    [priceV addSubview:refLB];
+    
+    [refLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:priceV withOffset:(ScreenWidth - 75 - 5- 30 - 5) / 3];
+    [refLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceV];
+    [refLB autoSetDimensionsToSize:CGSizeMake(75, 25)];
+    refLB.text = @"参考价钱";
+    
+    UIImageView *zhPriceImg = [UIImageView newAutoLayoutView];
+    [priceV addSubview:zhPriceImg];
+    
+    [zhPriceImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:refLB withOffset:5];
+    [zhPriceImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceV];
+    [zhPriceImg autoSetDimensionsToSize:CGSizeMake(30, 25)];
+    zhPriceImg.image =[UIImage imageNamed:@"zhImg"];
+    
+    UILabel *zhPriceLB = [UILabel newAutoLayoutView];
+    [priceV addSubview:zhPriceLB];
+    
+    [zhPriceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:zhPriceImg withOffset:5];
+    [zhPriceLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceV];
+    zhPriceLB.text = self.zhPriceStr;
+    
+}
+
+#pragma mark 加入扫货清单事件
+- (void) addBuyListAction {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:self.pid forKey:@"pid"];
+    NSLog(@"paramter is %@", paramter);
+    [[HttpManager instance] requestWithMethod:@"User/addBuyList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_BUYLIST_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
 }
 
 - (void) setupUrlPage {

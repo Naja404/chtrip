@@ -16,6 +16,10 @@
 
 @implementation MyAboutUsViewController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -44,6 +48,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) webViewDidStartLoad:(UIWebView *)webView {
+    [SVProgressHUD show];
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView {
+    [SVProgressHUD dismiss];
+}
 /*
 #pragma mark - Navigation
 

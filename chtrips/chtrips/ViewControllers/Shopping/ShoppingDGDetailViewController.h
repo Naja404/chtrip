@@ -11,5 +11,7 @@
 @interface ShoppingDGDetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *webUrl;
+@property (nonatomic, strong) NSString *zhPriceStr;
+@property (nonatomic, strong) NSString *pid;
 
 @end

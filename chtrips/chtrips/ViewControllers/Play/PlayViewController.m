@@ -28,6 +28,7 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) NSMutableArray *playData;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
 @property (nonatomic, strong) NSString *selectIndex;
+@property (nonatomic, strong) NSString *nextPageNum;
 
 
 @property (nonatomic, strong) UIButton *cityBTN;
@@ -44,13 +45,14 @@ static NSString * const PLAY_CELL = @"playCell";
 
 - (void)viewDidLoad {
     self.selectIndex = @"2";
-
+    self.nextPageNum = @"2";
+    
     [super viewDidLoad];
     [self setupCityBTN];
 //    [self setupDOPMenu];
     [self setupPlayList];
     [self setupCateMenu];
-    [self refresh:self.refreshTV];
+    [self refresh];
     
     // Do any additional setup after loading the view.
 }
@@ -62,23 +64,37 @@ static NSString * const PLAY_CELL = @"playCell";
 
 
 #pragma mark 获取商家列表
-- (void) getShopList {
+- (void) getShopList:(NSString *)PageNum {
     [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
 //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:self.selectIndex forKey:@"shopType"];
+    [paramter setObject:PageNum forKey:@"pageNum"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"shoplist data is %@", result);
-                                          self.playData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
-                                          [self.playTV reloadData];
+                                          if ([PageNum isEqualToString:@"1"]) {
+                                              self.playData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                              [self.playTV reloadData];
+                                              [self.playTV.header endRefreshing];
+                                          }else{
+                                              [self.playData addObjectsFromArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
+                                              [self.playTV reloadData];
+                                              [self.playTV.footer endRefreshing];
+                                          }
+                                          
+                                          if (![[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"0"]) {
+                                              self.nextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                          }
+                                          
                                           [SVProgressHUD dismiss];
 
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [self.playTV.header endRefreshing];
                                           [SVProgressHUD dismiss];
                                       }];
 }
@@ -105,7 +121,6 @@ static NSString * const PLAY_CELL = @"playCell";
     NSArray *titles = @[@"东京", @"奈良", @"横滨", @"大阪"];
     PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:titles images:nil];
     pop.selectRowAtIndex = ^(NSInteger index){
-        NSLog(@"select index:%d", index);
         self.cityBTN.titleLabel.text = [titles objectAtIndex:index];
     };
     [pop show];
@@ -131,9 +146,8 @@ static NSString * const PLAY_CELL = @"playCell";
     [segmentedControl setIndexChangeBlock:^(NSUInteger index) {
         self.selectIndex = [NSString stringWithFormat:@"%d", (index + 2)];
         
-        [self getShopList];
+        [self getShopList:@"1"];
         
-        NSLog(@"select index %i", (index + 2));
     }];
     [self.cateMenuView addSubview:segmentedControl];
 
@@ -156,12 +170,8 @@ static NSString * const PLAY_CELL = @"playCell";
     _playTV.dataSource = self;
     _playTV.separatorStyle = UITableViewCellAccessoryNone;
     
-    self.refreshTV = [[UIRefreshControl alloc] init];
-    [_playTV addSubview:_refreshTV];
-    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    
     [self.playTV registerClass:[PlayTableViewCell class] forCellReuseIdentifier:PLAY_CELL];
-//    [self.playTV registerClass:[ShoppingDGTableViewCell class] forCellReuseIdentifier:SHOP_CELL];
+
 }
 
 
@@ -218,6 +228,7 @@ static NSString * const PLAY_CELL = @"playCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
     
     detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+    detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
     detailVC.navigationItem.title = [cellData objectForKey:@"name"];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
@@ -229,10 +240,20 @@ static NSString * const PLAY_CELL = @"playCell";
 
 }
 
-- (void) refresh:(UIRefreshControl *)control {
-    [control beginRefreshing];
-    [self getShopList];
-    [control endRefreshing];
+- (void) refresh {
+    self.playTV.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getShopList:@"1"];
+    }];
+    [self.playTV.header beginRefreshing];
+}
+
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
+        [self.playTV.footer beginRefreshing];
+        self.playTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [self getShopList:self.nextPageNum];
+        }];
+    }
 }
 
 @end

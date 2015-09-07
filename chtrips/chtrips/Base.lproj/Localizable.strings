@@ -64,6 +64,8 @@
 "TEXT_ADD_BUYLIST_SUCCESS" = "成功添加清单";
 "TEXT_NOT_BUYLIST" = "暂无扫货清单,赶快去添加吧";
 "TEXT_REFERENCE_PRICE" = "参考价格";
+"TEXT_ADD_WANT_GO" = "成功添加我想去";
+"TEXT_CELL_WANT_LIST" = "我想去";
 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";
