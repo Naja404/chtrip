@@ -18,7 +18,7 @@
         [self.contentView addSubview:_bgImg];
         
         [_bgImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
-        [_bgImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:13];
+        [_bgImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
         [_bgImg autoSetDimensionsToSize:CGSizeMake(ScreenWidth, ScreenWidth)];
         
         self.discoverImg = [UIImageView newAutoLayoutView];
@@ -29,44 +29,65 @@
         [_discoverImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.bgImg];
         [_discoverImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.bgImg];
         _discoverImg.backgroundColor = [UIColor blackColor];
-        _discoverImg.alpha = 0.3;
+        _discoverImg.alpha = 0.15;
         
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];
         
         [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView withOffset:-40];
         [_titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
-        
-//        [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
-//        [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20];
-        [_titleLB autoSetDimensionsToSize:CGSizeMake(180, 20)];
-        _titleLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25.0f];
+        [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 30*2, 70)];
+        _titleLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:24.0f];
         _titleLB.textAlignment = NSTextAlignmentCenter;
+        _titleLB.numberOfLines = 0;
+        _titleLB.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLB.textColor = [UIColor whiteColor];
+        _titleLB.shadowOffset = CGSizeMake(0.0f, 2.0f);
+        _titleLB.shadowColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5f];
+        _titleLB.layer.shadowRadius = 20.0f;
+        _titleLB.layer.masksToBounds = YES;
         
-        self.leftLB = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_leftLB];
+        self.buyBTN = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_buyBTN];
         
-
-        [_leftLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.titleLB withOffset:30];
-        [_leftLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
-        [_leftLB autoSetDimensionsToSize:CGSizeMake(120, 20)];
-        _leftLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
-        _leftLB.textAlignment = NSTextAlignmentCenter;
-        _leftLB.textColor = [UIColor whiteColor];
+        [_buyBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.titleLB withOffset:50];
+        [_buyBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
+        [_buyBTN autoSetDimensionsToSize:CGSizeMake(100, 30)];
+        _buyBTN.backgroundColor = [UIColor blueColor];
+        _buyBTN.font = [UIFont systemFontOfSize:20];
+        _buyBTN.text = @"开抢啦!";
+        _buyBTN.textColor = [UIColor whiteColor];
+        _buyBTN.textAlignment = NSTextAlignmentCenter;
+        _buyBTN.layer.cornerRadius = 3;
+        _buyBTN.layer.masksToBounds = YES;
         
-//        self.buyBTN = [UILabel newAutoLayoutView];
-//        [self.contentView addSubview:_buyBTN];
+        self.timeLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_timeLB];
         
-//        [_buyBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.leftLB withOffset:40];
-//        [_buyBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
-//        [_buyBTN autoSetDimensionsToSize:CGSizeMake(120, 25)];
-//        _buyBTN.backgroundColor = [UIColor colorWithRed:250 green:139 blue:10 alpha:1];
-//        _buyBTN.backgroundColor = [UIColor blueColor];
-//        _buyBTN.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0f];
-//        _buyBTN.text = @"开抢啦!";
-//        _buyBTN.textColor = [UIColor whiteColor];
-//        _buyBTN.textAlignment = NSTextAlignmentCenter;
+        [_timeLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.buyBTN];
+        [_timeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.buyBTN withOffset:5];
+        [_timeLB autoSetDimensionsToSize:CGSizeMake(120, 30)];
+        _timeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
+        _timeLB.textAlignment = NSTextAlignmentCenter;
+        _timeLB.textColor = [UIColor whiteColor];
+        
+        self.mapLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_mapLB];
+        
+        [_mapLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView];
+        [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-10];
+        [_mapLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
+        _mapLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
+        _mapLB.textAlignment = NSTextAlignmentLeft;
+        _mapLB.textColor = [UIColor whiteColor];
+        
+        self.locationImg = [UIImageView newAutoLayoutView];
+        [self.contentView addSubview:_locationImg];
+        
+        [_locationImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeading ofView:_mapLB];
+        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_mapLB];
+        [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 20)];
+        _locationImg.image = [UIImage imageNamed:@"tripLocation"];
         
     }
     

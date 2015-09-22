@@ -48,15 +48,13 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     self.wantGoTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_wantGoTV];
     
-//    [_wantGoTV autoPinToTopLayoutGuideOfViewController:self withInset:44];
-    [_wantGoTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:54];
+    [_wantGoTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:64];
     [_wantGoTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_wantGoTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_wantGoTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
     _wantGoTV.delegate = self;
     _wantGoTV.dataSource = self;
-    _wantGoTV.separatorStyle = UITableViewCellAccessoryNone;
     
     self.refreshTV = [[UIRefreshControl alloc] init];
     [_wantGoTV addSubview:_refreshTV];
@@ -93,17 +91,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     cell.avgLB.text = [cellData objectForKey:@"avg_price"];
     cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
     cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
-    
-    NSInteger starSize = [[cellData objectForKey:@"avg_rating"] intValue];
-    
-    UIImageView *grayStar = [UIImageView newAutoLayoutView];
-    [cell.contentView addSubview:grayStar];
-    
-    [grayStar autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:cell.bigTitleLB withOffset:starSize];
-    [grayStar autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:cell.bigTitleLB withOffset:5];
-    [grayStar autoSetDimensionsToSize:CGSizeMake(85 - starSize, 18)];
-    grayStar.backgroundColor = [UIColor whiteColor];
-    //    grayStar.image = [UIImage imageNamed:@"starProRed"];
+    cell.starImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [cellData objectForKey:@"avg_rating"]]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

@@ -122,7 +122,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:20];
     [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
-    [imgView autoSetDimensionsToSize:CGSizeMake(60, 40)];
+    [imgView autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgView.backgroundColor = [UIColor grayColor];
     imgView.clipsToBounds = YES;
     
@@ -131,17 +131,17 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     [imgbg autoAlignAxis:ALAxisVertical toSameAxisOfView:imgView];
     [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
-    [imgbg autoSetDimensionsToSize:CGSizeMake(80, 80)];
-    imgbg.image = [UIImage imageNamed:@"11.pic.jpg"];
+    [imgbg autoSetDimensionsToSize:CGSizeMake(70, 70)];
+    imgbg.image = [UIImage imageNamed:@"goLogoBg"];
     imgbg.clipsToBounds = YES;
-    imgbg.rotate(360).animate(20.0);
+    imgbg.rotate(360).animate(90.0);
     
     UIImageView *imgLogo = [UIImageView newAutoLayoutView];
     [imgView addSubview:imgLogo];
     
     [imgLogo autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:imgView];
     [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
-    [imgLogo autoSetDimensionsToSize:CGSizeMake(60, 40)];
+    [imgLogo autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
 }
 
@@ -225,7 +225,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         [viewsArray addObject:imgView];
     }
     
-    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 142)];
+    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 152)];
     
     self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 142) animationDuration:5];
     
@@ -315,8 +315,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    return 294;
-    return ScreenWidth + 13;
+    return ScreenWidth;
 }
 
 
@@ -329,9 +328,15 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [cell.bgImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
     
     cell.titleLB.text = [cellData objectForKey:@"title"];
-    //    cell.leftLB.text = @"";
-    //    cell.bgImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad0%d.jpg", indexPath.row]];
-    //    cell.bgImg.alpha = 0.8;
+    cell.timeLB.text = [cellData objectForKey:@"outTime"];
+
+    if (![[cellData objectForKey:@"address_title"] isEqualToString:@""]) {
+        cell.mapLB.text = [cellData objectForKey:@"address_title"];
+        cell.locationImg.hidden = NO;
+    }else{
+        cell.locationImg.hidden = YES;
+    }
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

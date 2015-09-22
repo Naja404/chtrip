@@ -145,6 +145,7 @@ static NSString * const PLAY_CELL = @"playCell";
     [segmentedControl setSelectionIndicatorMode:HMSelectionIndicatorResizesToStringWidth];
     [segmentedControl setIndexChangeBlock:^(NSUInteger index) {
         self.selectIndex = [NSString stringWithFormat:@"%d", (index + 2)];
+        [self.playTV scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         
         [self getShopList:@"1"];
         
@@ -161,14 +162,13 @@ static NSString * const PLAY_CELL = @"playCell";
     self.playTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_playTV];
     
-    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:64];
+    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:74];
     [_playTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_playTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_playTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];
     
     _playTV.delegate = self;
     _playTV.dataSource = self;
-    _playTV.separatorStyle = UITableViewCellAccessoryNone;
     
     [self.playTV registerClass:[PlayTableViewCell class] forCellReuseIdentifier:PLAY_CELL];
 
@@ -203,17 +203,7 @@ static NSString * const PLAY_CELL = @"playCell";
     cell.avgLB.text = [cellData objectForKey:@"avg_price"];
     cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
     cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
-    
-    NSInteger starSize = [[cellData objectForKey:@"avg_rating"] intValue];
-    
-    UIImageView *grayStar = [UIImageView newAutoLayoutView];
-    [cell.contentView addSubview:grayStar];
-    
-    [grayStar autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:cell.bigTitleLB withOffset:starSize];
-    [grayStar autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:cell.bigTitleLB withOffset:5];
-    [grayStar autoSetDimensionsToSize:CGSizeMake(85 - starSize, 18)];
-    grayStar.backgroundColor = [UIColor whiteColor];
-//    grayStar.image = [UIImage imageNamed:@"starProRed"];
+    cell.starImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [cellData objectForKey:@"avg_rating"]]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

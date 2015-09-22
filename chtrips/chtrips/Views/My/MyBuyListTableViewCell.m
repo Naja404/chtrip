@@ -107,7 +107,7 @@
 }
 
 - (void) stepTag:(UIStepper *) stepper {
-    self.productNumLB.text = [NSString stringWithFormat:@"%d", (NSInteger)stepper.value];
+    self.productNumLB.text = [NSString stringWithFormat:@"%ld", (long)stepper.value];
 }
 
 - (void)awakeFromNib {

@@ -90,6 +90,17 @@
 		E95C3D011B4970E40010EF58 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C3CFF1B4970E40010EF58 /* WebViewJavascriptBridge.m */; };
 		E95C88EF1B385B6C00E3B050 /* searchBarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */; };
 		E95C88F11B385C7000E3B050 /* searchIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C88F01B385C7000E3B050 /* searchIcon@2x.png */; };
+		E95E1D081B9F17D000C88692 /* star_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1CFD1B9F17D000C88692 /* star_0.png */; };
+		E95E1D091B9F17D000C88692 /* star_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1CFE1B9F17D000C88692 /* star_5.png */; };
+		E95E1D0A1B9F17D000C88692 /* star_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1CFF1B9F17D000C88692 /* star_10.png */; };
+		E95E1D0B1B9F17D000C88692 /* star_15.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D001B9F17D000C88692 /* star_15.png */; };
+		E95E1D0C1B9F17D000C88692 /* star_20.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D011B9F17D000C88692 /* star_20.png */; };
+		E95E1D0D1B9F17D000C88692 /* star_25.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D021B9F17D000C88692 /* star_25.png */; };
+		E95E1D0E1B9F17D000C88692 /* star_30.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D031B9F17D000C88692 /* star_30.png */; };
+		E95E1D0F1B9F17D000C88692 /* star_35.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D041B9F17D000C88692 /* star_35.png */; };
+		E95E1D101B9F17D000C88692 /* star_40.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D051B9F17D000C88692 /* star_40.png */; };
+		E95E1D111B9F17D000C88692 /* star_45.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D061B9F17D000C88692 /* star_45.png */; };
+		E95E1D121B9F17D000C88692 /* star_50.png in Resources */ = {isa = PBXBuildFile; fileRef = E95E1D071B9F17D000C88692 /* star_50.png */; };
 		E95EBFE21B8802BD001BD221 /* arrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = E95EBFDF1B8802BD001BD221 /* arrowLeft.png */; };
 		E95EBFE31B8802BD001BD221 /* arrowLeft@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95EBFE01B8802BD001BD221 /* arrowLeft@3x.png */; };
 		E95EBFE41B8802BD001BD221 /* defaultPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95EBFE11B8802BD001BD221 /* defaultPic.jpg */; };
@@ -128,6 +139,12 @@
 		E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B571AB1476800F7CB38 /* ChtripCDManager.m */; };
 		E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */; };
 		E96D4B5F1AB1952F00F7CB38 /* SubTripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */; };
+		E96F4B381BABEB270033186D /* goLogoBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E96F4B371BABEB270033186D /* goLogoBg.png */; };
+		E96F4B3F1BAC076A0033186D /* MyLoginSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F4B3E1BAC076A0033186D /* MyLoginSelectViewController.m */; };
+		E96F4B441BAC0C9D0033186D /* loginBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E96F4B401BAC0C9D0033186D /* loginBg@2x.png */; };
+		E96F4B451BAC0C9D0033186D /* loginCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E96F4B411BAC0C9D0033186D /* loginCancel@2x.png */; };
+		E96F4B461BAC0C9D0033186D /* loginWeChat@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E96F4B421BAC0C9D0033186D /* loginWeChat@2x.jpg */; };
+		E96F4B471BAC0C9D0033186D /* loginWeibo@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E96F4B431BAC0C9D0033186D /* loginWeibo@2x.jpg */; };
 		E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E97184231ABAA38E005291A1 /* defaultBackground.jpg */; };
 		E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184271ABAAD96005291A1 /* AddSubTripLocationViewController.m */; };
 		E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = E971842A1ABABD23005291A1 /* CocoaSecurity.m */; };
@@ -366,6 +383,17 @@
 		E95C3CFF1B4970E40010EF58 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		E95C88EE1B385B6C00E3B050 /* searchBarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchBarbg@2x.png"; path = "Resource/searchBarbg@2x.png"; sourceTree = "<group>"; };
 		E95C88F01B385C7000E3B050 /* searchIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchIcon@2x.png"; path = "Resource/searchIcon@2x.png"; sourceTree = "<group>"; };
+		E95E1CFD1B9F17D000C88692 /* star_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_0.png; path = Resource/star_0.png; sourceTree = "<group>"; };
+		E95E1CFE1B9F17D000C88692 /* star_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_5.png; path = Resource/star_5.png; sourceTree = "<group>"; };
+		E95E1CFF1B9F17D000C88692 /* star_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_10.png; path = Resource/star_10.png; sourceTree = "<group>"; };
+		E95E1D001B9F17D000C88692 /* star_15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_15.png; path = Resource/star_15.png; sourceTree = "<group>"; };
+		E95E1D011B9F17D000C88692 /* star_20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_20.png; path = Resource/star_20.png; sourceTree = "<group>"; };
+		E95E1D021B9F17D000C88692 /* star_25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_25.png; path = Resource/star_25.png; sourceTree = "<group>"; };
+		E95E1D031B9F17D000C88692 /* star_30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_30.png; path = Resource/star_30.png; sourceTree = "<group>"; };
+		E95E1D041B9F17D000C88692 /* star_35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_35.png; path = Resource/star_35.png; sourceTree = "<group>"; };
+		E95E1D051B9F17D000C88692 /* star_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_40.png; path = Resource/star_40.png; sourceTree = "<group>"; };
+		E95E1D061B9F17D000C88692 /* star_45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_45.png; path = Resource/star_45.png; sourceTree = "<group>"; };
+		E95E1D071B9F17D000C88692 /* star_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_50.png; path = Resource/star_50.png; sourceTree = "<group>"; };
 		E95EBFDF1B8802BD001BD221 /* arrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowLeft.png; path = Resource/arrowLeft.png; sourceTree = "<group>"; };
 		E95EBFE01B8802BD001BD221 /* arrowLeft@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowLeft@3x.png"; path = "Resource/arrowLeft@3x.png"; sourceTree = "<group>"; };
 		E95EBFE11B8802BD001BD221 /* defaultPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = defaultPic.jpg; path = Resource/defaultPic.jpg; sourceTree = "<group>"; };
@@ -441,6 +469,13 @@
 		E96D4B5B1AB190E300F7CB38 /* SubTripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListViewController.m; path = ViewControllers/SubTripListViewController.m; sourceTree = "<group>"; };
 		E96D4B5D1AB1952F00F7CB38 /* SubTripListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListTableViewCell.h; path = Views/SubTripListTableViewCell.h; sourceTree = "<group>"; };
 		E96D4B5E1AB1952F00F7CB38 /* SubTripListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListTableViewCell.m; path = Views/SubTripListTableViewCell.m; sourceTree = "<group>"; };
+		E96F4B371BABEB270033186D /* goLogoBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goLogoBg.png; path = Resource/goLogoBg.png; sourceTree = "<group>"; };
+		E96F4B3D1BAC076A0033186D /* MyLoginSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyLoginSelectViewController.h; path = ViewControllers/My/MyLoginSelectViewController.h; sourceTree = "<group>"; };
+		E96F4B3E1BAC076A0033186D /* MyLoginSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyLoginSelectViewController.m; path = ViewControllers/My/MyLoginSelectViewController.m; sourceTree = "<group>"; };
+		E96F4B401BAC0C9D0033186D /* loginBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginBg@2x.png"; path = "Resource/loginBg@2x.png"; sourceTree = "<group>"; };
+		E96F4B411BAC0C9D0033186D /* loginCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginCancel@2x.png"; path = "Resource/loginCancel@2x.png"; sourceTree = "<group>"; };
+		E96F4B421BAC0C9D0033186D /* loginWeChat@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "loginWeChat@2x.jpg"; path = "Resource/loginWeChat@2x.jpg"; sourceTree = "<group>"; };
+		E96F4B431BAC0C9D0033186D /* loginWeibo@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "loginWeibo@2x.jpg"; path = "Resource/loginWeibo@2x.jpg"; sourceTree = "<group>"; };
 		E97184231ABAA38E005291A1 /* defaultBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = defaultBackground.jpg; path = Resource/defaultBackground.jpg; sourceTree = "<group>"; };
 		E97184261ABAAD96005291A1 /* AddSubTripLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationViewController.h; path = ViewControllers/AddSubTripLocationViewController.h; sourceTree = "<group>"; };
 		E97184271ABAAD96005291A1 /* AddSubTripLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationViewController.m; path = ViewControllers/AddSubTripLocationViewController.m; sourceTree = "<group>"; };
@@ -1174,6 +1209,8 @@
 		E9B901A81AC93D12001F4EA0 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				E96F4B3D1BAC076A0033186D /* MyLoginSelectViewController.h */,
+				E96F4B3E1BAC076A0033186D /* MyLoginSelectViewController.m */,
 				E963CDA21B9815CD00FA250E /* MyWantListViewController.h */,
 				E963CDA31B9815CD00FA250E /* MyWantListViewController.m */,
 				E9B901B21AC93E3C001F4EA0 /* MyViewController.h */,
@@ -1191,6 +1228,22 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E96F4B401BAC0C9D0033186D /* loginBg@2x.png */,
+				E96F4B411BAC0C9D0033186D /* loginCancel@2x.png */,
+				E96F4B421BAC0C9D0033186D /* loginWeChat@2x.jpg */,
+				E96F4B431BAC0C9D0033186D /* loginWeibo@2x.jpg */,
+				E96F4B371BABEB270033186D /* goLogoBg.png */,
+				E95E1CFD1B9F17D000C88692 /* star_0.png */,
+				E95E1CFE1B9F17D000C88692 /* star_5.png */,
+				E95E1CFF1B9F17D000C88692 /* star_10.png */,
+				E95E1D001B9F17D000C88692 /* star_15.png */,
+				E95E1D011B9F17D000C88692 /* star_20.png */,
+				E95E1D021B9F17D000C88692 /* star_25.png */,
+				E95E1D031B9F17D000C88692 /* star_30.png */,
+				E95E1D041B9F17D000C88692 /* star_35.png */,
+				E95E1D051B9F17D000C88692 /* star_40.png */,
+				E95E1D061B9F17D000C88692 /* star_45.png */,
+				E95E1D071B9F17D000C88692 /* star_50.png */,
 				E90DAEBE1B96E354002F379E /* Launch_ip5.png */,
 				E95EBFDF1B8802BD001BD221 /* arrowLeft.png */,
 				E95EBFE01B8802BD001BD221 /* arrowLeft@3x.png */,
@@ -1539,7 +1592,10 @@
 				E9DE1A841B2734AC0040BFA6 /* ad2.jpg in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
+				E95E1D101B9F17D000C88692 /* star_40.png in Resources */,
 				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
+				E96F4B381BABEB270033186D /* goLogoBg.png in Resources */,
+				E96F4B461BAC0C9D0033186D /* loginWeChat@2x.jpg in Resources */,
 				E947EE801B2B18AE00012957 /* icon_chose_arrow_nor@2x.png in Resources */,
 				E95EBFE31B8802BD001BD221 /* arrowLeft@3x.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
@@ -1561,10 +1617,14 @@
 				E9F1C8BC1B418247008FFD28 /* ad4.jpg in Resources */,
 				E9F1C8B61B403BDD008FFD28 /* worthGray@3x.png in Resources */,
 				E913964D1AC111B8003AF385 /* bg-addbutton-highlighted@2x.png in Resources */,
+				E95E1D0C1B9F17D000C88692 /* star_20.png in Resources */,
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
+				E95E1D111B9F17D000C88692 /* star_45.png in Resources */,
 				E9F1C8B81B403C39008FFD28 /* buyGray@3x.png in Resources */,
+				E95E1D0E1B9F17D000C88692 /* star_30.png in Resources */,
 				E947EE821B2B18AE00012957 /* icon_chose_bottom@2x.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
+				E95E1D0D1B9F17D000C88692 /* star_25.png in Resources */,
 				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
 				E9DE1AA51B29F1000040BFA6 /* ad01.jpg in Resources */,
@@ -1584,11 +1644,14 @@
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
+				E95E1D0A1B9F17D000C88692 /* star_10.png in Resources */,
 				E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */,
 				E95C88F11B385C7000E3B050 /* searchIcon@2x.png in Resources */,
 				E9DE1AA71B29F1000040BFA6 /* ad03.jpg in Resources */,
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
+				E95E1D0B1B9F17D000C88692 /* star_15.png in Resources */,
+				E96F4B451BAC0C9D0033186D /* loginCancel@2x.png in Resources */,
 				E9F1C8B51B403BDD008FFD28 /* tripGray@3x.png in Resources */,
 				E967A2001B9DCB7200FAFF89 /* MJRefresh.bundle in Resources */,
 				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
@@ -1597,6 +1660,7 @@
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
 				E9899F831ACCF713009722C4 /* Icon-40.png in Resources */,
+				E96F4B471BAC0C9D0033186D /* loginWeibo@2x.jpg in Resources */,
 				E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */,
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
 				E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */,
@@ -1614,6 +1678,7 @@
 				E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */,
 				E91396561AC111B8003AF385 /* icon-plus.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
+				E95E1D091B9F17D000C88692 /* star_5.png in Resources */,
 				E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */,
 				E9899F8A1ACCF713009722C4 /* Icon-Small@2x.png in Resources */,
 				E98999491B52B3E5008C9392 /* starProRed.png in Resources */,
@@ -1622,9 +1687,13 @@
 				E9899F861ACCF713009722C4 /* Icon-60@2x.png in Resources */,
 				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
+				E95E1D121B9F17D000C88692 /* star_50.png in Resources */,
+				E95E1D081B9F17D000C88692 /* star_0.png in Resources */,
 				E9D0FB1C1AEA4B2B00CC9664 /* avatar.jpg in Resources */,
 				E9DE1AA81B29F1000040BFA6 /* ad04.jpg in Resources */,
+				E95E1D0F1B9F17D000C88692 /* star_35.png in Resources */,
 				E9516E521B6FAFFB00E01C1F /* jpImg@2x.png in Resources */,
+				E96F4B441BAC0C9D0033186D /* loginBg@2x.png in Resources */,
 				E9D98ECC1AEDE9C7004805E5 /* iconLikeGo.png in Resources */,
 				E9F1C8B41B403BDD008FFD28 /* myGray@3x.png in Resources */,
 			);
@@ -1696,6 +1765,7 @@
 				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
 				E967A1FA1B9DCB7200FAFF89 /* MJRefreshBackGifFooter.m in Sources */,
 				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
+				E96F4B3F1BAC076A0033186D /* MyLoginSelectViewController.m in Sources */,
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
 				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,

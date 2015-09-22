@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *titleJPLB;
 @property (nonatomic, strong) UILabel *priceZHLB;
 @property (nonatomic, strong) UILabel *priceJPLB;
+@property (nonatomic, strong) UILabel *summaryZHLB;
 @property (nonatomic, strong) UILabel *summaryLB;
 @property (nonatomic, strong) UILabel *prePriceLB;
 @property (nonatomic, strong) UIImageView *priceZHImg;

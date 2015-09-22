@@ -13,6 +13,7 @@
 #import "MyAboutUsViewController.h"
 #import "MyBuyListViewController.h"
 #import "MyWantListViewController.h"
+#import "MyLoginSelectViewController.h"
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
@@ -131,6 +132,15 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        // 在主线程执行
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
+            [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
+        });
+
+    }
     
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {

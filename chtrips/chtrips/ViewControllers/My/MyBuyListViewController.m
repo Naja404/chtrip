@@ -59,7 +59,6 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
     _buyListTV.dataSource = self;
     _buyListTV.delegate = self;
-    _buyListTV.separatorStyle = UITableViewCellAccessoryNone;
     
     self.refreshTV= [[UIRefreshControl alloc] init];
     [_buyListTV addSubview:self.refreshTV];

@@ -26,6 +26,15 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 @property (nonatomic, strong) NSArray *areas;
 @property (nonatomic, strong) NSArray *sorts;
 
+@property (nonatomic, strong) NSArray *bigCate;
+@property (nonatomic, strong) NSArray *smallCate;
+@property (nonatomic, strong) NSArray *brand;
+@property (nonatomic, strong) NSArray *allBrand;
+@property (nonatomic, strong) NSArray *price;
+@property (nonatomic, strong) NSString *selectCate;
+@property (nonatomic, strong) NSString *selectBrand;
+@property (nonatomic, strong) NSString *selectSort;
+
 @property (nonatomic, strong) UITableView *shopTV;
 @property (nonatomic, strong) NSMutableArray *shopData;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
@@ -74,13 +83,29 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 - (void) setupDOPMenu {
+    self.selectCate = @"";
+    self.selectBrand = @"";
+    self.selectSort = @"";
     // 数据
-    self.classifys = @[@"类别",@"小家电",@"大家电",@"宅"];
-    self.cates = @[@"手机",@"手环",@"鼠标键盘",@"电脑",@"音响",@"耳机"];
-    self.movices = @[@"苹果",@"三星",@"HTC"];
-    self.hostels = @[@"PSP",@"xbox",@"手办",@"口袋书",@"初音"];
-    self.areas = @[@"品牌",@"尼康",@"索尼",@"万代",@"3A",@"HotToys"];
-    self.sorts = @[@"价格",@"从高到底",@"从低到高"];
+    self.bigCate = @[@"类别", @"潮流服饰", @"美妆护理", @"箱包钟表", @"数码家电", @"母婴宝贝", @"食品饮料", @"动漫天地"];
+    
+    self.smallCate = @[@[],
+                       @[@"女装", @"男装", @"男鞋", @"女鞋", @"户外运动", @"童装"],
+                       @[@"香水彩妆", @"面部护理", @"护发美体", @"女性护理", @"男士护理", @"日常医药"],
+                       @[@"潮流女包", @"时尚男包", @"钟表", @"奢侈品", @"精美礼品"],
+                       @[@"大家电", @"小家电", @"厨房电器", @"手机通讯", @"摄影摄像", @"电脑游戏"],
+                       @[@"母婴奶粉", @"营养辅食", @"尿裤湿巾", @"洗护清洁", @"孕妇用品", @"宝宝用品"],
+                       @[@"饼干糕点", @"糖果巧克力", @"咖啡饮料", @"零食", @"酒水饮料", @"各地特长"],
+                       @[@"动漫书籍", @"动漫手办", @"动漫模型", @"动漫游戏", @"动漫服饰"]];
+    self.brand = @[@"品牌", @"热门品牌", @"全部品牌"];
+    
+    self.allBrand = @[@[],
+                      @[@"索尼", @"资生堂", @"尼康", @"优衣库", @"DHC", @"精工"],
+                      @[@"资生堂", @"索尼", @"尼康", @"佳能", @"东芝", @"蝶翠诗", @"DHC", @"高丝",
+                        @"欧泊莱", @"爱普生", @"松下", @"夏普", @"富士通", @"卡西欧", @"奥林",
+                        @"西铁城", @"先锋", @"精工", @"Hello Kitty", @"日立", @"格力高", @"富士施",
+                        @"姬芮ZA", @"京瓷", @"美津浓", @"安尚秀", @"优衣库", @"雪肌兰"]];
+    self.sorts = @[@"价格", @"200以下", @"200-500", @"1000-2000", @"2000-5000", @"5000-10000", @"1万以上"];
     
     // 添加下拉菜单
     DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:44];
@@ -101,9 +126,9 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column
 {
     if (column == 0) {
-        return self.classifys.count;
+        return self.bigCate.count;
     }else if (column == 1){
-        return self.areas.count;
+        return self.brand.count;
     }else {
         return self.sorts.count;
     }
@@ -112,10 +137,13 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath
 {
     if (indexPath.column == 0) {
-        return self.classifys[indexPath.row];
+//        return self.classifys[indexPath.row];
+        return self.bigCate[indexPath.row];
     } else if (indexPath.column == 1){
-        return self.areas[indexPath.row];
+//        return self.areas[indexPath.row];
+        return self.brand[indexPath.row];
     } else {
+//        return self.sorts[indexPath.row];
         return self.sorts[indexPath.row];
     }
 }
@@ -123,36 +151,83 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column
 {
     if (column == 0) {
-        if (row == 0) {
-           return self.cates.count;
-        } else if (row == 2){
-            return self.movices.count;
-        } else if (row == 3){
-            return self.hostels.count;
-        }
+        return [self.smallCate[row] count];
+//        if (row == 0) {
+//           return self.bigCate.count;
+//        } else if (row == 2){
+//            return self.brand.count;
+//        } else if (row == 3){
+//            return self.sorts.count;
+//        }
+    }else if (column == 1){
+        return [self.allBrand[row] count];
+    }else{
+//        return self.sorts.count;
     }
+    
     return 0;
 }
 
 - (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
 {
     if (indexPath.column == 0) {
-        if (indexPath.row == 0) {
-            return self.cates[indexPath.item];
-        } else if (indexPath.row == 2){
-            return self.movices[indexPath.item];
-        } else if (indexPath.row == 3){
-            return self.hostels[indexPath.item];
-        }
+        
+        return self.smallCate[indexPath.row][indexPath.item];
+//        
+//        if (indexPath.row == 0) {
+//            return self.cates[indexPath.item];
+//        } else if (indexPath.row == 2){
+//            return self.movices[indexPath.item];
+//        } else if (indexPath.row == 3){
+//            return self.hostels[indexPath.item];
+//        }
+    }else if (indexPath.column == 1) {
+        return self.allBrand[indexPath.row][indexPath.item];
+    }else{
+        return self.sorts[indexPath.item];
     }
+    
     return nil;
 }
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
     if (indexPath.item >= 0) {
+//        NSLog(@"点击了 %ld - %ld - %ld 项目",indexPath.column,indexPath.row,indexPath.item);
+        
+        if (indexPath.column == 0) {
+//            NSLog(@"点击了%@", self.smallCate[indexPath.row][(int)indexPath.item]);
+            self.selectCate = self.smallCate[indexPath.row][indexPath.item];
+        }else if (indexPath.column == 1){
+            self.selectBrand = self.allBrand[indexPath.row][indexPath.item];
+//            NSLog(@"点击了%@", self.allBrand[indexPath.row][(int)indexPath.item]);
+        }else{
+            self.selectSort = self.sorts[indexPath.item];
+//            NSLog(@"点击了%@", self.sorts[indexPath.item]);
+        }
+        
+        [self refresh];
+        
     }else {
+//        NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
+        if (indexPath.row == 0) {
+            if (indexPath.column == 0) {
+                self.selectCate = @"";
+            }else if (indexPath.column == 1) {
+                self.selectBrand = @"";
+            }else{
+                self.selectSort = @"";
+            }
+            [self refresh];
+        }
+        
+        if (indexPath.row > 0 && indexPath.column == 2) {
+            self.selectSort = self.sorts[indexPath.row];
+            [self refresh];
+        }
+
     }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -166,6 +241,9 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:PageNum forKey:@"pageNum"];
+    [paramter setObject:self.selectCate forKey:@"cate"];
+    [paramter setObject:self.selectBrand forKey:@"brand"];
+    [paramter setObject:self.selectSort forKey:@"sort"];
     
     [[HttpManager instance] requestWithMethod:@"Product/proList"
                                    parameters:paramter
@@ -245,11 +323,10 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     _shopTV.delegate = self;
     _shopTV.dataSource = self;
-    _shopTV.separatorStyle = UITableViewCellAccessoryNone;
+//    _shopTV.separatorStyle = UITableViewCellAccessoryNone;
     
     [self.shopTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:SHOP_POP_CELL];
     [self.shopTV registerClass:[ShoppingDGTableViewCell class] forCellReuseIdentifier:SHOP_CELL];
-    [self.shopTV reloadData];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -270,9 +347,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    int selectIndex = _shopSegmented.selectedSegmentIndex;
     
-    if (selectIndex == 1) {
+    if (self.shopSegmented.selectedSegmentIndex == 1) {
         ShoppingDGTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_CELL forIndexPath:indexPath];
         
         NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
@@ -284,16 +360,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         cell.avgLB.text = [cellData objectForKey:@"avg_price"];
         cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
         cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
-        
-        NSInteger starSize = [[cellData objectForKey:@"avg_rating"] intValue];
-        
-        UIImageView *grayStar = [UIImageView newAutoLayoutView];
-        [cell.contentView addSubview:grayStar];
-        
-        [grayStar autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:cell.bigTitleLB withOffset:starSize];
-        [grayStar autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:cell.bigTitleLB withOffset:5];
-        [grayStar autoSetDimensionsToSize:CGSizeMake(85 - starSize, 18)];
-        grayStar.backgroundColor = [UIColor whiteColor];
+        cell.starImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [cellData objectForKey:@"avg_rating"]]];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -307,10 +374,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
         cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
-        cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
+        cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
         cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
-        cell.priceJPLB.text = [cellData objectForKey:@"price_jp"];
-        cell.summaryLB.text = [cellData objectForKey:@"summary_zh"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -366,11 +431,11 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
-        int selectIndex = _shopSegmented.selectedSegmentIndex;
+
         [self.shopTV.footer beginRefreshing];
         
         self.shopTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            if (selectIndex == 1) {
+            if (self.shopSegmented.selectedSegmentIndex == 1) {
                 [self getShopList:self.shopNextPageNum];
             }else{
                 [self getProductList:self.proNextPageNum];

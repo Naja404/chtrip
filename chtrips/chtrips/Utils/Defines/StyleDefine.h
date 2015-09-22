@@ -33,4 +33,18 @@
 
 // 我想去按钮背景色
 #define WANT_GO_COLOR [UIColor colorWithRed:17/255.0 green:74/255.0 blue:208/255.0 alpha:1]
+
+// 导购灰色高亮字体颜色
+#define HIGHLIGHT_GRAY_COLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
+
+// 导购黑色字体颜色
+#define HIGHLIGHT_BLACK_COLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]
+
+// 导航红色字体颜色
+#define HIGHLIGHT_RED_COLOR [UIColor colorWithRed:255/255.0 green:62/255.0 blue:48/255.0 alpha:1]
+
+// 12号字体
+#define NORMAL_12FONT_SIZE [UIFont systemFontOfSize:12.0f]
+// 17号字体
+#define TITLE_17FONT_SIZE [UIFont systemFontOfSize:17.0f]
 #endif

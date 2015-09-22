@@ -37,8 +37,6 @@
         [_starImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_bigTitleLB];
         [_starImg autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_bigTitleLB withOffset:5];
         [_starImg autoSetDimensionsToSize:CGSizeMake(85, 18)];
-        //        _starImg.backgroundColor = [UIColor blackColor];
-        _starImg.image = [UIImage imageNamed:@"starProRed"];
         
         self.avgLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_avgLB];

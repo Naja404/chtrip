@@ -13,7 +13,9 @@
 @property (nonatomic, strong) UIImageView *bgImg;
 @property (nonatomic, strong) UIImageView *discoverImg;
 @property (nonatomic, strong) UILabel *titleLB;
-@property (nonatomic, strong) UILabel *leftLB;
+@property (nonatomic, strong) UILabel *timeLB;
 @property (nonatomic, strong) UILabel *buyBTN;
+@property (nonatomic, strong) UILabel *mapLB;
+@property (nonatomic, strong) UIImageView *locationImg;
 
 @end
