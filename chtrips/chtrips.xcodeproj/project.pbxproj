@@ -82,6 +82,15 @@
 		E9516E521B6FAFFB00E01C1F /* jpImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9516E501B6FAFFB00E01C1F /* jpImg@2x.png */; };
 		E9516E531B6FAFFB00E01C1F /* zhImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9516E511B6FAFFB00E01C1F /* zhImg@2x.png */; };
 		E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9516E551B6FB98600E01C1F /* ShoppingDGDetailViewController.m */; };
+		E95518F21BB145A300191DE2 /* loginWeChat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95518F01BB145A300191DE2 /* loginWeChat@2x.png */; };
+		E95518F31BB145A300191DE2 /* loginWeibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95518F11BB145A300191DE2 /* loginWeibo@2x.png */; };
+		E957EFD71BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFC91BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E957EFD81BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFCB1BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E957EFD91BB433B200B8B752 /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFCD1BB433B200B8B752 /* WXMediaMessage+messageConstruct.m */; };
+		E957EFDA1BB433B200B8B752 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E957EFCE1BB433B200B8B752 /* libWeChatSDK.a */; };
+		E957EFDB1BB433B200B8B752 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFD11BB433B200B8B752 /* WXApiManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFD41BB433B200B8B752 /* WXApiRequestHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E957EFDD1BB433B200B8B752 /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFD61BB433B200B8B752 /* WXApiResponseHandler.m */; };
 		E959EF381B25D2A0006CB977 /* DiscoveryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */; };
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
 		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
@@ -153,6 +162,9 @@
 		E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184331ABAC0E2005291A1 /* LocationAnnotation.m */; };
 		E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */; };
 		E97184391ABAC1B9005291A1 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E97184381ABAC1B9005291A1 /* Base64.m */; };
+		E98047191BB8122D00B5518A /* CitySelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98047181BB8122D00B5518A /* CitySelectViewController.m */; };
+		E980471C1BB8149300B5518A /* CitySelectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E980471B1BB8149300B5518A /* CitySelectCollectionViewCell.m */; };
+		E980471F1BB8460200B5518A /* LinkWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E980471E1BB8460200B5518A /* LinkWebViewController.m */; };
 		E98438581B386495003AA6B2 /* goLogoEmpty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98438571B386495003AA6B2 /* goLogoEmpty@3x.png */; };
 		E98999411B52A671008C9392 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98999401B52A671008C9392 /* SearchViewController.m */; };
 		E98999441B52AA8C008C9392 /* PlayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E98999431B52AA8C008C9392 /* PlayTableViewCell.m */; };
@@ -169,6 +181,9 @@
 		E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F811ACCF713009722C4 /* iTunesArtwork.png */; };
 		E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */; };
 		E9A18E861B65273D00FA66EC /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A18E851B65273D00FA66EC /* share@3x.png */; };
+		E9A1D0391BB1953D007D635B /* mapLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */; };
+		E9A1D03A1BB1953D007D635B /* redSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0371BB1953D007D635B /* redSelect@2x.png */; };
+		E9A1D03B1BB1953D007D635B /* redUnSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0381BB1953D007D635B /* redUnSelect@2x.png */; };
 		E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */; };
 		E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */; };
 		E9B0F6821B38282000D83E83 /* 11.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F6801B38282000D83E83 /* 11.pic.jpg */; };
@@ -370,6 +385,24 @@
 		E9516E511B6FAFFB00E01C1F /* zhImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zhImg@2x.png"; path = "Resource/zhImg@2x.png"; sourceTree = "<group>"; };
 		E9516E541B6FB98600E01C1F /* ShoppingDGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDGDetailViewController.h; path = ViewControllers/Shopping/ShoppingDGDetailViewController.h; sourceTree = "<group>"; };
 		E9516E551B6FB98600E01C1F /* ShoppingDGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDGDetailViewController.m; path = ViewControllers/Shopping/ShoppingDGDetailViewController.m; sourceTree = "<group>"; };
+		E95518F01BB145A300191DE2 /* loginWeChat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginWeChat@2x.png"; path = "Resource/loginWeChat@2x.png"; sourceTree = "<group>"; };
+		E95518F11BB145A300191DE2 /* loginWeibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginWeibo@2x.png"; path = "Resource/loginWeibo@2x.png"; sourceTree = "<group>"; };
+		E957EFC81BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GetMessageFromWXResp+responseWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
+		E957EFC91BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetMessageFromWXResp+responseWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		E957EFCA1BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
+		E957EFCB1BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		E957EFCC1BB433B200B8B752 /* WXMediaMessage+messageConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXMediaMessage+messageConstruct.h"; sourceTree = "<group>"; };
+		E957EFCD1BB433B200B8B752 /* WXMediaMessage+messageConstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXMediaMessage+messageConstruct.m"; sourceTree = "<group>"; };
+		E957EFCE1BB433B200B8B752 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		E957EFCF1BB433B200B8B752 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		E957EFD01BB433B200B8B752 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		E957EFD11BB433B200B8B752 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		E957EFD21BB433B200B8B752 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		E957EFD31BB433B200B8B752 /* WXApiRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiRequestHandler.h; sourceTree = "<group>"; };
+		E957EFD41BB433B200B8B752 /* WXApiRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiRequestHandler.m; sourceTree = "<group>"; };
+		E957EFD51BB433B200B8B752 /* WXApiResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiResponseHandler.h; sourceTree = "<group>"; };
+		E957EFD61BB433B200B8B752 /* WXApiResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiResponseHandler.m; sourceTree = "<group>"; };
+		E957EFDE1BB4342A00B8B752 /* ConfigDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigDefine.h; path = Utils/Defines/ConfigDefine.h; sourceTree = "<group>"; };
 		E959EF361B25D2A0006CB977 /* DiscoveryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryDetailViewController.h; path = ViewControllers/Discovery/DiscoveryDetailViewController.h; sourceTree = "<group>"; };
 		E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryDetailViewController.m; path = ViewControllers/Discovery/DiscoveryDetailViewController.m; sourceTree = "<group>"; };
 		E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuyListViewController.h; path = ViewControllers/My/MyBuyListViewController.h; sourceTree = "<group>"; };
@@ -490,6 +523,12 @@
 		E97184351ABAC178005291A1 /* GetUserLocationCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GetUserLocationCenter@2x.png"; path = "Resource/GetUserLocationCenter@2x.png"; sourceTree = "<group>"; };
 		E97184371ABAC1B9005291A1 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = Vendors/Base64.h; sourceTree = "<group>"; };
 		E97184381ABAC1B9005291A1 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = Vendors/Base64.m; sourceTree = "<group>"; };
+		E98047171BB8122D00B5518A /* CitySelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitySelectViewController.h; path = ViewControllers/Play/CitySelectViewController.h; sourceTree = "<group>"; };
+		E98047181BB8122D00B5518A /* CitySelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitySelectViewController.m; path = ViewControllers/Play/CitySelectViewController.m; sourceTree = "<group>"; };
+		E980471A1BB8149300B5518A /* CitySelectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitySelectCollectionViewCell.h; path = Views/Play/CitySelectCollectionViewCell.h; sourceTree = "<group>"; };
+		E980471B1BB8149300B5518A /* CitySelectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitySelectCollectionViewCell.m; path = Views/Play/CitySelectCollectionViewCell.m; sourceTree = "<group>"; };
+		E980471D1BB8460200B5518A /* LinkWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinkWebViewController.h; path = ViewControllers/Discovery/LinkWebViewController.h; sourceTree = "<group>"; };
+		E980471E1BB8460200B5518A /* LinkWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkWebViewController.m; path = ViewControllers/Discovery/LinkWebViewController.m; sourceTree = "<group>"; };
 		E98438571B386495003AA6B2 /* goLogoEmpty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "goLogoEmpty@3x.png"; path = "Resource/goLogoEmpty@3x.png"; sourceTree = "<group>"; };
 		E989993F1B52A671008C9392 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ViewControllers/Discovery/SearchViewController.h; sourceTree = "<group>"; };
 		E98999401B52A671008C9392 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/Discovery/SearchViewController.m; sourceTree = "<group>"; };
@@ -508,6 +547,9 @@
 		E9899F811ACCF713009722C4 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = Resource/iTunesArtwork.png; sourceTree = "<group>"; };
 		E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Resource/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		E9A18E851B65273D00FA66EC /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@3x.png"; path = "Resource/share@3x.png"; sourceTree = "<group>"; };
+		E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mapLocationIcon@2x.png"; path = "Resource/mapLocationIcon@2x.png"; sourceTree = "<group>"; };
+		E9A1D0371BB1953D007D635B /* redSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redSelect@2x.png"; path = "Resource/redSelect@2x.png"; sourceTree = "<group>"; };
+		E9A1D0381BB1953D007D635B /* redUnSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redUnSelect@2x.png"; path = "Resource/redUnSelect@2x.png"; sourceTree = "<group>"; };
 		E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFeedBackViewController.h; path = ViewControllers/My/MyFeedBackViewController.h; sourceTree = "<group>"; };
 		E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFeedBackViewController.m; path = ViewControllers/My/MyFeedBackViewController.m; sourceTree = "<group>"; };
 		E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowLeft@2x.png"; path = "Resource/arrowLeft@2x.png"; sourceTree = "<group>"; };
@@ -648,6 +690,7 @@
 			files = (
 				E9D0FB161AEA398200CC9664 /* ImageIO.framework in Frameworks */,
 				E9D0FB141AEA36B500CC9664 /* libsqlite3.dylib in Frameworks */,
+				E957EFDA1BB433B200B8B752 /* libWeChatSDK.a in Frameworks */,
 				E9D0FB121AEA369D00CC9664 /* libstdc++.dylib in Frameworks */,
 				E9D0FB101AEA368E00CC9664 /* MessageUI.framework in Frameworks */,
 				E9D0FB0E1AEA368500CC9664 /* Accounts.framework in Frameworks */,
@@ -829,6 +872,7 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E957EFC61BB433B200B8B752 /* WeChat */,
 				E967A1C51B9DCB7100FAFF89 /* MJRefresh */,
 				E90DAEB71B96E2C8002F379E /* SKSplashView */,
 				E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */,
@@ -929,6 +973,7 @@
 		E937ACFD1B0640A900D5386A /* Defines */ = {
 			isa = PBXGroup;
 			children = (
+				E957EFDE1BB4342A00B8B752 /* ConfigDefine.h */,
 				E937ACFE1B0640F900D5386A /* StyleDefine.h */,
 			);
 			name = Defines;
@@ -962,6 +1007,37 @@
 				E94DA2851B23EE3700F87B42 /* DiscoveryTableViewCell.m */,
 			);
 			name = Discovery;
+			sourceTree = "<group>";
+		};
+		E957EFC61BB433B200B8B752 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				E957EFC71BB433B200B8B752 /* Helper */,
+				E957EFCE1BB433B200B8B752 /* libWeChatSDK.a */,
+				E957EFCF1BB433B200B8B752 /* WXApi.h */,
+				E957EFD01BB433B200B8B752 /* WXApiManager.h */,
+				E957EFD11BB433B200B8B752 /* WXApiManager.m */,
+				E957EFD21BB433B200B8B752 /* WXApiObject.h */,
+				E957EFD31BB433B200B8B752 /* WXApiRequestHandler.h */,
+				E957EFD41BB433B200B8B752 /* WXApiRequestHandler.m */,
+				E957EFD51BB433B200B8B752 /* WXApiResponseHandler.h */,
+				E957EFD61BB433B200B8B752 /* WXApiResponseHandler.m */,
+			);
+			name = WeChat;
+			path = Vendors/WeChat;
+			sourceTree = "<group>";
+		};
+		E957EFC71BB433B200B8B752 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E957EFC81BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.h */,
+				E957EFC91BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */,
+				E957EFCA1BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */,
+				E957EFCB1BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */,
+				E957EFCC1BB433B200B8B752 /* WXMediaMessage+messageConstruct.h */,
+				E957EFCD1BB433B200B8B752 /* WXMediaMessage+messageConstruct.m */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */ = {
@@ -1113,6 +1189,8 @@
 			children = (
 				E98999421B52AA8C008C9392 /* PlayTableViewCell.h */,
 				E98999431B52AA8C008C9392 /* PlayTableViewCell.m */,
+				E980471A1BB8149300B5518A /* CitySelectCollectionViewCell.h */,
+				E980471B1BB8149300B5518A /* CitySelectCollectionViewCell.m */,
 			);
 			name = Play;
 			sourceTree = "<group>";
@@ -1166,6 +1244,8 @@
 				E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */,
 				E989993F1B52A671008C9392 /* SearchViewController.h */,
 				E98999401B52A671008C9392 /* SearchViewController.m */,
+				E980471D1BB8460200B5518A /* LinkWebViewController.h */,
+				E980471E1BB8460200B5518A /* LinkWebViewController.m */,
 			);
 			name = Discovery;
 			sourceTree = "<group>";
@@ -1202,6 +1282,8 @@
 				E9B901B01AC93E21001F4EA0 /* PlayViewController.m */,
 				E9F0E0B21B5BE5B900999AFA /* PlayDetailViewController.h */,
 				E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */,
+				E98047171BB8122D00B5518A /* CitySelectViewController.h */,
+				E98047181BB8122D00B5518A /* CitySelectViewController.m */,
 			);
 			name = Play;
 			sourceTree = "<group>";
@@ -1228,6 +1310,11 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */,
+				E9A1D0371BB1953D007D635B /* redSelect@2x.png */,
+				E9A1D0381BB1953D007D635B /* redUnSelect@2x.png */,
+				E95518F01BB145A300191DE2 /* loginWeChat@2x.png */,
+				E95518F11BB145A300191DE2 /* loginWeibo@2x.png */,
 				E96F4B401BAC0C9D0033186D /* loginBg@2x.png */,
 				E96F4B411BAC0C9D0033186D /* loginCancel@2x.png */,
 				E96F4B421BAC0C9D0033186D /* loginWeChat@2x.jpg */,
@@ -1608,6 +1695,7 @@
 				E95C88EF1B385B6C00E3B050 /* searchBarbg@2x.png in Resources */,
 				E91FBCDB1AB92555005CA250 /* background.png in Resources */,
 				E9D98EC81AEDE9C7004805E5 /* iconAboutUs.png in Resources */,
+				E9A1D0391BB1953D007D635B /* mapLocationIcon@2x.png in Resources */,
 				E9B0F6821B38282000D83E83 /* 11.pic.jpg in Resources */,
 				E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */,
 				E97184241ABAA38E005291A1 /* defaultBackground.jpg in Resources */,
@@ -1641,6 +1729,7 @@
 				E9DE1AA91B29F1000040BFA6 /* ad05.jpg in Resources */,
 				E91396541AC111B8003AF385 /* icon-plus-highlighted.png in Resources */,
 				E9899F841ACCF713009722C4 /* Icon-40@2x.png in Resources */,
+				E9A1D03B1BB1953D007D635B /* redUnSelect@2x.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
@@ -1657,10 +1746,12 @@
 				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */,
+				E95518F31BB145A300191DE2 /* loginWeibo@2x.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
 				E9899F831ACCF713009722C4 /* Icon-40.png in Resources */,
 				E96F4B471BAC0C9D0033186D /* loginWeibo@2x.jpg in Resources */,
+				E95518F21BB145A300191DE2 /* loginWeChat@2x.png in Resources */,
 				E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */,
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
 				E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */,
@@ -1672,6 +1763,7 @@
 				E9F1C8B31B403BDD008FFD28 /* discoveryGray@3x.png in Resources */,
 				E91396701AC2607E003AF385 /* trash.png in Resources */,
 				E9DE1A831B2734AC0040BFA6 /* ad1.jpg in Resources */,
+				E9A1D03A1BB1953D007D635B /* redSelect@2x.png in Resources */,
 				E9899F891ACCF713009722C4 /* Icon-Small.png in Resources */,
 				E98438581B386495003AA6B2 /* goLogoEmpty@3x.png in Resources */,
 				E90DAEBF1B96E354002F379E /* Launch_ip5.png in Resources */,
@@ -1760,6 +1852,8 @@
 				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
 				E9E0232C1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m in Sources */,
 				E967A1F81B9DCB7200FAFF89 /* MJRefreshAutoNormalFooter.m in Sources */,
+				E98047191BB8122D00B5518A /* CitySelectViewController.m in Sources */,
+				E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */,
 				E90DAEBD1B96E2C8002F379E /* SKSplashView.m in Sources */,
 				E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */,
 				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
@@ -1767,6 +1861,7 @@
 				E90991061AAFE7E300C48688 /* AddTripViewController.m in Sources */,
 				E96F4B3F1BAC076A0033186D /* MyLoginSelectViewController.m in Sources */,
 				E909910A1AAFE82400C48688 /* TripListViewController.m in Sources */,
+				E980471F1BB8460200B5518A /* LinkWebViewController.m in Sources */,
 				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
 				E967A1FF1B9DCB7200FAFF89 /* MJRefreshStateHeader.m in Sources */,
@@ -1803,14 +1898,18 @@
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
 				E967A1F91B9DCB7200FAFF89 /* MJRefreshAutoStateFooter.m in Sources */,
+				E957EFDB1BB433B200B8B752 /* WXApiManager.m in Sources */,
+				E957EFDD1BB433B200B8B752 /* WXApiResponseHandler.m in Sources */,
 				E93F6D321ADF879B0047A468 /* CHMenuPicker.m in Sources */,
 				E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */,
+				E957EFD71BB433B200B8B752 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
 				E90990DC1AAFD6D600C48688 /* main.m in Sources */,
 				E967A1F21B9DCB7200FAFF89 /* MJRefreshAutoFooter.m in Sources */,
 				E91396351AC0FF79003AF385 /* SubTrip.m in Sources */,
 				E9CA46C51B6E60630010C838 /* PopoverView.m in Sources */,
 				E9CA46C21B6E42E90010C838 /* HMSegmentedControl.m in Sources */,
 				E9DE1A881B2738000040BFA6 /* ShoppingDGViewController.m in Sources */,
+				E957EFD91BB433B200B8B752 /* WXMediaMessage+messageConstruct.m in Sources */,
 				E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */,
 				E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */,
 				E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */,
@@ -1828,6 +1927,8 @@
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
 				E9C131951AB2E79400E6E873 /* AddSubTripTableViewCell.m in Sources */,
 				E9D98EC21AEDDA5A004805E5 /* MyNormalTableViewCell.m in Sources */,
+				E957EFD81BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
+				E980471C1BB8149300B5518A /* CitySelectCollectionViewCell.m in Sources */,
 				E98999441B52AA8C008C9392 /* PlayTableViewCell.m in Sources */,
 				E9B901B11AC93E21001F4EA0 /* PlayViewController.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
@@ -2010,7 +2111,10 @@
 				INFOPLIST_FILE = chtrips/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/chtrips/Vendors/WeChat",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
@@ -2031,7 +2135,10 @@
 				INFOPLIST_FILE = chtrips/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/chtrips/Vendors/WeChat",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";

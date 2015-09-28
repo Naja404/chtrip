@@ -13,15 +13,18 @@
 #import "UIImageView+AFNetworking.h"
 #import "JHChainableAnimations.h"
 #import "SearchViewController.h"
-#import "SKSplashIcon.h"
+#import "PlayDetailViewController.h"
+#import "ShoppingDGDetailViewController.h"
+#import "LinkWebViewController.h"
 
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
-@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, SKSplashDelegate>
+@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *discoveryTV;
 @property (nonatomic, strong) NSMutableArray *discoveryTVData;
+@property (nonatomic, strong) NSMutableArray *adData;
 @property (nonatomic, strong) UIView *discoveryHV;
 @property (nonatomic, strong) UIScrollView *adScrollView;
 @property (nonatomic, strong) UIPageControl *adPageControl;
@@ -30,7 +33,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 @property (nonatomic, strong) UITextField *searchField;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
 
-@property (strong, nonatomic) SKSplashView *splashView;
 @property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 
 @end
@@ -56,43 +58,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     // Do any additional setup after loading the view.
 }
-#pragma mark 启动动画
 
-- (void) twitterSplash
-{
-    //Setting the background
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
-//    imageView.image = [UIImage imageNamed:@"twitter background.png"];
-//    imageView.image = [UIImage imageNamed:@"Launch_ip5.png"];
-//    [self.view addSubview:imageView];
-    //Twitter style splash
-    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"Launch_ip5.png"] animationType:SKIconAnimationTypeBounce];
-    UIColor *twitterColor = [UIColor colorWithRed:0.25098 green:0.6 blue:1.0 alpha:1.0];
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:twitterSplashIcon backgroundColor:twitterColor animationType:SKSplashAnimationTypeNone];
-    _splashView.delegate = self; //Optional -> if you want to receive updates on animation beginning/end
-    _splashView.animationDuration = 2; //Optional -> set animation duration. Default: 1s
-    [self.view addSubview:_splashView];
-    [_splashView startAnimation];
-}
-
-
-#pragma mark - Delegate methods
-
-- (void) splashView:(SKSplashView *)splashView didBeginAnimatingWithDuration:(float)duration
-{
-    NSLog(@"Started animating from delegate");
-    //To start activity animation when splash animation starts
-    [_indicatorView startAnimating];
-}
-
-- (void) splashViewDidEndAnimating:(SKSplashView *)splashView
-{
-    NSLog(@"Stopped animating from delegate");
-    //To stop activity animation when splash animation ends
-    [_indicatorView stopAnimating];
-    
-    
-}
 
 #pragma mark 获取专辑列表
 
@@ -106,6 +72,9 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
                                       success:^(NSDictionary *result) {
                                           NSLog(@"album list data is %@", result);
                                           self.discoveryTVData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"albumList"]];
+                                          self.adData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"adList"]];
+                                          [self setupKV:self.adData];
+                                          
                                           [self.discoveryTV reloadData];
                                           [SVProgressHUD dismiss];
                                           
@@ -211,17 +180,21 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     [self.discoveryTV registerClass:[DiscoveryTableViewCell class] forCellReuseIdentifier:DISCOVERY_CELL];
     
-    [self setupKV];
     
 }
 
-- (void) setupKV {
+- (void) setupKV:(NSMutableArray *)adData {
+    
     NSMutableArray *viewsArray = [@[] mutableCopy];
     
     for (int i = 0; i < 4; ++i) {
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 142);
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
+//        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
+        ;
+        NSURL *imageUrl = [NSURL URLWithString:[[adData objectAtIndex:i] objectForKey:@"path"]];
+        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        
         [viewsArray addObject:imgView];
     }
     
@@ -240,7 +213,48 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     };
     
     self.kvScrollView.TapActionBlock = ^(NSInteger pageIndex){
-        NSLog(@"点击了第%d个kv", pageIndex);
+//        NSLog(@"点击了第%d个kv", pageIndex);
+
+        NSString *adType = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"type"]];
+        
+        if ([adType isEqualToString:@"1"]) {
+            ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
+            
+            detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.pid = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"price_zh"]];
+            detailVC.hasNav = @"1";
+            detailVC.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
+            detailVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:detailVC animated:YES];
+            
+        }else if ([adType isEqualToString:@"2"]) {
+            PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+            
+            detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.sid = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
+            detailVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:detailVC animated:YES];
+            
+        }else if ([adType isEqualToString:@"3"]) {
+            DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
+            
+            detail.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showAlbum?aid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detail.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
+            
+            detail.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:detail animated:YES];
+        }else if ([adType isEqualToString:@"4"]) {
+            LinkWebViewController *detail = [[LinkWebViewController alloc] init];
+            
+            detail.webUrl = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"url"]];
+            detail.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
+            detail.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:detail animated:YES];
+        }
     };
     
     [self.discoveryHV addSubview:self.kvScrollView];
@@ -334,6 +348,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         cell.mapLB.text = [cellData objectForKey:@"address_title"];
         cell.locationImg.hidden = NO;
     }else{
+        cell.mapLB.text = @"";
         cell.locationImg.hidden = YES;
     }
 

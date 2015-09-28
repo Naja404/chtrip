@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *webUrl;
 @property (nonatomic, strong) NSString *zhPriceStr;
 @property (nonatomic, strong) NSString *pid;
+@property (nonatomic, strong) NSString *hasNav;
 
 @end

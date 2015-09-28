@@ -7,8 +7,11 @@
 //
 
 #import "MyLoginSelectViewController.h"
+#import "WXApiRequestHandler.h"
+#import "WXApiManager.h"
+#import "TMCache.h"
 
-@interface MyLoginSelectViewController ()
+@interface MyLoginSelectViewController ()<WXApiManagerDelegate>
 
 @end
 
@@ -16,8 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupStyle];
+    
+    [WXApiManager sharedManager].delegate = self;
 }
 
 - (void) setupStyle {
@@ -29,7 +33,6 @@
     [cancelBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
     [cancelBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-10];
     [cancelBTN autoSetDimensionsToSize:CGSizeMake(52, 52)];
-//    cancelBTN.imageView.image = [UIImage imageNamed:@"loginCancel"];
     [cancelBTN setImage:[UIImage imageNamed:@"loginCancel"] forState:UIControlStateNormal];
     [cancelBTN addTarget:self action:@selector(backMyView) forControlEvents:UIControlEventTouchUpInside];
     
@@ -47,8 +50,8 @@
     [wechatBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.view withOffset:-100];
     [wechatBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:10];
     [wechatBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
-    [wechatBTN setImage:[UIImage imageNamed:@"loginWeChat@2x.jpg"] forState:UIControlStateNormal];
-    [wechatBTN addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    [wechatBTN setImage:[UIImage imageNamed:@"loginWeChat"] forState:UIControlStateNormal];
+    [wechatBTN addTarget:self action:@selector(sendAuthRequest) forControlEvents:UIControlEventTouchUpInside];
     
     
     UIButton *weiboBTN = [UIButton newAutoLayoutView];
@@ -57,14 +60,67 @@
     [weiboBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wechatBTN];
     [weiboBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-10];
     [weiboBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
-    [weiboBTN setImage:[UIImage imageNamed:@"loginWeibo@2x.jpg"] forState:UIControlStateNormal];
+    [weiboBTN setImage:[UIImage imageNamed:@"loginWeibo"] forState:UIControlStateNormal];
     [weiboBTN addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
 
 }
 
 - (void) backMyView {
-//    [self.navigationController popToRootViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 微信登陆
+- (void) sendAuthRequest {
+    [WXApiRequestHandler sendAuthRequestScope:WXAuthScope
+                                        State:WXAuthState
+                                       OpenID:WXAppId
+                             InViewController:self];
+}
+// wechat
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
+}
+
+// 微信返回
+- (void) managerDidRecvAuthResponse:(SendAuthResp *)response {
+    [self setupWeChat:response.code state:response.state errcode:response.errCode lang:response.lang country:response.country];
+}
+
+- (void) setupWeChat:(NSString *)code state:(NSString *)state errcode:(int)errcode lang:(NSString *)lang country:(NSString *)country{
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    
+    [SVProgressHUD show];
+    
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:code forKey:@"code"];
+    [paramter setObject:state forKey:@"state"];
+    [paramter setObject:[NSString stringWithFormat:@"%d", errcode] forKey:@"errcode"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", lang] forKey:@"lang"];
+    [paramter setObject:[NSString stringWithFormat:@"%@", country] forKey:@"country"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/loginWeChat"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSLog(@"wechat login return %@", result);
+                                          [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"nickname"] forKey:@"userName"];
+                                          
+                                          [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"headimgurl"] forKey:@"userAvatar"];
+                                          
+                                          [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
+                                          
+                                          [SVProgressHUD dismiss];
+                                          
+                                          [self backMyView];
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          NSLog(@"error %@", error);
+                                          [SVProgressHUD dismiss];
+                                      }];
 }
 
 - (void)didReceiveMemoryWarning {

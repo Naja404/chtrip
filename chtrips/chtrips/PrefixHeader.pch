@@ -46,6 +46,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "StyleDefine.h"
+    #import "ConfigDefine.h"
     #import "PureLayout.h"
     #import "SVProgressHUD.h"
     #import "ObjectiveRecord.h"

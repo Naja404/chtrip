@@ -44,8 +44,8 @@
         _titleLB.textColor = [UIColor whiteColor];
         _titleLB.shadowOffset = CGSizeMake(0.0f, 2.0f);
         _titleLB.shadowColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5f];
-        _titleLB.layer.shadowRadius = 20.0f;
-        _titleLB.layer.masksToBounds = YES;
+//        _titleLB.layer.shadowRadius = 20.0f;
+//        _titleLB.layer.masksToBounds = YES;
         
         self.buyBTN = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_buyBTN];
@@ -86,8 +86,8 @@
         
         [_locationImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeading ofView:_mapLB];
         [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_mapLB];
-        [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 20)];
-        _locationImg.image = [UIImage imageNamed:@"tripLocation"];
+        [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 25)];
+        _locationImg.image = [UIImage imageNamed:@"mapLocationIcon"];
         
     }
     

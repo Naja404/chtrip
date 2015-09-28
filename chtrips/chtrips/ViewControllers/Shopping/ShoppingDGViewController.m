@@ -48,6 +48,9 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void) viewWillAppear:(BOOL)animated {
     self.hidesBottomBarWhenPushed = NO;
+
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 - (void)viewDidLoad {
@@ -238,7 +241,6 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (void) getProductList:(NSString *)PageNum {
     [SVProgressHUD show];
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
-//    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:PageNum forKey:@"pageNum"];
     [paramter setObject:self.selectCate forKey:@"cate"];

@@ -10,7 +10,9 @@
 #import "MyBuyListTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ShoppingPopularityDetailViewController.h"
-#import "ShoppingPopularityTableViewCell.h"
+#import "MyBuyListTableViewCell.h"
+
+#define RED_TEXT [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
 
 static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
@@ -22,7 +24,9 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 @property (nonatomic, strong) UILabel *priceZH;
 @property (nonatomic, strong) UILabel *priceJP;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
-
+@property (nonatomic, strong) UIButton *checkoutBTN;
+@property (nonatomic, strong) UIButton *selectAllBTN;
+@property (nonatomic, strong) NSString *selectAllStatu;
 @end
 
 @implementation MyBuyListViewController
@@ -55,7 +59,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [_buyListTV autoPinToTopLayoutGuideOfViewController:self withInset:-60];
     [_buyListTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_buyListTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_buyListTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [_buyListTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-47];
     
     _buyListTV.dataSource = self;
     _buyListTV.delegate = self;
@@ -65,7 +69,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
     [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
-    [self.buyListTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:MY_BUYLIST_CELL];
+    [self.buyListTV registerClass:[MyBuyListTableViewCell class] forCellReuseIdentifier:MY_BUYLIST_CELL];
     
     // 设置总计栏
     UIView *totalBar = [UIView newAutoLayoutView];
@@ -75,36 +79,72 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [totalBar autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     [totalBar autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [totalBar autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
-    [totalBar autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 80)];
+    [totalBar autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 47)];
+    totalBar.backgroundColor = [UIColor colorWithRed:254/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     
-    totalBar.backgroundColor = [UIColor blackColor];
+    UILabel *topLine = [UILabel newAutoLayoutView];
+    [totalBar addSubview:topLine];
     
-    UILabel *totalLB = [UILabel newAutoLayoutView];
-    [totalBar addSubview:totalLB];
+    [topLine autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar];
+    [topLine autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:totalBar];
+    [topLine autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
+    topLine.backgroundColor = [UIColor colorWithRed:217/255.0 green:218/255.0 blue:219/255.0 alpha:1];
     
-    [totalLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:totalBar];
-    [totalLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar];
-    [totalLB autoSetDimensionsToSize:CGSizeMake(40, 14)];
-    totalLB.backgroundColor = [UIColor whiteColor];
-    totalLB.text = @"合计:";
+    self.selectAllBTN = [UIButton newAutoLayoutView];
+    [totalBar addSubview:_selectAllBTN];
+    
+    [_selectAllBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:totalBar];
+    [_selectAllBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:totalBar withOffset:10];
+    [_selectAllBTN autoSetDimensionsToSize:CGSizeMake(20, 20)];
+    [_selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+    [_selectAllBTN addTarget:self action:@selector(clickSelectAllBTN) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.checkoutBTN = [UIButton newAutoLayoutView];
+    [totalBar addSubview:_checkoutBTN];
+    
+    [_checkoutBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar];
+    [_checkoutBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar];
+    [_checkoutBTN autoSetDimensionsToSize:CGSizeMake(103, 46.5)];
+    _checkoutBTN.backgroundColor = [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1];
+    [_checkoutBTN setTitle:@"结算(0)" forState:UIControlStateNormal];
     
     self.priceZH = [UILabel newAutoLayoutView];
     [totalBar addSubview:_priceZH];
     
-    [_priceZH autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:totalLB];
-    [_priceZH autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar];
-    [_priceZH autoSetDimensionsToSize:CGSizeMake(80, 14)];
-    _priceZH.backgroundColor = [UIColor whiteColor];
-    _priceZH.text = @"0.00";
+    [_priceZH autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar withOffset:10];
+    [_priceZH autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
+    [_priceZH autoSetDimensionsToSize:CGSizeMake(70, 20)];
     
-    self.priceJP = [UILabel newAutoLayoutView];
-    [totalBar addSubview:_priceJP];
+    NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:@"0.00"];
     
-    [_priceJP autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_priceZH];
-    [_priceJP autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar];
-    [_priceJP autoSetDimensionsToSize:CGSizeMake(100, 14)];
-    _priceJP.backgroundColor = [UIColor whiteColor];
-    _priceJP.text = @"0.00";
+    
+    [price addAttribute:NSForegroundColorAttributeName value:RED_TEXT range:NSMakeRange(0, 1)];
+    [price addAttribute:NSForegroundColorAttributeName value:RED_TEXT range:NSMakeRange(1, 3)];
+    
+    [price addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, 1)];
+    [price addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(1, 3)];
+    _priceZH.attributedText = price;
+    _priceZH.textAlignment = NSTextAlignmentRight;
+    
+    UILabel *totalLB = [UILabel newAutoLayoutView];
+    [totalBar addSubview:totalLB];
+    
+    [totalLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_priceZH];
+    [totalLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_priceZH];
+    [totalLB autoSetDimensionsToSize:CGSizeMake(45, 18)];
+    totalLB.textColor = HIGHLIGHT_BLACK_COLOR;
+    totalLB.font = [UIFont systemFontOfSize:18];
+    totalLB.text = @"合计:";
+    
+    UILabel *notShipLB = [UILabel newAutoLayoutView];
+    [totalBar addSubview:notShipLB];
+    
+    [notShipLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar withOffset:-5];
+    [notShipLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
+    [notShipLB autoSetDimensionsToSize:CGSizeMake(50, 12)];
+    notShipLB.font = [UIFont systemFontOfSize:12];
+    notShipLB.textColor = HIGHLIGHT_BLACK_COLOR;
+    notShipLB.text = @"不含运费";
     
 }
 
@@ -121,8 +161,19 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           self.buyListData = [[result objectForKey:@"data"] objectForKey:@"list"];
-                                          self.priceZH.text = [NSString stringWithFormat:@"¥ %@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
-                                          self.priceJP.text = [NSString stringWithFormat:@"円 %@", [[result objectForKey:@"data"] objectForKey:@"price_jp_total"]];
+                                          NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
+                                          self.priceZH.attributedText = [self priceFormat:str];
+                                          
+                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"selectAll"] isEqualToString:@"1"]) {
+                                              self.selectAllStatu = @"1";
+                                              [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
+                                          }else{
+                                              self.selectAllStatu = @"0";
+                                            [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+                                          }
+
+                                          
                                           [self.buyListTV reloadData];
                                           [SVProgressHUD dismiss];
 
@@ -133,7 +184,19 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                       }];
 }
 
-
+- (NSMutableAttributedString *) priceFormat:(NSString *)str {
+    NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:str];
+    
+    NSUInteger rangLength = str.length - 3;
+    
+    [price addAttribute:NSForegroundColorAttributeName value:RED_TEXT range:NSMakeRange(0, rangLength)];
+    [price addAttribute:NSForegroundColorAttributeName value:RED_TEXT range:NSMakeRange(rangLength, 3)];
+    
+    [price addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, rangLength)];
+    [price addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(rangLength, 3)];
+    
+    return price;
+}
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -147,7 +210,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ShoppingPopularityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_BUYLIST_CELL forIndexPath:indexPath];
+    MyBuyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_BUYLIST_CELL forIndexPath:indexPath];
     
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.buyListData objectAtIndex:indexPath.row]];
     
@@ -155,15 +218,87 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
     [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
     cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
-    cell.titleJPLB.text = [cellData objectForKey:@"title_jp"];
-    cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
-    cell.priceJPLB.text = [cellData objectForKey:@"price_jp"];
-    cell.summaryLB.text = [cellData objectForKey:@"summary_zh"];
+    cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
+    cell.priceZHLB.text = [NSString stringWithFormat:@"%@ RMB", [cellData objectForKey:@"price_zh"]];
+    cell.checkStatu = [cellData objectForKey:@"select"];
+    cell.pid = [cellData objectForKey:@"pid"];
+    
+    if ([cell.checkStatu isEqualToString:@"0"]) {
+        [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+    }else{
+        [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
+    }
+    
+    UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCheckBTN:)];
+    cell.checkBTN.userInteractionEnabled = YES;
+    [cell.checkBTN addGestureRecognizer:onceTap];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     
     return cell;
 }
+
+- (void) clickCheckBTN:(UITapGestureRecognizer *)gr {
+    
+    MyBuyListTableViewCell *cell = (MyBuyListTableViewCell *) [[[gr view] superview] superview];
+    
+    if ([cell.checkStatu isEqualToString:@"0"]) {
+        [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
+        cell.checkStatu = @"1";
+    }else{
+        [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+        cell.checkStatu = @"0";
+    }
+    
+    [self upBuyList:cell.checkStatu pid:cell.pid];
+    
+}
+
+- (void) clickSelectAllBTN {
+    if ([self.selectAllStatu isEqualToString:@"0"]) {
+        [self upBuyList:@"3" pid:@"0"];
+    }else{
+        [self upBuyList:@"4" pid:@"0"];
+    }
+}
+
+#pragma mark 更新选中数据
+
+- (void) upBuyList:(NSString *)type pid:(NSString *)pid {
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [SVProgressHUD show];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:type forKey:@"type"];
+    [paramter setObject:pid forKey:@"pid"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/setBuyList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          self.buyListData = [[result objectForKey:@"data"] objectForKey:@"list"];
+                                          NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
+                                          self.priceZH.attributedText = [self priceFormat:str];
+                                          
+                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
+                                          
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"selectAll"] isEqualToString:@"1"]) {
+                                              self.selectAllStatu = @"1";
+                                              [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
+                                          }else{
+                                              self.selectAllStatu = @"0";
+                                              [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+                                          }
+
+                                          [self.buyListTV reloadData];
+                                          [SVProgressHUD dismiss];
+                                      }
+     
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD dismiss];
+                                      }];
+}
+
 
 #pragma mark 下拉刷新
 - (void) refresh:(UIRefreshControl *)control {
@@ -174,12 +309,6 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    ShoppingPopularityDetailViewController *detailPopulaVC = [[ShoppingPopularityDetailViewController alloc] init];
-//    detailPopulaVC.navigationItem.title = [[self.buyListData objectAtIndex:indexPath.row] objectForKey:@"title_zh"];
-//    detailPopulaVC.dicData = [[NSDictionary alloc] initWithDictionary:[self.buyListData objectAtIndex:indexPath.row]];
-//    
-//    [self.navigationController pushViewController:detailPopulaVC animated:YES];
 }
 
 

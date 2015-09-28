@@ -14,6 +14,9 @@
 #import "MyBuyListViewController.h"
 #import "MyWantListViewController.h"
 #import "MyLoginSelectViewController.h"
+#import "TMCache.h"
+#import "UIImageView+AFNetworking.h"
+
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
@@ -21,6 +24,7 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTV;
+@property (nonatomic, strong) NSString *loginStatus;
 
 @end
 
@@ -28,14 +32,33 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 
 - (void) viewWillAppear:(BOOL)animated {
     
+    [self setupUserInfo];
+    
+    [self.myTV reloadData];
+    
     self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"My";
-    // Do any additional setup after loading the view.
     [self setupMyStyle];
+    [self setupUserInfo];
+}
+
+- (void) setupUserInfo {
+    
+    self.loginStatus = [[TMCache sharedCache] objectForKey:@"loginStatus"];
+    
+    if ([self.loginStatus isEqualToString:@"1"]) {
+        self.loginStatus = @"1";
+        [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
+    }else{
+        self.loginStatus = @"0";
+        [[TMCache sharedCache] setObject:@"0" forKey:@"loginStatus"];
+    }
+    
+    
 }
 
 - (void) setupMyStyle {
@@ -91,6 +114,11 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
     
     if (indexPath.section == 0 && indexPath.row == 0) {
         MyAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_AVATAR_CELL forIndexPath:indexPath];
+        if ([self.loginStatus isEqualToString:@"1"]) {
+            cell.nameLB.text = [[TMCache sharedCache] objectForKey:@"userName"];
+            NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
+            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -134,12 +162,14 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0 && indexPath.row == 0) {
-        // 在主线程执行
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
-            [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
-        });
-
+        
+        if ([self.loginStatus isEqualToString:@"0"]) {
+            // 在主线程执行
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
+                [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
+            });
+        }
     }
     
     if (indexPath.section == 1) {

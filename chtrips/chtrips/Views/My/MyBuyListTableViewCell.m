@@ -15,99 +15,65 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        
+        self.checkBTN = [UIButton newAutoLayoutView];
+        [self.contentView addSubview:_checkBTN];
+        
+        [_checkBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
+        [_checkBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+        [_checkBTN autoSetDimensionsToSize:CGSizeMake(20, 20)];
+        
+        [_checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+        
+        
         self.productImage = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_productImage];
         
-        [_productImage autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:10];
-        [_productImage autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
-        [_productImage autoSetDimensionsToSize:CGSizeMake(100, 100)];
-        
+        [_productImage autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_checkBTN withOffset:10];
+        [_productImage autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+        [_productImage autoSetDimensionsToSize:CGSizeMake(90, 66)];
         
         self.titleZHLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleZHLB];
         
-        [_titleZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:10];
-        [_titleZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:20];
-        [_titleZHLB autoSetDimensionsToSize:CGSizeMake(180, 20)];
+        [_titleZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_productImage ];
+        [_titleZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:10];
+        [_titleZHLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 90 - 5 - 20 - 30, 20)];
+        _titleZHLB.font = [UIFont systemFontOfSize:17.0f];
+        _titleZHLB.textColor = HIGHLIGHT_BLACK_COLOR;
         
-        self.titleJPLB = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_titleJPLB];
+        self.summaryZHLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_summaryZHLB];
         
-        [_titleJPLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleZHLB withOffset:5];
-        [_titleJPLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage  withOffset:20];
-        [_titleJPLB autoSetDimensionsToSize:CGSizeMake(180, 20)];
-        _titleJPLB.font = [UIFont fontWithName:@"Arial" size:17];
-        _titleJPLB.textColor = [UIColor colorWithRed:184.0/255 green:184.0/255 blue:184.0/255 alpha:1];
+        [_summaryZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleZHLB withOffset:4];
+        [_summaryZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage  withOffset:10];
+        [_summaryZHLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 90 - 5 - 20, 20)];
+        _summaryZHLB.font = [UIFont systemFontOfSize:12.0f];
+        _summaryZHLB.textColor = HIGHLIGHT_GRAY_COLOR;
         
-        self.priceJPImg = [UIImageView newAutoLayoutView];
-        [self.contentView addSubview:_priceJPImg];
         
-        [_priceJPImg autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleJPLB withOffset:10];
-        [_priceJPImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:15];
-        [_priceJPImg autoSetDimensionsToSize:CGSizeMake(16, 16)];
-        _priceJPImg.image = [UIImage imageNamed:@"japanFlagIcon"];
+        self.prePriceLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_prePriceLB];
         
-        self.priceJPLB = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_priceJPLB];
-        
-        [_priceJPLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleJPLB withOffset:10];
-        [_priceJPLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_priceJPImg withOffset:10];
-        [_priceJPLB autoSetDimensionsToSize:CGSizeMake(100, 16)];
-        _priceJPLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
-        
-        self.priceZHImg = [UIImageView newAutoLayoutView];
-        [self.contentView addSubview:_priceZHImg];
-        
-        [_priceZHImg autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleJPLB withOffset:10];
-        [_priceZHImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_priceJPImg withOffset:100];
-        [_priceZHImg autoSetDimensionsToSize:CGSizeMake(16, 16)];
-        _priceZHImg.image = [UIImage imageNamed:@"chinaFlagIcon"];
-        
+        [_prePriceLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_productImage];
+        [_prePriceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:10];
+        [_prePriceLB autoSetDimensionsToSize:CGSizeMake(60, 20)];
+        _prePriceLB.font = [UIFont systemFontOfSize:14.0f];
+        _prePriceLB.text = NSLocalizedString(@"TEXT_REFERENCE_PRICE", nil);
+        _prePriceLB.textColor = HIGHLIGHT_BLACK_COLOR;
         
         self.priceZHLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_priceZHLB];
         
-        [_priceZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleJPLB withOffset:10];
-        [_priceZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_priceJPImg withOffset:125];
-        [_priceZHLB autoSetDimensionsToSize:CGSizeMake(100, 16)];
-        _priceZHLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
+        [_priceZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_prePriceLB withOffset:5];
+        [_priceZHLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_prePriceLB];
+        [_priceZHLB autoSetDimensionsToSize:CGSizeMake(120, 20)];
+        _priceZHLB.font = [UIFont systemFontOfSize:11.0f];
+        _priceZHLB.textColor = HIGHLIGHT_RED_COLOR;
         
-        self.summaryLB = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_summaryLB];
-        
-        [_summaryLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_priceJPLB withOffset:5];
-        [_summaryLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:20];
-        [_summaryLB autoSetDimensionsToSize:CGSizeMake(180, 20)];
-        _summaryLB.textColor = [UIColor redColor];
-        
-        
-        self.productNum = [UIStepper newAutoLayoutView];
-        [self.contentView addSubview:_productNum];
-        
-        [_productNum autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView];
-        [_productNum autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-20];
-        [_productNum autoSetDimensionsToSize:CGSizeMake(100, 40)];
-        
-        _productNum.maximumValue = 99;
-        _productNum.minimumValue = 1;
-        _productNum.stepValue = 1;
-        [_productNum addTarget:self action:@selector(stepTag:) forControlEvents:UIControlEventValueChanged];
-        
-        
-        self.productNumLB = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_productNumLB];
-        
-        [_productNumLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_productNum withOffset:-10];
-        [_productNumLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-10];
-        [_productNumLB autoSetDimensionsToSize:CGSizeMake(50, 15)];
-        _productNumLB.text = @"1";
     }
     
     return self;
-}
-
-- (void) stepTag:(UIStepper *) stepper {
-    self.productNumLB.text = [NSString stringWithFormat:@"%ld", (long)stepper.value];
 }
 
 - (void)awakeFromNib {

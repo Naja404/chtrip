@@ -22,6 +22,11 @@
 @implementation ShoppingDGDetailViewController
 
 - (void) viewWillAppear:(BOOL)animated {
+    if ([self.hasNav isEqualToString:@"1"]) {
+        self.navigationController.navigationBarHidden = NO;
+    }else{
+        
+    }
 //    self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -30,6 +35,7 @@
 - (void) viewWillDisappear:(BOOL)animated {
 //    self.navigationController.navigationBarHidden = NO;
 //    self.tabBarController.tabBar.hidden = NO;
+
     [SVProgressHUD dismiss];
 }
 

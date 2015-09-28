@@ -16,6 +16,8 @@
 
 #import "ChtripCDManager.h"
 
+#import "WXApiManager.h"
+
 
 @interface AppDelegate ()
 
@@ -36,7 +38,6 @@
     // Override point for customization after application launch.
     
     [self setupCoreDataManager];
-    [self setupShareSDK];
     
     [self regDeviceToken];
     
@@ -104,13 +105,17 @@
 //    rootNav.delegate = self;
 //
 //    [self.window setRootViewController:rootNav];
+    [WXApi registerApp:WXAppId];
     
     return YES;
 }
 
-- (void) setupShareSDK {
+- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
 
-
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 
 

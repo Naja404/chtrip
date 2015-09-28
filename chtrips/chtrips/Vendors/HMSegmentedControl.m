@@ -40,11 +40,13 @@
 }
 
 - (void)setDefaults {
-    self.font = [UIFont fontWithName:@"STHeitiSC-Light" size:15.0f];
-    self.textColor = [UIColor blackColor];
-    self.backgroundColor = [UIColor whiteColor];
+//    self.font = [UIFont fontWithName:@"STHeitiSC-Light" size:15.0f];
+    self.font = [UIFont systemFontOfSize:14];
+//    self.textColor = [UIColor blackColor];
+    self.textColor = HIGHLIGHT_BLACK_COLOR;
+    self.backgroundColor = HIGHLIGHT_GRAY_COLOR;
 //    self.selectionIndicatorColor = [UIColor colorWithRed:52.0f/255.0f green:181.0f/255.0f blue:229.0f/255.0f alpha:1.0f];
-    self.selectionIndicatorColor = [UIColor redColor];
+    self.selectionIndicatorColor = HIGHLIGHT_RED_COLOR;
     
     self.selectedIndex = 0;
     self.segmentEdgeInset = UIEdgeInsetsMake(0, 5, 0, 5);
@@ -74,16 +76,17 @@
         strLB.text = [self.sectionTitles objectAtIndex:idx];
         strLB.textAlignment = NSTextAlignmentCenter;
         strLB.tag = idx;
+        strLB.font = self.font;
+        strLB.textColor = self.textColor;
         
         if ([self.sectionTitles count] - idx != 1) {
-//            UILabel *lineLB = [[UILabel alloc] initWithFrame:CGRectMake(self.segmentWidth - 2, y, 2, 18)];
             UILabel *lineLB = [UILabel newAutoLayoutView];
             [strLB addSubview:lineLB];
             
             [lineLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:strLB withOffset:2];
             [lineLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:strLB];
-            [lineLB autoSetDimensionsToSize:CGSizeMake(2, 18)];
-            lineLB.backgroundColor = [UIColor colorWithRed:206/255.0f green:207/255.0f blue:208/255.0f alpha:1.0f];
+            [lineLB autoSetDimensionsToSize:CGSizeMake(1, 20)];
+            lineLB.backgroundColor = [UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:1];
         }
         
         [self.viewForBaselineLayout addSubview:strLB];

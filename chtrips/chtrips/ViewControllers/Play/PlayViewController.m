@@ -9,9 +9,11 @@
 #import "PlayViewController.h"
 #import "PlayTableViewCell.h"
 #import "PlayDetailViewController.h"
+#import "CitySelectViewController.h"
 #import "PopoverView.h"
 #import "HMSegmentedControl.h"
 #import "UIImageView+AFNetworking.h"
+#import "TMCache.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 
@@ -52,6 +54,7 @@ static NSString * const PLAY_CELL = @"playCell";
 //    [self setupDOPMenu];
     [self setupPlayList];
     [self setupCateMenu];
+    [self getCityList];
     [self refresh];
     
     // Do any additional setup after loading the view.
@@ -107,26 +110,59 @@ static NSString * const PLAY_CELL = @"playCell";
     [_cityBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:25];
 //    [_cityBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.navigationController.view];
     [_cityBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
-    [_cityBTN autoSetDimensionsToSize:CGSizeMake(50, 25)];
+    [_cityBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
     [_cityBTN setTitle:@"城市" forState:UIControlStateNormal];
     _cityBTN.backgroundColor = [UIColor redColor];
     _cityBTN.layer.cornerRadius = 5;
-    
+
     [_cityBTN addTarget:self action:@selector(showCityMenu:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 - (void) showCityMenu:(UIButton *)sender {
-    CGPoint point = CGPointMake(sender.frame.origin.x + sender.frame.size.width/2, sender.frame.origin.y + sender.frame.size.height);
-    NSArray *titles = @[@"东京", @"奈良", @"横滨", @"大阪"];
-    PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:titles images:nil];
-    pop.selectRowAtIndex = ^(NSInteger index){
-        self.cityBTN.titleLabel.text = [titles objectAtIndex:index];
-    };
-    [pop show];
+    
+    CitySelectViewController *cityView = [[CitySelectViewController alloc] init];
+    cityView.cityData = [[TMCache sharedCache] objectForKey:@"cityList"];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:cityView];
+
+    [self.navigationController presentViewController:navVC animated:YES completion:nil];
+    
+    
+//    CGPoint point = CGPointMake(sender.frame.origin.x + sender.frame.size.width/2, sender.frame.origin.y + sender.frame.size.height);
+//
+//    NSArray *cityList = [[TMCache sharedCache] objectForKey:@"cityList"];
+//    
+//    if ([cityList count] <= 0) {
+//        cityList = @[@"全部", @"东京", @"京都", @"冲绳"];
+//    }
+//    
+//    PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:cityList images:nil];
+//    pop.selectRowAtIndex = ^(NSInteger index){
+////        self.cityBTN.titleLabel.text = [cityList objectAtIndex:index];
+//        [self.cityBTN setTitle:[cityList objectAtIndex:index] forState:UIControlStateNormal];
+//    };
+//    [pop show];
     
 }
 
+- (void) getCityList {
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    
+    [[HttpManager instance] requestWithMethod:@"Product/cityList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSArray *cityList = [[TMCache sharedCache] objectForKey:@"cityList"];
+
+                                          if (![[[result objectForKey:@"data"] objectForKey:@"hasNew"] isEqualToString:@"0"] || [cityList count] <= 0) {
+                                              [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"cityList"] forKey:@"cityList"];
+                                          }
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                      }];
+}
 
 
 - (void) setupCateMenu {
@@ -140,15 +176,15 @@ static NSString * const PLAY_CELL = @"playCell";
     _cateMenuView.backgroundColor = MENU_DEFAULT_COLOR;
     
     HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"美食", @"酒店", @"景点"]];
-    [segmentedControl setFrame:CGRectMake(0, 0, ScreenWidth, 30)];
-    [segmentedControl setBackgroundColor:[UIColor colorWithRed:237/255.0 green:239/255.0 blue:240/255.0 alpha:1]];
+    [segmentedControl setFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    [segmentedControl setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1]];
     [segmentedControl setSelectionIndicatorMode:HMSelectionIndicatorResizesToStringWidth];
     [segmentedControl setIndexChangeBlock:^(NSUInteger index) {
-        self.selectIndex = [NSString stringWithFormat:@"%d", (index + 2)];
+        self.selectIndex = [NSString stringWithFormat:@"%lu", (index + 2)];
         [self.playTV scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         
         [self getShopList:@"1"];
-        
+//        
     }];
     [self.cateMenuView addSubview:segmentedControl];
 
@@ -162,7 +198,7 @@ static NSString * const PLAY_CELL = @"playCell";
     self.playTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_playTV];
     
-    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:74];
+    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:85];
     [_playTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_playTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_playTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];

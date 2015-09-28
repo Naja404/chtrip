@@ -23,7 +23,7 @@
         [_avatarImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10.0];
         [_avatarImg autoSetDimensionsToSize:CGSizeMake(60, 60)];
         
-        _avatarImg.image = [UIImage imageNamed:@"avatar.jpg"];
+        _avatarImg.image = [UIImage imageNamed:@"defaultPic.jpg"];
         _avatarImg.layer.cornerRadius = 30;
         _avatarImg.clipsToBounds = YES;
         
@@ -34,7 +34,7 @@
         [_nameLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_nameLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_avatarImg withOffset:10.0];
         [_nameLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:30];
-        _nameLB.text = @"Hisoka";
+        _nameLB.text = NSLocalizedString(@"TEXT_REG_LOGIN", nil);
         _nameLB.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     }
     
