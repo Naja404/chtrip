@@ -14,7 +14,8 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.backgroundColor = [UIColor grayColor];
+        
+        self.backgroundColor = HIGHLIGHT_GRAY_COLOR;
         
         self.cityBTN = [UIButton newAutoLayoutView];
         [self addSubview:_cityBTN];
@@ -22,7 +23,11 @@
         [_cityBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self];
         [_cityBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self];
         [_cityBTN autoSetDimensionsToSize:CGSizeMake(90, 30)];
-        _cityBTN.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        _cityBTN.titleLabel.font = [UIFont systemFontOfSize:20.0];
+        _cityBTN.titleLabel.textColor = HIGHLIGHT_BLACK_COLOR;
+        _cityBTN.layer.masksToBounds = YES;
+        _cityBTN.layer.borderWidth = 0.5;
+        _cityBTN.layer.borderColor = HIGHLIGHT_BLACK_COLOR.CGColor;
     }
     
     return self;

@@ -84,7 +84,7 @@
         self.locationImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_locationImg];
         
-        [_locationImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeading ofView:_mapLB];
+        [_locationImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_mapLB];
         [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_mapLB];
         [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 25)];
         _locationImg.image = [UIImage imageNamed:@"mapLocationIcon"];

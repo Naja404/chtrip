@@ -89,7 +89,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     UIView *imgView = [UIView newAutoLayoutView];
     [self.searchView addSubview:imgView];
     
-    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:20];
+    [imgView autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:_searchView withOffset:20];
     [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
     [imgView autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgView.backgroundColor = [UIColor grayColor];
@@ -108,7 +108,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     UIImageView *imgLogo = [UIImageView newAutoLayoutView];
     [imgView addSubview:imgLogo];
     
-    [imgLogo autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:imgView];
+    [imgLogo autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:imgView];
     [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
     [imgLogo autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
@@ -166,8 +166,11 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     //    [_discoveryTV autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
     [_discoveryTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:44];
+//    [_discoveryTV autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:self.view];
+//    [_discoveryTV autoPinEdge:ALEdgeTrailing toEdge:ALEdgeTrailing ofView:self.view];
     [_discoveryTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_discoveryTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+
     [_discoveryTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     
     

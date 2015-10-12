@@ -8,9 +8,16 @@
 
 #import "ViewController.h"
 
+@protocol CitySelectViewControllerDelegate <NSObject>
+
+- (void) didSelectCity:(NSString *)cityName;
+
+@end
+
 @interface CitySelectViewController : ViewController
 
 @property (strong, nonatomic) NSMutableArray *cityData;
 @property (strong, nonatomic) NSString *selectedCity;
+@property (weak, nonatomic) id<CitySelectViewControllerDelegate> delegate;
 
 @end

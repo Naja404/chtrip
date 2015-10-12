@@ -17,7 +17,7 @@
 
 static NSString * const PLAY_CELL = @"playCell";
 
-@interface PlayViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface PlayViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, CitySelectViewControllerDelegate>
 @property (nonatomic, strong) UISegmentedControl *shopSegmented;
 @property (nonatomic, strong) NSArray *classifys;
 @property (nonatomic, strong) NSArray *cates;
@@ -31,7 +31,7 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
 @property (nonatomic, strong) NSString *selectIndex;
 @property (nonatomic, strong) NSString *nextPageNum;
-
+@property (nonatomic, strong) NSString *selectCityName;
 
 @property (nonatomic, strong) UIButton *cityBTN;
 
@@ -48,6 +48,7 @@ static NSString * const PLAY_CELL = @"playCell";
 - (void)viewDidLoad {
     self.selectIndex = @"2";
     self.nextPageNum = @"2";
+    self.selectCityName = @"all";
     
     [super viewDidLoad];
     [self setupCityBTN];
@@ -74,6 +75,7 @@ static NSString * const PLAY_CELL = @"playCell";
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:self.selectIndex forKey:@"shopType"];
     [paramter setObject:PageNum forKey:@"pageNum"];
+    [paramter setObject:self.selectCityName forKey:@"cityName"];
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
@@ -123,6 +125,7 @@ static NSString * const PLAY_CELL = @"playCell";
     
     CitySelectViewController *cityView = [[CitySelectViewController alloc] init];
     cityView.cityData = [[TMCache sharedCache] objectForKey:@"cityList"];
+    cityView.delegate = self;
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:cityView];
 
@@ -280,6 +283,18 @@ static NSString * const PLAY_CELL = @"playCell";
             [self getShopList:self.nextPageNum];
         }];
     }
+}
+
+- (void) didSelectCity:(NSString *)cityName {
+    if ([cityName isEqualToString:@"全日本"]) {
+        self.selectCityName = @"all";
+    }else{
+        self.selectCityName = cityName;
+    }
+    
+    [self.cityBTN setTitle:self.selectCityName forState:UIControlStateNormal];
+    
+    [self refresh];
 }
 
 @end

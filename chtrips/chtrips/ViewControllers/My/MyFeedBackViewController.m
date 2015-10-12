@@ -67,7 +67,7 @@
     }
 
     
-    
+    [SVProgressHUD show];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:trimedText forKey:@"content"];
 //    [parameters setObject:[CHSSID SSID] forKey:@"token"];
@@ -77,8 +77,10 @@
     [manager GET:@"Util/feedback" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON is %@ ", responseObject);
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_FEEDBACK_SEND_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
         NSLog(@"Error is %@ ", error);
     }];
     

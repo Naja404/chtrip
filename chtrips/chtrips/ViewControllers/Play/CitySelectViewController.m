@@ -29,6 +29,7 @@ static NSString * const CITY_CELL = @"cityCell";
 - (void) setupStyle {
     
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBuyContent)];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(selectedCityAction)];
     
@@ -38,6 +39,7 @@ static NSString * const CITY_CELL = @"cityCell";
     
     self.cityCV.delegate = self;
     self.cityCV.dataSource = self;
+    self.cityCV.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:_cityCV];
     
@@ -73,18 +75,18 @@ static NSString * const CITY_CELL = @"cityCell";
     [cell.cityBTN addGestureRecognizer:onceTap];
     
     cell.cityIndexPath = indexPath;
+    cell.cityNameStr = [self.cityData objectAtIndex:indexPath.row];
     
     return cell;
 }
 
 - (void) clickCityBTN: (UITapGestureRecognizer *)gr {
 
-    CitySelectCollectionViewCell *cell = (CitySelectCollectionViewCell *) [[[gr view] superview] superview];
+    CitySelectCollectionViewCell *cell = (CitySelectCollectionViewCell *) [[gr view] superview];
     
-    self.selectedCity = [self.cityData objectAtIndex:cell.cityIndexPath.row];
+    [self.delegate didSelectCity:cell.cityNameStr];
     
-    
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // 定义每个collectionview 大小
@@ -104,7 +106,7 @@ static NSString * const CITY_CELL = @"cityCell";
 
 //
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"select %@", indexPath.row);
+
 }
 
 - (void)didReceiveMemoryWarning {
