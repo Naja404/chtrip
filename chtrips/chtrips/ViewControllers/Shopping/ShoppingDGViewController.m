@@ -67,6 +67,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [self refresh];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void) setupSegmentedControl {
@@ -415,6 +416,11 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 
 - (void) refresh {
+    // 停止所有网络请求
+    [[HttpManager instance] cancelAllOperations];
+    [self.shopTV.header endRefreshing];
+    [self.shopTV.footer endRefreshing];
+    [SVProgressHUD dismiss];
     
         self.shopTV.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             self.shopNextPageNum = @"1";

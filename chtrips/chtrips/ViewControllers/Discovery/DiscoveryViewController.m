@@ -176,6 +176,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     _discoveryTV.delegate = self;
     _discoveryTV.dataSource = self;
+    _discoveryTV.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.refreshTV = [[UIRefreshControl alloc] init];
     [_discoveryTV addSubview:_refreshTV];
@@ -355,8 +356,23 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         cell.locationImg.hidden = YES;
     }
 
+    cell.buyBTN.backgroundColor = [self setBuyBTN:[cellData objectForKey:@"colorNum"]];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (UIColor *) setBuyBTN:(NSString *)colorNum {
+    
+    if ([colorNum isEqualToString:@"1"]) {
+        return RED_COLOR_BG;
+    }else if ([colorNum isEqualToString:@"2"]){
+        return BLUE_COLOR_BG;
+    }else if ([colorNum isEqualToString:@"3"]){
+        return ORINGE_COLOR_BG;
+    }else{
+        return GREEN_COLOR_BG;
+    }
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

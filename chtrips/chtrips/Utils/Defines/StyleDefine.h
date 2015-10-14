@@ -47,4 +47,15 @@
 #define NORMAL_12FONT_SIZE [UIFont systemFontOfSize:12.0f]
 // 17号字体
 #define TITLE_17FONT_SIZE [UIFont systemFontOfSize:17.0f]
+
+// 红色背景
+#define RED_COLOR_BG [UIColor colorWithRed:229/255.0 green:42/255.0 blue:34/255.0 alpha:1]
+// 蓝色
+#define BLUE_COLOR_BG [UIColor colorWithRed:50/255.0 green:132/255.0 blue:255/255.0 alpha:1]
+// 橙色
+#define ORINGE_COLOR_BG [UIColor colorWithRed:255/255.0 green:187/255.0 blue:0/255.0 alpha:1]
+// 绿色
+#define GREEN_COLOR_BG [UIColor colorWithRed:38/255.0 green:177/255.0 blue:76/255.0 alpha:1]
+
+
 #endif

@@ -53,7 +53,7 @@
         [_buyBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.titleLB withOffset:50];
         [_buyBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
         [_buyBTN autoSetDimensionsToSize:CGSizeMake(100, 30)];
-        _buyBTN.backgroundColor = [UIColor blueColor];
+//        _buyBTN.backgroundColor = [UIColor blueColor];
         _buyBTN.font = [UIFont systemFontOfSize:20];
         _buyBTN.text = @"开抢啦!";
         _buyBTN.textColor = [UIColor whiteColor];
@@ -71,23 +71,25 @@
         _timeLB.textAlignment = NSTextAlignmentCenter;
         _timeLB.textColor = [UIColor whiteColor];
         
+        self.locationImg = [UIImageView newAutoLayoutView];
+        [self.contentView addSubview:_locationImg];
+        
+        [_locationImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
+        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
+        [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 25)];
+        _locationImg.image = [UIImage imageNamed:@"mapLocationIcon"];
+        
         self.mapLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_mapLB];
         
-        [_mapLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView];
-        [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-10];
+        [_mapLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_locationImg withOffset:5];
+        [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_locationImg withOffset:-2];
         [_mapLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
         _mapLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
         _mapLB.textAlignment = NSTextAlignmentLeft;
         _mapLB.textColor = [UIColor whiteColor];
         
-        self.locationImg = [UIImageView newAutoLayoutView];
-        [self.contentView addSubview:_locationImg];
-        
-        [_locationImg autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_mapLB];
-        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_mapLB];
-        [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 25)];
-        _locationImg.image = [UIImage imageNamed:@"mapLocationIcon"];
+
         
     }
     
