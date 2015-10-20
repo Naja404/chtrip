@@ -64,6 +64,8 @@
 
 #pragma mark 我想去事件
 - (void) addWantGoAction {
+    [SVProgressHUD show];
+    
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];

@@ -85,25 +85,29 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+//    return 3;
+    return 2;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }else if(section == 1){
-        return 2;
-    }else{
-        return 2;
-    }
+//    if (section == 0) {
+//        return 1;
+//    }else if(section == 1){
+//        return 2;
+//    }else{
+//        return 2;
+//    }
+    
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 80;
-    }else{
-        return 40;
-    }
+//    if (indexPath.section == 0) {
+//        return 80;
+//    }else{
+//        return 40;
+//    }
+    return 40;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -117,74 +121,106 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        MyAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_AVATAR_CELL forIndexPath:indexPath];
-        if ([self.loginStatus isEqualToString:@"1"]) {
-            cell.nameLB.text = [[TMCache sharedCache] objectForKey:@"userName"];
-            NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
-            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
-        }else{
-            cell.nameLB.text = NSLocalizedString(@"TEXT_REG_LOGIN", nil);
-            cell.avatarImg.image = [UIImage imageNamed:@"defaultPic.jpg"];
+//    if (indexPath.section == 0 && indexPath.row == 0) {
+//        MyAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_AVATAR_CELL forIndexPath:indexPath];
+//        if ([self.loginStatus isEqualToString:@"1"]) {
+//            cell.nameLB.text = [[TMCache sharedCache] objectForKey:@"userName"];
+//            NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
+//            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+//        }else{
+//            cell.nameLB.text = NSLocalizedString(@"TEXT_REG_LOGIN", nil);
+//            cell.avatarImg.image = [UIImage imageNamed:@"defaultPic.jpg"];
+//        }
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        
+//        return cell;
+//    }else {
+//        MyNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_NORMAL_CELL forIndexPath:indexPath];
+//        
+//        NSString *titleText = nil;
+//        NSString *imgPath = nil;
+//        
+//        if (indexPath.section == 1) {
+//            if (indexPath.row == 0) {
+//                titleText = @"TEXT_CELL_BUY_LIST";
+//                imgPath = @"iconBuyList";
+//            }else if (indexPath.row == 1){
+//                titleText = @"TEXT_MY_WANT_GO";
+//                imgPath = @"iconLikeGo";
+//            }
+//        }
+//        
+//        if (indexPath.section == 2) {
+//            if (indexPath.row == 0) {
+//                titleText = @"TEXT_ABOUT_US";
+//                imgPath = @"iconAboutUs";
+//            }else if (indexPath.row == 1){
+//                titleText = @"TEXT_FEEDBACK";
+//                imgPath = @"iconFeedBack";
+//            }
+//        }
+//        
+//        cell.titleLB.text = NSLocalizedString(titleText, nil);
+//        cell.iconImg.image = [UIImage imageNamed:imgPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;// 右侧箭头
+//        
+//        return cell;
+//    }
+    
+    MyNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_NORMAL_CELL forIndexPath:indexPath];
+    
+    NSString *titleText = nil;
+    NSString *imgPath = nil;
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            titleText = @"TEXT_CELL_BUY_LIST";
+            imgPath = @"iconBuyList";
+        }else if (indexPath.row == 1){
+            titleText = @"TEXT_MY_WANT_GO";
+            imgPath = @"iconLikeGo";
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-    }else {
-        MyNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_NORMAL_CELL forIndexPath:indexPath];
-        
-        NSString *titleText = nil;
-        NSString *imgPath = nil;
-        
-        if (indexPath.section == 1) {
-            if (indexPath.row == 0) {
-                titleText = @"TEXT_CELL_BUY_LIST";
-                imgPath = @"iconBuyList";
-            }else if (indexPath.row == 1){
-                titleText = @"TEXT_MY_WANT_GO";
-                imgPath = @"iconLikeGo";
-            }
-        }
-        
-        if (indexPath.section == 2) {
-            if (indexPath.row == 0) {
-                titleText = @"TEXT_ABOUT_US";
-                imgPath = @"iconAboutUs";
-            }else if (indexPath.row == 1){
-                titleText = @"TEXT_FEEDBACK";
-                imgPath = @"iconFeedBack";
-            }
-        }
-        
-        cell.titleLB.text = NSLocalizedString(titleText, nil);
-        cell.iconImg.image = [UIImage imageNamed:imgPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;// 右侧箭头
-        
-        return cell;
     }
+    
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            titleText = @"TEXT_ABOUT_US";
+            imgPath = @"iconAboutUs";
+        }else if (indexPath.row == 1){
+            titleText = @"TEXT_FEEDBACK";
+            imgPath = @"iconFeedBack";
+        }
+    }
+    
+    cell.titleLB.text = NSLocalizedString(titleText, nil);
+    cell.iconImg.image = [UIImage imageNamed:imgPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;// 右侧箭头
+    
+    return cell;
     
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        
-        if ([self.loginStatus isEqualToString:@"0"]) {
-            // 在主线程执行
-            dispatch_async(dispatch_get_main_queue(), ^{
-                MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
-                [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
-            });
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];
-            [alert show];
-            
-        }
-    }
+//    if (indexPath.section == 0 && indexPath.row == 0) {
+//        
+//        if ([self.loginStatus isEqualToString:@"0"]) {
+//            // 在主线程执行
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
+//                [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
+//            });
+//        }else{
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];
+//            [alert show];
+//            
+//        }
+//    }
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             MyBuyListViewController *myBuyList = [[MyBuyListViewController alloc] init];
             myBuyList.navigationItem.title = NSLocalizedString(@"TEXT_CELL_BUY_LIST", Nil);
@@ -200,7 +236,7 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
         }
     }
     
-    if (indexPath.section == 2) {
+    if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             MyAboutUsViewController *myAboutUs = [[MyAboutUsViewController alloc] init];
             myAboutUs.navigationItem.title = NSLocalizedString(@"TEXT_ABOUT_US", Nil);

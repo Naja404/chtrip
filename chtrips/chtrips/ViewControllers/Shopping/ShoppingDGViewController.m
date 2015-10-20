@@ -41,6 +41,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 @property (nonatomic, strong) NSString *proNextPageNum;
 @property (nonatomic, strong) NSString *shopNextPageNum;
+@property (nonatomic, strong) NSString *hasMoreData;
 
 @end
 
@@ -246,6 +247,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 #pragma mark 获取产品列表
 - (void) getProductList:(NSString *)PageNum {
     [SVProgressHUD show];
+    self.shopTV.scrollEnabled = NO;
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:PageNum forKey:@"pageNum"];
@@ -269,13 +271,20 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
                                           
                                           if ([[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"1"]) {
                                               self.proNextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                              self.hasMoreData = @"1";
+                                          }else{
+                                              self.proNextPageNum = @"1";
+                                              self.hasMoreData = @"0";
                                           }
+                                          
                                           [SVProgressHUD dismiss];
+                                          self.shopTV.scrollEnabled = YES;
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [self.shopTV.header endRefreshing];
                                           [self.shopTV.footer endRefreshing];
                                           [SVProgressHUD dismiss];
+                                          self.shopTV.scrollEnabled = YES;
                                       }];
 
 }
@@ -284,6 +293,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (void) getShopList:(NSString *)PageNum {
     
     [SVProgressHUD show];
+    self.shopTV.scrollEnabled = NO;
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
@@ -306,14 +316,19 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
                                           
                                           if ([[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"1"]) {
                                               self.shopNextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                              self.hasMoreData = @"1";
+                                          }else{
+                                              self.shopNextPageNum = @"1";
+                                              self.hasMoreData = @"0";
                                           }
                                           [SVProgressHUD dismiss];
-                                          
+                                          self.shopTV.scrollEnabled = YES;
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [self.shopTV.header endRefreshing];
                                           [self.shopTV.footer endRefreshing];
                                           [SVProgressHUD dismiss];
+                                          self.shopTV.scrollEnabled = YES;
                                           
                                       }];
 
@@ -363,7 +378,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
         
-        [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
         cell.bigTitleLB.text = [cellData objectForKey:@"name"];
         cell.avgLB.text = [cellData objectForKey:@"avg_price"];
         cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
@@ -380,7 +395,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
         
-        [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
         cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
         cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
         cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];
@@ -447,13 +462,19 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
         [self.shopTV.footer beginRefreshing];
         
-        self.shopTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            if (self.shopSegmented.selectedSegmentIndex == 1) {
-                [self getShopList:self.shopNextPageNum];
-            }else{
-                [self getProductList:self.proNextPageNum];
-            }
-        }];
+        if ([self.hasMoreData isEqualToString:@"1"]) {
+            self.shopTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                if (self.shopSegmented.selectedSegmentIndex == 1) {
+                    [self getShopList:self.shopNextPageNum];
+                }else{
+                    [self getProductList:self.proNextPageNum];
+                }
+            }];
+        }else{
+            [self.shopTV.footer noticeNoMoreData];
+        }
+        
+
     }
 }
 

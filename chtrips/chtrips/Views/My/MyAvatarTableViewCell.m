@@ -23,7 +23,7 @@
         [_avatarImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10.0];
         [_avatarImg autoSetDimensionsToSize:CGSizeMake(60, 60)];
         
-        _avatarImg.image = [UIImage imageNamed:@"defaultPic.jpg"];
+        _avatarImg.image = [UIImage imageNamed:@"defaultPicSmall"];
         _avatarImg.layer.cornerRadius = 30;
         _avatarImg.clipsToBounds = YES;
         

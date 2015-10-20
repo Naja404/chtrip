@@ -32,6 +32,7 @@
         [_productImage autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_checkBTN withOffset:10];
         [_productImage autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_productImage autoSetDimensionsToSize:CGSizeMake(90, 66)];
+        _productImage.contentMode = UIViewContentModeCenter;
         
         self.titleZHLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleZHLB];

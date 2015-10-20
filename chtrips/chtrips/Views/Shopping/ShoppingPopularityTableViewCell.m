@@ -20,6 +20,8 @@
         [_productImage autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:5];
         [_productImage autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_productImage autoSetDimensionsToSize:CGSizeMake(90, 66)];
+        _productImage.contentMode = UIViewContentModeCenter;
+        _productImage.backgroundColor = [UIColor whiteColor];
         
         self.titleZHLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleZHLB];

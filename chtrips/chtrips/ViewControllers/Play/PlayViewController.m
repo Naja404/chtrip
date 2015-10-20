@@ -32,6 +32,7 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) NSString *selectIndex;
 @property (nonatomic, strong) NSString *nextPageNum;
 @property (nonatomic, strong) NSString *selectCityName;
+@property (nonatomic, strong) NSString *hasMoreData;
 
 @property (nonatomic, strong) UIButton *cityBTN;
 
@@ -75,6 +76,7 @@ static NSString * const PLAY_CELL = @"playCell";
 #pragma mark 获取商家列表
 - (void) getShopList:(NSString *)PageNum {
     [SVProgressHUD show];
+    self.playTV.scrollEnabled = NO;
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
 //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
@@ -96,12 +98,16 @@ static NSString * const PLAY_CELL = @"playCell";
                                               [self.playTV.footer endRefreshing];
                                           }
                                           
-                                          if (![[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"0"]) {
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"0"]) {
+                                              self.nextPageNum = @"1";
+                                              self.hasMoreData = @"0";
+                                          }else{
                                               self.nextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                              self.hasMoreData = @"1";
                                           }
                                           
                                           [SVProgressHUD dismiss];
-
+                                          self.playTV.scrollEnabled = YES;
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [self.playTV.header endRefreshing];
@@ -241,7 +247,7 @@ static NSString * const PLAY_CELL = @"playCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
-    [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+    [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     
     cell.bigTitleLB.text = [cellData objectForKey:@"name"];
     cell.avgLB.text = [cellData objectForKey:@"avg_price"];
@@ -269,7 +275,6 @@ static NSString * const PLAY_CELL = @"playCell";
     
 }
 
-
 - (void) reloadData {
 
 }
@@ -284,9 +289,16 @@ static NSString * const PLAY_CELL = @"playCell";
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
         [self.playTV.footer beginRefreshing];
-        self.playTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            [self getShopList:self.nextPageNum];
-        }];
+        
+        if ([self.hasMoreData isEqualToString:@"1"]) {
+            self.playTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                [self getShopList:self.nextPageNum];
+            }];
+        }else{
+            [self.playTV.footer noticeNoMoreData];
+        }
+        
+
     }
 }
 

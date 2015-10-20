@@ -97,7 +97,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.wantGoData objectAtIndex:indexPath.row]];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
-    [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+    [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     
     cell.bigTitleLB.text = [cellData objectForKey:@"name"];
     cell.avgLB.text = [cellData objectForKey:@"avg_price"];

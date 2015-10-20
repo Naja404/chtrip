@@ -47,6 +47,7 @@
         _avgLB.font = TITLE_17FONT_SIZE;
         _avgLB.textColor = HIGHLIGHT_BLACK_COLOR;
         _avgLB.textAlignment = NSTextAlignmentRight;
+        _avgLB.text = @"";
         
 //        self.bgLB = [UILabel newAutoLayoutView];
 //        [self.contentView addSubview:_bgLB];
@@ -64,6 +65,7 @@
         [_areaLB autoSetDimensionsToSize:CGSizeMake(85, 12)];
         _areaLB.font = NORMAL_12FONT_SIZE;
         _areaLB.textColor = GRAY_FONT_COLOR;
+        _areaLB.text = @"";
         
         self.cateLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_cateLB];
@@ -73,6 +75,7 @@
         [_cateLB autoSetDimensionsToSize:CGSizeMake(85, 12)];
         _cateLB.font = NORMAL_12FONT_SIZE;
         _cateLB.textColor = HIGHLIGHT_GRAY_COLOR;
+        _cateLB.text = @"";
     }
     
     return self;

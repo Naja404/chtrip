@@ -40,7 +40,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 @implementation DiscoveryViewController
 
 - (void) viewWillDisappear:(BOOL)animated {
-    [[HttpManager instance] cancelAllOperations];
     [SVProgressHUD dismiss];
 }
 
@@ -69,6 +68,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (void) getAlbumList {
     [SVProgressHUD show];
+    self.discoveryTV.scrollEnabled = NO;
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
@@ -82,6 +82,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
                                           
                                           [self.discoveryTV reloadData];
                                           [SVProgressHUD dismiss];
+                                          self.discoveryTV.scrollEnabled = YES;
                                           
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -202,7 +203,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 //        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
         ;
         NSURL *imageUrl = [NSURL URLWithString:[[adData objectAtIndex:i] objectForKey:@"path"]];
-        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
         
         [viewsArray addObject:imgView];
     }
@@ -348,7 +349,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"path"]];
-    [cell.bgImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+    [cell.bgImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
     
     cell.titleLB.text = [cellData objectForKey:@"title"];
     cell.timeLB.text = [cellData objectForKey:@"outTime"];

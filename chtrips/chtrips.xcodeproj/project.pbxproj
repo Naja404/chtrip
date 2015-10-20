@@ -204,6 +204,9 @@
 		E9CA46C21B6E42E90010C838 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */; };
 		E9CA46C51B6E60630010C838 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46C41B6E60630010C838 /* PopoverView.m */; };
 		E9CA8DD31B370F88001F5887 /* ShoppingDGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */; };
+		E9CB92861BD628D00051AA6B /* defaultPicSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CB92851BD628D00051AA6B /* defaultPicSmall.png */; settings = {ASSET_TAGS = (); }; };
+		E9CB92891BD62F6E0051AA6B /* defaultPicBig.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */; settings = {ASSET_TAGS = (); }; };
+		E9CB928A1BD62F6E0051AA6B /* defaultPicHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CB92881BD62F6E0051AA6B /* defaultPicHorizontal.png */; settings = {ASSET_TAGS = (); }; };
 		E9CF01ED1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */; };
 		E9CF01F01AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EF1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m */; };
 		E9D0FAFF1AEA2FDE00CC9664 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FAFE1AEA2FDE00CC9664 /* SystemConfiguration.framework */; };
@@ -585,6 +588,9 @@
 		E9CA46C41B6E60630010C838 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverView.m; path = Vendors/PopoverView.m; sourceTree = "<group>"; };
 		E9CA8DD11B370F88001F5887 /* ShoppingDGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDGTableViewCell.h; path = Views/Shopping/ShoppingDGTableViewCell.h; sourceTree = "<group>"; };
 		E9CA8DD21B370F88001F5887 /* ShoppingDGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDGTableViewCell.m; path = Views/Shopping/ShoppingDGTableViewCell.m; sourceTree = "<group>"; };
+		E9CB92851BD628D00051AA6B /* defaultPicSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultPicSmall.png; path = Resource/defaultPicSmall.png; sourceTree = "<group>"; };
+		E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultPicBig.png; path = Resource/defaultPicBig.png; sourceTree = "<group>"; };
+		E9CB92881BD62F6E0051AA6B /* defaultPicHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultPicHorizontal.png; path = Resource/defaultPicHorizontal.png; sourceTree = "<group>"; };
 		E9CF01EB1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailTitleTableViewCell.h; path = Views/Shopping/ShoppingDetailTitleTableViewCell.h; sourceTree = "<group>"; };
 		E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDetailTitleTableViewCell.m; path = Views/Shopping/ShoppingDetailTitleTableViewCell.m; sourceTree = "<group>"; };
 		E9CF01EE1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailPictureTableViewCell.h; path = Views/Shopping/ShoppingDetailPictureTableViewCell.h; sourceTree = "<group>"; };
@@ -1312,6 +1318,9 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */,
+				E9CB92881BD62F6E0051AA6B /* defaultPicHorizontal.png */,
+				E9CB92851BD628D00051AA6B /* defaultPicSmall.png */,
 				E9EF2DA01BD5E7DF00FA0739 /* defaultDataPic@2x.jpg */,
 				E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */,
 				E9A1D0371BB1953D007D635B /* redSelect@2x.png */,
@@ -1735,6 +1744,7 @@
 				E9A1D03B1BB1953D007D635B /* redUnSelect@2x.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
+				E9CB92861BD628D00051AA6B /* defaultPicSmall.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E95E1D0A1B9F17D000C88692 /* star_10.png in Resources */,
 				E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */,
@@ -1752,6 +1762,7 @@
 				E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */,
 				E95518F31BB145A300191DE2 /* loginWeibo@2x.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
+				E9CB928A1BD62F6E0051AA6B /* defaultPicHorizontal.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
 				E9899F831ACCF713009722C4 /* Icon-40.png in Resources */,
 				E96F4B471BAC0C9D0033186D /* loginWeibo@2x.jpg in Resources */,
@@ -1763,6 +1774,7 @@
 				E946B8EF1AC5453A00701854 /* redpoint.png in Resources */,
 				E947EE811B2B18AE00012957 /* icon_chose_arrow_sel@2x.png in Resources */,
 				E9DE1A851B2734AC0040BFA6 /* ad3.jpg in Resources */,
+				E9CB92891BD62F6E0051AA6B /* defaultPicBig.png in Resources */,
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
 				E9F1C8B31B403BDD008FFD28 /* discoveryGray@3x.png in Resources */,
 				E91396701AC2607E003AF385 /* trash.png in Resources */,
@@ -2038,8 +2050,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2059,7 +2071,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "867cdaa8-3b0e-4e85-8c85-4fe10fb39b2a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2081,8 +2093,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2095,7 +2107,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "867cdaa8-3b0e-4e85-8c85-4fe10fb39b2a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

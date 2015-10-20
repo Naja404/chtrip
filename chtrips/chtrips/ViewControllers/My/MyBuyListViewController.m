@@ -103,20 +103,20 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [_selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
     [_selectAllBTN addTarget:self action:@selector(clickSelectAllBTN) forControlEvents:UIControlEventTouchUpInside];
     
-    self.checkoutBTN = [UIButton newAutoLayoutView];
-    [totalBar addSubview:_checkoutBTN];
-    
-    [_checkoutBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar];
-    [_checkoutBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar];
-    [_checkoutBTN autoSetDimensionsToSize:CGSizeMake(103, 46.5)];
-    _checkoutBTN.backgroundColor = [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1];
-    [_checkoutBTN setTitle:@"结算(0)" forState:UIControlStateNormal];
+//    self.checkoutBTN = [UIButton newAutoLayoutView];
+//    [totalBar addSubview:_checkoutBTN];
+//    
+//    [_checkoutBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar];
+//    [_checkoutBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar];
+//    [_checkoutBTN autoSetDimensionsToSize:CGSizeMake(103, 46.5)];
+//    _checkoutBTN.backgroundColor = [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1];
+//    [_checkoutBTN setTitle:@"结算(0)" forState:UIControlStateNormal];
     
     self.priceZH = [UILabel newAutoLayoutView];
     [totalBar addSubview:_priceZH];
     
     [_priceZH autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar withOffset:10];
-    [_priceZH autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
+    [_priceZH autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar withOffset:-10];
     [_priceZH autoSetDimensionsToSize:CGSizeMake(70, 20)];
     
     NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:@"0.00"];
@@ -144,7 +144,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [totalBar addSubview:notShipLB];
     
     [notShipLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar withOffset:-5];
-    [notShipLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
+    [notShipLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar withOffset:-10];
     [notShipLB autoSetDimensionsToSize:CGSizeMake(50, 12)];
     notShipLB.font = [UIFont systemFontOfSize:12];
     notShipLB.textColor = HIGHLIGHT_BLACK_COLOR;
@@ -178,7 +178,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                           NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
-                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
+//                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
                                           if ([[[result objectForKey:@"data"] objectForKey:@"selectAll"] isEqualToString:@"1"]) {
                                               self.selectAllStatu = @"1";
                                               [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
@@ -237,7 +237,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
 
-    [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+    [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
     cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
     cell.priceZHLB.text = [NSString stringWithFormat:@"%@ RMB", [cellData objectForKey:@"price_zh"]];
@@ -301,7 +301,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                           NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
-                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
+//                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
                                           
                                           if ([[[result objectForKey:@"data"] objectForKey:@"selectAll"] isEqualToString:@"1"]) {
                                               self.selectAllStatu = @"1";

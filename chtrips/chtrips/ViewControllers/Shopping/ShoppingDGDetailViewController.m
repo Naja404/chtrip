@@ -72,7 +72,7 @@
     [addBuyBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.addBuyListV];
     [addBuyBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
     addBuyBTN.backgroundColor = ADD_BUY_LIST_COLOR;
-    [addBuyBTN setTitle:@"加入扫货清单" forState:UIControlStateNormal];
+    [addBuyBTN setTitle:NSLocalizedString(@"BTN_ADD_BUYLIST", nil) forState:UIControlStateNormal];
     [addBuyBTN addTarget:self action:@selector(addBuyListAction) forControlEvents:UIControlEventTouchDown];
     
     UIView *priceV = [UIView newAutoLayoutView];
@@ -90,7 +90,7 @@
     [refLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:priceV withOffset:(ScreenWidth - 75 - 5- 30 - 5) / 3];
     [refLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceV];
     [refLB autoSetDimensionsToSize:CGSizeMake(75, 25)];
-    refLB.text = @"参考价钱";
+    refLB.text = NSLocalizedString(@"TEXT_PRE_PRICE", nil);
     
     UIImageView *zhPriceImg = [UIImageView newAutoLayoutView];
     [priceV addSubview:zhPriceImg];
@@ -111,6 +111,8 @@
 
 #pragma mark 加入扫货清单事件
 - (void) addBuyListAction {
+    [SVProgressHUD show];
+    
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
