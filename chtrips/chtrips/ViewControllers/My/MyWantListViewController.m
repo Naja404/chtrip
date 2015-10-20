@@ -18,6 +18,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
 @property (nonatomic, strong) UITableView *wantGoTV;
 @property (nonatomic, strong) NSMutableArray *wantGoData;
 @property (nonatomic, strong) UIRefreshControl *refreshTV;
+@property (nonatomic, strong) UIImageView *bgView;
 
 
 @end
@@ -26,6 +27,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
 
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [[HttpManager instance] cancelAllOperations];
     [SVProgressHUD dismiss];
 }
 - (void)viewDidLoad {
@@ -61,6 +63,16 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     [self.wantGoTV registerClass:[PlayTableViewCell class] forCellReuseIdentifier:WANTGO_CELL];
+    self.wantGoTV.hidden = YES;
+    
+    self.bgView = [UIImageView newAutoLayoutView];
+    [self.view addSubview:_bgView];
+    
+    [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    _bgView.hidden = YES;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -111,7 +123,17 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
                                       success:^(NSDictionary *result) {
                                           NSLog(@"getWantList data is %@", result);
                                           self.wantGoData = [[NSMutableArray alloc] initWithArray:[result objectForKey:@"data"]];
-                                          [self.wantGoTV reloadData];
+                                          
+                                          if ([self.wantGoData count] == 0) {
+                                              self.wantGoTV.hidden = YES;
+                                              self.bgView.hidden = NO;
+                                          }else{
+                                             [self.wantGoTV reloadData];
+                                              self.bgView.hidden = YES;
+                                              self.wantGoTV.hidden = NO;
+                                          }
+                                          
+                                          
                                           [SVProgressHUD dismiss];
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -39,6 +39,11 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 @implementation DiscoveryViewController
 
+- (void) viewWillDisappear:(BOOL)animated {
+    [[HttpManager instance] cancelAllOperations];
+    [SVProgressHUD dismiss];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];

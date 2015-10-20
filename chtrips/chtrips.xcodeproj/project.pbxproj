@@ -248,6 +248,7 @@
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
 		E9EB9C841AB8150900ED0334 /* day.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C821AB8150900ED0334 /* day.png */; };
 		E9EB9C851AB8150900ED0334 /* day@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C831AB8150900ED0334 /* day@2x.png */; };
+		E9EF2DA11BD5E7DF00FA0739 /* defaultDataPic@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9EF2DA01BD5E7DF00FA0739 /* defaultDataPic@2x.jpg */; settings = {ASSET_TAGS = (); }; };
 		E9F0E0B41B5BE5B900999AFA /* PlayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */; };
 		E9F1C8B31B403BDD008FFD28 /* discoveryGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8AE1B403BDC008FFD28 /* discoveryGray@3x.png */; };
 		E9F1C8B41B403BDD008FFD28 /* myGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8AF1B403BDD008FFD28 /* myGray@3x.png */; };
@@ -671,6 +672,7 @@
 		E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addIcon@2x.png"; path = "Resource/addIcon@2x.png"; sourceTree = "<group>"; };
 		E9EB9C821AB8150900ED0334 /* day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = day.png; path = Resource/day.png; sourceTree = "<group>"; };
 		E9EB9C831AB8150900ED0334 /* day@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "day@2x.png"; path = "Resource/day@2x.png"; sourceTree = "<group>"; };
+		E9EF2DA01BD5E7DF00FA0739 /* defaultDataPic@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "defaultDataPic@2x.jpg"; path = "Resource/defaultDataPic@2x.jpg"; sourceTree = "<group>"; };
 		E9F0E0B21B5BE5B900999AFA /* PlayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayDetailViewController.h; path = ViewControllers/Play/PlayDetailViewController.h; sourceTree = "<group>"; };
 		E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayDetailViewController.m; path = ViewControllers/Play/PlayDetailViewController.m; sourceTree = "<group>"; };
 		E9F1C8AE1B403BDC008FFD28 /* discoveryGray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "discoveryGray@3x.png"; path = "Resource/discoveryGray@3x.png"; sourceTree = "<group>"; };
@@ -1310,6 +1312,7 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9EF2DA01BD5E7DF00FA0739 /* defaultDataPic@2x.jpg */,
 				E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */,
 				E9A1D0371BB1953D007D635B /* redSelect@2x.png */,
 				E9A1D0381BB1953D007D635B /* redUnSelect@2x.png */,
@@ -1743,6 +1746,7 @@
 				E96F4B451BAC0C9D0033186D /* loginCancel@2x.png in Resources */,
 				E9F1C8B51B403BDD008FFD28 /* tripGray@3x.png in Resources */,
 				E967A2001B9DCB7200FAFF89 /* MJRefresh.bundle in Resources */,
+				E9EF2DA11BD5E7DF00FA0739 /* defaultDataPic@2x.jpg in Resources */,
 				E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */,
 				E913964E1AC111B8003AF385 /* bg-addbutton.png in Resources */,
 				E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */,

@@ -46,6 +46,11 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 @implementation ShoppingDGViewController
 
+- (void) viewWillDisappear:(BOOL)animated {
+    [[HttpManager instance] cancelAllOperations];
+    [SVProgressHUD dismiss];
+}
+
 - (void) viewWillAppear:(BOOL)animated {
     self.hidesBottomBarWhenPushed = NO;
 

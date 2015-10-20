@@ -21,7 +21,7 @@
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
 static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 
-@interface MyViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface MyViewController ()<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTV;
 @property (nonatomic, strong) NSString *loginStatus;
@@ -29,6 +29,11 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 @end
 
 @implementation MyViewController
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [[HttpManager instance] cancelAllOperations];
+    [SVProgressHUD dismiss];
+}
 
 - (void) viewWillAppear:(BOOL)animated {
     
@@ -118,6 +123,9 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
             cell.nameLB.text = [[TMCache sharedCache] objectForKey:@"userName"];
             NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
             [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+        }else{
+            cell.nameLB.text = NSLocalizedString(@"TEXT_REG_LOGIN", nil);
+            cell.avatarImg.image = [UIImage imageNamed:@"defaultPic.jpg"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -169,6 +177,10 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
                 MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
                 [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
             });
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];
+            [alert show];
+            
         }
     }
     
@@ -200,6 +212,16 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
             myFeedback.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myFeedback animated:YES];
         }
+    }
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+       self.loginStatus = @"0";
+        [[TMCache sharedCache] setObject:@"0" forKey:@"loginStatus"];
+        [self.myTV reloadData];
+    }else if (buttonIndex == 0){
+        NSLog(@"button index is 0");
     }
 }
 

@@ -15,7 +15,7 @@
 ///普通文字颜色
 #define COLOR_TEXT [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1]
 
-///普通文字格式
+///普通文字格
 #define FONT_TEXT [UIFont fontWithName:@"Arial" size:16.0f]
 
 #define PLAY_FONT_TEXT [UIFont fontWithName:@"Arial" size:12.0f]

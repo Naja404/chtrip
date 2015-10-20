@@ -48,20 +48,21 @@
     [self.view addSubview:wechatBTN];
     
     [wechatBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.view withOffset:-100];
-    [wechatBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:10];
+//    [wechatBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:10];
+    [wechatBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
     [wechatBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
     [wechatBTN setImage:[UIImage imageNamed:@"loginWeChat"] forState:UIControlStateNormal];
     [wechatBTN addTarget:self action:@selector(sendAuthRequest) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UIButton *weiboBTN = [UIButton newAutoLayoutView];
-    [self.view addSubview:weiboBTN];
-    
-    [weiboBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wechatBTN];
-    [weiboBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-10];
-    [weiboBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
-    [weiboBTN setImage:[UIImage imageNamed:@"loginWeibo"] forState:UIControlStateNormal];
-    [weiboBTN addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *weiboBTN = [UIButton newAutoLayoutView];
+//    [self.view addSubview:weiboBTN];
+//    
+//    [weiboBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wechatBTN];
+//    [weiboBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-10];
+//    [weiboBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
+//    [weiboBTN setImage:[UIImage imageNamed:@"loginWeibo"] forState:UIControlStateNormal];
+//    [weiboBTN addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -88,7 +89,10 @@
 
 // 微信返回
 - (void) managerDidRecvAuthResponse:(SendAuthResp *)response {
-    [self setupWeChat:response.code state:response.state errcode:response.errCode lang:response.lang country:response.country];
+    if (response.code != nil) {
+        [self setupWeChat:response.code state:response.state errcode:response.errCode lang:response.lang country:response.country];
+    }
+
 }
 
 - (void) setupWeChat:(NSString *)code state:(NSString *)state errcode:(int)errcode lang:(NSString *)lang country:(NSString *)country{

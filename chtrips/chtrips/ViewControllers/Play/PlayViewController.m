@@ -41,6 +41,11 @@ static NSString * const PLAY_CELL = @"playCell";
 
 @implementation PlayViewController
 
+- (void) viewWillDisappear:(BOOL)animated {
+    [[HttpManager instance] cancelAllOperations];
+    [SVProgressHUD dismiss];
+}
+
 - (void) viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }

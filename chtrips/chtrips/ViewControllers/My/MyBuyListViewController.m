@@ -27,11 +27,13 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 @property (nonatomic, strong) UIButton *checkoutBTN;
 @property (nonatomic, strong) UIButton *selectAllBTN;
 @property (nonatomic, strong) NSString *selectAllStatu;
+@property (nonatomic, strong) UIImageView *bgView;
 @end
 
 @implementation MyBuyListViewController
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [[HttpManager instance] cancelAllOperations];
     [SVProgressHUD dismiss];
 }
 
@@ -50,6 +52,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
 #pragma mark 设置购物清单tableview
 - (void) setupBuyListTV {
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
 
@@ -70,6 +73,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     [self.buyListTV registerClass:[MyBuyListTableViewCell class] forCellReuseIdentifier:MY_BUYLIST_CELL];
+    self.buyListTV.hidden = YES;
     
     // 设置总计栏
     UIView *totalBar = [UIView newAutoLayoutView];
@@ -146,6 +150,16 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     notShipLB.textColor = HIGHLIGHT_BLACK_COLOR;
     notShipLB.text = @"不含运费";
     
+    
+    self.bgView = [UIImageView newAutoLayoutView];
+    [self.view addSubview:_bgView];
+    
+    [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    _bgView.hidden = YES;
+    
 }
 
 
@@ -173,8 +187,15 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                             [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
                                           }
 
+                                          if ([self.buyListData count] == 0) {
+                                              self.bgView.hidden = NO;
+                                              self.buyListTV.hidden = YES;
+                                          }else{
+                                             [self.buyListTV reloadData];
+                                              self.buyListTV.hidden = NO;
+                                              self.bgView.hidden = YES;
+                                          }
                                           
-                                          [self.buyListTV reloadData];
                                           [SVProgressHUD dismiss];
 
                                       }

@@ -27,6 +27,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
 //    self.navigationController.navigationBarHidden = YES;
 //    self.tabBarController.tabBar.hidden = NO;
+    [[HttpManager instance] cancelAllOperations];
     [SVProgressHUD dismiss];
 }
 
