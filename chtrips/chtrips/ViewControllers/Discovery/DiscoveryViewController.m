@@ -109,7 +109,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [imgbg autoSetDimensionsToSize:CGSizeMake(70, 70)];
     imgbg.image = [UIImage imageNamed:@"goLogoBg"];
     imgbg.clipsToBounds = YES;
-    imgbg.rotate(360).animate(90.0);
+    imgbg.rotate(360).animate(20.0);
     
     UIImageView *imgLogo = [UIImageView newAutoLayoutView];
     [imgView addSubview:imgLogo];

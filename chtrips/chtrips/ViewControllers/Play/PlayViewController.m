@@ -35,8 +35,8 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) NSString *hasMoreData;
 
 @property (nonatomic, strong) UIButton *cityBTN;
-
 @property (nonatomic, strong) UIView *cateMenuView;
+@property (nonatomic, strong) UISegmentedControl *playSegmented;
 
 @end
 
@@ -48,7 +48,8 @@ static NSString * const PLAY_CELL = @"playCell";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidLoad {
@@ -116,19 +117,32 @@ static NSString * const PLAY_CELL = @"playCell";
 }
 
 - (void) setupCityBTN {
-    self.cityBTN = [UIButton newAutoLayoutView];
     
-    [self.view addSubview:_cityBTN];
-   
-    [_cityBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:25];
-//    [_cityBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.navigationController.view];
-    [_cityBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
-    [_cityBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
+    self.cityBTN = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 30)];
+    
     [_cityBTN setTitle:@"城市" forState:UIControlStateNormal];
-    _cityBTN.backgroundColor = [UIColor redColor];
+    _cityBTN.titleLabel.textColor = [UIColor whiteColor];
+    _cityBTN.titleLabel.font = [UIFont systemFontOfSize:14];
+    _cityBTN.backgroundColor = RED_COLOR_BG;
     _cityBTN.layer.cornerRadius = 5;
-
     [_cityBTN addTarget:self action:@selector(showCityMenu:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.titleView = self.cityBTN;
+    
+    
+//    
+//    self.cityBTN = [UIButton newAutoLayoutView];
+//    
+//    [self.view addSubview:_cityBTN];
+//   
+//    [_cityBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:25];
+//    [_cityBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+//    [_cityBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
+//    [_cityBTN setTitle:@"城市" forState:UIControlStateNormal];
+//    _cityBTN.backgroundColor = [UIColor redColor];
+//    _cityBTN.layer.cornerRadius = 5;
+//
+//    [_cityBTN addTarget:self action:@selector(showCityMenu:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -212,7 +226,7 @@ static NSString * const PLAY_CELL = @"playCell";
     self.playTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_playTV];
     
-    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:85];
+    [_playTV autoPinToTopLayoutGuideOfViewController:self withInset:44];
     [_playTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_playTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_playTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];

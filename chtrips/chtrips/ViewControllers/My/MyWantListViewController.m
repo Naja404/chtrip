@@ -32,10 +32,12 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self customizeBackItem];
     [self setupWantGoTV];
     [self refresh:self.refreshTV];
     self.automaticallyAdjustsScrollViewInsets = NO;
 
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     // Do any additional setup after loading the view.
 }
 

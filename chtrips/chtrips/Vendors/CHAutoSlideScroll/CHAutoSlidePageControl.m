@@ -105,28 +105,24 @@
 
     switch (red) {
         case 1:
-//            [[UIColor colorWithRed:255 green:17 blue:0 alpha:1] set];
-            [[UIColor redColor] set];
+            [RED_COLOR_BG set];
             break;
         case 2:
-//            [[UIColor colorWithRed:255 green:156 blue:0 alpha:1] set];
-            [[UIColor orangeColor] set];
+//            [[UIColor orangeColor] set];
+            [BLUE_COLOR_BG set];
             break;
         case 3:
-//           [[UIColor colorWithRed:255 green:242 blue:0 alpha:1] set];
-            [[UIColor yellowColor] set];
+            [ORINGE_COLOR_BG set];
             break;
         case 4:
-//           [[UIColor colorWithRed:118 green:239 blue:0 alpha:1] set];
-            [[UIColor greenColor] set];
+            [GREEN_COLOR_BG set];
             break;
         case 5:
 //            [[UIColor colorWithRed:19 green:100 blue:217 alpha:1] set];
             [[UIColor blueColor] set];
             break;
         default:
-//            [[UIColor colorWithRed:218 green:218 blue:218 alpha:1] set];
-            [[UIColor grayColor] set];
+            [GRAY_FONT_COLOR set];
             break;
     }
     

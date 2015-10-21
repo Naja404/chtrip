@@ -8,7 +8,6 @@
 
 #import "DiscoveryDetailViewController.h"
 #import "WebViewJavascriptBridge.h"
-#import "UIViewController+BackItem.h"
 
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 

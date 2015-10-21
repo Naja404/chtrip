@@ -8,7 +8,6 @@
 
 #import "ShoppingDGDetailViewController.h"
 #import "WebViewJavascriptBridge.h"
-#import "UIViewController+BackItem.h"
 
 @interface ShoppingDGDetailViewController ()<UIWebViewDelegate>
 

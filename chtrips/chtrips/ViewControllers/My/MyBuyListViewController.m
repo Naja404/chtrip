@@ -39,10 +39,12 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self customizeBackItem];
     [self getBuyList];
     [self setupBuyListTV];
     [self refresh:self.refreshTV];
     // Do any additional setup after loading the view.
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning {

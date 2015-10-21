@@ -23,8 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self customizeBackItem];
     
     [self setupStyle];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
 - (void) setupStyle {
