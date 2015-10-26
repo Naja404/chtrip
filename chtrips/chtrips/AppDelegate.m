@@ -41,6 +41,9 @@
     
     [self regDeviceToken];
     
+    // 设置状态栏背景色
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
     // 判断是否第一次启动
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];

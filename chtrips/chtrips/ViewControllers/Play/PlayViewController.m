@@ -128,22 +128,6 @@ static NSString * const PLAY_CELL = @"playCell";
     [_cityBTN addTarget:self action:@selector(showCityMenu:) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.titleView = self.cityBTN;
-    
-    
-//    
-//    self.cityBTN = [UIButton newAutoLayoutView];
-//    
-//    [self.view addSubview:_cityBTN];
-//   
-//    [_cityBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:25];
-//    [_cityBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
-//    [_cityBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
-//    [_cityBTN setTitle:@"城市" forState:UIControlStateNormal];
-//    _cityBTN.backgroundColor = [UIColor redColor];
-//    _cityBTN.layer.cornerRadius = 5;
-//
-//    [_cityBTN addTarget:self action:@selector(showCityMenu:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void) showCityMenu:(UIButton *)sender {
@@ -155,22 +139,6 @@ static NSString * const PLAY_CELL = @"playCell";
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:cityView];
 
     [self.navigationController presentViewController:navVC animated:YES completion:nil];
-    
-    
-//    CGPoint point = CGPointMake(sender.frame.origin.x + sender.frame.size.width/2, sender.frame.origin.y + sender.frame.size.height);
-//
-//    NSArray *cityList = [[TMCache sharedCache] objectForKey:@"cityList"];
-//    
-//    if ([cityList count] <= 0) {
-//        cityList = @[@"全部", @"东京", @"京都", @"冲绳"];
-//    }
-//    
-//    PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:cityList images:nil];
-//    pop.selectRowAtIndex = ^(NSInteger index){
-////        self.cityBTN.titleLabel.text = [cityList objectAtIndex:index];
-//        [self.cityBTN setTitle:[cityList objectAtIndex:index] forState:UIControlStateNormal];
-//    };
-//    [pop show];
     
 }
 
@@ -233,6 +201,7 @@ static NSString * const PLAY_CELL = @"playCell";
     
     _playTV.delegate = self;
     _playTV.dataSource = self;
+    _playTV.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.playTV registerClass:[PlayTableViewCell class] forCellReuseIdentifier:PLAY_CELL];
 
@@ -289,9 +258,6 @@ static NSString * const PLAY_CELL = @"playCell";
     
 }
 
-- (void) reloadData {
-
-}
 
 - (void) refresh {
     self.playTV.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -306,7 +272,12 @@ static NSString * const PLAY_CELL = @"playCell";
         
         if ([self.hasMoreData isEqualToString:@"1"]) {
             self.playTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-                [self getShopList:self.nextPageNum];
+                if (![self.nextPageNum isEqualToString:@"1"]) {
+                    [self getShopList:self.nextPageNum];
+                }else{
+                    [self.playTV.footer noticeNoMoreData];
+                }
+
             }];
         }else{
             [self.playTV.footer noticeNoMoreData];

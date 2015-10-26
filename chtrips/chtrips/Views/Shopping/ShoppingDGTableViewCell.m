@@ -76,6 +76,15 @@
         _cateLB.font = NORMAL_12FONT_SIZE;
         _cateLB.textColor = HIGHLIGHT_GRAY_COLOR;
         _cateLB.text = @"";
+        
+        self.cutLineLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_cutLineLB];
+       
+        [_cutLineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_proImg];
+        [_cutLineLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView];
+        [_cutLineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 5, 0.5)];
+        _cutLineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+        
     }
     
     return self;

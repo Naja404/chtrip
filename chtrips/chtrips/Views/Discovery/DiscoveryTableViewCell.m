@@ -29,7 +29,7 @@
         [_discoverImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.bgImg];
         [_discoverImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.bgImg];
         _discoverImg.backgroundColor = [UIColor blackColor];
-        _discoverImg.alpha = 0.15;
+        _discoverImg.alpha = 0.35;
         
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];
@@ -37,15 +37,11 @@
         [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView withOffset:-40];
         [_titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
         [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 30*2, 70)];
-        _titleLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:24.0f];
+        _titleLB.font = [UIFont systemFontOfSize:24.0f];
         _titleLB.textAlignment = NSTextAlignmentCenter;
         _titleLB.numberOfLines = 0;
         _titleLB.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLB.textColor = [UIColor whiteColor];
-        _titleLB.shadowOffset = CGSizeMake(0.0f, 2.0f);
-        _titleLB.shadowColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5f];
-//        _titleLB.layer.shadowRadius = 20.0f;
-//        _titleLB.layer.masksToBounds = YES;
         
         self.buyBTN = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_buyBTN];
@@ -53,7 +49,6 @@
         [_buyBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.titleLB withOffset:50];
         [_buyBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
         [_buyBTN autoSetDimensionsToSize:CGSizeMake(100, 30)];
-//        _buyBTN.backgroundColor = [UIColor blueColor];
         _buyBTN.font = [UIFont systemFontOfSize:20];
         _buyBTN.text = @"开抢啦!";
         _buyBTN.textColor = [UIColor whiteColor];
@@ -75,22 +70,33 @@
         [self.contentView addSubview:_locationImg];
         
         [_locationImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
-        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
-        [_locationImg autoSetDimensionsToSize:CGSizeMake(20, 25)];
+        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-8];
+        [_locationImg autoSetDimensionsToSize:CGSizeMake(10, 15)];
         _locationImg.image = [UIImage imageNamed:@"mapLocationIcon"];
         
         self.mapLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_mapLB];
         
         [_mapLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_locationImg withOffset:5];
-        [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_locationImg withOffset:-2];
+        [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_locationImg withOffset:3];
         [_mapLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
         _mapLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
         _mapLB.textAlignment = NSTextAlignmentLeft;
         _mapLB.textColor = [UIColor whiteColor];
         
-
+        self.activityTimeLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_activityTimeLB];
         
+        [_activityTimeLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-20];
+        [_activityTimeLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_mapLB];
+        [_activityTimeLB autoSetDimensionsToSize:CGSizeMake(80, 25)];
+        _activityTimeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
+        _activityTimeLB.textAlignment = NSTextAlignmentCenter;
+        _activityTimeLB.textColor = [UIColor whiteColor];
+        _activityTimeLB.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.6];
+        _activityTimeLB.text = @"剩:15天";
+        _activityTimeLB.layer.cornerRadius = 13.0f;
+        _activityTimeLB.layer.masksToBounds = YES;
     }
     
     return self;

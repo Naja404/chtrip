@@ -102,6 +102,7 @@
 
 - (void)selectIndexPath:(DOPIndexPath *)indexPath;
 
+- (void) reloadData;
 @end
 
 // 版权属于原作者

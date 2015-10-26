@@ -57,5 +57,7 @@
 // 绿色
 #define GREEN_COLOR_BG [UIColor colorWithRed:38/255.0 green:177/255.0 blue:76/255.0 alpha:1]
 
+// 列表分割线颜色
+#define GRAY_COLOR_CELL_LINE [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1]
 
 #endif

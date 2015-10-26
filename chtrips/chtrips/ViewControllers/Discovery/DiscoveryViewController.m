@@ -35,6 +35,9 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 @property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 
+@property (nonatomic, strong) NSString *hasMoreData;
+@property (nonatomic, strong) NSString *nextPageNum;
+
 @end
 
 @implementation DiscoveryViewController
@@ -43,44 +46,56 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [SVProgressHUD dismiss];
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+- (void) viewWillAppear:(BOOL)animated{
     self.hidesBottomBarWhenPushed = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self twitterSplash];
-    self.navigationItem.title = @"Discovery";
-    self.navigationController.navigationBarHidden = YES;
     [self setupDiscoveryTV];
     [self setupSearchNav];
     [self setupLogo];
-    [self refresh:self.refreshTV];
-    
-    
-    // Do any additional setup after loading the view.
+    [self refresh:YES];
 }
 
 
 #pragma mark 获取专辑列表
 
-- (void) getAlbumList {
+- (void) getAlbumList:(NSString *)pageNum isFirst:(BOOL)isFirst {
     [SVProgressHUD show];
     self.discoveryTV.scrollEnabled = NO;
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:pageNum forKey:@"pageNum"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
     [[HttpManager instance] requestWithMethod:@"Product/albumList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"album list data is %@", result);
-                                          self.discoveryTVData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"albumList"]];
-                                          self.adData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"adList"]];
-                                          [self setupKV:self.adData];
                                           
-                                          [self.discoveryTV reloadData];
+                                          if (isFirst) {
+                                              self.adData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"adList"]];
+                                              [self setupKV:self.adData];
+                                          }
+                                          
+                                          if ([pageNum isEqualToString:@"1"]) {
+                                              self.discoveryTVData= [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"albumList"]];
+                                              [self.discoveryTV reloadData];
+                                              [self.discoveryTV.header endRefreshing];
+                                          }else{
+                                              [self.discoveryTVData addObjectsFromArray:[[result objectForKey:@"data"] objectForKey:@"albumList"]];
+                                              [self.discoveryTV reloadData];
+                                              [self.discoveryTV.footer endRefreshing];
+                                          }
+                                          
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"hasMore"] isEqualToString:@"0"]) {
+                                              self.nextPageNum = @"1";
+                                              self.hasMoreData = @"0";
+                                          }else{
+                                              self.nextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
+                                              self.hasMoreData = @"1";
+                                          }
                                           [SVProgressHUD dismiss];
                                           self.discoveryTV.scrollEnabled = YES;
                                           
@@ -95,10 +110,10 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     UIView *imgView = [UIView newAutoLayoutView];
     [self.searchView addSubview:imgView];
     
-    [imgView autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:_searchView withOffset:20];
+    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:10];
     [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
     [imgView autoSetDimensionsToSize:CGSizeMake(66, 30)];
-    imgView.backgroundColor = [UIColor grayColor];
+    imgView.backgroundColor = [UIColor clearColor];
     imgView.clipsToBounds = YES;
     
     UIImageView *imgbg = [UIImageView newAutoLayoutView];
@@ -107,6 +122,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [imgbg autoAlignAxis:ALAxisVertical toSameAxisOfView:imgView];
     [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
     [imgbg autoSetDimensionsToSize:CGSizeMake(70, 70)];
+    
     imgbg.image = [UIImage imageNamed:@"goLogoBg"];
     imgbg.clipsToBounds = YES;
     imgbg.rotate(360).animate(20.0);
@@ -118,6 +134,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
     [imgLogo autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
+
 }
 
 
@@ -128,30 +145,24 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (void) setupSearchNav {
     
-    self.searchView = [UIView newAutoLayoutView];
-    [self.view addSubview:_searchView];
-    
-    [_searchView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
-    [_searchView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
-    [_searchView autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 44)];
-    
-    _searchView.backgroundColor = [UIColor whiteColor];
+    self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     
     UIImageView *bgView = [UIImageView newAutoLayoutView];
     [self.searchView addSubview:bgView];
     
     
-    [bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-20];
-    [bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
-    [bgView autoSetDimensionsToSize:CGSizeMake(180, 25)];
+    [bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-10];
+    [bgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_searchView withOffset:5];
+//    [bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
+    [bgView autoSetDimensionsToSize:CGSizeMake(180, 30)];
     bgView.image = [UIImage imageNamed:@"searchBarbg"];
     
     UIImageView *iconView = [UIImageView newAutoLayoutView];
     [self.searchView addSubview:iconView];
     
-    [iconView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:bgView withOffset:5];
+    [iconView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:bgView withOffset:10];
     [iconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
-    [iconView autoSetDimensionsToSize:CGSizeMake(15, 15)];
+    [iconView autoSetDimensionsToSize:CGSizeMake(13, 13)];
     iconView.image = [UIImage imageNamed:@"searchIcon"];
     
     self.searchField = [UITextField newAutoLayoutView];
@@ -159,10 +170,14 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     self.searchField.delegate = self;
     
     [_searchField autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-15];
-    [_searchField autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
-    [_searchField autoSetDimensionsToSize:CGSizeMake(150, 30)];
-    _searchField.placeholder = @"彩虹Go!";
+    [_searchField autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView withOffset:-1];
+    [_searchField autoSetDimensionsToSize:CGSizeMake(150, 25)];
+
+    _searchField.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
+    _searchField.font = [UIFont systemFontOfSize:13.0f];
+    _searchField.placeholder = @"彩虹GO!";
     
+    self.navigationItem.titleView = _searchView;
     
 }
 
@@ -170,23 +185,19 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     self.discoveryTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_discoveryTV];
     
-    //    [_discoveryTV autoPinToTopLayoutGuideOfViewController:self withInset:-65.0];
-    [_discoveryTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:44];
-//    [_discoveryTV autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:self.view];
-//    [_discoveryTV autoPinEdge:ALEdgeTrailing toEdge:ALEdgeTrailing ofView:self.view];
+    [_discoveryTV autoPinToTopLayoutGuideOfViewController:self withInset:0];
     [_discoveryTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_discoveryTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-
-    [_discoveryTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [_discoveryTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];
     
     
     _discoveryTV.delegate = self;
     _discoveryTV.dataSource = self;
     _discoveryTV.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.refreshTV = [[UIRefreshControl alloc] init];
-    [_discoveryTV addSubview:_refreshTV];
-    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+//    self.refreshTV = [[UIRefreshControl alloc] init];
+//    [_discoveryTV addSubview:_refreshTV];
+//    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     [self.discoveryTV registerClass:[DiscoveryTableViewCell class] forCellReuseIdentifier:DISCOVERY_CELL];
     
@@ -200,8 +211,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     for (int i = 0; i < 4; ++i) {
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 142);
-//        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
-        ;
         NSURL *imageUrl = [NSURL URLWithString:[[adData objectAtIndex:i] objectForKey:@"path"]];
         [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
         
@@ -271,56 +280,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     self.discoveryTV.tableHeaderView = _discoveryHV;
 }
 
-- (void) setupDiscoveryTVHeaderView {
-    //    self.discoveryHV = [[UIView alloc] initForAutoLayout];
-    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    
-    self.adScrollView = [UIScrollView newAutoLayoutView];
-    [self.discoveryHV addSubview:_adScrollView];
-    
-    [_adScrollView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoveryHV];
-    [_adScrollView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoveryHV];
-    [_adScrollView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_discoveryHV];
-    [_adScrollView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_discoveryHV];
-    [_adScrollView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_discoveryHV];
-    _adScrollView.contentSize = CGSizeMake(ScreenWidth * 3, _adScrollView.frame.size.height);
-    _adScrollView.delegate = self;
-    _adScrollView.showsHorizontalScrollIndicator = NO;
-    
-    // 设置分页
-    _adScrollView.pagingEnabled = YES;
-    
-    for (int i = 0; i < 3; i++) {
-        UIImageView *imgView = [[UIImageView alloc] init];
-        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 200);
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ad%d.jpg", i + 1]];
-        //        NSURL *imageUrl = [NSURL URLWithString:[self.imgArr objectAtIndex:i]];
-        //        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
-        
-        //                imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imgArr objectAtIndex:i]]];
-        
-        [_adScrollView addSubview:imgView];
-        
-    }
-    
-    self.adPageControl = [[UIPageControl alloc] init];
-    
-    //    self.adPageControl = [UIPageControl newAutoLayoutView];
-    
-    _adPageControl.center = CGPointMake(ScreenWidth / 2, 180);
-    _adPageControl.bounds = CGRectMake(0, 0, 16*(3-1)+16, 16);
-    _adPageControl.numberOfPages = 3;
-    _adPageControl.pageIndicatorTintColor = [UIColor colorWithRed:184.0/255 green:184.0/255 blue:184.0/255 alpha:1];
-    _adPageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    _adPageControl.enabled = NO;
-    
-    [_discoveryHV addSubview:_adPageControl];
-    
-    _discoveryHV.backgroundColor = [UIColor clearColor];
-    
-    self.discoveryTV.tableHeaderView = _discoveryHV;
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     int page = scrollView.contentOffset.x / scrollView.frame.size.width;
     _adPageControl.currentPage = page;
@@ -361,8 +320,23 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         cell.mapLB.text = @"";
         cell.locationImg.hidden = YES;
     }
-
-    cell.buyBTN.backgroundColor = [self setBuyBTN:[cellData objectForKey:@"colorNum"]];
+    
+    if ([[cellData objectForKey:@"title_btn"] isEqualToString:@""]) {
+        cell.buyBTN.text = @"";
+        cell.buyBTN.hidden = YES;
+    }else{
+        cell.buyBTN.text = [cellData objectForKey:@"title_btn"];
+        cell.buyBTN.hidden = NO;
+        cell.buyBTN.backgroundColor = [self setBuyBTN:[cellData objectForKey:@"colorNum"]];
+    }
+    
+    if ([[cellData objectForKey:@"activityTime"] isEqualToString:@"0"]) {
+        cell.activityTimeLB.text = @"";
+        cell.activityTimeLB.hidden = YES;
+    }else{
+        cell.activityTimeLB.text =[cellData objectForKey:@"activityTime"];
+        cell.activityTimeLB.hidden = NO;
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -403,11 +377,30 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [self.searchField resignFirstResponder];
 }
 
-- (void) refresh:(UIRefreshControl *)control {
-    [control beginRefreshing];
-    [self getAlbumList];
-    [control endRefreshing];
+- (void) refresh:(BOOL)isFirst {
+    
+    self.discoveryTV.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getAlbumList:@"1" isFirst:isFirst];
+    }];
+    [self.discoveryTV.header beginRefreshing];
 }
 
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
+        [self.discoveryTV.footer beginRefreshing];
+        
+        if ([self.hasMoreData isEqualToString:@"1"]) {
+            self.discoveryTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                if (![self.nextPageNum isEqualToString:@"1"]) {
+                    [self getAlbumList:self.nextPageNum isFirst:NO];
+                }else{
+                    [self.discoveryTV.footer noticeNoMoreData];
+                }
+            }];
+        }else{
+            [self.discoveryTV.footer noticeNoMoreData];
+        }
+    }
+}
 
 @end

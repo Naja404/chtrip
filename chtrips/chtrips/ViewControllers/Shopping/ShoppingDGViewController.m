@@ -42,6 +42,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 @property (nonatomic, strong) NSString *proNextPageNum;
 @property (nonatomic, strong) NSString *shopNextPageNum;
 @property (nonatomic, strong) NSString *hasMoreData;
+@property (nonatomic, strong) DOPDropDownMenu *dopMenu;
+@property (nonatomic, assign) BOOL isProduct;
 
 @end
 
@@ -54,9 +56,6 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void) viewWillAppear:(BOOL)animated {
     self.hidesBottomBarWhenPushed = NO;
-
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 - (void)viewDidLoad {
@@ -66,33 +65,68 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     self.shopNextPageNum = @"1";
     
     [self setupSegmentedControl];
+    [self setProductDOPMenu];
     [self setupDOPMenu];
     
     [self setupShopList];
-//    [self getProductList:self.proNextPageNum];
-    [self refresh];
+    [self refresh:YES];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
 }
 
 - (void) setupSegmentedControl {
     self.shopSegmented = [[UISegmentedControl alloc] initWithItems:@[@"人气商品",@"商家"]];
     _shopSegmented.frame = CGRectMake(20.0, 20.0, 150, 30);
     _shopSegmented.selectedSegmentIndex = 0;
-    _shopSegmented.tintColor = [UIColor redColor];
+    _shopSegmented.tintColor = RED_COLOR_BG;
     [_shopSegmented addTarget:self action:@selector(shopSegmentAction:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _shopSegmented;
 }
 
-- (void) shopSegmentAction:(id)sender {
+- (void) setStatusBarBG {
+    UIView *statusBG = [[UIView alloc] initWithFrame:CGRectMake(0, -20, ScreenWidth, 20)];
     
-//    [self.shopData removeAllObjects];
+    statusBG.backgroundColor = [UIColor blackColor];
     
-    [self refresh];
+    [self.navigationController.navigationBar addSubview:statusBG];
+    
 }
 
-- (void) setupDOPMenu {
+- (void) shopSegmentAction:(id)sender {
+    if (_shopSegmented.selectedSegmentIndex == 1) {
+        [self setSHopDOPMenu];
+    }else{
+        [self setProductDOPMenu];
+    }
+    [_dopMenu reloadData];
+    
+    [self refresh:YES];
+}
+
+- (void) setSHopDOPMenu {
+   
+    self.selectCate = @"";
+    self.selectBrand = @"";
+    self.selectSort = @"";
+    // 数据
+    self.bigCate = @[@"城市", @"热门城市", @"全部城市"];
+    
+    self.smallCate = @[@[],
+                       @[@"东京", @"大阪", @"名古屋", @"冲绳", @"京都", @"北海道", @"神户"],
+                       @[@"东京", @"大阪", @"名古屋", @"冲绳", @"京都", @"北海道", @"神户",
+                         @"鹿儿岛", @"福冈", @"静冈", @"广岛", @"长崎", @"栃木県", @"千叶县",
+                         @"泉佐野", @"茨城県", @"静岡県"]];
+    self.brand = @[@"门店类别", @"百货商场", @"专卖店", @"街区", @"杂货店", @"特产店",
+                      @"免税店", @"药妆店", @"奥特莱斯", @"集市", @"电器店",
+                      @"商业街", @"精品店", @"折扣店", @"购物街", @"工艺礼品",
+                      @"书店画廊", @"二手店市场", @"食品药品", @"礼品店", @"书店"];
+
+    self.sorts = @[@"星级", @"三星", @"四星", @"五星"];
+    self.isProduct = NO;
+}
+
+- (void) setProductDOPMenu {
     self.selectCate = @"";
     self.selectBrand = @"";
     self.selectSort = @"";
@@ -110,20 +144,25 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     self.brand = @[@"品牌", @"热门品牌", @"全部品牌"];
     
     self.allBrand = @[@[],
-                      @[@"索尼", @"资生堂", @"尼康", @"优衣库", @"DHC", @"精工"],
-                      @[@"资生堂", @"索尼", @"尼康", @"佳能", @"东芝", @"蝶翠诗", @"DHC", @"高丝",
-                        @"欧泊莱", @"爱普生", @"松下", @"夏普", @"富士通", @"卡西欧", @"奥林",
-                        @"西铁城", @"先锋", @"精工", @"Hello Kitty", @"日立", @"格力高", @"富士施",
-                        @"姬芮ZA", @"京瓷", @"美津浓", @"安尚秀", @"优衣库", @"雪肌兰"]];
+                      @[@"花王", @"先锋", @"精工", @"佳能", @"奥尔滨", @"索尼", @"欧泊莱", @"姬芮", @"优衣库", @"蝶翠诗"],
+                      @[@"蝶翠诗", @"优衣库", @"姬芮ZA", @"欧泊莱", @"索尼", @"RMK", @"凯朵", @"奥尔滨", @"茵芙莎",
+                        @"美津浓", @"佳能", @"精工", @"西铁城", @"先锋", @"植村秀", @"卡西欧", @"爱普生", @"尼康",
+                        @"花王", @"芳凯尔", @"松下", @"高丝", @"安尚秀", @"娜丽丝", @"SK-Ⅱ", @"资生堂", @"格力高",
+                        @"盛田屋", @"乐敦制药", @"薬師堂"]];
     self.sorts = @[@"价格", @"200以下", @"200-500", @"1000-2000", @"2000-5000", @"5000-10000", @"1万以上"];
+    self.isProduct = YES;
+}
+
+- (void) setupDOPMenu {
     
     // 添加下拉菜单
-    DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:44];
-    menu.delegate = self;
-    menu.dataSource = self;
-    [self.view addSubview:menu];
+    self.dopMenu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:44];
+    _dopMenu.delegate = self;
+    _dopMenu.dataSource = self;
+    [self.view addSubview:_dopMenu];
     
-    [menu selectDefalutIndexPath];
+    [_dopMenu selectDefalutIndexPath];
+    
 }
 
 #pragma mark DOPMenu
@@ -147,13 +186,10 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath
 {
     if (indexPath.column == 0) {
-//        return self.classifys[indexPath.row];
         return self.bigCate[indexPath.row];
     } else if (indexPath.column == 1){
-//        return self.areas[indexPath.row];
         return self.brand[indexPath.row];
     } else {
-//        return self.sorts[indexPath.row];
         return self.sorts[indexPath.row];
     }
 }
@@ -162,17 +198,12 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 {
     if (column == 0) {
         return [self.smallCate[row] count];
-//        if (row == 0) {
-//           return self.bigCate.count;
-//        } else if (row == 2){
-//            return self.brand.count;
-//        } else if (row == 3){
-//            return self.sorts.count;
-//        }
     }else if (column == 1){
-        return [self.allBrand[row] count];
+        if (self.isProduct) {
+           return [self.allBrand[row] count];
+        }
     }else{
-//        return self.sorts.count;
+
     }
     
     return 0;
@@ -181,18 +212,13 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
 {
     if (indexPath.column == 0) {
-        
         return self.smallCate[indexPath.row][indexPath.item];
-//        
-//        if (indexPath.row == 0) {
-//            return self.cates[indexPath.item];
-//        } else if (indexPath.row == 2){
-//            return self.movices[indexPath.item];
-//        } else if (indexPath.row == 3){
-//            return self.hostels[indexPath.item];
-//        }
     }else if (indexPath.column == 1) {
-        return self.allBrand[indexPath.row][indexPath.item];
+        if (self.isProduct) {
+            return self.allBrand[indexPath.row][indexPath.item];
+        }else{
+            return self.brand[indexPath.item];
+        }
     }else{
         return self.sorts[indexPath.item];
     }
@@ -202,24 +228,23 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
+    NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
     if (indexPath.item >= 0) {
-//        NSLog(@"点击了 %ld - %ld - %ld 项目",indexPath.column,indexPath.row,indexPath.item);
-        
         if (indexPath.column == 0) {
-//            NSLog(@"点击了%@", self.smallCate[indexPath.row][(int)indexPath.item]);
             self.selectCate = self.smallCate[indexPath.row][indexPath.item];
         }else if (indexPath.column == 1){
-            self.selectBrand = self.allBrand[indexPath.row][indexPath.item];
-//            NSLog(@"点击了%@", self.allBrand[indexPath.row][(int)indexPath.item]);
+            if (self.isProduct) {
+                self.selectBrand = self.allBrand[indexPath.row][indexPath.item];
+            }else{
+                self.selectBrand = self.brand[indexPath.item];
+            }
         }else{
             self.selectSort = self.sorts[indexPath.item];
-//            NSLog(@"点击了%@", self.sorts[indexPath.item]);
         }
         
-        [self refresh];
+        [self refresh:NO];
         
     }else {
-//        NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
         if (indexPath.row == 0) {
             if (indexPath.column == 0) {
                 self.selectCate = @"";
@@ -228,14 +253,20 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
             }else{
                 self.selectSort = @"";
             }
-            [self refresh];
+            [self refresh:NO];
+        }
+        
+        if (indexPath.row > 0 && indexPath.column == 1) {
+            if (!self.isProduct) {
+                self.selectBrand = self.brand[indexPath.row];
+                [self refresh:NO];
+            }
         }
         
         if (indexPath.row > 0 && indexPath.column == 2) {
             self.selectSort = self.sorts[indexPath.row];
-            [self refresh];
+            [self refresh:NO];
         }
-
     }
 
 }
@@ -299,6 +330,10 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:@"1" forKey:@"shopType"];
     [paramter setObject:PageNum forKey:@"pageNum"];
+    [paramter setObject:self.selectCate forKey:@"cityName"];
+    [paramter setObject:self.selectBrand forKey:@"category"];
+    [paramter setObject:self.selectSort forKey:@"sort"];
+    NSLog(@"shoplist paramter is %@", paramter);
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
@@ -346,7 +381,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     _shopTV.delegate = self;
     _shopTV.dataSource = self;
-//    _shopTV.separatorStyle = UITableViewCellAccessoryNone;
+    _shopTV.separatorStyle = UITableViewCellAccessoryNone;
     
     [self.shopTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:SHOP_POP_CELL];
     [self.shopTV registerClass:[ShoppingDGTableViewCell class] forCellReuseIdentifier:SHOP_CELL];
@@ -435,7 +470,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 
-- (void) refresh {
+- (void) refresh:(BOOL)isReload {
     // 停止所有网络请求
     [[HttpManager instance] cancelAllOperations];
     [self.shopTV.header endRefreshing];
@@ -465,9 +500,17 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         if ([self.hasMoreData isEqualToString:@"1"]) {
             self.shopTV.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
                 if (self.shopSegmented.selectedSegmentIndex == 1) {
-                    [self getShopList:self.shopNextPageNum];
+                    if ([self.shopNextPageNum isEqualToString:@"1"]) {
+                        [self.shopTV.footer noticeNoMoreData];
+                    }else{
+                       [self getShopList:self.shopNextPageNum];
+                    }
                 }else{
-                    [self getProductList:self.proNextPageNum];
+                    if ([self.proNextPageNum isEqualToString:@"1"]) {
+                        [self.shopTV.footer noticeNoMoreData];
+                    }else{
+                        [self getProductList:self.proNextPageNum];
+                    }
                 }
             }];
         }else{

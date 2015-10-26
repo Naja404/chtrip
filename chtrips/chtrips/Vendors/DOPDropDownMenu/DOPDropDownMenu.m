@@ -717,7 +717,16 @@ struct {
 
 }
 
-
+- (void) reloadData{
+    [self animateBackGroundView:_backGroundView show:NO complete:^{
+        [self animateTableView:nil show:NO complete:^{
+            _show = NO;
+            id VC = self.dataSource;
+            self.dataSource = nil;
+            self.dataSource = VC;
+        }];
+    }];
+}
 
 
 

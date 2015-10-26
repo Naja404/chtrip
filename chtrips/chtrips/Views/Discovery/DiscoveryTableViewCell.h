@@ -17,5 +17,6 @@
 @property (nonatomic, strong) UILabel *buyBTN;
 @property (nonatomic, strong) UILabel *mapLB;
 @property (nonatomic, strong) UIImageView *locationImg;
+@property (nonatomic, strong) UILabel *activityTimeLB;
 
 @end
