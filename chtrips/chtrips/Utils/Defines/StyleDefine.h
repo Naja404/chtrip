@@ -60,4 +60,7 @@
 // 列表分割线颜色
 #define GRAY_COLOR_CELL_LINE [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1]
 
+// 城市选择背景色
+#define GRAY_COLOR_CITY_CELL [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:1]
+
 #endif

@@ -14,4 +14,5 @@ typedef void (^Callback)();
 
 - (void)customizeBackItemWithCallBack:(Callback)callBack;
 - (void)customizeBackItem;
+- (void)customizeBackItemWithDismiss;
 @end

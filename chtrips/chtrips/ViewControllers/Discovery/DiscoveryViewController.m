@@ -80,7 +80,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
                                           }
                                           
                                           if ([pageNum isEqualToString:@"1"]) {
-                                              self.discoveryTVData= [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"albumList"]];
+                                              [self.discoveryTVData removeAllObjects];
+                                              self.discoveryTVData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"albumList"]];
                                               [self.discoveryTV reloadData];
                                               [self.discoveryTV.header endRefreshing];
                                           }else{
@@ -160,25 +161,44 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     UIImageView *iconView = [UIImageView newAutoLayoutView];
     [self.searchView addSubview:iconView];
     
-    [iconView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:bgView withOffset:10];
+    [iconView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:bgView withOffset:-10];
     [iconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
     [iconView autoSetDimensionsToSize:CGSizeMake(13, 13)];
     iconView.image = [UIImage imageNamed:@"searchIcon"];
     
-    self.searchField = [UITextField newAutoLayoutView];
-    [self.searchView addSubview:_searchField];
-    self.searchField.delegate = self;
     
-    [_searchField autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-15];
-    [_searchField autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView withOffset:-1];
-    [_searchField autoSetDimensionsToSize:CGSizeMake(150, 25)];
-
-    _searchField.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
-    _searchField.font = [UIFont systemFontOfSize:13.0f];
-    _searchField.placeholder = @"彩虹GO!";
+    UIButton *searchBTN = [UIButton newAutoLayoutView];
+    [self.searchView addSubview:searchBTN];
+    
+    [searchBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
+    [searchBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
+    [searchBTN autoSetDimensionsToSize:CGSizeMake(100, 25)];
+    [searchBTN setTitle:NSLocalizedString(@"TEXT_SEARCH_PLACEHOLDER", nil) forState:UIControlStateNormal];
+    [searchBTN setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
+    [searchBTN addTarget:self action:@selector(pushSearchPage) forControlEvents:UIControlEventTouchUpInside];
+    searchBTN.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    searchBTN.titleLabel.textColor = [UIColor redColor];
+    searchBTN.backgroundColor = [UIColor clearColor];
+    
+    
+//    self.searchField = [UITextField newAutoLayoutView];
+//    [self.searchView addSubview:_searchField];
+//    self.searchField.delegate = self;
+//    
+//    [_searchField autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-15];
+//    [_searchField autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView withOffset:-1];
+//    [_searchField autoSetDimensionsToSize:CGSizeMake(150, 25)];
+//
+//    _searchField.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
+//    _searchField.font = [UIFont systemFontOfSize:13.0f];
+//    _searchField.placeholder = NSLocalizedString(@"TEXT_SEARCH_PLACEHOLDER", nil);
     
     self.navigationItem.titleView = _searchView;
     
+}
+
+- (void) pushSearchPage {
+    NSLog(@"touch search bar");
 }
 
 - (void) setupDiscoveryTV {
@@ -210,16 +230,16 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     for (int i = 0; i < 4; ++i) {
         UIImageView *imgView = [[UIImageView alloc] init];
-        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, 142);
+        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, ScreenWidth / 2.25);
         NSURL *imageUrl = [NSURL URLWithString:[[adData objectAtIndex:i] objectForKey:@"path"]];
         [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
         
         [viewsArray addObject:imgView];
     }
     
-    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 152)];
+    self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25 + 10)];
     
-    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 142) animationDuration:5];
+    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25) animationDuration:5];
     
     [self.discoveryHV removeFromSuperview];
     

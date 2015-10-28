@@ -146,13 +146,14 @@ static NSString * const PLAY_CELL = @"playCell";
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:CHVersion forKey:@"ver"];
     
     [[HttpManager instance] requestWithMethod:@"Product/cityList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSArray *cityList = [[TMCache sharedCache] objectForKey:@"cityList"];
-
-                                          if (![[[result objectForKey:@"data"] objectForKey:@"hasNew"] isEqualToString:@"0"] || [cityList count] <= 0) {
+                                          NSString *cityListVersion = [[TMCache sharedCache] objectForKey:@"cityListVersion"];
+                                          
+                                          if (![[[result objectForKey:@"data"] objectForKey:@"version"] isEqualToString:cityListVersion]) {
                                               [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"cityList"] forKey:@"cityList"];
                                           }
                                       }

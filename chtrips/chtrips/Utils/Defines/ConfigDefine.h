@@ -16,5 +16,7 @@ static NSString *WXAuthScope = @"snsapi_message,snsapi_userinfo,snsapi_friend,sn
 static NSString *WXAuthOpenID = @"0";
 static NSString *WXAuthState = @"nijigoWechatLogin";
 
+static NSString *CHVersion = @"0.9.4";
+
 #endif
 

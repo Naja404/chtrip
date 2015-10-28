@@ -13,6 +13,9 @@
 @property (strong, nonatomic) UIButton *cityBTN;
 @property (strong, nonatomic) NSIndexPath *cityIndexPath;
 @property (nonatomic, strong) NSString *cityNameStr;
+@property (nonatomic, strong) UIImageView *cityImg;
+@property (nonatomic, strong) UILabel *cityLB;
+@property (nonatomic, strong) UILabel *bgLB;
 
 @end
 

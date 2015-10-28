@@ -8,6 +8,8 @@
 
 #import "CitySelectViewController.h"
 #import "CitySelectCollectionViewCell.h"
+#import "UIViewController+BackItem.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString * const CITY_CELL = @"cityCell";
 
@@ -24,14 +26,13 @@ static NSString * const CITY_CELL = @"cityCell";
     // Do any additional setup after loading the view.
     
     [self setupStyle];
+    [self customizeBackItemWithDismiss];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
 - (void) setupStyle {
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBuyContent)];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(selectedCityAction)];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
@@ -66,16 +67,19 @@ static NSString * const CITY_CELL = @"cityCell";
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CitySelectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CITY_CELL forIndexPath:indexPath];
     
-//    cell.cityLB.text = [self.cityData objectAtIndex:indexPath.row];
+    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.cityData objectAtIndex:indexPath.row]];
     
-    [cell.cityBTN setTitle:[self.cityData objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    cell.cityLB.text = [cellData objectForKey:@"name"];
+    
+    NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
+    [cell.cityImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     
     UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCityBTN:)];
     cell.cityBTN.userInteractionEnabled = YES;
     [cell.cityBTN addGestureRecognizer:onceTap];
     
     cell.cityIndexPath = indexPath;
-    cell.cityNameStr = [self.cityData objectAtIndex:indexPath.row];
+    cell.cityNameStr = [cellData objectForKey:@"name"];
     
     return cell;
 }
@@ -91,17 +95,17 @@ static NSString * const CITY_CELL = @"cityCell";
 
 // 定义每个collectionview 大小
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(90, 30);
+    return CGSizeMake((ScreenWidth - 60) / 2 , (ScreenWidth - 60) / 2 / 2.7);
 }
 
 // 定义每个 collectionview 间距
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 10, 5, 5);
+    return UIEdgeInsetsMake(5, 20, 10, 20);
 }
 
 //定义每个 collectionview 纵向间距
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 10;
+    return 0;
 }
 
 //

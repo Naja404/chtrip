@@ -34,6 +34,16 @@ static void *CALL_BACK_KEY;
     [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void) customizeBackItemWithDismiss {
+    UIButton *button = [self customizedButton];
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];
+    [button addTarget:self action:@selector(dismissBack) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) dismissBack {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
