@@ -21,7 +21,7 @@
         
         [_checkBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
         [_checkBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
-        [_checkBTN autoSetDimensionsToSize:CGSizeMake(20, 20)];
+        [_checkBTN autoSetDimensionsToSize:CGSizeMake(25, 25)];
         
         [_checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
         

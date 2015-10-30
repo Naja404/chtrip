@@ -63,4 +63,7 @@
 // 城市选择背景色
 #define GRAY_COLOR_CITY_CELL [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:1]
 
+// 城市选择label字体样色
+#define BLACK_COLOR_CITY_NAME [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1]
+
 #endif

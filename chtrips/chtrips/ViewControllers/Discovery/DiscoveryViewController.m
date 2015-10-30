@@ -60,7 +60,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 
-#pragma mark 获取专辑列表
+#pragma mark - 获取专辑列表
 
 - (void) getAlbumList:(NSString *)pageNum isFirst:(BOOL)isFirst {
     [SVProgressHUD show];

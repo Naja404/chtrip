@@ -69,6 +69,12 @@
 "TEXT_REG_LOGIN" = "点击登录";
 "TEXT_PRE_PRICE" = "参考价钱";
 "TEXT_SEARCH_PLACEHOLDER" = "彩虹GO!";
+"TEXT_NOT_INCLUDE_SHIPPING" = "不含运费";
+"TEXT_TOTAL" = "合计:";
+"TEXT_LOGIN" = "登录";
+"TEXT_CITY" = "城市";
+"BTN_MOBILE" = "   手机";
+"BTN_PASSWD" = "   密码";
 "BTN_ADD_BUYLIST" = "加入扫货清单";
 "BTN_WANT_GO" = "我想去";
 

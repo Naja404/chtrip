@@ -211,7 +211,8 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
             // 在主线程执行
             dispatch_async(dispatch_get_main_queue(), ^{
                 MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
-                [self.navigationController presentViewController:loginSelect animated:YES completion:nil];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginSelect];
+                [self.navigationController presentViewController:nav animated:YES completion:nil];
             });
         }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];

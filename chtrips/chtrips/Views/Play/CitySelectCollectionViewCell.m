@@ -34,8 +34,8 @@
         [_cityLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self withOffset:((ScreenWidth - 60) / 2 / 2.7 / 2)];
         [_cityLB autoSetDimensionsToSize:CGSizeMake(60, 30)];
         _cityLB.font = [UIFont systemFontOfSize:16.0];
-        _cityLB.textColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
-        _cityLB.text = @"城市";
+        _cityLB.textColor = BLACK_COLOR_CITY_NAME;
+        _cityLB.text = NSLocalizedString(@"TEXT_CITY", nil);
         _cityLB.textAlignment = NSTextAlignmentCenter;
         
         

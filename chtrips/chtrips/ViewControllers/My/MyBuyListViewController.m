@@ -140,7 +140,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [totalLB autoSetDimensionsToSize:CGSizeMake(45, 18)];
     totalLB.textColor = HIGHLIGHT_BLACK_COLOR;
     totalLB.font = [UIFont systemFontOfSize:18];
-    totalLB.text = @"合计:";
+    totalLB.text = NSLocalizedString(@"TEXT_TOTAL", nil);
     
     UILabel *notShipLB = [UILabel newAutoLayoutView];
     [totalBar addSubview:notShipLB];
@@ -150,7 +150,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [notShipLB autoSetDimensionsToSize:CGSizeMake(50, 12)];
     notShipLB.font = [UIFont systemFontOfSize:12];
     notShipLB.textColor = HIGHLIGHT_BLACK_COLOR;
-    notShipLB.text = @"不含运费";
+    notShipLB.text = NSLocalizedString(@"TEXT_NOT_INCLUDE_SHIPPING", nil);
     
     
     self.bgView = [UIImageView newAutoLayoutView];

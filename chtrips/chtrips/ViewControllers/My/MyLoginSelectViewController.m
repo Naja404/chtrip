@@ -10,6 +10,7 @@
 #import "WXApiRequestHandler.h"
 #import "WXApiManager.h"
 #import "TMCache.h"
+#import "MyLoginViewController.h"
 
 @interface MyLoginSelectViewController ()<WXApiManagerDelegate>
 
@@ -17,11 +18,18 @@
 
 @implementation MyLoginSelectViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupStyle];
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [WXApiManager sharedManager].delegate = self;
+
 }
 
 - (void) setupStyle {
@@ -44,16 +52,18 @@
     [bgImg autoSetDimensionsToSize:CGSizeMake(159, 98)];
     bgImg.image = [UIImage imageNamed:@"loginBg"];
     
+    
+    
     UIButton *wechatBTN = [UIButton newAutoLayoutView];
     [self.view addSubview:wechatBTN];
     
     [wechatBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.view withOffset:-100];
 //    [wechatBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:10];
-    [wechatBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+//    [wechatBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [wechatBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view withOffset:-75];
     [wechatBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
     [wechatBTN setImage:[UIImage imageNamed:@"loginWeChat"] forState:UIControlStateNormal];
     [wechatBTN addTarget:self action:@selector(sendAuthRequest) forControlEvents:UIControlEventTouchUpInside];
-    
     
 //    UIButton *weiboBTN = [UIButton newAutoLayoutView];
 //    [self.view addSubview:weiboBTN];
@@ -62,9 +72,27 @@
 //    [weiboBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-10];
 //    [weiboBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
 //    [weiboBTN setImage:[UIImage imageNamed:@"loginWeibo"] forState:UIControlStateNormal];
-//    [weiboBTN addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+//    [weiboBTN addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *loginBTN = [UIButton newAutoLayoutView];
+    [self.view addSubview:loginBTN];
+    
+    [loginBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wechatBTN];
+    [loginBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view withOffset:75];
+    [loginBTN autoSetDimensionsToSize:CGSizeMake(138, 50)];
+    [loginBTN setImage:[UIImage imageNamed:@"loginBTN"] forState:UIControlStateNormal];
+    [loginBTN addTarget:self action:@selector(pushLoginVC) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+- (void) pushLoginVC {
+    
+    MyLoginViewController *loginVC = [[MyLoginViewController alloc] init];
+    
+    [self.navigationController pushViewController:loginVC animated:YES];
+
+}
+
 
 - (void) backMyView {
     [self dismissViewControllerAnimated:YES completion:nil];
