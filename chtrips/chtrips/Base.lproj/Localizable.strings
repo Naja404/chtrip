@@ -19,6 +19,11 @@
 "BTN_ALBUM" = "相册";
 "BTN_CONFIRM" = "确定";
 "BTN_SUBMIT" = "提交";
+"BTN_MOBILE" = "   手机";
+"BTN_PASSWD" = "   密码";
+"BTN_PASSWD_AGAIN" = "   确认密码";
+"BTN_ADD_BUYLIST" = "加入扫货清单";
+"BTN_WANT_GO" = "我想去";
 
 // text
 "TEXT_APP_TITLE" = "彩虹Go";
@@ -73,17 +78,20 @@
 "TEXT_TOTAL" = "合计:";
 "TEXT_LOGIN" = "登录";
 "TEXT_CITY" = "城市";
-"BTN_MOBILE" = "   手机";
-"BTN_PASSWD" = "   密码";
-"BTN_ADD_BUYLIST" = "加入扫货清单";
-"BTN_WANT_GO" = "我想去";
+"TEXT_REGISTER" = "注册";
+"TEXT_INPUT_MOBILE" = "请输入手机号";
+"TEXT_INPUT_PASSWD" = "请输入密码";
+"TEXT_INPUT_PASSWD_AGAIN" = "请再次输入密码";
+"TEXT_TO_REGISTER" = "注册请点这里 >";
+"TEXT_REGISTER_PROTOCOL" = "点击右上角确定,表示理解并同意用户协议";
+"TEXT_VIEW_REGISTER_PROTOCOL" = "查看 >";
 
+// input 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
 "INPUT_SEARCH_LOCATION" = "请输入目的地";
 "INPUT_BUY_LIST" = "请输入想要购买的宝贝";
 
 // alert info
-
 "TEXT_PLACE_INPUT_TRIP_NAME" = "请输入行程名称";
 "TEXT_ADD_TRIP_FAILD" = "行程添加失败";
 "TEXT_ADD_TRIP_SUCCESS" = "行程添加成功";
@@ -95,6 +103,8 @@
 "TEXT_NOT_DELETE_LAST_DAY" = "至少有一天行程";
 "TEXT_DELETE_FAILD" = "删除失败";
 "TEXT_DELETE_SUCCESS" = "删除成功";
+"TEXT_MOBILE_ERROR" = "手机号貌似不对哦";
+"TEXT_PASSWD_ERROR" = "密码不是这样的吧";
 
 
 

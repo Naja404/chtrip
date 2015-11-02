@@ -209,6 +209,7 @@
 		E9CB92861BD628D00051AA6B /* defaultPicSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CB92851BD628D00051AA6B /* defaultPicSmall.png */; };
 		E9CB92891BD62F6E0051AA6B /* defaultPicBig.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */; };
 		E9CB928A1BD62F6E0051AA6B /* defaultPicHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CB92881BD62F6E0051AA6B /* defaultPicHorizontal.png */; };
+		E9CBB1D11BE739510087194E /* UserProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CBB1D01BE739510087194E /* UserProtocolViewController.m */; };
 		E9CF01ED1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */; };
 		E9CF01F01AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CF01EF1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.m */; };
 		E9D0FAFF1AEA2FDE00CC9664 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FAFE1AEA2FDE00CC9664 /* SystemConfiguration.framework */; };
@@ -263,6 +264,7 @@
 		E9F1C8BC1B418247008FFD28 /* ad4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8BB1B418247008FFD28 /* ad4.jpg */; };
 		E9F1C8BE1B41829C008FFD28 /* ad00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9F1C8BD1B41829C008FFD28 /* ad00.jpg */; };
 		E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F5CE941ACA3E0D00FDE3B0 /* search.png */; };
+		E9F6E2711BE4961B006C4140 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E2701BE4961B006C4140 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -596,6 +598,8 @@
 		E9CB92851BD628D00051AA6B /* defaultPicSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultPicSmall.png; path = Resource/defaultPicSmall.png; sourceTree = "<group>"; };
 		E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultPicBig.png; path = Resource/defaultPicBig.png; sourceTree = "<group>"; };
 		E9CB92881BD62F6E0051AA6B /* defaultPicHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultPicHorizontal.png; path = Resource/defaultPicHorizontal.png; sourceTree = "<group>"; };
+		E9CBB1CF1BE739510087194E /* UserProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProtocolViewController.h; path = ViewControllers/My/UserProtocolViewController.h; sourceTree = "<group>"; };
+		E9CBB1D01BE739510087194E /* UserProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProtocolViewController.m; path = ViewControllers/My/UserProtocolViewController.m; sourceTree = "<group>"; };
 		E9CF01EB1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailTitleTableViewCell.h; path = Views/Shopping/ShoppingDetailTitleTableViewCell.h; sourceTree = "<group>"; };
 		E9CF01EC1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingDetailTitleTableViewCell.m; path = Views/Shopping/ShoppingDetailTitleTableViewCell.m; sourceTree = "<group>"; };
 		E9CF01EE1AE7763700FA8001 /* ShoppingDetailPictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingDetailPictureTableViewCell.h; path = Views/Shopping/ShoppingDetailPictureTableViewCell.h; sourceTree = "<group>"; };
@@ -694,6 +698,8 @@
 		E9F1C8BB1B418247008FFD28 /* ad4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ad4.jpg; path = Resource/ad4.jpg; sourceTree = "<group>"; };
 		E9F1C8BD1B41829C008FFD28 /* ad00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ad00.jpg; path = Resource/ad00.jpg; sourceTree = "<group>"; };
 		E9F5CE941ACA3E0D00FDE3B0 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = Resource/search.png; sourceTree = "<group>"; };
+		E9F6E26F1BE4961B006C4140 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/My/RegisterViewController.h; sourceTree = "<group>"; };
+		E9F6E2701BE4961B006C4140 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/My/RegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1318,6 +1324,10 @@
 				E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */,
 				E999974A1BE334F700B322D0 /* MyLoginViewController.h */,
 				E999974B1BE334F700B322D0 /* MyLoginViewController.m */,
+				E9F6E26F1BE4961B006C4140 /* RegisterViewController.h */,
+				E9F6E2701BE4961B006C4140 /* RegisterViewController.m */,
+				E9CBB1CF1BE739510087194E /* UserProtocolViewController.h */,
+				E9CBB1D01BE739510087194E /* UserProtocolViewController.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1878,6 +1888,7 @@
 				E9E0232C1AE2388A0054F03D /* ShoppingPopularityDetailViewController.m in Sources */,
 				E967A1F81B9DCB7200FAFF89 /* MJRefreshAutoNormalFooter.m in Sources */,
 				E98047191BB8122D00B5518A /* CitySelectViewController.m in Sources */,
+				E9CBB1D11BE739510087194E /* UserProtocolViewController.m in Sources */,
 				E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */,
 				E90DAEBD1B96E2C8002F379E /* SKSplashView.m in Sources */,
 				E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */,
@@ -1943,6 +1954,7 @@
 				E967A1F31B9DCB7200FAFF89 /* MJRefreshBackFooter.m in Sources */,
 				E967A1F51B9DCB7200FAFF89 /* MJRefreshFooter.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
+				E9F6E2711BE4961B006C4140 /* RegisterViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E93F6D3B1AE0E24A0047A468 /* ShoppingPopularityViewController.m in Sources */,
 				E95C3D011B4970E40010EF58 /* WebViewJavascriptBridge.m in Sources */,

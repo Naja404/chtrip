@@ -19,6 +19,11 @@
 "BTN_ALBUM" = "アルバム";
 "BTN_CONFIRM" = "確定";
 "BTN_SUBMIT" = "確定";
+"BTN_MOBILE" = "   手机";
+"BTN_PASSWD" = "   密码";
+"BTN_PASSWD_AGAIN" = "   确认密码";
+"BTN_ADD_BUYLIST" = "加入扫货清单";
+"BTN_WANT_GO" = "我想去";
 
 // text
 "TEXT_APP_TITLE" = "nijiGo";
@@ -72,18 +77,21 @@
 "TEXT_NOT_INCLUDE_SHIPPING" = "不含运费";
 "TEXT_TOTAL" = "合计:";
 "TEXT_LOGIN" = "登录";
+"TEXT_REGISTER" = "注册";
 "TEXT_CITY" = "城市";
-"BTN_MOBILE" = "   手机";
-"BTN_PASSWD" = "   密码";
-"BTN_ADD_BUYLIST" = "加入扫货清单";
-"BTN_WANT_GO" = "我想去";
+"TEXT_INPUT_MOBILE" = "请输入手机号";
+"TEXT_INPUT_PASSWD" = "请输入密码";
+"TEXT_INPUT_PASSWD_AGAIN" = "请再次输入密码";
+"TEXT_TO_REGISTER" = "注册请点这里 >";
+"TEXT_REGISTER_PROTOCOL" = "点击右上角确定,表示理解并同意用户协议";
+"TEXT_VIEW_REGISTER_PROTOCOL" = "查看 >";
 
+// input
 "INPUT_ADD_TRIP_NAME" = "スケジュール名を入れてください";
 "INPUT_SEARCH_LOCATION" = "目的地を入れてください";
 "INPUT_BUY_LIST" = "商品名を入れてください";
 
 // alert info
-
 "TEXT_PLACE_INPUT_TRIP_NAME" = "目的地目を入れてください";
 "TEXT_ADD_TRIP_FAILD" = "目的地が追加できませんでした";
 "TEXT_ADD_TRIP_SUCCESS" = "目的に追加されました";
@@ -95,6 +103,8 @@
 "TEXT_NOT_DELETE_LAST_DAY" = "少なくとも一日が必要です";
 "TEXT_DELETE_FAILD" = "削除できませんでした";
 "TEXT_DELETE_SUCCESS" = "削除完了しました";
+"TEXT_MOBILE_ERROR" = "手机号貌似不对哦";
+"TEXT_PASSWD_ERROR" = "密码不是这样的吧";
 
 
 

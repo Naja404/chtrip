@@ -19,6 +19,11 @@
 "BTN_ALBUM" = "Album";
 "BTN_CONFIRM" = "Confirm";
 "BTN_SUBMIT" = "Submit";
+"BTN_MOBILE" = "   手机";
+"BTN_PASSWD" = "   密码";
+"BTN_PASSWD_AGAIN" = "   确认密码";
+"BTN_ADD_BUYLIST" = "加入扫货清单";
+"BTN_WANT_GO" = "我想去";
 
 // text
 "TEXT_APP_TITLE" = "nijiGo";
@@ -33,18 +38,12 @@
 "TEXT_ADD_LOCATION" = "Add This Location";
 "TEXT_SUB_TRIP_LOCATION" = "Location";
 "TEXT_SUB_TRIP" = "Sub Trip Name";
-
 "TEXT_MONTH" = "/";
 "TEXT_DAY" = "";
 "TEXT_DELETE" = "Delete";
 "TEXT_DEFAULT_TRIPNAME" = "Trip";
 "TEXT_EDIT_TRIP_SUCCESS" = "Update Success";
 "TEXT_EDIT_TRIP_FAILD" = "Update Faild";
-
-"INPUT_ADD_TRIP_NAME" = "Add Trip Name";
-"INPUT_SEARCH_LOCATION" = "Plase Input Destination";
-"INPUT_BUY_LIST" = "Place Enter ";
-"TEXT_ADD_SUBTRIP" = "New SubTrip";
 "TEXT_TIME" = "Time";
 "TEXT_ADD_NEWDAY" = "Add Day";
 "TEXT_BUY_LIST" = "Buy List";
@@ -77,12 +76,20 @@
 "TEXT_NOT_INCLUDE_SHIPPING" = "不含运费";
 "TEXT_TOTAL" = "合计:";
 "TEXT_LOGIN" = "登录";
+"TEXT_REGISTER" = "注册";
 "TEXT_CITY" = "城市";
-"BTN_MOBILE" = "   手机";
-"BTN_PASSWD" = "   密码";
-"BTN_ADD_BUYLIST" = "加入扫货清单";
-"BTN_WANT_GO" = "我想去";
+"TEXT_INPUT_MOBILE" = "请输入手机号";
+"TEXT_INPUT_PASSWD" = "请输入密码";
+"TEXT_INPUT_PASSWD_AGAIN" = "请再次输入密码";
+"TEXT_TO_REGISTER" = "注册请点这里 >";
+"TEXT_REGISTER_PROTOCOL" = "点击右上角确定,表示理解并同意用户协议";
+"TEXT_VIEW_REGISTER_PROTOCOL" = "查看 >";
 
+// input
+"INPUT_ADD_TRIP_NAME" = "Add Trip Name";
+"INPUT_SEARCH_LOCATION" = "Plase Input Destination";
+"INPUT_BUY_LIST" = "Place Enter ";
+"TEXT_ADD_SUBTRIP" = "New SubTrip";
 
 // alert text
 "TEXT_PLACE_INPUT_TRIP_NAME" = "Place Input Trip Name";
@@ -96,5 +103,7 @@
 "TEXT_NOT_DELETE_LAST_DAY" = "至少有一天行程";
 "TEXT_DELETE_FAILD" = "删除失败";
 "TEXT_DELETE_SUCCESS" = "删除成功";
+"TEXT_MOBILE_ERROR" = "手机号貌似不对哦";
+"TEXT_PASSWD_ERROR" = "密码不是这样的吧";
 
 

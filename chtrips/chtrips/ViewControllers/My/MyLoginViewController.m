@@ -7,10 +7,11 @@
 //
 
 #import "MyLoginViewController.h"
+#import "RegisterViewController.h"
 
 @interface MyLoginViewController ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) UITextField *mobielTF;
+@property (nonatomic, strong) UITextField *mobileTF;
 @property (nonatomic, strong) UITextField *pwdTF;
 
 @end
@@ -35,8 +36,12 @@
 #pragma mark - 设置登陆界面
 - (void) setLoginStyle {
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleBordered target:self action:@selector(getLoginStatus)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+//    UIBarButtonItem *rightBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(getLoginStatus)];
+//    rightBTN.title = NSLocalizedString(@"BTN_CONFIRM", nil);
+//
+//    self.navigationItem.rightBarButtonItem = rightBTN;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BTN_CONFIRM", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(getLoginStatus)];
     
     self.navigationItem.title = NSLocalizedString(@"TEXT_LOGIN", nil);
     self.view.backgroundColor = GRAY_COLOR_CITY_CELL;
@@ -71,15 +76,15 @@
     pwdLB.textAlignment = NSTextAlignmentLeft;
     pwdLB.textColor = BLACK_COLOR_CITY_NAME;
     
-    self.mobielTF = [UITextField newAutoLayoutView];
-    [self.view addSubview:_mobielTF];
+    self.mobileTF = [UITextField newAutoLayoutView];
+    [self.view addSubview:_mobileTF];
     
-    [_mobielTF autoAlignAxis:ALAxisHorizontal toSameAxisOfView:mobileLB];
-    [_mobielTF autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:mobileLB withOffset:80];
-    [_mobielTF autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 120, 40)];
-    _mobielTF.placeholder = @"请输入手机号";
-    _mobielTF.keyboardType = UIKeyboardTypeNumberPad;
-    [_mobielTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [_mobileTF autoAlignAxis:ALAxisHorizontal toSameAxisOfView:mobileLB];
+    [_mobileTF autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:mobileLB withOffset:80];
+    [_mobileTF autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 120, 40)];
+    _mobileTF.placeholder = NSLocalizedString(@"TEXT_INPUT_MOBILE", nil);
+    _mobileTF.keyboardType = UIKeyboardTypeNumberPad;
+    [_mobileTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     self.pwdTF = [UITextField newAutoLayoutView];
     [self.view addSubview:_pwdTF];
@@ -87,19 +92,69 @@
     [_pwdTF autoAlignAxis:ALAxisHorizontal toSameAxisOfView:pwdLB];
     [_pwdTF autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:pwdLB withOffset:80];
     [_pwdTF autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 120, 40)];
-    _pwdTF.placeholder = @"请输入密码";
+    _pwdTF.placeholder = NSLocalizedString(@"TEXT_INPUT_PASSWD", nil);
     [_pwdTF setSecureTextEntry:YES];
     
+    UIButton *regBTN = [UIButton newAutoLayoutView];
+    [self.view addSubview:regBTN];
     
+    [regBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:pwdLB withOffset:3];
+    [regBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-2];
+    [regBTN autoSetDimensionsToSize:CGSizeMake(100, 13)];
+    [regBTN setTitle:NSLocalizedString(@"TEXT_TO_REGISTER", nil) forState:UIControlStateNormal];
+    [regBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
+    regBTN.titleLabel.textAlignment = NSTextAlignmentRight;
+    regBTN.titleLabel.font = [UIFont systemFontOfSize:12.f];
+    regBTN.backgroundColor = [UIColor clearColor];
+    [regBTN addTarget:self action:@selector(pushRegVC) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [_mobileTF resignFirstResponder];
+    [_pwdTF resignFirstResponder];
+}
+
+- (void) pushRegVC {
+    RegisterViewController *regVC = [[RegisterViewController alloc] init];
+    [self.navigationController pushViewController:regVC animated:YES];
 }
 
 #pragma mark - 提交登录信息
 - (void) getLoginStatus {
+    if (_mobileTF.text.length != 11) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_MOBILE_ERROR", nil) maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
+    if (_pwdTF.text.length < 6) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PASSWD_ERROR", nil) maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
+    [SVProgressHUD show];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [parameters setObject:_mobileTF.text forKey:@"mobile"];
+    [parameters setObject:_pwdTF.text forKey:@"pwd"];
+    
+    NSLog(@"post data %@", parameters);
+    
+    [[HttpManager instance] requestWithMethod:@"User/login"
+                                   parameters:parameters
+                                      success:^(NSDictionary *result) {
+                                          NSLog(@"login data is %@", result);
+                                          
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
     
 }
 
 - (void) textFieldDidChange:(UITextField *) textField {
-    if (textField == _mobielTF) {
+    if (textField == _mobileTF) {
         if (textField.text.length > 11) {
             textField.text = [textField.text substringToIndex:11];
         }
@@ -116,7 +171,7 @@
 
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 
-    if (textField == _mobielTF) {
+    if (textField == _mobileTF) {
         if (string.length == 0) return YES;
         
         NSInteger existedLength = textField.text.length;
