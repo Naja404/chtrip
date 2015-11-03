@@ -149,6 +149,47 @@
 
 - (void) userRegAction {
     
+    if (![_pwdTF.text isEqualToString:_rePwdTF.text]) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PWD_NOT_SAME", nil) maskType:SVProgressHUDMaskTypeBlack];
+        return;
+    }
+    
+    [SVProgressHUD show];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [parameters setObject:_mobileTF.text forKey:@"mobile"];
+    [parameters setObject:_pwdTF.text forKey:@"pwd"];
+    
+    NSLog(@"post data %@", parameters);
+    
+    [[HttpManager instance] requestWithMethod:@"User/register"
+                                   parameters:parameters
+                                      success:^(NSDictionary *result) {
+                                          NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
+                                          NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
+                                          if (![ssidTmp isEqualToString:@""]) {
+                                              [CHSSID setSSID:ssidTmp];
+                                          }
+                                          
+                                          [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"nickname"] forKey:@"userName"];
+                                          
+                                          [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
+                                          
+                                          [SVProgressHUD showSuccessWithStatus:alertText maskType:SVProgressHUDMaskTypeBlack];
+                                          
+                                          [self dismiss];
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
+    
+    
+    
+}
+
+- (void) dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) textFieldDidChange:(UITextField *) textField {

@@ -15,7 +15,6 @@
     self  = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        
         self.avatarImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_avatarImg];
         

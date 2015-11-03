@@ -13,7 +13,6 @@
 #import "PopoverView.h"
 #import "HMSegmentedControl.h"
 #import "UIImageView+AFNetworking.h"
-#import "TMCache.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 

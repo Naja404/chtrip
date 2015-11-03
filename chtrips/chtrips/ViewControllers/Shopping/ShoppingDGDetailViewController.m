@@ -65,7 +65,7 @@
     [addBuyBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.addBuyListV];
     [addBuyBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.addBuyListV];
     [addBuyBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
-    addBuyBTN.backgroundColor = ADD_BUY_LIST_COLOR;
+    addBuyBTN.backgroundColor = ORINGE_COLOR_BG;
     [addBuyBTN setTitle:NSLocalizedString(@"BTN_ADD_BUYLIST", nil) forState:UIControlStateNormal];
     [addBuyBTN addTarget:self action:@selector(addBuyListAction) forControlEvents:UIControlEventTouchDown];
     
@@ -76,7 +76,7 @@
     [priceV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_addBuyListV];
     [priceV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_addBuyListV];
     [priceV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_addBuyListV];
-    priceV.backgroundColor = GRAY_FONT_COLOR;
+    priceV.backgroundColor = GRAY_COLOR_CITY_CELL;
     
     UILabel *refLB = [UILabel newAutoLayoutView];
     [priceV addSubview:refLB];

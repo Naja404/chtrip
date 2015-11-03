@@ -9,7 +9,6 @@
 #import "MyLoginSelectViewController.h"
 #import "WXApiRequestHandler.h"
 #import "WXApiManager.h"
-#import "TMCache.h"
 #import "MyLoginViewController.h"
 
 @interface MyLoginSelectViewController ()<WXApiManagerDelegate>

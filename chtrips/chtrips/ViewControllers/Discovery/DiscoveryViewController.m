@@ -111,7 +111,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     UIView *imgView = [UIView newAutoLayoutView];
     [self.searchView addSubview:imgView];
     
-    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:10];
+//    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:10];
+    [imgView autoAlignAxis:ALAxisVertical toSameAxisOfView:_searchView];
     [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
     [imgView autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgView.backgroundColor = [UIColor clearColor];
@@ -123,6 +124,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [imgbg autoAlignAxis:ALAxisVertical toSameAxisOfView:imgView];
     [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
     [imgbg autoSetDimensionsToSize:CGSizeMake(70, 70)];
+    imgbg.backgroundColor = [UIColor clearColor];
     
     imgbg.image = [UIImage imageNamed:@"goLogoBg"];
     imgbg.clipsToBounds = YES;
@@ -135,6 +137,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
     [imgLogo autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
+    imgLogo.backgroundColor = [UIColor clearColor];
 
 }
 
@@ -148,50 +151,36 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     
-    UIImageView *bgView = [UIImageView newAutoLayoutView];
-    [self.searchView addSubview:bgView];
-    
-    
-    [bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-10];
-    [bgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_searchView withOffset:5];
-//    [bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
-    [bgView autoSetDimensionsToSize:CGSizeMake(180, 30)];
-    bgView.image = [UIImage imageNamed:@"searchBarbg"];
-    
-    UIImageView *iconView = [UIImageView newAutoLayoutView];
-    [self.searchView addSubview:iconView];
-    
-    [iconView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:bgView withOffset:-10];
-    [iconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
-    [iconView autoSetDimensionsToSize:CGSizeMake(13, 13)];
-    iconView.image = [UIImage imageNamed:@"searchIcon"];
-    
-    
-    UIButton *searchBTN = [UIButton newAutoLayoutView];
-    [self.searchView addSubview:searchBTN];
-    
-    [searchBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
-    [searchBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
-    [searchBTN autoSetDimensionsToSize:CGSizeMake(100, 25)];
-    [searchBTN setTitle:NSLocalizedString(@"TEXT_SEARCH_PLACEHOLDER", nil) forState:UIControlStateNormal];
-    [searchBTN setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
-    [searchBTN addTarget:self action:@selector(pushSearchPage) forControlEvents:UIControlEventTouchUpInside];
-    searchBTN.titleLabel.font = [UIFont systemFontOfSize:13.0f];
-    searchBTN.titleLabel.textColor = [UIColor redColor];
-    searchBTN.backgroundColor = [UIColor clearColor];
-    
-    
-//    self.searchField = [UITextField newAutoLayoutView];
-//    [self.searchView addSubview:_searchField];
-//    self.searchField.delegate = self;
+//    UIImageView *bgView = [UIImageView newAutoLayoutView];
+//    [self.searchView addSubview:bgView];
 //    
-//    [_searchField autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-15];
-//    [_searchField autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView withOffset:-1];
-//    [_searchField autoSetDimensionsToSize:CGSizeMake(150, 25)];
-//
-//    _searchField.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
-//    _searchField.font = [UIFont systemFontOfSize:13.0f];
-//    _searchField.placeholder = NSLocalizedString(@"TEXT_SEARCH_PLACEHOLDER", nil);
+//    
+//    [bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-10];
+//    [bgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_searchView withOffset:5];
+//    [bgView autoSetDimensionsToSize:CGSizeMake(180, 30)];
+//    bgView.image = [UIImage imageNamed:@"searchBarbg"];
+//    
+//    UIImageView *iconView = [UIImageView newAutoLayoutView];
+//    [self.searchView addSubview:iconView];
+//    
+//    [iconView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:bgView withOffset:-10];
+//    [iconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
+//    [iconView autoSetDimensionsToSize:CGSizeMake(13, 13)];
+//    iconView.image = [UIImage imageNamed:@"searchIcon"];
+//    
+//    
+//    UIButton *searchBTN = [UIButton newAutoLayoutView];
+//    [self.searchView addSubview:searchBTN];
+//    
+//    [searchBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
+//    [searchBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
+//    [searchBTN autoSetDimensionsToSize:CGSizeMake(100, 25)];
+//    [searchBTN setTitle:NSLocalizedString(@"TEXT_SEARCH_PLACEHOLDER", nil) forState:UIControlStateNormal];
+//    [searchBTN setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
+//    [searchBTN addTarget:self action:@selector(pushSearchPage) forControlEvents:UIControlEventTouchUpInside];
+//    searchBTN.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+//    searchBTN.titleLabel.textColor = [UIColor redColor];
+//    searchBTN.backgroundColor = [UIColor clearColor];
     
     self.navigationItem.titleView = _searchView;
     

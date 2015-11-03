@@ -24,6 +24,8 @@
 "BTN_PASSWD_AGAIN" = "   确认密码";
 "BTN_ADD_BUYLIST" = "加入扫货清单";
 "BTN_WANT_GO" = "我想去";
+"BTN_LOGOUT" = "退出登录";
+
 
 // text
 "TEXT_APP_TITLE" = "彩虹Go";
@@ -85,6 +87,11 @@
 "TEXT_TO_REGISTER" = "注册请点这里 >";
 "TEXT_REGISTER_PROTOCOL" = "点击右上角确定,表示理解并同意用户协议";
 "TEXT_VIEW_REGISTER_PROTOCOL" = "查看 >";
+"TEXT_MY_INFO" = "个人信息";
+"TEXT_NICKNAME" = "昵称";
+"TEXT_SEX" = "性别";
+"TEXT_MOBILE" = "手机号";
+
 
 // input
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
@@ -105,5 +112,6 @@
 "TEXT_DELETE_SUCCESS" = "删除成功";
 "TEXT_MOBILE_ERROR" = "手机号貌似不对哦";
 "TEXT_PASSWD_ERROR" = "密码不是这样的吧";
+"TEXT_PWD_NOT_SAME" = "密码不一致";
 
 

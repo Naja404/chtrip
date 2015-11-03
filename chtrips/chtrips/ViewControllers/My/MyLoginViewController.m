@@ -144,7 +144,27 @@
     [[HttpManager instance] requestWithMethod:@"User/login"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"login data is %@", result);
+                                          NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
+                                          NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
+                                          NSString *avatar = [[result objectForKey:@"data"] objectForKey:@"avatar"];
+                                          NSString *nickname =[[result objectForKey:@"data"] objectForKey:@"nickname"];
+                                          if (![ssidTmp isEqualToString:@""]) {
+                                              [CHSSID setSSID:ssidTmp];
+                                          }
+                                          
+                                          if (![nickname isEqualToString:@""]) {
+                                              [[TMCache sharedCache] setObject:nickname forKey:@"userName"];
+                                          }
+                                          
+                                          if(![avatar isEqualToString:@""]){
+                                              [[TMCache sharedCache] setObject:avatar forKey:@"userAvatar"];
+                                          }
+                                          
+                                          [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
+                                          
+                                          [SVProgressHUD showSuccessWithStatus:alertText maskType:SVProgressHUDMaskTypeBlack];
+                                          
+                                          [self dismiss];
                                           
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -184,6 +204,10 @@
     }
     
     return YES;
+}
+
+- (void) dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

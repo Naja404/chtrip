@@ -57,7 +57,7 @@
     [addWantGoBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
     
     [addWantGoBTN setTitle:@"我想去" forState:UIControlStateNormal];
-    addWantGoBTN.backgroundColor = WANT_GO_COLOR;
+    addWantGoBTN.backgroundColor = BLUE_COLOR_BG;
     [addWantGoBTN addTarget:self action:@selector(addWantGoAction) forControlEvents:UIControlEventTouchDown];
     
 }

@@ -51,6 +51,7 @@
     #import "SVProgressHUD.h"
     #import "ObjectiveRecord.h"
     #import "HttpManager.h"
+    #import "TMCache.h"
     #import "CHSSID.h"
     #import "MJRefresh.h"
     #import "UIViewController+BackItem.h"

@@ -14,8 +14,8 @@
 #import "MyBuyListViewController.h"
 #import "MyWantListViewController.h"
 #import "MyLoginSelectViewController.h"
-#import "TMCache.h"
 #import "UIImageView+AFNetworking.h"
+#import "MyInfoViewController.h"
 
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
@@ -215,9 +215,11 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
                 [self.navigationController presentViewController:nav animated:YES completion:nil];
             });
         }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];
-            [alert show];
-            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];
+//            [alert show];
+            MyInfoViewController *myInfoVC = [[MyInfoViewController alloc] init];
+            myInfoVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myInfoVC animated:YES];
         }
     }
     
@@ -256,6 +258,7 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
     if (buttonIndex == 1) {
        self.loginStatus = @"0";
         [[TMCache sharedCache] setObject:@"0" forKey:@"loginStatus"];
+        [[TMCache sharedCache] setObject:@"" forKey:@"userAvatar"];
         [self.myTV reloadData];
     }else if (buttonIndex == 0){
         NSLog(@"button index is 0");

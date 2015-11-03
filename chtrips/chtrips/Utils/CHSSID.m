@@ -7,7 +7,6 @@
 //
 
 #import "CHSSID.h"
-#import "TMCache.h"
 
 static NSString * const USER_SSID = @"SSID";
 

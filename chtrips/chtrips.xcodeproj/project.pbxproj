@@ -52,6 +52,10 @@
 		E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = E91396731AC261F0003AF385 /* checkboxUncheck.png */; };
 		E913967B1AC28371003AF385 /* BuyList.m in Sources */ = {isa = PBXBuildFile; fileRef = E913967A1AC28371003AF385 /* BuyList.m */; };
 		E91396801AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E913967F1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m */; };
+		E9171B7E1BE89AE000923C1E /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9171B7D1BE89AE000923C1E /* MyInfoViewController.m */; };
+		E9171B811BE8A1A800923C1E /* MyInfoNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9171B801BE8A1A800923C1E /* MyInfoNormalTableViewCell.m */; };
+		E9171B841BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9171B831BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m */; };
+		E9171B861BE8A98E00923C1E /* myInfoBg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9171B851BE8A98E00923C1E /* myInfoBg@3x.png */; };
 		E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E91FBCD51AB91FB4005CA250 /* SubTripListNormalTableViewCell.m */; };
 		E91FBCDB1AB92555005CA250 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD71AB92555005CA250 /* background.png */; };
 		E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD81AB92555005CA250 /* background@2x.png */; };
@@ -345,6 +349,13 @@
 		E913967A1AC28371003AF385 /* BuyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyList.m; path = coreData/BuyList.m; sourceTree = "<group>"; };
 		E913967E1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripDeleteTableViewCell.h; path = Views/EditSubTripDeleteTableViewCell.h; sourceTree = "<group>"; };
 		E913967F1AC2A866003AF385 /* EditSubTripDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSubTripDeleteTableViewCell.m; path = Views/EditSubTripDeleteTableViewCell.m; sourceTree = "<group>"; };
+		E9171B7C1BE89AE000923C1E /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoViewController.h; path = ViewControllers/My/MyInfoViewController.h; sourceTree = "<group>"; };
+		E9171B7D1BE89AE000923C1E /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoViewController.m; path = ViewControllers/My/MyInfoViewController.m; sourceTree = "<group>"; };
+		E9171B7F1BE8A1A800923C1E /* MyInfoNormalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoNormalTableViewCell.h; path = Views/My/MyInfoNormalTableViewCell.h; sourceTree = "<group>"; };
+		E9171B801BE8A1A800923C1E /* MyInfoNormalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoNormalTableViewCell.m; path = Views/My/MyInfoNormalTableViewCell.m; sourceTree = "<group>"; };
+		E9171B821BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoAvatarTableViewCell.h; path = Views/My/MyInfoAvatarTableViewCell.h; sourceTree = "<group>"; };
+		E9171B831BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoAvatarTableViewCell.m; path = Views/My/MyInfoAvatarTableViewCell.m; sourceTree = "<group>"; };
+		E9171B851BE8A98E00923C1E /* myInfoBg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "myInfoBg@3x.png"; path = "Resource/myInfoBg@3x.png"; sourceTree = "<group>"; };
 		E91FBCD41AB91FB4005CA250 /* SubTripListNormalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTripListNormalTableViewCell.h; path = Views/SubTripListNormalTableViewCell.h; sourceTree = "<group>"; };
 		E91FBCD51AB91FB4005CA250 /* SubTripListNormalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTripListNormalTableViewCell.m; path = Views/SubTripListNormalTableViewCell.m; sourceTree = "<group>"; };
 		E91FBCD71AB92555005CA250 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resource/background.png; sourceTree = "<group>"; };
@@ -1328,6 +1339,8 @@
 				E9F6E2701BE4961B006C4140 /* RegisterViewController.m */,
 				E9CBB1CF1BE739510087194E /* UserProtocolViewController.h */,
 				E9CBB1D01BE739510087194E /* UserProtocolViewController.m */,
+				E9171B7C1BE89AE000923C1E /* MyInfoViewController.h */,
+				E9171B7D1BE89AE000923C1E /* MyInfoViewController.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1335,6 +1348,7 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9171B851BE8A98E00923C1E /* myInfoBg@3x.png */,
 				E999974D1BE3370700B322D0 /* loginBTN@2x.png */,
 				E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */,
 				E9CB92881BD62F6E0051AA6B /* defaultPicHorizontal.png */,
@@ -1565,6 +1579,10 @@
 				E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */,
 				E95A99DB1B1ADD1E003FB7FF /* MyBuyListTableViewCell.h */,
 				E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */,
+				E9171B7F1BE8A1A800923C1E /* MyInfoNormalTableViewCell.h */,
+				E9171B801BE8A1A800923C1E /* MyInfoNormalTableViewCell.m */,
+				E9171B821BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.h */,
+				E9171B831BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1700,6 +1718,7 @@
 			files = (
 				E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */,
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
+				E9171B861BE8A98E00923C1E /* myInfoBg@3x.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
 				E95EBFE21B8802BD001BD221 /* arrowLeft.png in Resources */,
@@ -1909,6 +1928,7 @@
 				E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */,
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E93F6D351ADF87B70047A468 /* CHMenuPickerView.m in Sources */,
+				E9171B811BE8A1A800923C1E /* MyInfoNormalTableViewCell.m in Sources */,
 				E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */,
 				E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */,
 				E947EE751B2B11A300012957 /* ShoppingPopProductViewController.m in Sources */,
@@ -1918,6 +1938,7 @@
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
 				E93F6D3E1AE0E5E30047A468 /* ShoppingBoutiqueViewController.m in Sources */,
 				E9CF01ED1AE769D300FA8001 /* ShoppingDetailTitleTableViewCell.m in Sources */,
+				E9171B841BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m in Sources */,
 				E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */,
 				E913967B1AC28371003AF385 /* BuyList.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
@@ -1967,6 +1988,7 @@
 				E9D98EC21AEDDA5A004805E5 /* MyNormalTableViewCell.m in Sources */,
 				E957EFD81BB433B200B8B752 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
 				E980471C1BB8149300B5518A /* CitySelectCollectionViewCell.m in Sources */,
+				E9171B7E1BE89AE000923C1E /* MyInfoViewController.m in Sources */,
 				E98999441B52AA8C008C9392 /* PlayTableViewCell.m in Sources */,
 				E9B901B11AC93E21001F4EA0 /* PlayViewController.m in Sources */,
 				E96D4B471AB048FC00F7CB38 /* ZBActionSheetDatePicker.m in Sources */,
