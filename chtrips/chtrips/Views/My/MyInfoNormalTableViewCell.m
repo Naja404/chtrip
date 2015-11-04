@@ -20,6 +20,7 @@
         [_textLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_textLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
         [_textLB autoSetDimensionsToSize:CGSizeMake(100, 30)];
+        _textLB.font = [UIFont systemFontOfSize:16.0];
         _textLB.textColor = HIGHLIGHT_BLACK_COLOR;
         _textLB.textAlignment = NSTextAlignmentLeft;
         _textLB.backgroundColor = [UIColor clearColor];
@@ -30,6 +31,7 @@
         [_valLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_valLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_textLB withOffset:ScreenWidth * 0.05 + 10];
         [_valLB autoSetDimensionsToSize:CGSizeMake(150, 30)];
+        _valLB.font = [UIFont systemFontOfSize:16.0];
         _valLB.textColor = GRAY_FONT_COLOR;
         _valLB.textAlignment = NSTextAlignmentRight;
         _valLB.backgroundColor = [UIColor clearColor];

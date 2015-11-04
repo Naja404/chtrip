@@ -144,6 +144,7 @@
     [[HttpManager instance] requestWithMethod:@"User/login"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {
+                                          NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
                                           NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
                                           NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
                                           NSString *avatar = [[result objectForKey:@"data"] objectForKey:@"avatar"];
@@ -159,6 +160,8 @@
                                           if(![avatar isEqualToString:@""]){
                                               [[TMCache sharedCache] setObject:avatar forKey:@"userAvatar"];
                                           }
+                                          
+                                          [[TMCache sharedCache] setObject:userInfoTmp forKey:@"userInfo"];
                                           
                                           [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
                                           

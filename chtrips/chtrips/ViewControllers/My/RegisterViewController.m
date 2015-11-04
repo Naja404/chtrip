@@ -166,6 +166,7 @@
     [[HttpManager instance] requestWithMethod:@"User/register"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {
+                                          NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
                                           NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
                                           NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
                                           if (![ssidTmp isEqualToString:@""]) {
@@ -175,6 +176,8 @@
                                           [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"nickname"] forKey:@"userName"];
                                           
                                           [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
+                                          
+                                          [[TMCache sharedCache] setObject:userInfoTmp forKey:@"userInfo"];
                                           
                                           [SVProgressHUD showSuccessWithStatus:alertText maskType:SVProgressHUDMaskTypeBlack];
                                           

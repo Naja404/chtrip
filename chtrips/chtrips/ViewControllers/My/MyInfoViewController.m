@@ -9,6 +9,9 @@
 #import "MyInfoViewController.h"
 #import "MyInfoNormalTableViewCell.h"
 #import "MyInfoAvatarTableViewCell.h"
+#import "MyInfoNickNameViewController.h"
+#import "MyInfoSexViewController.h"
+#import "ZBPhotoTaker.h"
 
 static NSString * const MY_INFO_CELL = @"myInfoCell";
 static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
@@ -19,10 +22,16 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
 @property (nonatomic, strong) NSArray *cellTitle;
 @property (nonatomic, strong) NSArray *cellVal;
 @property (nonatomic, strong) UIButton *logoutBTN;
+@property (nonatomic, strong) ZBPhotoTaker *photoTaker;
 
 @end
 
 @implementation MyInfoViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.cellVal = [[TMCache sharedCache] objectForKey:@"userInfo"];
+    [_myInfoTV reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +46,6 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
     self.view.backgroundColor = GRAY_COLOR_CITY_CELL;
     
     self.cellTitle = @[@"", NSLocalizedString(@"TEXT_NICKNAME", nil), NSLocalizedString(@"TEXT_MOBILE", nil), NSLocalizedString(@"TEXT_SEX", nil)];
-    self.cellVal = @[@"", @"JeffZhang", @"18616594619", @"男"];
     
     self.myInfoTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_myInfoTV];
@@ -72,6 +80,7 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
 - (void) logoutAction {
     [[TMCache sharedCache] setObject:@"0" forKey:@"loginStatus"];
     [[TMCache sharedCache] setObject:@"" forKey:@"userAvatar"];
+    [[TMCache sharedCache] setObject:@"" forKey:@"userInfo"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -115,6 +124,26 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
+    }
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        self.photoTaker = Nil;
+        self.photoTaker = [[ZBPhotoTaker alloc] initWithViewController:self];
+        
+        [_photoTaker takePhotoFrom:ZBPhotoTakerSourceFromGallery allowsEditing:YES finished:^(UIImage *image) {
+            [_myInfoTV reloadData];
+        }];
+        
+    }else if(indexPath.row == 1) {
+        MyInfoNickNameViewController *nickNameVC = [[MyInfoNickNameViewController alloc] init];
+        nickNameVC.nickName = [[[TMCache sharedCache] objectForKey:@"userInfo"] objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:nickNameVC animated:YES];
+    }else if(indexPath.row == 3) {
+        MyInfoSexViewController *sexVC = [[MyInfoSexViewController alloc] init];
+        sexVC.sex = [NSString stringWithFormat:@"%@", [[[TMCache sharedCache] objectForKey:@"userInfo"] objectAtIndex:indexPath.row]];
+        [self.navigationController pushViewController:sexVC animated:YES];
     }
 }
 

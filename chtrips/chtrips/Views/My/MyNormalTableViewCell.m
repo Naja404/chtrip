@@ -27,7 +27,8 @@
         [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_iconImg withOffset:20];
         [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_titleLB autoSetDimensionsToSize:CGSizeMake(100, 30)];
-        _titleLB.font = [UIFont fontWithName:@"ArialMT" size:16];
+        _titleLB.font = [UIFont systemFontOfSize:16.0];
+        _titleLB.textColor = HIGHLIGHT_BLACK_COLOR;
         
     }
     
