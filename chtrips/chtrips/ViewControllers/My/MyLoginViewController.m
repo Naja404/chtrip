@@ -139,11 +139,19 @@
     [parameters setObject:_mobileTF.text forKey:@"mobile"];
     [parameters setObject:_pwdTF.text forKey:@"pwd"];
     
+    NSString *openidTmp = [[TMCache sharedCache] objectForKey:@"weChatOpenId"];
+    
+    if (openidTmp) {
+        [parameters setObject:openidTmp forKey:@"openid"];
+        [parameters setObject:@"nijigoWechatLogin" forKey:@"state"];
+    }
+    
     NSLog(@"post data %@", parameters);
     
     [[HttpManager instance] requestWithMethod:@"User/login"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {
+                                          
                                           NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
                                           NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
                                           NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];

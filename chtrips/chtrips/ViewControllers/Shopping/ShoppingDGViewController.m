@@ -10,7 +10,6 @@
 #import "DOPDropDownMenu.h"
 #import "ShoppingDGTableViewCell.h"
 #import "ShoppingPopularityTableViewCell.h"
-#import "UIImageView+AFNetworking.h"
 #import "ShoppingDGDetailViewController.h"
 #import "PlayDetailViewController.h"
 
@@ -44,6 +43,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 @property (nonatomic, strong) NSString *hasMoreData;
 @property (nonatomic, strong) DOPDropDownMenu *dopMenu;
 @property (nonatomic, assign) BOOL isProduct;
+@property (nonatomic, strong) UIImageView *bgView;
 
 @end
 
@@ -308,6 +308,14 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
                                               self.hasMoreData = @"0";
                                           }
                                           
+                                          if ([self.shopData count] > 0) {
+                                              _shopTV.hidden = NO;
+                                              _bgView.hidden = YES;
+                                          }else{
+                                              _shopTV.hidden = YES;
+                                              _bgView.hidden = NO;
+                                          }
+                                          
                                           [SVProgressHUD dismiss];
                                           self.shopTV.scrollEnabled = YES;
                                       }
@@ -356,6 +364,15 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
                                               self.shopNextPageNum = @"1";
                                               self.hasMoreData = @"0";
                                           }
+                                          
+                                          if ([self.shopData count] > 0) {
+                                              _shopTV.hidden = NO;
+                                              _bgView.hidden = YES;
+                                          }else{
+                                              _shopTV.hidden = YES;
+                                              _bgView.hidden = NO;
+                                          }
+                                          
                                           [SVProgressHUD dismiss];
                                           self.shopTV.scrollEnabled = YES;
                                       }
@@ -385,6 +402,15 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     [self.shopTV registerClass:[ShoppingPopularityTableViewCell class] forCellReuseIdentifier:SHOP_POP_CELL];
     [self.shopTV registerClass:[ShoppingDGTableViewCell class] forCellReuseIdentifier:SHOP_CELL];
+    
+    self.bgView = [UIImageView newAutoLayoutView];
+    [self.view addSubview:_bgView];
+    
+    [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    _bgView.hidden = YES;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {

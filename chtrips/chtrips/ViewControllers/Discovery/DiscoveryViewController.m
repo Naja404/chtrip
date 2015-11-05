@@ -10,7 +10,6 @@
 #import "DiscoveryTableViewCell.h"
 #import "DiscoveryDetailViewController.h"
 #import "CHAutoSlideScrollView.h"
-#import "UIImageView+AFNetworking.h"
 #import "JHChainableAnimations.h"
 #import "SearchViewController.h"
 #import "PlayDetailViewController.h"

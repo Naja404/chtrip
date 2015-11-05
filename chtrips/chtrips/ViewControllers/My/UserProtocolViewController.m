@@ -16,6 +16,10 @@
 
 @implementation UserProtocolViewController
 
+- (void) viewWillDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customizeBackItem];
@@ -25,6 +29,7 @@
 
 
 - (void) setupStyle {
+    self.navigationItem.title = NSLocalizedString(@"TEXT_USER_PROTOCOL", nil);
     self.webView = [[UIWebView alloc] initForAutoLayout];
     [self.view addSubview:_webView];
     

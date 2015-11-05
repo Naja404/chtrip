@@ -229,7 +229,7 @@ static NSString * const SECTION_ADD_MARK = @"section";
         _subTripNormalCell.subTimeLB.text = [startTime formattedDateWithFormat:@"HH:mm"];
         _subTripNormalCell.addressLB.text = subTrip.subAddress;
         
-        CGSize textSize = [subTrip.subAddress sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:13]}];
+        CGSize textSize = [subTrip.subAddress sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}];
         
         if (textSize.width > 220) {
             textSize.width = 220;

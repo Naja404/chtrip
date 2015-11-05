@@ -10,7 +10,6 @@
 #import "ShoppingPopularityTableViewCell.h"
 #import "ShoppingPopularityDetailViewController.h"
 #import "AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
 
 static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
 

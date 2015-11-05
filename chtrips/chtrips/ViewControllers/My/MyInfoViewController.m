@@ -105,6 +105,23 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
     if (indexPath.row == 0) {
         MyInfoAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_CELL];
 
+        NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
+        [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
+        
+//        NSData *avatarData = [[TMCache sharedCache] objectForKey:@"userAvatarData"];
+//        if (avatarData) {
+//            cell.avatarImg.image = [UIImage imageWithData:avatarData];
+//        }else{
+//            NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
+//            NSURLRequest *imageReqUrl = [NSURLRequest requestWithURL:imageUrl];
+//            //            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
+//            [cell.avatarImg setImageWithURLRequest:imageReqUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//                [[TMCache sharedCache] setObject:UIImagePNGRepresentation(image) forKey:@"userAvatarData"];
+//            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//                
+//            }];
+//        }
+        
         return cell;
     }else{
         MyInfoNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_NORMAL_CELL];
@@ -129,12 +146,9 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        self.photoTaker = Nil;
-        self.photoTaker = [[ZBPhotoTaker alloc] initWithViewController:self];
-        
-        [_photoTaker takePhotoFrom:ZBPhotoTakerSourceFromGallery allowsEditing:YES finished:^(UIImage *image) {
-            [_myInfoTV reloadData];
-        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self uploadAvatar];
+        });
         
     }else if(indexPath.row == 1) {
         MyInfoNickNameViewController *nickNameVC = [[MyInfoNickNameViewController alloc] init];
@@ -147,6 +161,36 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
     }
 }
 
+- (void) uploadAvatar {
+    self.photoTaker = Nil;
+    self.photoTaker = [[ZBPhotoTaker alloc] initWithViewController:self];
+    
+    [_photoTaker takePhotoFrom:ZBPhotoTakerSourceFromGallery allowsEditing:YES finished:^(UIImage *image) {
+        [SVProgressHUD show];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+        [parameters setObject:@"avatar" forKey:@"type"];
+        
+        [[HttpManager instance] uploadFile:@"Util/uploadFile" imageData:image parameters:parameters success:^(NSDictionary *result) {
+            
+            NSString *alertTmp = [[result objectForKey:@"data"] objectForKey:@"info"];
+            NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
+            
+            [[TMCache sharedCache] setObject:userInfoTmp forKey:@"userInfo"];
+            
+            [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"avatar"] forKey:@"userAvatar"];
+
+            [_myInfoTV reloadData];
+            
+            [SVProgressHUD showInfoWithStatus:alertTmp maskType:SVProgressHUDMaskTypeBlack];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            [SVProgressHUD showErrorWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+            
+        }];
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

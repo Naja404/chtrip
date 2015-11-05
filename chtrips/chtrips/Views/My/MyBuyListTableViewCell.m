@@ -72,6 +72,14 @@
         _priceZHLB.font = [UIFont systemFontOfSize:11.0f];
         _priceZHLB.textColor = HIGHLIGHT_RED_COLOR;
         
+        self.cutLineLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_cutLineLB];
+        
+        [_cutLineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_checkBTN];
+        [_cutLineLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView];
+        [_cutLineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 5, 0.5)];
+        _cutLineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+        
     }
     
     return self;

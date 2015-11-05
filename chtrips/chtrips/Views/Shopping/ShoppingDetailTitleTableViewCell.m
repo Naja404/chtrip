@@ -24,18 +24,18 @@
 
 - (void) setupLabelStyle {
     self.titleZHLB = [[UILabel alloc] initWithFrame:CGRectZero];
-    _titleZHLB.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+    _titleZHLB.font = [UIFont systemFontOfSize:18.0f];
 //    _titleZHLB.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:_titleZHLB];
     
     self.titleJPLB = [[UILabel alloc] initWithFrame:CGRectZero];
-    _titleJPLB.font = [UIFont fontWithName:@"ArialMT" size:18];
+    _titleJPLB.font = [UIFont systemFontOfSize:18.0f];
     _titleJPLB.textColor = [UIColor colorWithRed:184.0/255 green:184.0/255 blue:184.0/255 alpha:1];
 //    _titleJPLB.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:_titleJPLB];
     
     self.summaryLB = [[UILabel alloc] initWithFrame:CGRectZero];
-    _summaryLB.font = [UIFont fontWithName:@"Georgia-Italic" size:20];
+    _summaryLB.font = [UIFont systemFontOfSize:20.0f];
     _summaryLB.textColor = [UIColor redColor];
 //    _summaryLB.backgroundColor = [UIColor blackColor];
     [self.contentView addSubview:_summaryLB];
@@ -49,7 +49,7 @@
     [_titleZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
     [_titleZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
     [_titleZHLB autoSetDimensionsToSize:CGSizeMake(CONTENT_VIEW_WIDTH, 30)];
-    _titleZHLB.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+    _titleZHLB.font = [UIFont systemFontOfSize:18.0f];
 //    _titleZHLB.backgroundColor = [UIColor grayColor];
     
     self.titleJPLB = [UILabel newAutoLayoutView];
@@ -58,7 +58,7 @@
     [_titleJPLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleZHLB withOffset:2.0];
     [_titleJPLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
     [_titleJPLB autoSetDimensionsToSize:CGSizeMake(CONTENT_VIEW_WIDTH, 30)];
-    _titleJPLB.font = [UIFont fontWithName:@"ArialMT" size:18];
+    _titleJPLB.font = [UIFont systemFontOfSize:18.0f];
     _titleJPLB.textColor = [UIColor colorWithRed:184.0/255 green:184.0/255 blue:184.0/255 alpha:1];
 //    _titleJPLB.backgroundColor = [UIColor grayColor];
     
@@ -68,7 +68,7 @@
     [_summaryLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleJPLB withOffset:2.0];
     [_summaryLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
     [_summaryLB autoSetDimensionsToSize:CGSizeMake(CONTENT_VIEW_WIDTH, 40)];
-    _summaryLB.font = [UIFont fontWithName:@"Georgia-Italic" size:20];
+    _summaryLB.font = [UIFont systemFontOfSize:20.0f];
     _summaryLB.textColor = [UIColor redColor];
 //    _summaryLB.backgroundColor = [UIColor blackColor];
 }

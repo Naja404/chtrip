@@ -62,7 +62,8 @@
         [_timeLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.buyBTN];
         [_timeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.buyBTN withOffset:5];
         [_timeLB autoSetDimensionsToSize:CGSizeMake(120, 30)];
-        _timeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
+//        _timeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
+        _timeLB.font = [UIFont systemFontOfSize:20.0f];
         _timeLB.textAlignment = NSTextAlignmentCenter;
         _timeLB.textColor = [UIColor whiteColor];
         
@@ -80,7 +81,8 @@
         [_mapLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_locationImg withOffset:5];
         [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_locationImg withOffset:3];
         [_mapLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
-        _mapLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
+//        _mapLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
+        _mapLB.font = [UIFont systemFontOfSize:15.0f];
         _mapLB.textAlignment = NSTextAlignmentLeft;
         _mapLB.textColor = [UIColor whiteColor];
         
@@ -90,11 +92,11 @@
         [_activityTimeLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-20];
         [_activityTimeLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_mapLB];
         [_activityTimeLB autoSetDimensionsToSize:CGSizeMake(80, 25)];
-        _activityTimeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
+//        _activityTimeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
+        _activityTimeLB.font = [UIFont systemFontOfSize:15.0f];
         _activityTimeLB.textAlignment = NSTextAlignmentCenter;
         _activityTimeLB.textColor = [UIColor whiteColor];
         _activityTimeLB.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.6];
-        _activityTimeLB.text = @"剩:15天";
         _activityTimeLB.layer.cornerRadius = 13.0f;
         _activityTimeLB.layer.masksToBounds = YES;
     }

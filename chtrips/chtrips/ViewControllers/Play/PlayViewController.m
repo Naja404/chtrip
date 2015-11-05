@@ -12,7 +12,6 @@
 #import "CitySelectViewController.h"
 #import "PopoverView.h"
 #import "HMSegmentedControl.h"
-#import "UIImageView+AFNetworking.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 
@@ -36,6 +35,7 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) UIButton *cityBTN;
 @property (nonatomic, strong) UIView *cateMenuView;
 @property (nonatomic, strong) UISegmentedControl *playSegmented;
+@property (nonatomic, strong) UIImageView *bgView;
 
 @end
 
@@ -104,6 +104,14 @@ static NSString * const PLAY_CELL = @"playCell";
                                           }else{
                                               self.nextPageNum = [[result objectForKey:@"data"] objectForKey:@"nextPageNum"];
                                               self.hasMoreData = @"1";
+                                          }
+                                          
+                                          if ([self.playData count] > 0) {
+                                              _playTV.hidden = NO;
+                                              _bgView.hidden = YES;
+                                          }else{
+                                              _playTV.hidden = YES;
+                                              _bgView.hidden = NO;
                                           }
                                           
                                           [SVProgressHUD dismiss];
@@ -204,6 +212,15 @@ static NSString * const PLAY_CELL = @"playCell";
     _playTV.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.playTV registerClass:[PlayTableViewCell class] forCellReuseIdentifier:PLAY_CELL];
+    
+    self.bgView = [UIImageView newAutoLayoutView];
+    [self.view addSubview:_bgView];
+    
+    [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    _bgView.hidden = YES;
 
 }
 

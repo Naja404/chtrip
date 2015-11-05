@@ -14,7 +14,6 @@
 #import "MyBuyListViewController.h"
 #import "MyWantListViewController.h"
 #import "MyLoginSelectViewController.h"
-#import "UIImageView+AFNetworking.h"
 #import "MyInfoViewController.h"
 
 
@@ -40,6 +39,10 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
     [self setupUserInfo];
     
     [self.myTV reloadData];
+
+    if([[TMCache sharedCache] objectForKey:@"weChatOpenId"]){
+        [[TMCache sharedCache] removeObjectForKey:@"weChatOpenId"];
+    }
     
     self.tabBarController.tabBar.hidden = NO;
 }
@@ -67,6 +70,7 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
 }
 
 - (void) setupMyStyle {
+    
     self.myTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _myTV.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -82,6 +86,7 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
     
     [self.myTV registerClass:[MyAvatarTableViewCell class] forCellReuseIdentifier:MY_AVATAR_CELL];
     [self.myTV registerClass:[MyNormalTableViewCell class] forCellReuseIdentifier:MY_NORMAL_CELL];
+    _myTV.backgroundColor = GRAY_COLOR_CITY_CELL;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -125,11 +130,26 @@ static NSString * const MY_NORMAL_CELL = @"myNormalCell";
         MyAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_AVATAR_CELL forIndexPath:indexPath];
         if ([self.loginStatus isEqualToString:@"1"]) {
             cell.nameLB.text = [[TMCache sharedCache] objectForKey:@"userName"];
+            
             NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
-            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPic.jpg"]];
+            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
+//            NSData *avatarData = [[TMCache sharedCache] objectForKey:@"userAvatarData"];
+//            if (avatarData) {
+//                cell.avatarImg.image = [UIImage imageWithData:avatarData];
+//            }else{
+//                NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
+//                NSURLRequest *imageReqUrl = [NSURLRequest requestWithURL:imageUrl];
+//                //            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
+//                [cell.avatarImg setImageWithURLRequest:imageReqUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//                    [[TMCache sharedCache] setObject:UIImagePNGRepresentation(image) forKey:@"userAvatarData"];
+//                } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//                    
+//                }];
+//            }
+            
         }else{
             cell.nameLB.text = NSLocalizedString(@"TEXT_REG_LOGIN", nil);
-            cell.avatarImg.image = [UIImage imageNamed:@"defaultPic.jpg"];
+            cell.avatarImg.image = [UIImage imageNamed:@"defaultPicBig"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         

@@ -16,11 +16,11 @@
 #define COLOR_TEXT [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1]
 
 ///普通文字格
-#define FONT_TEXT [UIFont fontWithName:@"Arial" size:16.0f]
+#define FONT_TEXT [UIFont systemFontOfSize:16.0f]
 
-#define PLAY_FONT_TEXT [UIFont fontWithName:@"Arial" size:12.0f]
+#define PLAY_FONT_TEXT [UIFont systemFontOfSize:12.0f]
 
-#define BLACK_FONT_TEXT [UIFont fontWithName:@"Arial Black" size:20.0f]
+#define BLACK_FONT_TEXT [UIFont systemFontOfSize:20.0f]
 
 #define MENU_DEFAULT_COLOR [UIColor colorWithRed:237/255.0 green:239/255.0 blue:240/255.0 alpha:1]
 

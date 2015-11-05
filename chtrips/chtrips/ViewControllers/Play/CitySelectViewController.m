@@ -9,7 +9,6 @@
 #import "CitySelectViewController.h"
 #import "CitySelectCollectionViewCell.h"
 #import "UIViewController+BackItem.h"
-#import "UIImageView+AFNetworking.h"
 
 static NSString * const CITY_CELL = @"cityCell";
 

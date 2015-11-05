@@ -97,6 +97,8 @@
 "TEXT_SEX_0" = "保密";
 "TEXT_SEX_1" = "男";
 "TEXT_SEX_2" = "女";
+"TEXT_USER_PROTOCOL" = "用户协议";
+
 
 
 // input

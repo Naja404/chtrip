@@ -104,7 +104,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     [priceJPLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:buyBar withOffset:8];
     [priceJPLB autoSetDimensionsToSize:CGSizeMake(70, 20)];
     priceJPLB.text = [self.dicData objectForKey:@"price_jp"];
-    priceJPLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
+    priceJPLB.font = [UIFont systemFontOfSize:15.0f];
 
     
     UIImageView *priceZHImg = [UIImageView newAutoLayoutView];
@@ -120,7 +120,7 @@ static NSString * const SHOP_DETAIL_IMAGE_CELL = @"shopDetailImageCell";
     [priceZHLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:buyBar withOffset:8];
     [priceZHLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
     priceZHLB.text = [self.dicData objectForKey:@"price_zh"];
-    priceZHLB.font = [UIFont fontWithName:@"Georgia-Italic" size:15];
+    priceZHLB.font = [UIFont systemFontOfSize:15.0f];
 
 }
 

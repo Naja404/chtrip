@@ -7,7 +7,6 @@
 //
 
 #import "ShoppingDetailPictureTableViewCell.h"
-#import "UIImageView+AFNetworking.h"
 
 
 #define CONTENT_VIEW_WIDTH self.contentView.frame.size.width

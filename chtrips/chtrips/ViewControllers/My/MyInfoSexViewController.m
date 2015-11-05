@@ -79,7 +79,7 @@ static NSString * const MY_SEX_CELL = @"myInfoSexCell";
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self setUserInfoAction:[NSString stringWithFormat:@"%d", indexPath.row]];
+    [self setUserInfoAction:[NSString stringWithFormat:@"%lu", indexPath.row]];
 }
 
 - (void) setUserInfoAction:(NSString *)sex {

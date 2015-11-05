@@ -23,7 +23,8 @@
 #pragma mark 设置菜单view
 - (void) setupMenuLabel {
     self.menuName = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    [self.menuName setFont:[UIFont fontWithName:@"Arial" size:17]];
+//    [self.menuName setFont:[UIFont fontWithName:@"Arial" size:17]];
+    [self.menuName setFont:[UIFont systemFontOfSize:17.0f]];
     [self.menuName setTextColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1]];
     [self.menuName setTextAlignment:NSTextAlignmentCenter];
     self.menuName.numberOfLines = 2;

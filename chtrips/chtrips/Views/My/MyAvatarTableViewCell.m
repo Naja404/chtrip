@@ -34,7 +34,8 @@
         [_nameLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_avatarImg withOffset:10.0];
         [_nameLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:30];
         _nameLB.text = NSLocalizedString(@"TEXT_REG_LOGIN", nil);
-        _nameLB.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+//        _nameLB.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+        _nameLB.font = [UIFont systemFontOfSize:18.0f];
     }
     
     return self;

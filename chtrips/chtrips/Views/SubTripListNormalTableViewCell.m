@@ -29,7 +29,7 @@
         [_subTimeLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:50.0];
         [_subTimeLB autoSetDimensionsToSize:CGSizeMake(200, 30)];
         _subTimeLB.textColor = [UIColor grayColor];
-        _subTimeLB.font = [UIFont fontWithName:@"Helvetica" size:14];
+        _subTimeLB.font = [UIFont systemFontOfSize:14.0f];
         
         self.iconImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_iconImg];

@@ -134,7 +134,30 @@ typedef void (^SuccessBlock) (NSDictionary *result);
     _failureBlock(operation,error);
 }
 
+// 图片上传
+- (HttpManager *) uploadFile:(NSString *)url
+          imageData:(UIImage *)imageData
+         parameters:(NSDictionary *) parameters
+            success:(void (^)(NSDictionary *result))success
+            failure:(FailureBlock)failure {
+    
+    _successBlock = success;
+    _failureBlock = failure;
+    
+    self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+    [_manager.requestSerializer setValue:self.currentVersion forHTTPHeaderField:@"app_version"];
+//    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
 
+    [_manager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:UIImagePNGRepresentation(imageData) name:@"image" fileName:@"avatar.png" mimeType:@"image/png"];
+        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self dealWithSuccessResponse:operation responseObject:responseObject];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self dealWithFailureResponse:operation error:error];
+        }];
+    
+    return self;
+}
 
 
 @end

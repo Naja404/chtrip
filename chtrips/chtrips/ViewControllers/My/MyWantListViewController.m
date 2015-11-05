@@ -8,7 +8,6 @@
 
 #import "MyWantListViewController.h"
 #import "PlayTableViewCell.h"
-#import "UIImageView+AFNetworking.h"
 
 static NSString * const WANTGO_CELL = @"wantGoCell";
 
@@ -59,6 +58,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     
     _wantGoTV.delegate = self;
     _wantGoTV.dataSource = self;
+    _wantGoTV.separatorStyle = UITableViewCellAccessoryNone;
     
     self.refreshTV = [[UIRefreshControl alloc] init];
     [_wantGoTV addSubview:_refreshTV];

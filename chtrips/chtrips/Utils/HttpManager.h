@@ -38,4 +38,10 @@ typedef void (^FailureBlock)(AFHTTPRequestOperation *operation, NSError *error);
                           httpMethod:(NSString *)getOrPost
                              success:(void (^)(NSDictionary *result))success
                              failure:(FailureBlock)failure;
+
+- (HttpManager *) uploadFile:(NSString *)url
+                   imageData:(UIImage *)imageData
+                  parameters:(NSDictionary *) parameters
+                     success:(void (^)(NSDictionary *result))success
+                     failure:(FailureBlock)failure;
 @end

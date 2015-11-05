@@ -49,7 +49,7 @@
         [_dateLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_backgroundImg withOffset:10.0];
         [_dateLB autoSetDimensionsToSize:CGSizeMake(120, 20)];
         _dateLB.backgroundColor = [UIColor clearColor];
-        _dateLB.font = [UIFont fontWithName:@"Helvetica" size:12];
+        _dateLB.font = [UIFont systemFontOfSize:12.0f];
         _dateLB.textColor = [UIColor whiteColor];
         
         self.remindImg = [UIImageView newAutoLayoutView];

@@ -138,19 +138,42 @@
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"wechat login return %@", result);
-                                          [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"nickname"] forKey:@"userName"];
                                           
-                                          [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"headimgurl"] forKey:@"userAvatar"];
+                                          NSString *hasReg = [[result objectForKey:@"data"] objectForKey:@"has_reg"];
+                                          NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
+                                          NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
+                                          NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
+                                          NSString *avatar = [[result objectForKey:@"data"] objectForKey:@"avatar"];
+                                          NSString *nickname =[[result objectForKey:@"data"] objectForKey:@"nickname"];
                                           
-                                          [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
-                                          
-                                          [SVProgressHUD dismiss];
-                                          
-                                          [self backMyView];
+                                          if ([hasReg isEqualToString:@"0"]) {
+                                              [SVProgressHUD dismiss];
+                                              [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"openid"] forKey:@"weChatOpenId"];
+                                              [self pushLoginVC];
+                                          }else{
+                                              if (![ssidTmp isEqualToString:@""]) {
+                                                  [CHSSID setSSID:ssidTmp];
+                                              }
+                                              
+                                              if (![nickname isEqualToString:@""]) {
+                                                  [[TMCache sharedCache] setObject:nickname forKey:@"userName"];
+                                              }
+                                              
+                                              if(![avatar isEqualToString:@""]){
+                                                  [[TMCache sharedCache] setObject:avatar forKey:@"userAvatar"];
+                                              }
+                                              
+                                              [[TMCache sharedCache] setObject:userInfoTmp forKey:@"userInfo"];
+                                              
+                                              [[TMCache sharedCache] setObject:@"1" forKey:@"loginStatus"];
+                                              
+                                              [SVProgressHUD showSuccessWithStatus:alertText maskType:SVProgressHUDMaskTypeBlack];
+                                              
+                                              [self backMyView];
+                                          }
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          NSLog(@"error %@", error);
-                                          [SVProgressHUD dismiss];
+                                          [SVProgressHUD showErrorWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 

@@ -23,5 +23,6 @@
 @property (nonatomic, strong) UIImageView *priceZHImg;
 @property (nonatomic, strong) UIImageView *priceJPImg;
 @property (nonatomic, strong) UIImageView *productImage;
+@property (nonatomic, strong) UILabel *cutLineLB;
 
 @end

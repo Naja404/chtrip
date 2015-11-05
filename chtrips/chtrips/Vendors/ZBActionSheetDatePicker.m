@@ -84,7 +84,7 @@
     [_toolBar autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_containerView];
     
     self.yearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
-    [_yearLabel setFont:[UIFont fontWithName:@"Arial" size:18.0]];
+    [_yearLabel setFont:[UIFont systemFontOfSize:18.0f]];
     [_yearLabel setTextAlignment:NSTextAlignmentCenter];
     _yearLabel.backgroundColor = [UIColor clearColor];
     _yearLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSDate date] year]];
