@@ -157,6 +157,9 @@
                                           NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
                                           NSString *avatar = [[result objectForKey:@"data"] objectForKey:@"avatar"];
                                           NSString *nickname =[[result objectForKey:@"data"] objectForKey:@"nickname"];
+                                          NSString *hasBand = [[result objectForKey:@"data"] objectForKey:@"hasBand"];
+                                          
+                                          [[TMCache sharedCache] setObject:hasBand forKey:@"mobileHasBand"];
                                           if (![ssidTmp isEqualToString:@""]) {
                                               [CHSSID setSSID:ssidTmp];
                                           }

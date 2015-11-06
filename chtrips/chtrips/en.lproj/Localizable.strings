@@ -97,6 +97,8 @@
 "TEXT_SEX_1" = "男";
 "TEXT_SEX_2" = "女";
 "TEXT_USER_PROTOCOL" = "用户协议";
+"TEXT_BIND_MOBILE" = "绑定手机";
+
 
 
 // input

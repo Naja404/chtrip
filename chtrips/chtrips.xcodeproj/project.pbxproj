@@ -191,6 +191,7 @@
 		E9A1D03A1BB1953D007D635B /* redSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0371BB1953D007D635B /* redSelect@2x.png */; };
 		E9A1D03B1BB1953D007D635B /* redUnSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0381BB1953D007D635B /* redUnSelect@2x.png */; };
 		E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */; };
+		E9A356081BEC58610027C8AC /* MyInfoMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A356071BEC58610027C8AC /* MyInfoMobileViewController.m */; };
 		E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */; };
 		E9B0F6821B38282000D83E83 /* 11.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9B0F6801B38282000D83E83 /* 11.pic.jpg */; };
 		E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B170BD1ABFFD9A00722C2F /* EditSubTripViewController.m */; };
@@ -577,6 +578,8 @@
 		E9A1D0381BB1953D007D635B /* redUnSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redUnSelect@2x.png"; path = "Resource/redUnSelect@2x.png"; sourceTree = "<group>"; };
 		E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFeedBackViewController.h; path = ViewControllers/My/MyFeedBackViewController.h; sourceTree = "<group>"; };
 		E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFeedBackViewController.m; path = ViewControllers/My/MyFeedBackViewController.m; sourceTree = "<group>"; };
+		E9A356061BEC58610027C8AC /* MyInfoMobileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoMobileViewController.h; path = ViewControllers/My/MyInfoMobileViewController.h; sourceTree = "<group>"; };
+		E9A356071BEC58610027C8AC /* MyInfoMobileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoMobileViewController.m; path = ViewControllers/My/MyInfoMobileViewController.m; sourceTree = "<group>"; };
 		E9B0F67C1B37E1E800D83E83 /* arrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowLeft@2x.png"; path = "Resource/arrowLeft@2x.png"; sourceTree = "<group>"; };
 		E9B0F6801B38282000D83E83 /* 11.pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 11.pic.jpg; path = Resource/11.pic.jpg; sourceTree = "<group>"; };
 		E9B170BC1ABFFD9A00722C2F /* EditSubTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSubTripViewController.h; path = ViewControllers/EditSubTripViewController.h; sourceTree = "<group>"; };
@@ -1323,6 +1326,8 @@
 				E9FA2C9C1BE9CB54009E7C10 /* MyInfoNickNameViewController.m */,
 				E9FA2C9E1BE9CB66009E7C10 /* MyInfoSexViewController.h */,
 				E9FA2C9F1BE9CB66009E7C10 /* MyInfoSexViewController.m */,
+				E9A356061BEC58610027C8AC /* MyInfoMobileViewController.h */,
+				E9A356071BEC58610027C8AC /* MyInfoMobileViewController.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1839,6 +1844,7 @@
 				E967A1F71B9DCB7200FAFF89 /* MJRefreshAutoGifFooter.m in Sources */,
 				E96D4B421AB03A4800F7CB38 /* AddTripNameTableViewCell.m in Sources */,
 				E91396691AC16431003AF385 /* BuyListTableViewCell.m in Sources */,
+				E9A356081BEC58610027C8AC /* MyInfoMobileViewController.m in Sources */,
 				E967A1F91B9DCB7200FAFF89 /* MJRefreshAutoStateFooter.m in Sources */,
 				E957EFDB1BB433B200B8B752 /* WXApiManager.m in Sources */,
 				E957EFDD1BB433B200B8B752 /* WXApiResponseHandler.m in Sources */,
@@ -2040,8 +2046,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2054,7 +2060,7 @@
 					"$(PROJECT_DIR)/chtrips/Vendors/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "867cdaa8-3b0e-4e85-8c85-4fe10fb39b2a";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
@@ -2065,8 +2071,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2079,7 +2085,7 @@
 					"$(PROJECT_DIR)/chtrips/Vendors/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "867cdaa8-3b0e-4e85-8c85-4fe10fb39b2a";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};
 			name = Release;

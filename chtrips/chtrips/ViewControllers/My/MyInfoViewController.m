@@ -12,6 +12,7 @@
 #import "MyInfoNickNameViewController.h"
 #import "MyInfoSexViewController.h"
 #import "ZBPhotoTaker.h"
+#import "MyInfoMobileViewController.h"
 
 static NSString * const MY_INFO_CELL = @"myInfoCell";
 static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
@@ -154,6 +155,14 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
         MyInfoNickNameViewController *nickNameVC = [[MyInfoNickNameViewController alloc] init];
         nickNameVC.nickName = [[[TMCache sharedCache] objectForKey:@"userInfo"] objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:nickNameVC animated:YES];
+    }else if (indexPath.row == 2) {
+        NSString *hasBand = [[TMCache sharedCache] objectForKey:@"mobileHasBand"];
+
+        if ([hasBand isEqualToString:@"0"]) {
+            MyInfoMobileViewController *mobileVC = [[MyInfoMobileViewController alloc] init];
+            [self.navigationController pushViewController:mobileVC animated:YES];
+        }
+        
     }else if(indexPath.row == 3) {
         MyInfoSexViewController *sexVC = [[MyInfoSexViewController alloc] init];
         sexVC.sex = [NSString stringWithFormat:@"%@", [[[TMCache sharedCache] objectForKey:@"userInfo"] objectAtIndex:indexPath.row]];

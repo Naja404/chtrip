@@ -176,6 +176,10 @@
                                           NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
                                           NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
                                           NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
+                                          NSString *hasBand = [[result objectForKey:@"data"] objectForKey:@"hasBand"];
+                                          
+                                          [[TMCache sharedCache] setObject:hasBand forKey:@"mobileHasBand"];
+                                          
                                           if (![ssidTmp isEqualToString:@""]) {
                                               [CHSSID setSSID:ssidTmp];
                                           }

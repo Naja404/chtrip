@@ -133,24 +133,23 @@
     [paramter setObject:[NSString stringWithFormat:@"%d", errcode] forKey:@"errcode"];
     [paramter setObject:[NSString stringWithFormat:@"%@", lang] forKey:@"lang"];
     [paramter setObject:[NSString stringWithFormat:@"%@", country] forKey:@"country"];
+
+    NSLog(@"wechat return %@", paramter);
     
     [[HttpManager instance] requestWithMethod:@"User/loginWeChat"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSLog(@"wechat login return %@", result);
                                           
-                                          NSString *hasReg = [[result objectForKey:@"data"] objectForKey:@"has_reg"];
                                           NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
                                           NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];
                                           NSString *alertText = [[result objectForKey:@"data"] objectForKey:@"info"];
                                           NSString *avatar = [[result objectForKey:@"data"] objectForKey:@"avatar"];
                                           NSString *nickname =[[result objectForKey:@"data"] objectForKey:@"nickname"];
+                                          NSString *hasBand = [[result objectForKey:@"data"] objectForKey:@"hasBand"];
+                                        
+                                          [[TMCache sharedCache] setObject:hasBand forKey:@"mobileHasBand"];
                                           
-                                          if ([hasReg isEqualToString:@"0"]) {
-                                              [SVProgressHUD dismiss];
-                                              [[TMCache sharedCache] setObject:[[result objectForKey:@"data"] objectForKey:@"openid"] forKey:@"weChatOpenId"];
-                                              [self pushLoginVC];
-                                          }else{
                                               if (![ssidTmp isEqualToString:@""]) {
                                                   [CHSSID setSSID:ssidTmp];
                                               }
@@ -170,7 +169,6 @@
                                               [SVProgressHUD showSuccessWithStatus:alertText maskType:SVProgressHUDMaskTypeBlack];
                                               
                                               [self backMyView];
-                                          }
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [SVProgressHUD showErrorWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
