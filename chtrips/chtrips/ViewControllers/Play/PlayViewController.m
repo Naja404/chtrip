@@ -54,7 +54,14 @@ static NSString * const PLAY_CELL = @"playCell";
 - (void)viewDidLoad {
     self.selectIndex = @"2";
     self.nextPageNum = @"2";
-    self.selectCityName = @"all";
+    NSString *selectCity = [[TMCache sharedCache] objectForKey:@"selectCityName"];
+    
+    if (selectCity == nil) {
+        selectCity = @"东京";
+        self.selectCityName = selectCity;
+    }else{
+        self.selectCityName = selectCity;
+    }
     
     [super viewDidLoad];
     [self setupCityBTN];
@@ -127,7 +134,7 @@ static NSString * const PLAY_CELL = @"playCell";
     
     self.cityBTN = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 30)];
     
-    [_cityBTN setTitle:@"城市" forState:UIControlStateNormal];
+    [_cityBTN setTitle:_selectCityName forState:UIControlStateNormal];
     _cityBTN.titleLabel.textColor = [UIColor whiteColor];
     _cityBTN.titleLabel.font = [UIFont systemFontOfSize:14];
     _cityBTN.backgroundColor = RED_COLOR_BG;
@@ -218,8 +225,8 @@ static NSString * const PLAY_CELL = @"playCell";
     
     [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
     [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
-    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
-    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(90, 70)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic"];
     _bgView.hidden = YES;
 
 }
@@ -306,8 +313,10 @@ static NSString * const PLAY_CELL = @"playCell";
 
 - (void) didSelectCity:(NSString *)cityName {
     if ([cityName isEqualToString:@"全日本"]) {
-        self.selectCityName = @"all";
+        [[TMCache sharedCache] setObject:@"东京" forKey:@"selectCityName"];
+        self.selectCityName = @"东京";
     }else{
+        [[TMCache sharedCache] setObject:cityName forKey:@"selectCityName"];
         self.selectCityName = cityName;
     }
     

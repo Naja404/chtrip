@@ -10,6 +10,7 @@
 #import "MyBuyListTableViewCell.h"
 #import "ShoppingPopularityDetailViewController.h"
 #import "MyBuyListTableViewCell.h"
+#import "ShoppingDGDetailViewController.h"
 
 #define RED_TEXT [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
 
@@ -158,8 +159,8 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
     [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
     [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
-    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
-    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(90, 70)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic"];
     _bgView.hidden = YES;
     
 }
@@ -262,6 +263,21 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     return cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.buyListData objectAtIndex:indexPath.row]];
+    
+    ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
+    
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+    detailVC.pid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"pid"]];
+    detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"price_zh"]];
+    detailVC.navigationItem.title = [cellData objectForKey:@"title_zh"];
+    detailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
 - (void) clickCheckBTN:(UITapGestureRecognizer *)gr {
     
     MyBuyListTableViewCell *cell = (MyBuyListTableViewCell *) [[[gr view] superview] superview];
@@ -328,10 +344,6 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [control beginRefreshing];
     [self getBuyList];
     [control endRefreshing];
-}
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

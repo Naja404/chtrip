@@ -231,6 +231,7 @@
 		E9D0FB161AEA398200CC9664 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D0FB151AEA398200CC9664 /* ImageIO.framework */; };
 		E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */; };
 		E9D0FB1C1AEA4B2B00CC9664 /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */; };
+		E9D11F191BF33CF300291538 /* defaultDataPic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D11F181BF33CF300291538 /* defaultDataPic@2x.png */; };
 		E9D98EC21AEDDA5A004805E5 /* MyNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */; };
 		E9D98EC81AEDE9C7004805E5 /* iconAboutUs.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98EC31AEDE9C7004805E5 /* iconAboutUs.png */; };
 		E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D98EC41AEDE9C7004805E5 /* iconBuyList.png */; };
@@ -636,6 +637,7 @@
 		E9D0FB181AEA46CA00CC9664 /* MyAvatarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAvatarTableViewCell.h; path = Views/My/MyAvatarTableViewCell.h; sourceTree = "<group>"; };
 		E9D0FB191AEA46CA00CC9664 /* MyAvatarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAvatarTableViewCell.m; path = Views/My/MyAvatarTableViewCell.m; sourceTree = "<group>"; };
 		E9D0FB1B1AEA4B2B00CC9664 /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avatar.jpg; path = Resource/avatar.jpg; sourceTree = "<group>"; };
+		E9D11F181BF33CF300291538 /* defaultDataPic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "defaultDataPic@2x.png"; path = "Resource/defaultDataPic@2x.png"; sourceTree = "<group>"; };
 		E9D98EC01AEDDA5A004805E5 /* MyNormalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyNormalTableViewCell.h; path = Views/My/MyNormalTableViewCell.h; sourceTree = "<group>"; };
 		E9D98EC11AEDDA5A004805E5 /* MyNormalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyNormalTableViewCell.m; path = Views/My/MyNormalTableViewCell.m; sourceTree = "<group>"; };
 		E9D98EC31AEDE9C7004805E5 /* iconAboutUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAboutUs.png; path = Resource/iconAboutUs.png; sourceTree = "<group>"; };
@@ -1335,6 +1337,7 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9D11F181BF33CF300291538 /* defaultDataPic@2x.png */,
 				E9171B851BE8A98E00923C1E /* myInfoBg@3x.png */,
 				E999974D1BE3370700B322D0 /* loginBTN@2x.png */,
 				E9CB92871BD62F6E0051AA6B /* defaultPicBig.png */,
@@ -1650,6 +1653,7 @@
 				E947EE821B2B18AE00012957 /* icon_chose_bottom@2x.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E95E1D0D1B9F17D000C88692 /* star_25.png in Resources */,
+				E9D11F191BF33CF300291538 /* defaultDataPic@2x.png in Resources */,
 				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
 				E9DE1AA51B29F1000040BFA6 /* ad01.jpg in Resources */,
@@ -2046,8 +2050,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2060,7 +2064,7 @@
 					"$(PROJECT_DIR)/chtrips/Vendors/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "867cdaa8-3b0e-4e85-8c85-4fe10fb39b2a";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
@@ -2071,8 +2075,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2085,7 +2089,7 @@
 					"$(PROJECT_DIR)/chtrips/Vendors/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "867cdaa8-3b0e-4e85-8c85-4fe10fb39b2a";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};
 			name = Release;

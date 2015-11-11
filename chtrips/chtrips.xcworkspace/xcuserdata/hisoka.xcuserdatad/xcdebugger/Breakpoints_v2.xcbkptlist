@@ -6,13 +6,13 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.AddressBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "*0x3841daea">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   usesParentBreakpointCondition = "Yes"

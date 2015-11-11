@@ -8,6 +8,7 @@
 
 #import "MyWantListViewController.h"
 #import "PlayTableViewCell.h"
+#import "PlayDetailViewController.h"
 
 static NSString * const WANTGO_CELL = @"wantGoCell";
 
@@ -72,8 +73,8 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     
     [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
     [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
-    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
-    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(90, 70)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic"];
     _bgView.hidden = YES;
 }
 
@@ -111,6 +112,19 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     
     return cell;
     
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.wantGoData objectAtIndex:indexPath.row]];
+    
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+    detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
+    detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+    detailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark 获取商家列表

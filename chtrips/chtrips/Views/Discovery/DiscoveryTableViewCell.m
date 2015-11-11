@@ -80,7 +80,7 @@
         
         [_mapLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_locationImg withOffset:5];
         [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_locationImg withOffset:3];
-        [_mapLB autoSetDimensionsToSize:CGSizeMake(100, 20)];
+        [_mapLB autoSetDimensionsToSize:CGSizeMake(150, 20)];
 //        _mapLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
         _mapLB.font = [UIFont systemFontOfSize:15.0f];
         _mapLB.textAlignment = NSTextAlignmentLeft;

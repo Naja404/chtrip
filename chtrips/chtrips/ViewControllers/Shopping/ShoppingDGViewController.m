@@ -408,8 +408,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     [_bgView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
     [_bgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
-    [_bgView autoSetDimensionsToSize:CGSizeMake(95, 105)];
-    _bgView.image = [UIImage imageNamed:@"defaultDataPic@2x.jpg"];
+    [_bgView autoSetDimensionsToSize:CGSizeMake(90, 70)];
+    _bgView.image = [UIImage imageNamed:@"defaultDataPic"];
     _bgView.hidden = YES;
 }
 
