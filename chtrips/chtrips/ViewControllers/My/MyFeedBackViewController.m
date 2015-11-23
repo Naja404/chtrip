@@ -75,7 +75,7 @@
 //    [parameters setObject:[CHSSID SSID] forKey:@"token"];
     [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"token"];
     
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.atniwo.com/"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.nijigo.com/"]];
     [manager GET:@"Util/feedback" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON is %@ ", responseObject);
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_FEEDBACK_SEND_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];

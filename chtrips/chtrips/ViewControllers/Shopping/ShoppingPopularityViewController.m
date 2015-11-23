@@ -31,7 +31,7 @@ static NSString * const SHOP_POPULA_CELL = @"ShoppingPopulaCell";
 
 #pragma mark 获取产品列表
 - (void) getProductList {
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.atniwo.com/"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.nijigo.com/"]];
     [manager GET:@"Product/proList" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON is %@ ", responseObject);
         self.tableData = [[NSMutableArray alloc] initWithArray:[[responseObject objectForKey:@"data"] objectForKey:@"proList"]];

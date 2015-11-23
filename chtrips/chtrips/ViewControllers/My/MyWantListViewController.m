@@ -120,7 +120,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.wantGoData objectAtIndex:indexPath.row]];
     
-    detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
     detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
     detailVC.navigationItem.title = [cellData objectForKey:@"name"];
     detailVC.hidesBottomBarWhenPushed = YES;

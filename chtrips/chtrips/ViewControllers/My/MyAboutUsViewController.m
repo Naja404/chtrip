@@ -40,7 +40,7 @@
     
     self.webView.delegate = self;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.atniwo.com/Product/aboutme"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.nijigo.com/Product/aboutme"]];
     [self.webView loadRequest:request];
     
 }

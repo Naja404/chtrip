@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-static NSString * const BASE_DOMAIN = @"http://api.atniwo.com";
+static NSString * const BASE_DOMAIN = @"http://api.nijigo.com";
 static NSString * const KEY_SSID = @"ssid";
 static NSString * const ERROR_DOMAIN_API = @"ServiceError";
 

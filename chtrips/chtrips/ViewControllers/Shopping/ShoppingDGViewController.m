@@ -474,7 +474,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     if (self.shopSegmented.selectedSegmentIndex == 1) {
         PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
 
-        detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+        detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
         detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
         detailVC.navigationItem.title = [cellData objectForKey:@"name"];
         detailVC.hidesBottomBarWhenPushed = YES;
@@ -483,7 +483,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     }else{
         ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
 
-        detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+        detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
         detailVC.pid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"pid"]];
         detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"price_zh"]];
         detailVC.navigationItem.title = [cellData objectForKey:@"title_zh"];

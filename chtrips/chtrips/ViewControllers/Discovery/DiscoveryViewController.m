@@ -247,7 +247,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         if ([adType isEqualToString:@"1"]) {
             ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
             
-            detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showProDetail?pid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetail?pid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.pid = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"price_zh"]];
             detailVC.hasNav = @"1";
@@ -258,7 +258,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         }else if ([adType isEqualToString:@"2"]) {
             PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
             
-            detailVC.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showShopDetail?sid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.sid = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
             detailVC.hidesBottomBarWhenPushed = YES;
@@ -267,7 +267,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         }else if ([adType isEqualToString:@"3"]) {
             DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
             
-            detail.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showAlbum?aid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum?aid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detail.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
             
             detail.hidesBottomBarWhenPushed = YES;
@@ -369,7 +369,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
-    detail.webUrl = [NSString stringWithFormat:@"http://api.atniwo.com/Product/showAlbum?aid=%@", [cellData objectForKey:@"aid"]];
+    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum?aid=%@", [cellData objectForKey:@"aid"]];
     detail.navigationItem.title = [cellData objectForKey:@"type_name"];
     
     detail.hidesBottomBarWhenPushed = YES;

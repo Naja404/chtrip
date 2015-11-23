@@ -8,12 +8,16 @@
 
 #import "DiscoveryDetailViewController.h"
 #import "WebViewJavascriptBridge.h"
+#import "SlideInViewManager.h"
 
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIButton *popBTN;
 @property WebViewJavascriptBridge *bridge;
+@property (nonatomic, strong) UIView *slideV;
+@property (nonatomic, strong) SlideInViewManager *slideVM;
+@property (nonatomic, strong) NSString *slideShowState;
 
 @end
 
@@ -77,6 +81,50 @@
 //    }];
     
     
+    
+    self.slideV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
+    UIButton *wechat = [UIButton newAutoLayoutView];
+    [_slideV addSubview:wechat];
+    
+    [wechat autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_slideV];
+    [wechat autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV withOffset:-50];
+    [wechat autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    [wechat setBackgroundImage:[UIImage imageNamed:@"wechatBTN"] forState:UIControlStateNormal];
+    [wechat addTarget:self action:@selector(wechatBTN) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *wechatMoment = [UIButton newAutoLayoutView];
+    [_slideV addSubview:wechatMoment];
+    
+    [wechatMoment autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_slideV];
+    [wechatMoment autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV withOffset:50];
+    [wechatMoment autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    [wechatMoment setBackgroundImage:[UIImage imageNamed:@"wechatMomentBTN"] forState:UIControlStateNormal];
+    
+    _slideV.backgroundColor = GRAY_FONT_COLOR;
+    
+    self.slideVM = [[SlideInViewManager alloc] initWithSlideView:_slideV parentView:self.view];
+    
+    self.slideShowState = @"0";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"]
+                                                                             style:UIBarButtonItemStyleDone
+                                                                            target:self
+                                                                            action:@selector(showShareView)];
+}
+
+- (void) wechatBTN {
+    NSLog(@"what fuck");
+}
+
+- (void) showShareView {
+    
+    if ([_slideShowState isEqualToString:@"0"]) {
+        _slideShowState = @"1";
+        [_slideVM slideViewIn];
+    }else{
+        _slideShowState = @"0";
+        [_slideVM slideViewOut];
+    }
 }
 
 - (void) webViewDidStartLoad:(UIWebView *)webView {
