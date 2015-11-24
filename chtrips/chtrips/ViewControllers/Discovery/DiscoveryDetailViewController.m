@@ -9,6 +9,8 @@
 #import "DiscoveryDetailViewController.h"
 #import "WebViewJavascriptBridge.h"
 #import "SlideInViewManager.h"
+#import "WXApiRequestHandler.h"
+#import "WXApiManager.h"
 
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 
@@ -99,6 +101,7 @@
     [wechatMoment autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV withOffset:50];
     [wechatMoment autoSetDimensionsToSize:CGSizeMake(50, 50)];
     [wechatMoment setBackgroundImage:[UIImage imageNamed:@"wechatMomentBTN"] forState:UIControlStateNormal];
+    [wechatMoment addTarget:self action:@selector(wechatMomentBTN) forControlEvents:UIControlEventTouchUpInside];
     
     _slideV.backgroundColor = GRAY_FONT_COLOR;
     
@@ -106,14 +109,36 @@
     
     self.slideShowState = @"0";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"]
-                                                                             style:UIBarButtonItemStyleDone
-                                                                            target:self
-                                                                            action:@selector(showShareView)];
+    UIImage *imgage=[UIImage imageNamed:@"share"];
+    UIButton *rightBTN=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, imgage.size.width + 5, imgage.size.height)];
+    [rightBTN setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [rightBTN setImage:imgage forState:UIControlStateNormal];
+    [rightBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBTN];
 }
 
 - (void) wechatBTN {
-    NSLog(@"what fuck");
+    
+    [WXApiRequestHandler sendLinkURL:_webUrl
+                             TagName:nil
+                               Title:[_albumDic objectForKey:@"title"]
+                         Description:nil
+                          ThumbImage:[UIImage imageNamed:@"loginBg"]
+                             InScene:WXSceneSession];
+    [self showShareView];
+}
+
+- (void) wechatMomentBTN {
+    
+    [WXApiRequestHandler sendLinkURL:_webUrl
+                             TagName:nil
+                               Title:[_albumDic objectForKey:@"title"]
+                         Description:nil
+                          ThumbImage:[UIImage imageNamed:@"loginBg"]
+                             InScene:WXSceneTimeline];
+    [self showShareView];
+    
 }
 
 - (void) showShareView {

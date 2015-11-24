@@ -370,6 +370,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
     detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum?aid=%@", [cellData objectForKey:@"aid"]];
+    detail.albumDic = cellData;
     detail.navigationItem.title = [cellData objectForKey:@"type_name"];
     
     detail.hidesBottomBarWhenPushed = YES;

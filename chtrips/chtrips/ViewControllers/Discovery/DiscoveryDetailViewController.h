@@ -11,5 +11,6 @@
 @interface DiscoveryDetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *webUrl;
+@property (nonatomic, strong) NSDictionary *albumDic;
 
 @end
