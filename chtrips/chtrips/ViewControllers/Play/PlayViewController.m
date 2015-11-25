@@ -276,6 +276,11 @@ static NSString * const PLAY_CELL = @"playCell";
     
     detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
     detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
+    if ([_selectIndex isEqualToString:@"3"]) {
+        detailVC.isHotel = @"1";
+    }else{
+        detailVC.isHotel = @"0";
+    }
     detailVC.navigationItem.title = [cellData objectForKey:@"name"];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];

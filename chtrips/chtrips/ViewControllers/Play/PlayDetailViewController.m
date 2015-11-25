@@ -7,7 +7,7 @@
 //
 
 #import "PlayDetailViewController.h"
-
+#import "BookingWebViewController.h"
 
 @interface PlayDetailViewController ()<UIWebViewDelegate>
 
@@ -33,6 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    
     [self setupUrlPage];
     [self customizeBackItem];
     [self setupAddWantGo];
@@ -60,6 +63,19 @@
     addWantGoBTN.backgroundColor = BLUE_COLOR_BG;
     [addWantGoBTN addTarget:self action:@selector(addWantGoAction) forControlEvents:UIControlEventTouchDown];
     
+    if ([self.isHotel isEqualToString:@"1"]) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"预定酒店" style:UIBarButtonItemStyleDone target:self action:@selector(pushBookVC)];
+    }
+    
+}
+
+#pragma mark - 载入booking页面
+- (void) pushBookVC {
+    BookingWebViewController *bookVC = [[BookingWebViewController alloc] init];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:bookVC];
+    
+    [self.navigationController presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark 我想去事件

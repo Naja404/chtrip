@@ -18,5 +18,7 @@ static NSString *WXAuthState = @"nijigoWechatLogin";
 
 static NSString *CHVersion = @"0.9.4";
 
+static NSString *BookingURL = @"http://www.booking.com/?aid=892651";
+
 #endif
 

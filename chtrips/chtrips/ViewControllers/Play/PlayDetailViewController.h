@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *webUrl;
 @property (nonatomic, strong) NSString *sid;
+@property (nonatomic, strong) NSString *isHotel;
 
 @end

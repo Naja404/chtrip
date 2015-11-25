@@ -213,6 +213,7 @@
 		E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319B1AB2F1D600E6E873 /* tripLocation@2x.png */; };
 		E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319C1AB2F1D600E6E873 /* tripTitle.png */; };
 		E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */; };
+		E9C6DA1C1C05A7F40051FE2A /* BookingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C6DA1B1C05A7F40051FE2A /* BookingWebViewController.m */; };
 		E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */; };
 		E9CA46BF1B6DF6C00010C838 /* cityMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46BE1B6DF6C00010C838 /* cityMenu.m */; };
 		E9CA46C21B6E42E90010C838 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */; };
@@ -618,6 +619,8 @@
 		E9C1319B1AB2F1D600E6E873 /* tripLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripLocation@2x.png"; path = "Resource/tripLocation@2x.png"; sourceTree = "<group>"; };
 		E9C1319C1AB2F1D600E6E873 /* tripTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tripTitle.png; path = Resource/tripTitle.png; sourceTree = "<group>"; };
 		E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tripTitle@2x.png"; path = "Resource/tripTitle@2x.png"; sourceTree = "<group>"; };
+		E9C6DA1A1C05A7F40051FE2A /* BookingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookingWebViewController.h; path = ViewControllers/Play/BookingWebViewController.h; sourceTree = "<group>"; };
+		E9C6DA1B1C05A7F40051FE2A /* BookingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookingWebViewController.m; path = ViewControllers/Play/BookingWebViewController.m; sourceTree = "<group>"; };
 		E9C777B51AB46F0C007576EC /* AddSubTripLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSubTripLocationTableViewCell.h; path = Views/AddSubTripLocationTableViewCell.h; sourceTree = "<group>"; };
 		E9C777B61AB46F0C007576EC /* AddSubTripLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSubTripLocationTableViewCell.m; path = Views/AddSubTripLocationTableViewCell.m; sourceTree = "<group>"; };
 		E9CA46BD1B6DF6C00010C838 /* cityMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cityMenu.h; path = Vendors/cityMenu.h; sourceTree = "<group>"; };
@@ -1322,6 +1325,8 @@
 				E9F0E0B31B5BE5B900999AFA /* PlayDetailViewController.m */,
 				E98047171BB8122D00B5518A /* CitySelectViewController.h */,
 				E98047181BB8122D00B5518A /* CitySelectViewController.m */,
+				E9C6DA1A1C05A7F40051FE2A /* BookingWebViewController.h */,
+				E9C6DA1B1C05A7F40051FE2A /* BookingWebViewController.m */,
 			);
 			name = Play;
 			sourceTree = "<group>";
@@ -1826,6 +1831,7 @@
 				E96D4B481AB048FC00F7CB38 /* ZBPhotoTaker.m in Sources */,
 				E9CA46BF1B6DF6C00010C838 /* cityMenu.m in Sources */,
 				E93AFC241B78F15B00B41F61 /* UIViewController+BackItem.m in Sources */,
+				E9C6DA1C1C05A7F40051FE2A /* BookingWebViewController.m in Sources */,
 				E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */,
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
