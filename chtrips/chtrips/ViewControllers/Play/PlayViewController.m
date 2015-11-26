@@ -274,7 +274,7 @@ static NSString * const PLAY_CELL = @"playCell";
     PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
     
-    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@&ssid=%@", [cellData objectForKey:@"saler_id"], [[TMCache sharedCache] objectForKey:@"SSID"]];
     detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
     if ([_selectIndex isEqualToString:@"3"]) {
         detailVC.isHotel = @"1";
