@@ -19,6 +19,9 @@
 		E90991111AAFEAA700C48688 /* TripListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90991101AAFEAA700C48688 /* TripListTableViewCell.m */; };
 		E90991161AB013B900C48688 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991151AB013B900C48688 /* MapKit.framework */; };
 		E90991181AB013FB00C48688 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90991171AB013FB00C48688 /* CoreLocation.framework */; };
+		E90EE99E1C082998004E6B20 /* CHActionSheetMapApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E90EE99D1C082998004E6B20 /* CHActionSheetMapApp.m */; };
+		E90EE9A11C085F35004E6B20 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = E90EE99F1C085F35004E6B20 /* share.png */; };
+		E90EE9A21C085F35004E6B20 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E90EE9A01C085F35004E6B20 /* share@2x.png */; };
 		E91396351AC0FF79003AF385 /* SubTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396341AC0FF79003AF385 /* SubTrip.m */; };
 		E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E91396391AC11157003AF385 /* AwesomeMenu.m */; };
 		E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E913963B1AC11157003AF385 /* AwesomeMenuItem.m */; };
@@ -287,6 +290,10 @@
 		E90991141AAFEED100C48688 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E90991151AB013B900C48688 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E90991171AB013FB00C48688 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E90EE99C1C082998004E6B20 /* CHActionSheetMapApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHActionSheetMapApp.h; path = Vendors/CHActionSheetMapApp.h; sourceTree = "<group>"; };
+		E90EE99D1C082998004E6B20 /* CHActionSheetMapApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHActionSheetMapApp.m; path = Vendors/CHActionSheetMapApp.m; sourceTree = "<group>"; };
+		E90EE99F1C085F35004E6B20 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = Resource/share.png; sourceTree = "<group>"; };
+		E90EE9A01C085F35004E6B20 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@2x.png"; path = "Resource/share@2x.png"; sourceTree = "<group>"; };
 		E91396331AC0FF79003AF385 /* SubTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTrip.h; path = coreData/SubTrip.h; sourceTree = "<group>"; };
 		E91396341AC0FF79003AF385 /* SubTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTrip.m; path = coreData/SubTrip.m; sourceTree = "<group>"; };
 		E91396361AC1038D003AF385 /* chtripCD 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "chtripCD 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -857,6 +864,8 @@
 				E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */,
 				E96D4B361AB0236300F7CB38 /* NSDate+Fomatter.h */,
 				E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */,
+				E90EE99C1C082998004E6B20 /* CHActionSheetMapApp.h */,
+				E90EE99D1C082998004E6B20 /* CHActionSheetMapApp.m */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -1237,6 +1246,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E90EE99F1C085F35004E6B20 /* share.png */,
+				E90EE9A01C085F35004E6B20 /* share@2x.png */,
 				E9382A651C03165100E447D3 /* wechatBTN.png */,
 				E9382A661C03165100E447D3 /* wechatBTN@2x.png */,
 				E9382A671C03165100E447D3 /* wechatBTN@3x.png */,
@@ -1502,6 +1513,7 @@
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
 				E95EBFE21B8802BD001BD221 /* arrowLeft.png in Resources */,
+				E90EE9A11C085F35004E6B20 /* share.png in Resources */,
 				E95C3D001B4970E40010EF58 /* WebViewJavascriptBridge.js.txt in Resources */,
 				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
@@ -1513,6 +1525,7 @@
 				E95EBFE31B8802BD001BD221 /* arrowLeft@3x.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
 				E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */,
+				E90EE9A21C085F35004E6B20 /* share@2x.png in Resources */,
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
 				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9899F851ACCF713009722C4 /* Icon-60.png in Resources */,
@@ -1675,6 +1688,7 @@
 				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
 				E967A1F81B9DCB7200FAFF89 /* MJRefreshAutoNormalFooter.m in Sources */,
 				E98047191BB8122D00B5518A /* CitySelectViewController.m in Sources */,
+				E90EE99E1C082998004E6B20 /* CHActionSheetMapApp.m in Sources */,
 				E9CBB1D11BE739510087194E /* UserProtocolViewController.m in Sources */,
 				E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */,
 				E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */,

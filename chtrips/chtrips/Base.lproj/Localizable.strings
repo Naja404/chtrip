@@ -98,6 +98,7 @@
 "TEXT_SEX_2" = "女";
 "TEXT_USER_PROTOCOL" = "用户协议";
 "TEXT_BIND_MOBILE" = "绑定手机";
+"TEXT_MAP_SELECT" = "导航地图选择";
 
 
 // input 
@@ -121,6 +122,10 @@
 "TEXT_PASSWD_ERROR" = "密码不是这样的吧";
 "TEXT_PWD_NOT_SAME" = "密码不一致";
 
-
+// 地图名称
+"applemap" = "苹果地图";
+"iosamap" = "高德地图";
+"baidumap" = "百度地图";
+"comgooglemaps" = "Googel地图";
 
 

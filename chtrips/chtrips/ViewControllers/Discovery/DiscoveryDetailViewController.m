@@ -56,7 +56,6 @@
 }
 
 - (void) setNavBar {
-
     
 }
 
@@ -103,19 +102,60 @@
     [wechatMoment setBackgroundImage:[UIImage imageNamed:@"wechatMomentBTN"] forState:UIControlStateNormal];
     [wechatMoment addTarget:self action:@selector(wechatMomentBTN) forControlEvents:UIControlEventTouchUpInside];
     
-    _slideV.backgroundColor = GRAY_FONT_COLOR;
+    _slideV.backgroundColor = GRAY_COLOR_CELL_LINE;
     
     self.slideVM = [[SlideInViewManager alloc] initWithSlideView:_slideV parentView:self.view];
     
     self.slideShowState = @"0";
     
-    UIImage *imgage=[UIImage imageNamed:@"share"];
-    UIButton *rightBTN=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, imgage.size.width + 5, imgage.size.height)];
-    [rightBTN setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [rightBTN setImage:imgage forState:UIControlStateNormal];
-    [rightBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
+//    UIImage *imgage=[UIImage imageNamed:@"share"];
+//    UIButton *rightBTN=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, imgage.size.width + 5, imgage.size.height)];
+//    [rightBTN setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+//    [rightBTN setImage:imgage forState:UIControlStateNormal];
+//    [rightBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBTN];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                           target:self
+                                                                                           action:@selector(showShareView)];
+    self.navigationItem.rightBarButtonItem.tintColor = NAV_GRAY_COLOR;
+    
+    UILabel *titleLB = [UILabel newAutoLayoutView];
+    [_slideV addSubview:titleLB];
+    
+    [titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_slideV withOffset:5];
+    [titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV];
+    [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 20)];
+    titleLB.text = @"分享到";
+    titleLB.textAlignment = NSTextAlignmentCenter;
+    titleLB.backgroundColor = [UIColor clearColor];
+    titleLB.font = NORMAL_14FONT_SIZE;
+    titleLB.textColor = COLOR_TEXT;
+    
+    UILabel *wechatLB = [UILabel newAutoLayoutView];
+    [_slideV addSubview:wechatLB];
+    
+    [wechatLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:wechat withOffset:-10];
+    [wechatLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:wechat];
+    [wechatLB autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    wechatLB.text = @"微信好友";
+    wechatLB.textAlignment = NSTextAlignmentCenter;
+    wechatLB.backgroundColor = [UIColor clearColor];
+    wechatLB.font = NORMAL_12FONT_SIZE;
+    wechatLB.textColor = COLOR_TEXT;
+    
+    UILabel *wechatMLB = [UILabel newAutoLayoutView];
+    [_slideV addSubview:wechatMLB];
+    
+    [wechatMLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:wechatMoment withOffset:-10];
+    [wechatMLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:wechatMoment];
+    [wechatMLB autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    wechatMLB.text = @"朋友圈";
+    wechatMLB.textAlignment = NSTextAlignmentCenter;
+    wechatMLB.backgroundColor = [UIColor clearColor];
+    wechatMLB.font = NORMAL_12FONT_SIZE;
+    wechatMLB.textColor = COLOR_TEXT;
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBTN];
 }
 
 - (void) wechatBTN {

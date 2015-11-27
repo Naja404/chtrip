@@ -4,6 +4,9 @@
 <dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>comgooglemaps</string>
+		<string>iosamap</string>
+		<string>baidumap</string>
 		<string>weixin</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

@@ -9,10 +9,13 @@
 #import "PlayDetailViewController.h"
 #import "BookingWebViewController.h"
 
-@interface PlayDetailViewController ()<UIWebViewDelegate>
+#import "CHActionSheetMapApp.h"
+
+@interface PlayDetailViewController ()<UIWebViewDelegate, CHActionSheetMapAppDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIButton *popBTN;
+@property (nonatomic, strong) CHActionSheetMapApp *mapApp;
 
 @end
 
@@ -65,8 +68,18 @@
     
     if ([self.isHotel isEqualToString:@"1"]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"预定酒店" style:UIBarButtonItemStyleDone target:self action:@selector(pushBookVC)];
+    }else{
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMapActionSheet)];
+        self.navigationItem.rightBarButtonItem.tintColor = NAV_GRAY_COLOR;
     }
     
+}
+
+#pragma mark - 显示导航app
+- (void) showMapActionSheet {
+    self.mapApp = [[CHActionSheetMapApp alloc] initWithMap:self];
+    _mapApp.address = _address;
+    [_mapApp.mapAS showInView:self.view];
 }
 
 #pragma mark - 载入booking页面

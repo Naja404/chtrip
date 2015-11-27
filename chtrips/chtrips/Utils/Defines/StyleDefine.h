@@ -15,6 +15,9 @@
 ///普通文字颜色
 #define COLOR_TEXT [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1]
 
+// 导航图标灰色
+#define NAV_GRAY_COLOR [UIColor colorWithRed:117/255.0 green:117/255.0 blue:117/255.0 alpha:1]
+
 ///普通文字格
 #define FONT_TEXT [UIFont systemFontOfSize:16.0f]
 
@@ -45,6 +48,8 @@
 
 // 12号字体
 #define NORMAL_12FONT_SIZE [UIFont systemFontOfSize:12.0f]
+// 14号字体
+#define NORMAL_14FONT_SIZE [UIFont systemFontOfSize:14.0f]
 // 17号字体
 #define TITLE_17FONT_SIZE [UIFont systemFontOfSize:17.0f]
 
