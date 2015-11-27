@@ -228,7 +228,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
-    NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
+//    NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
     if (indexPath.item >= 0) {
         if (indexPath.column == 0) {
             self.selectCate = self.smallCate[indexPath.row][indexPath.item];

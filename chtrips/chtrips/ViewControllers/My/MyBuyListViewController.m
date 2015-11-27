@@ -8,7 +8,6 @@
 
 #import "MyBuyListViewController.h"
 #import "MyBuyListTableViewCell.h"
-#import "ShoppingPopularityDetailViewController.h"
 #import "MyBuyListTableViewCell.h"
 #import "ShoppingDGDetailViewController.h"
 

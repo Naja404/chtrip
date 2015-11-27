@@ -10,7 +10,6 @@
 #import "PlayTableViewCell.h"
 #import "PlayDetailViewController.h"
 #import "CitySelectViewController.h"
-#import "PopoverView.h"
 #import "HMSegmentedControl.h"
 
 static NSString * const PLAY_CELL = @"playCell";

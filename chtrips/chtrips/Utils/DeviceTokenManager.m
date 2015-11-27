@@ -35,7 +35,7 @@
 }
 
 - (void) didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) data {
-    NSString *deviceTokenStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSString *deviceTokenStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
 }
 

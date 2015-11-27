@@ -19,7 +19,7 @@
 
 static NSString * const CC_BASE_DOMAIN = @"http://api.cc2me.com/";
 
-#define BASE_URL CC_BASE_DOMAIN
+#define BASE_URL_1 CC_BASE_DOMAIN
 
 @interface AddSubTripLocationViewController ()<UITextFieldDelegate, UIActionSheetDelegate>
 
@@ -243,7 +243,7 @@ static NSString * const CC_BASE_DOMAIN = @"http://api.cc2me.com/";
     
     [self showActivityIndicatorView:YES];
     //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL_1]];
     [manager GET:@"Hotel/searchAd" parameters:paramWithCer success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON is %@ ", responseObject);
         
