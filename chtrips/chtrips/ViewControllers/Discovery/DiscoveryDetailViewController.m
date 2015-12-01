@@ -38,21 +38,17 @@
 }
 
 - (void)viewDidLoad {
-//    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
-//    [self.navigationController.navigationBar setTintColor:[UIColor grayColor]];
+
     [super viewDidLoad];
     [self setupUrlPage];
     [self customizeBackItem];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-//    [self setupPopBTN];
 
     [self setNavBar];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) setNavBar {
@@ -61,6 +57,7 @@
 
 
 - (void) setupUrlPage{
+    
     self.webView = [[UIWebView alloc] initForAutoLayout];
     [self.view addSubview:_webView];
     
@@ -73,15 +70,6 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
-//    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSLog(@"what data is %@", data);
-//        if ([data isEqualToString:@"backBTN"]) {
-//            [self popToDiscovery];
-//        }
-//        responseCallback(@"call back");
-//    }];
-    
-    
     
     self.slideV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
     UIButton *wechat = [UIButton newAutoLayoutView];
@@ -108,12 +96,6 @@
     
     self.slideShowState = @"0";
     
-//    UIImage *imgage=[UIImage imageNamed:@"share"];
-//    UIButton *rightBTN=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, imgage.size.width + 5, imgage.size.height)];
-//    [rightBTN setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-//    [rightBTN setImage:imgage forState:UIControlStateNormal];
-//    [rightBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                            target:self
                                                                                            action:@selector(showShareView)];
@@ -125,7 +107,7 @@
     [titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_slideV withOffset:5];
     [titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV];
     [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 20)];
-    titleLB.text = @"分享到";
+    titleLB.text = NSLocalizedString(@"TEXT_SHARE_WITH", nil);
     titleLB.textAlignment = NSTextAlignmentCenter;
     titleLB.backgroundColor = [UIColor clearColor];
     titleLB.font = NORMAL_14FONT_SIZE;
@@ -137,7 +119,7 @@
     [wechatLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:wechat withOffset:-10];
     [wechatLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:wechat];
     [wechatLB autoSetDimensionsToSize:CGSizeMake(50, 50)];
-    wechatLB.text = @"微信好友";
+    wechatLB.text = NSLocalizedString(@"TEXT_WECHAT_FRIENDS", nil);
     wechatLB.textAlignment = NSTextAlignmentCenter;
     wechatLB.backgroundColor = [UIColor clearColor];
     wechatLB.font = NORMAL_12FONT_SIZE;
@@ -149,13 +131,12 @@
     [wechatMLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:wechatMoment withOffset:-10];
     [wechatMLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:wechatMoment];
     [wechatMLB autoSetDimensionsToSize:CGSizeMake(50, 50)];
-    wechatMLB.text = @"朋友圈";
+    wechatMLB.text = NSLocalizedString(@"TEXT_WECHAT_MOMENT", nil);
     wechatMLB.textAlignment = NSTextAlignmentCenter;
     wechatMLB.backgroundColor = [UIColor clearColor];
     wechatMLB.font = NORMAL_12FONT_SIZE;
     wechatMLB.textColor = COLOR_TEXT;
-    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBTN];
+
 }
 
 - (void) wechatBTN {
@@ -200,29 +181,9 @@
     [SVProgressHUD dismiss];
 }
 
-- (void) setupPopBTN {
-    self.popBTN = [UIButton newAutoLayoutView];
-    [self.view addSubview:_popBTN];
-    
-    [_popBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
-    [_popBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20];
-    [_popBTN autoSetDimensionsToSize:CGSizeMake(30, 30)];
-
-    [_popBTN setBackgroundImage:[UIImage imageNamed:@"arrowLeft"] forState:UIControlStateNormal];
-    [_popBTN addTarget:self action:@selector(popToDiscovery) forControlEvents:UIControlEventTouchUpInside];
-}
-
 - (void) popToDiscovery {
     [self.navigationController popViewControllerAnimated:YES];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

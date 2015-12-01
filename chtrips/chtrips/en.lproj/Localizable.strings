@@ -99,6 +99,9 @@
 "TEXT_USER_PROTOCOL" = "用户协议";
 "TEXT_BIND_MOBILE" = "绑定手机";
 "TEXT_MAP_SELECT" = "导航地图选择";
+"TEXT_SHARE_WITH" = "分享到";
+"TEXT_WECHAT_FRIENDS" = "微信好友";
+"TEXT_WECHAT_MOMENT" = "朋友圈";
 
 
 // input

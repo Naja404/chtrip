@@ -21,7 +21,7 @@
 #pragma mark - 检测已安装的地图app
 - (void) checkMapApp {
     
-    self.mapSchemeUrlArr = @[@"iosamap", @"baidumap", @"comgooglemaps"];
+    self.mapSchemeUrlArr = @[@"comgooglemaps"];
     self.mapAppInstalledArr = [NSMutableArray arrayWithCapacity:1];
     self.mapAS = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"TEXT_MAP_SELECT", nil)
                                              delegate:self
@@ -51,7 +51,8 @@
     }else if ([selectTitle isEqualToString:NSLocalizedString(@"baidumap", nil)]) {
         self.appUrl = [NSURL URLWithString:@"baidumap://"];
     }else if ([selectTitle isEqualToString:NSLocalizedString(@"comgooglemaps", nil)]){
-        self.appUrl = [NSURL URLWithString:@"comgooglemaps://"];
+//        self.appUrl = [NSURL URLWithString:@"comgooglemaps://"];
+        self.appUrl = [NSURL URLWithString:_googleMap];
     }else {
         NSString *tmpUrl = [[NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.address] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         self.appUrl = [NSURL URLWithString:tmpUrl];

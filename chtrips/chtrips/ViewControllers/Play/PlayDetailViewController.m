@@ -79,6 +79,7 @@
 - (void) showMapActionSheet {
     self.mapApp = [[CHActionSheetMapApp alloc] initWithMap:self];
     _mapApp.address = _address;
+    _mapApp.googleMap = _googleMapUrl;
     [_mapApp.mapAS showInView:self.view];
 }
 
@@ -131,17 +132,6 @@
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
     [SVProgressHUD dismiss];
-}
-- (void) setupPopBTN {
-    self.popBTN = [UIButton newAutoLayoutView];
-    [self.view addSubview:_popBTN];
-    
-    [_popBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:20];
-    [_popBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20];
-    [_popBTN autoSetDimensionsToSize:CGSizeMake(30, 30)];
-    
-    [_popBTN setBackgroundImage:[UIImage imageNamed:@"arrowLeft"] forState:UIControlStateNormal];
-    [_popBTN addTarget:self action:@selector(popToDiscovery) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) popToDiscovery {

@@ -475,6 +475,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
 
         detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+        detailVC.address = [cellData objectForKey:@"address"];
+        detailVC.googleMapUrl = [cellData objectForKey:@"googlemap"];
         detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
         detailVC.navigationItem.title = [cellData objectForKey:@"name"];
         detailVC.hidesBottomBarWhenPushed = YES;

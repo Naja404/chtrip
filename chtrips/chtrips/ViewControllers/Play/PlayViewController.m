@@ -282,6 +282,7 @@ static NSString * const PLAY_CELL = @"playCell";
     }
     
     detailVC.address = [cellData objectForKey:@"address"];
+    detailVC.googleMapUrl = [cellData objectForKey:@"googlemap"];
     detailVC.navigationItem.title = [cellData objectForKey:@"name"];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];

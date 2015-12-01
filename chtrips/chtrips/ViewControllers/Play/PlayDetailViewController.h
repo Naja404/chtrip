@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *sid;
 @property (nonatomic, strong) NSString *isHotel;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *googleMapUrl;
 
 @end

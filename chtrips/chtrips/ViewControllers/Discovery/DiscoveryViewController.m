@@ -150,37 +150,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     
-//    UIImageView *bgView = [UIImageView newAutoLayoutView];
-//    [self.searchView addSubview:bgView];
-//    
-//    
-//    [bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_searchView withOffset:-10];
-//    [bgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_searchView withOffset:5];
-//    [bgView autoSetDimensionsToSize:CGSizeMake(180, 30)];
-//    bgView.image = [UIImage imageNamed:@"searchBarbg"];
-//    
-//    UIImageView *iconView = [UIImageView newAutoLayoutView];
-//    [self.searchView addSubview:iconView];
-//    
-//    [iconView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:bgView withOffset:-10];
-//    [iconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
-//    [iconView autoSetDimensionsToSize:CGSizeMake(13, 13)];
-//    iconView.image = [UIImage imageNamed:@"searchIcon"];
-//    
-//    
-//    UIButton *searchBTN = [UIButton newAutoLayoutView];
-//    [self.searchView addSubview:searchBTN];
-//    
-//    [searchBTN autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
-//    [searchBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
-//    [searchBTN autoSetDimensionsToSize:CGSizeMake(100, 25)];
-//    [searchBTN setTitle:NSLocalizedString(@"TEXT_SEARCH_PLACEHOLDER", nil) forState:UIControlStateNormal];
-//    [searchBTN setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
-//    [searchBTN addTarget:self action:@selector(pushSearchPage) forControlEvents:UIControlEventTouchUpInside];
-//    searchBTN.titleLabel.font = [UIFont systemFontOfSize:13.0f];
-//    searchBTN.titleLabel.textColor = [UIColor redColor];
-//    searchBTN.backgroundColor = [UIColor clearColor];
-    
     self.navigationItem.titleView = _searchView;
     
 }
@@ -198,18 +167,13 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     [_discoveryTV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     [_discoveryTV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-48];
     
-    
     _discoveryTV.delegate = self;
     _discoveryTV.dataSource = self;
     _discoveryTV.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-//    self.refreshTV = [[UIRefreshControl alloc] init];
-//    [_discoveryTV addSubview:_refreshTV];
-//    [_refreshTV addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    _discoveryTV.scrollsToTop = YES;
     
     [self.discoveryTV registerClass:[DiscoveryTableViewCell class] forCellReuseIdentifier:DISCOVERY_CELL];
-    
-    
+
 }
 
 - (void) setupKV:(NSMutableArray *)adData {
@@ -283,7 +247,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             [self.navigationController pushViewController:detail animated:YES];
         }
     };
-    
+    self.kvScrollView.scrollView.scrollsToTop = NO;
     [self.discoveryHV addSubview:self.kvScrollView];
     self.discoveryTV.tableHeaderView = _discoveryHV;
 }
@@ -292,6 +256,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     int page = scrollView.contentOffset.x / scrollView.frame.size.width;
     _adPageControl.currentPage = page;
 }
+
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([self.discoveryTVData count] <= 0) {

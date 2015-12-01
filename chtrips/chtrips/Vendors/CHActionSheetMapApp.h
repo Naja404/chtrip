@@ -20,6 +20,7 @@
 @property (nonatomic, weak) id<CHActionSheetMapAppDelegate>delegate;
 @property (nonatomic, strong) UIActionSheet *mapAS;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *googleMap;
 
 - (instancetype)initWithMap:(id<CHActionSheetMapAppDelegate>)delegate;
 
