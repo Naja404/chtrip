@@ -38,7 +38,7 @@
 }
 
 - (void)viewDidLoad {
-
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [super viewDidLoad];
     [self setupUrlPage];
     [self customizeBackItem];
@@ -52,7 +52,9 @@
 }
 
 - (void) setNavBar {
-    
+    // 清除缓存
+    [SVProgressHUD show];
+    [self performSelector:@selector(dismissSVHUD) withObject:nil afterDelay:2.0f];
 }
 
 
@@ -139,6 +141,10 @@
 
 }
 
+- (void) dismissSVHUD {
+    [SVProgressHUD dismiss];
+}
+
 - (void) wechatBTN {
     
     [WXApiRequestHandler sendLinkURL:_webUrl
@@ -174,11 +180,11 @@
 }
 
 - (void) webViewDidStartLoad:(UIWebView *)webView {
-    [SVProgressHUD show];
+//    [SVProgressHUD show];
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
-    [SVProgressHUD dismiss];
+//    [SVProgressHUD dismiss];
 }
 
 - (void) popToDiscovery {

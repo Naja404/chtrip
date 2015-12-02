@@ -73,6 +73,12 @@
         self.navigationItem.rightBarButtonItem.tintColor = NAV_GRAY_COLOR;
     }
     
+    [SVProgressHUD show];
+    [self performSelector:@selector(dismissSVHUD) withObject:nil afterDelay:2.0f];
+}
+
+- (void) dismissSVHUD {
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - 显示导航app
