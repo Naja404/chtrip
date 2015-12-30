@@ -19,7 +19,7 @@
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
-@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIScrollViewDelegate, UITextFieldDelegate>
+@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *discoveryTV;
 @property (nonatomic, strong) NSMutableArray *discoveryTVData;
@@ -283,7 +283,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"path"]];
     [cell.bgImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
     
-    cell.titleLB.text = [cellData objectForKey:@"title"];
+    cell.titleLB.text = [[cellData objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"*" withString:@"\n"];
     cell.timeLB.text = [cellData objectForKey:@"outTime"];
 
     if (![[cellData objectForKey:@"address_title"] isEqualToString:@""]) {
