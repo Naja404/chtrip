@@ -487,6 +487,8 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
         detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
         detailVC.pid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"pid"]];
+        detailVC.stock = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"rest"]];
+        detailVC.stockLB = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"stock_label"]];
         detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"price_zh"]];
         detailVC.navigationItem.title = [cellData objectForKey:@"title_zh"];
         detailVC.hidesBottomBarWhenPushed = YES;

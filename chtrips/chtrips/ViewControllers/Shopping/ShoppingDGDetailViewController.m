@@ -40,7 +40,8 @@
     [self setupAddBuyList];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-    // Do any additional setup after loading the view.
+    
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,8 +67,13 @@
     [addBuyBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.addBuyListV];
     [addBuyBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
     addBuyBTN.backgroundColor = ORINGE_COLOR_BG;
-    [addBuyBTN setTitle:NSLocalizedString(@"BTN_ADD_BUYLIST", nil) forState:UIControlStateNormal];
-    [addBuyBTN addTarget:self action:@selector(addBuyListAction) forControlEvents:UIControlEventTouchDown];
+//    [addBuyBTN setTitle:NSLocalizedString(@"BTN_ADD_CART", nil) forState:UIControlStateNormal];
+    [addBuyBTN setTitle:_stockLB forState:UIControlStateNormal];
+    [addBuyBTN addTarget:self action:@selector(addCart) forControlEvents:UIControlEventTouchDown];
+    if ([_stock isEqualToString:@"0"]) {
+        addBuyBTN.enabled = NO;
+        addBuyBTN.backgroundColor = GRAY_COLOR_CELL_LINE;
+    }
     
     UIView *priceV = [UIView newAutoLayoutView];
     [self.addBuyListV addSubview:priceV];
@@ -100,6 +106,25 @@
     [zhPriceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:zhPriceImg withOffset:5];
     [zhPriceLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceV];
     zhPriceLB.text = self.zhPriceStr;
+    
+}
+
+#pragma mark - 加入购物车
+- (void) addCart {
+    [SVProgressHUD show];
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:self.pid forKey:@"pid"];
+    NSLog(@"paramter is %@", paramter);
+    
+    [[HttpManager instance] requestWithMethod:@"User/addCart"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_CART_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
     
 }
 

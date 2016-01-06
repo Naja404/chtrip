@@ -46,7 +46,7 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
     self.navigationItem.title = NSLocalizedString(@"TEXT_MY_INFO", nil);
     self.view.backgroundColor = GRAY_COLOR_CITY_CELL;
     
-    self.cellTitle = @[@"", NSLocalizedString(@"TEXT_NICKNAME", nil), NSLocalizedString(@"TEXT_MOBILE", nil), NSLocalizedString(@"TEXT_SEX", nil)];
+    self.cellTitle = @[@"", NSLocalizedString(@"TEXT_NICKNAME", nil), NSLocalizedString(@"TEXT_MOBILE", nil), NSLocalizedString(@"TEXT_SEX", nil), NSLocalizedString(@"TEXT_MY_ADDRESS", nil)];
     
     self.myInfoTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_myInfoTV];
@@ -90,7 +90,7 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,14 +131,15 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;// 右侧箭头
         }
         
-        if (indexPath.row == 3) {
+        if (indexPath.row == 4) {
             cell.cutLineLB.hidden = YES;
+            cell.valLB.text = @"";
         }else{
             cell.cutLineLB.hidden = NO;
+            cell.valLB.text = [_cellVal objectAtIndex:indexPath.row];
         }
         
         cell.textLB.text = [_cellTitle objectAtIndex:indexPath.row];
-        cell.valLB.text = [_cellVal objectAtIndex:indexPath.row];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -167,6 +168,8 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
         MyInfoSexViewController *sexVC = [[MyInfoSexViewController alloc] init];
         sexVC.sex = [NSString stringWithFormat:@"%@", [[[TMCache sharedCache] objectForKey:@"userInfo"] objectAtIndex:indexPath.row]];
         [self.navigationController pushViewController:sexVC animated:YES];
+    }else if (indexPath.row == 4) {
+        
     }
 }
 

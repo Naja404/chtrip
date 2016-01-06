@@ -14,5 +14,7 @@
 @property (nonatomic, strong) NSString *zhPriceStr;
 @property (nonatomic, strong) NSString *pid;
 @property (nonatomic, strong) NSString *hasNav;
+@property (nonatomic, strong) NSString *stock;
+@property (nonatomic, strong) NSString *stockLB;
 
 @end

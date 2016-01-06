@@ -25,6 +25,7 @@
 "BTN_ADD_BUYLIST" = "加入扫货清单";
 "BTN_WANT_GO" = "我想去";
 "BTN_LOGOUT" = "退出登录";
+"BTN_ADD_CART" = "加入购物车";
 
 
 // text
@@ -103,6 +104,8 @@
 "TEXT_SHARE_WITH" = "分享到";
 "TEXT_WECHAT_FRIENDS" = "微信好友";
 "TEXT_WECHAT_MOMENT" = "朋友圈";
+"TEXT_MY_ADDRESS" = "我的收货地址";
+"TEXT_ADD_CART_SUCCESS" = "成功加入购物车";
 
 
 // input
