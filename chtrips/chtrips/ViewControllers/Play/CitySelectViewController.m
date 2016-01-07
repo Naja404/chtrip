@@ -71,7 +71,7 @@ static NSString * const CITY_CELL = @"cityCell";
     cell.cityLB.text = [cellData objectForKey:@"name"];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
-    [cell.cityImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
+    [cell.cityImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     
     UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCityBTN:)];
     cell.cityBTN.userInteractionEnabled = YES;

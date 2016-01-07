@@ -10,7 +10,10 @@
 
 @interface MyAvatarTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *bgImg;
 @property (nonatomic, strong) UIImageView *avatarImg;
 @property (nonatomic, strong) UILabel *nameLB;
+@property (nonatomic, strong) UILabel *scoreLB;
+@property (nonatomic, strong) UILabel *couponLB;
 
 @end

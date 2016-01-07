@@ -106,7 +106,13 @@
 "TEXT_WECHAT_MOMENT" = "朋友圈";
 "TEXT_MY_ADDRESS" = "我的收货地址";
 "TEXT_ADD_CART_SUCCESS" = "成功加入购物车";
-
+"TEXT_MY_ORDER" = "我的订单";
+"TEXT_VIEW_ALL_ORDER" = "查看全部订单";
+"TEXT_UNPAY" = "待支付";
+"TEXT_UNDELIVERED" = "待发货";
+"TEXT_UNCONFIRM" = "待收货";
+"TEXT_COMPLETE" = "交易完成";
+"TEXT_MY_CART" = "购物车";
 
 // input
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";

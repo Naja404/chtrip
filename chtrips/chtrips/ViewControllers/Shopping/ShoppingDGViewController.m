@@ -439,7 +439,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
         
-        [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
+        [cell.proImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
         cell.bigTitleLB.text = [cellData objectForKey:@"name"];
         cell.avgLB.text = [cellData objectForKey:@"avg_price"];
         cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
@@ -456,7 +456,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
         
         NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
         
-        [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
+        [cell.productImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
         cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
         cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
         cell.priceZHLB.text = [cellData objectForKey:@"price_zh"];

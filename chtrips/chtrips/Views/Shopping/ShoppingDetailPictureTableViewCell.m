@@ -43,11 +43,8 @@
     for (int i = 0; i < [self.imgArr count]; i++) {
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.frame = CGRectMake(CONTENT_VIEW_WIDTH * i + (CONTENT_VIEW_WIDTH - 200) / 2, 0, 200, 200);
-//        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"productDemo%d", i + 1]];
         NSURL *imageUrl = [NSURL URLWithString:[self.imgArr objectAtIndex:i]];
-        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
-
-//        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imgArr objectAtIndex:i]]];
+        [imgView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"productDemo3"]];
         
         [_imgScrollView addSubview:imgView];
     }

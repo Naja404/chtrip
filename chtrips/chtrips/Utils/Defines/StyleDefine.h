@@ -19,6 +19,13 @@
 #define NAV_GRAY_COLOR [UIColor colorWithRed:117/255.0 green:117/255.0 blue:117/255.0 alpha:1]
 
 ///普通文字格
+
+#define FONT_SIZE_16 [UIFont systemFontOfSize:16.0f]
+
+#define FONT_SIZE_14 [UIFont systemFontOfSize:14.0f]
+
+#define FONT_SIZE_12 [UIFont systemFontOfSize:12.0f]
+
 #define FONT_TEXT [UIFont systemFontOfSize:16.0f]
 
 #define PLAY_FONT_TEXT [UIFont systemFontOfSize:12.0f]

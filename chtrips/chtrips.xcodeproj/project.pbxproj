@@ -238,6 +238,15 @@
 		E9DEFDFA1C3B9EFF00B91771 /* MyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFDF91C3B9EFF00B91771 /* MyWebViewController.m */; };
 		E9DEFDFD1C3B9FF400B91771 /* MyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFDFC1C3B9FF400B91771 /* MyAddressViewController.m */; };
 		E9DEFE001C3BA12D00B91771 /* MyAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFDFF1C3BA12D00B91771 /* MyAddressTableViewCell.m */; };
+		E9DEFE031C3E417B00B91771 /* MyOrderTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE021C3E417B00B91771 /* MyOrderTitleTableViewCell.m */; };
+		E9DEFE061C3E44E800B91771 /* MyOrderIconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE051C3E44E800B91771 /* MyOrderIconTableViewCell.m */; };
+		E9DEFE0B1C3E592000B91771 /* iconComplete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DEFE071C3E592000B91771 /* iconComplete@3x.png */; };
+		E9DEFE0C1C3E592000B91771 /* iconConfirm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DEFE081C3E592000B91771 /* iconConfirm@3x.png */; };
+		E9DEFE0D1C3E592000B91771 /* iconUndelivered@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DEFE091C3E592000B91771 /* iconUndelivered@3x.png */; };
+		E9DEFE0E1C3E592000B91771 /* iconUnpay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DEFE0A1C3E592000B91771 /* iconUnpay@3x.png */; };
+		E9DEFE111C3E693200B91771 /* MyCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE101C3E693200B91771 /* MyCartViewController.m */; };
+		E9DEFE141C3E6BEB00B91771 /* MyCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE131C3E6BEB00B91771 /* MyCartTableViewCell.m */; };
+		E9DEFE171C3E728600B91771 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE161C3E728600B91771 /* MyOrderViewController.m */; };
 		E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */; };
 		E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3951B119D8B00A352CD /* HttpManager.m */; };
 		E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */; };
@@ -624,6 +633,20 @@
 		E9DEFDFC1C3B9FF400B91771 /* MyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAddressViewController.m; path = ViewControllers/My/MyAddressViewController.m; sourceTree = "<group>"; };
 		E9DEFDFE1C3BA12D00B91771 /* MyAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAddressTableViewCell.h; path = Views/My/MyAddressTableViewCell.h; sourceTree = "<group>"; };
 		E9DEFDFF1C3BA12D00B91771 /* MyAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAddressTableViewCell.m; path = Views/My/MyAddressTableViewCell.m; sourceTree = "<group>"; };
+		E9DEFE011C3E417B00B91771 /* MyOrderTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyOrderTitleTableViewCell.h; path = Views/My/MyOrderTitleTableViewCell.h; sourceTree = "<group>"; };
+		E9DEFE021C3E417B00B91771 /* MyOrderTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderTitleTableViewCell.m; path = Views/My/MyOrderTitleTableViewCell.m; sourceTree = "<group>"; };
+		E9DEFE041C3E44E800B91771 /* MyOrderIconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyOrderIconTableViewCell.h; path = Views/My/MyOrderIconTableViewCell.h; sourceTree = "<group>"; };
+		E9DEFE051C3E44E800B91771 /* MyOrderIconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderIconTableViewCell.m; path = Views/My/MyOrderIconTableViewCell.m; sourceTree = "<group>"; };
+		E9DEFE071C3E592000B91771 /* iconComplete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconComplete@3x.png"; path = "Resource/iconComplete@3x.png"; sourceTree = "<group>"; };
+		E9DEFE081C3E592000B91771 /* iconConfirm@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconConfirm@3x.png"; path = "Resource/iconConfirm@3x.png"; sourceTree = "<group>"; };
+		E9DEFE091C3E592000B91771 /* iconUndelivered@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconUndelivered@3x.png"; path = "Resource/iconUndelivered@3x.png"; sourceTree = "<group>"; };
+		E9DEFE0A1C3E592000B91771 /* iconUnpay@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconUnpay@3x.png"; path = "Resource/iconUnpay@3x.png"; sourceTree = "<group>"; };
+		E9DEFE0F1C3E693200B91771 /* MyCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCartViewController.h; path = ViewControllers/My/MyCartViewController.h; sourceTree = "<group>"; };
+		E9DEFE101C3E693200B91771 /* MyCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCartViewController.m; path = ViewControllers/My/MyCartViewController.m; sourceTree = "<group>"; };
+		E9DEFE121C3E6BEB00B91771 /* MyCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCartTableViewCell.h; path = Views/My/MyCartTableViewCell.h; sourceTree = "<group>"; };
+		E9DEFE131C3E6BEB00B91771 /* MyCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCartTableViewCell.m; path = Views/My/MyCartTableViewCell.m; sourceTree = "<group>"; };
+		E9DEFE151C3E728600B91771 /* MyOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyOrderViewController.h; path = ViewControllers/My/MyOrderViewController.h; sourceTree = "<group>"; };
+		E9DEFE161C3E728600B91771 /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderViewController.m; path = ViewControllers/My/MyOrderViewController.m; sourceTree = "<group>"; };
 		E9E0231B1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityTableViewCell.h; path = Views/Shopping/ShoppingPopularityTableViewCell.h; sourceTree = "<group>"; };
 		E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityTableViewCell.m; path = Views/Shopping/ShoppingPopularityTableViewCell.m; sourceTree = "<group>"; };
 		E9E4A3941B119D8B00A352CD /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpManager.h; path = Utils/HttpManager.h; sourceTree = "<group>"; };
@@ -1252,6 +1275,10 @@
 				E9DEFDF91C3B9EFF00B91771 /* MyWebViewController.m */,
 				E9DEFDFB1C3B9FF400B91771 /* MyAddressViewController.h */,
 				E9DEFDFC1C3B9FF400B91771 /* MyAddressViewController.m */,
+				E9DEFE0F1C3E693200B91771 /* MyCartViewController.h */,
+				E9DEFE101C3E693200B91771 /* MyCartViewController.m */,
+				E9DEFE151C3E728600B91771 /* MyOrderViewController.h */,
+				E9DEFE161C3E728600B91771 /* MyOrderViewController.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1259,6 +1286,10 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9DEFE071C3E592000B91771 /* iconComplete@3x.png */,
+				E9DEFE081C3E592000B91771 /* iconConfirm@3x.png */,
+				E9DEFE091C3E592000B91771 /* iconUndelivered@3x.png */,
+				E9DEFE0A1C3E592000B91771 /* iconUnpay@3x.png */,
 				E90EE99F1C085F35004E6B20 /* share.png */,
 				E90EE9A01C085F35004E6B20 /* share@2x.png */,
 				E9382A651C03165100E447D3 /* wechatBTN.png */,
@@ -1390,6 +1421,12 @@
 				E9FA2CA21BE9E1EE009E7C10 /* MyInfoSexTableViewCell.m */,
 				E9DEFDFE1C3BA12D00B91771 /* MyAddressTableViewCell.h */,
 				E9DEFDFF1C3BA12D00B91771 /* MyAddressTableViewCell.m */,
+				E9DEFE011C3E417B00B91771 /* MyOrderTitleTableViewCell.h */,
+				E9DEFE021C3E417B00B91771 /* MyOrderTitleTableViewCell.m */,
+				E9DEFE041C3E44E800B91771 /* MyOrderIconTableViewCell.h */,
+				E9DEFE051C3E44E800B91771 /* MyOrderIconTableViewCell.m */,
+				E9DEFE121C3E6BEB00B91771 /* MyCartTableViewCell.h */,
+				E9DEFE131C3E6BEB00B91771 /* MyCartTableViewCell.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1443,6 +1480,7 @@
 				E90990D31AAFD6D600C48688 /* Frameworks */,
 				E90990D41AAFD6D600C48688 /* Resources */,
 				5FB8F19F139F46964C24C0ED /* Copy Pods Resources */,
+				D4013CB504BD790376AD7BCD /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1565,6 +1603,7 @@
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
 				E95E1D0D1B9F17D000C88692 /* star_25.png in Resources */,
 				E9D11F191BF33CF300291538 /* defaultDataPic@2x.png in Resources */,
+				E9DEFE0E1C3E592000B91771 /* iconUnpay@3x.png in Resources */,
 				E9D98ECE1AEDEAFD004805E5 /* iconFavorites.png in Resources */,
 				E91396551AC111B8003AF385 /* icon-plus-highlighted@2x.png in Resources */,
 				E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */,
@@ -1572,6 +1611,7 @@
 				E9D98ECB1AEDE9C7004805E5 /* iconFeedBack.png in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E9516E531B6FAFFB00E01C1F /* zhImg@2x.png in Resources */,
+				E9DEFE0B1C3E592000B91771 /* iconComplete@3x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
 				E9C131A11AB2F1D600E6E873 /* tripTitle@2x.png in Resources */,
@@ -1584,6 +1624,7 @@
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E9382A6F1C03165100E447D3 /* wechatMomentBTN@2x.png in Resources */,
 				E9CB92861BD628D00051AA6B /* defaultPicSmall.png in Resources */,
+				E9DEFE0C1C3E592000B91771 /* iconConfirm@3x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E95E1D0A1B9F17D000C88692 /* star_10.png in Resources */,
 				E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */,
@@ -1591,6 +1632,7 @@
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
 				E95E1D0B1B9F17D000C88692 /* star_15.png in Resources */,
+				E9DEFE0D1C3E592000B91771 /* iconUndelivered@3x.png in Resources */,
 				E96F4B451BAC0C9D0033186D /* loginCancel@2x.png in Resources */,
 				E9F1C8B51B403BDD008FFD28 /* tripGray@3x.png in Resources */,
 				E967A2001B9DCB7200FAFF89 /* MJRefresh.bundle in Resources */,
@@ -1683,6 +1725,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D4013CB504BD790376AD7BCD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1717,6 +1774,7 @@
 				E980471F1BB8460200B5518A /* LinkWebViewController.m in Sources */,
 				E97184391ABAC1B9005291A1 /* Base64.m in Sources */,
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
+				E9DEFE171C3E728600B91771 /* MyOrderViewController.m in Sources */,
 				E967A1FF1B9DCB7200FAFF89 /* MJRefreshStateHeader.m in Sources */,
 				E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */,
 				E967A2011B9DCB7200FAFF89 /* MJRefreshConst.m in Sources */,
@@ -1727,6 +1785,7 @@
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E9171B811BE8A1A800923C1E /* MyInfoNormalTableViewCell.m in Sources */,
 				E9FA2CA01BE9CB66009E7C10 /* MyInfoSexViewController.m in Sources */,
+				E9DEFE141C3E6BEB00B91771 /* MyCartTableViewCell.m in Sources */,
 				E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */,
 				E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
@@ -1773,7 +1832,9 @@
 				E9F6E2711BE4961B006C4140 /* RegisterViewController.m in Sources */,
 				E971842E1ABABD23005291A1 /* WTLocationManager.m in Sources */,
 				E95C3D011B4970E40010EF58 /* WebViewJavascriptBridge.m in Sources */,
+				E9DEFE031C3E417B00B91771 /* MyOrderTitleTableViewCell.m in Sources */,
 				E9FA2C9D1BE9CB54009E7C10 /* MyInfoNickNameViewController.m in Sources */,
+				E9DEFE111C3E693200B91771 /* MyCartViewController.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9DEFDFA1C3B9EFF00B91771 /* MyWebViewController.m in Sources */,
 				E9DE1A9E1B29D2620040BFA6 /* CHAutoSlideScrollView.m in Sources */,
@@ -1796,6 +1857,7 @@
 				E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */,
 				E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */,
 				E947EE7F1B2B18AE00012957 /* DOPDropDownMenu.m in Sources */,
+				E9DEFE061C3E44E800B91771 /* MyOrderIconTableViewCell.m in Sources */,
 				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E963CDA41B9815CD00FA250E /* MyWantListViewController.m in Sources */,
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,

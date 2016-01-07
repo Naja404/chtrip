@@ -107,22 +107,8 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
         MyInfoAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_CELL];
 
         NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
-        [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
-        
-//        NSData *avatarData = [[TMCache sharedCache] objectForKey:@"userAvatarData"];
-//        if (avatarData) {
-//            cell.avatarImg.image = [UIImage imageWithData:avatarData];
-//        }else{
-//            NSURL *imageUrl = [NSURL URLWithString:[[TMCache sharedCache] objectForKey:@"userAvatar"]];
-//            NSURLRequest *imageReqUrl = [NSURLRequest requestWithURL:imageUrl];
-//            //            [cell.avatarImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
-//            [cell.avatarImg setImageWithURLRequest:imageReqUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-//                [[TMCache sharedCache] setObject:UIImagePNGRepresentation(image) forKey:@"userAvatarData"];
-//            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-//                
-//            }];
-//        }
-        
+        [cell.avatarImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
+       
         return cell;
     }else{
         MyInfoNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_NORMAL_CELL];

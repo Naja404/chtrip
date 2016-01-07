@@ -26,6 +26,9 @@ PODS:
     - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
   - PureLayout (2.0.6)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
   - SVProgressHUD (1.1.3)
   - TMCache (2.1.0)
 
@@ -34,8 +37,9 @@ DEPENDENCIES:
   - DateTools (~> 1.5.0)
   - JHChainableAnimations (~> 1.3.0)
   - ObjectiveRecord (~> 1.5.0)
-  - PureLayout (~> 2.0.5)
-  - SVProgressHUD (~> 1.1.2)
+  - PureLayout
+  - SDWebImage (~> 3.7)
+  - SVProgressHUD (~> 1.1.3)
   - TMCache
 
 SPEC CHECKSUMS:
@@ -45,7 +49,8 @@ SPEC CHECKSUMS:
   ObjectiveRecord: f290d17272e476b3c881300910e98284200c54b6
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.39.0

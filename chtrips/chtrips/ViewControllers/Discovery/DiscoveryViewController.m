@@ -184,7 +184,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, ScreenWidth / 2.25);
         NSURL *imageUrl = [NSURL URLWithString:[[adData objectAtIndex:i] objectForKey:@"path"]];
-        [imgView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
+        [imgView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
         
         [viewsArray addObject:imgView];
     }
@@ -203,6 +203,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         return viewsArray[pageIndex];
     };
     
+    __weak typeof (self) weakSelf = self;
     self.kvScrollView.TapActionBlock = ^(NSInteger pageIndex){
 //        NSLog(@"点击了第%d个kv", pageIndex);
 
@@ -217,7 +218,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             detailVC.hasNav = @"1";
             detailVC.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
             detailVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:detailVC animated:YES];
+            [weakSelf.navigationController pushViewController:detailVC animated:YES];
             
         }else if ([adType isEqualToString:@"2"]) {
             PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
@@ -226,7 +227,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             detailVC.sid = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
             detailVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:detailVC animated:YES];
+            [weakSelf.navigationController pushViewController:detailVC animated:YES];
             
         }else if ([adType isEqualToString:@"3"]) {
             DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
@@ -236,7 +237,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             
             detail.hidesBottomBarWhenPushed = YES;
             
-            [self.navigationController pushViewController:detail animated:YES];
+            [weakSelf.navigationController pushViewController:detail animated:YES];
         }else if ([adType isEqualToString:@"4"]) {
             LinkWebViewController *detail = [[LinkWebViewController alloc] init];
             
@@ -244,7 +245,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             detail.navigationItem.title = [[adData objectAtIndex:pageIndex] objectForKey:@"title"];
             detail.hidesBottomBarWhenPushed = YES;
             
-            [self.navigationController pushViewController:detail animated:YES];
+            [weakSelf.navigationController pushViewController:detail animated:YES];
         }
     };
     self.kvScrollView.scrollView.scrollsToTop = NO;
@@ -281,7 +282,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"path"]];
-    [cell.bgImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
+    [cell.bgImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicBig"]];
     
     cell.titleLB.text = [[cellData objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"*" withString:@"\n"];
     cell.timeLB.text = [cellData objectForKey:@"outTime"];

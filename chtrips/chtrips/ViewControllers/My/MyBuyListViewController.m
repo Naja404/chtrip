@@ -8,7 +8,6 @@
 
 #import "MyBuyListViewController.h"
 #import "MyBuyListTableViewCell.h"
-#import "MyBuyListTableViewCell.h"
 #import "ShoppingDGDetailViewController.h"
 
 #define RED_TEXT [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
@@ -239,7 +238,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
 
-    [cell.productImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
+    [cell.productImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
     cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
     cell.priceZHLB.text = [NSString stringWithFormat:@"%@ RMB", [cellData objectForKey:@"price_zh"]];

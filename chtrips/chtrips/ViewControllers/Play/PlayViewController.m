@@ -253,7 +253,7 @@ static NSString * const PLAY_CELL = @"playCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"pic_url"]];
-    [cell.proImg setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
+    [cell.proImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     
     cell.bigTitleLB.text = [cellData objectForKey:@"name"];
     cell.avgLB.text = [cellData objectForKey:@"avg_price"];
