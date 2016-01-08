@@ -26,6 +26,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
 @property (nonatomic, strong) UIButton *selectAllBTN;
 @property (nonatomic, strong) NSString *selectAllStatu;
 @property (nonatomic, strong) UIImageView *bgView;
+
 @end
 
 @implementation MyCartViewController
@@ -51,7 +52,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark 设置购物清单tableview
+#pragma mark - 设置购物清单tableview
 - (void) setupCartTV {
     self.navigationItem.title = NSLocalizedString(@"TEXT_MY_CART", nil);
     self.view.backgroundColor = [UIColor whiteColor];
@@ -67,6 +68,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     _cartListTV.dataSource = self;
     _cartListTV.delegate = self;
     _cartListTV.separatorStyle = UITableViewCellAccessoryNone;
+    _cartListTV.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     self.refreshTV= [[UIRefreshControl alloc] init];
     [_cartListTV addSubview:self.refreshTV];
@@ -110,18 +112,18 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [_checkoutBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar];
     [_checkoutBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar];
     [_checkoutBTN autoSetDimensionsToSize:CGSizeMake(103, 46.5)];
-    _checkoutBTN.backgroundColor = [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1];
-    [_checkoutBTN setTitle:@"结算(0)" forState:UIControlStateNormal];
+    _checkoutBTN.backgroundColor = RED_TEXT;
+    _checkoutBTN.userInteractionEnabled = NO;
+    [_checkoutBTN setTitle:[NSString stringWithFormat:NSLocalizedString(@"BTN_CHECKOUT", nil), @"0"] forState:UIControlStateNormal];
     
     self.priceZH = [UILabel newAutoLayoutView];
     [totalBar addSubview:_priceZH];
     
     [_priceZH autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar withOffset:10];
-    [_priceZH autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar withOffset:-10];
+    [_priceZH autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
     [_priceZH autoSetDimensionsToSize:CGSizeMake(70, 20)];
     
     NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:@"0.00"];
-    
     
     [price addAttribute:NSForegroundColorAttributeName value:RED_TEXT range:NSMakeRange(0, 1)];
     [price addAttribute:NSForegroundColorAttributeName value:RED_TEXT range:NSMakeRange(1, 3)];
@@ -145,7 +147,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [totalBar addSubview:notShipLB];
     
     [notShipLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar withOffset:-5];
-    [notShipLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:totalBar withOffset:-10];
+    [notShipLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
     [notShipLB autoSetDimensionsToSize:CGSizeMake(50, 12)];
     notShipLB.font = [UIFont systemFontOfSize:12];
     notShipLB.textColor = HIGHLIGHT_BLACK_COLOR;
@@ -164,23 +166,35 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
 }
 
 
-#pragma mark 获取扫货清单数据
+#pragma mark - 获取扫货清单数据
 - (void) getCartList{
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [SVProgressHUD show];
-    //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     
-    [[HttpManager instance] requestWithMethod:@"User/getBuyList"
+    [[HttpManager instance] requestWithMethod:@"User/getCart"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          self.cartListData = [[result objectForKey:@"data"] objectForKey:@"list"];
-                                          NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
+                                          NSLog(@"cart data is %@", result);
+                                          
+                                          NSDictionary *tmpData = [result objectForKey:@"data"];
+                                          
+                                          self.cartListData = [[tmpData objectForKey:@"list"] mutableCopy];
+                                          NSString *str = [NSString stringWithFormat:@"¥%@", [tmpData objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
-                                          //                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
-                                          if ([[[result objectForKey:@"data"] objectForKey:@"selectAll"] isEqualToString:@"1"]) {
+                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"BTN_CHECKOUT", nil), [tmpData objectForKey:@"select_count"]];
+                                          
+                                          if ([[tmpData objectForKey:@"select_count"] isEqualToString:@"0"]) {
+                                              _checkoutBTN.enabled = NO;
+                                              _checkoutBTN.backgroundColor = GRAY_FONT_COLOR;
+                                          }else{
+                                              _checkoutBTN.enabled = YES;
+                                              _checkoutBTN.backgroundColor = RED_TEXT;
+                                          }
+                                          
+                                          if ([[tmpData objectForKey:@"select_all"] isEqualToString:@"1"]) {
                                               self.selectAllStatu = @"1";
                                               [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
                                           }else{
@@ -206,6 +220,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
                                       }];
 }
 
+#pragma mark - 设置价格样式
 - (NSMutableAttributedString *) priceFormat:(NSString *)str {
     NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:str];
     
@@ -234,21 +249,24 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyCartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_CARTLIST_CELL forIndexPath:indexPath];
     
-    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.cartListData objectAtIndex:indexPath.row]];
+    NSDictionary *cellData = [self.cartListData objectAtIndex:indexPath.row];
     
     NSURL *imageUrl = [NSURL URLWithString:[cellData objectForKey:@"thumb"]];
     
     [cell.productImage sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicSmall"]];
     cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
     cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
-    cell.priceZHLB.text = [NSString stringWithFormat:@"%@ RMB", [cellData objectForKey:@"price_zh"]];
+    cell.priceZHLB.text = [NSString stringWithFormat:@"￥%@", [cellData objectForKey:@"price_zh"]];
     cell.checkStatu = [cellData objectForKey:@"select"];
     cell.pid = [cellData objectForKey:@"pid"];
+    cell.proTotalLB.text = [cellData objectForKey:@"total"];
     
     if ([cell.checkStatu isEqualToString:@"0"]) {
         [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+        cell.selectState = NO;
     }else{
         [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
+        cell.selectState = YES;
     }
     
     UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCheckBTN:)];
@@ -256,15 +274,62 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [cell.checkBTN addGestureRecognizer:onceTap];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    cell.plusProBTN.tag = [cell.pid intValue];
+    cell.tapPlusBTNAction = ^(NSInteger index){
+        NSLog(@"点击了%ld 增加按钮", (long)index);
+        [self upCartList:@"6" pid:[NSString stringWithFormat:@"%ld", (long)index]];
+        
+    };
     
+    cell.minusProBTN.tag = [cell.pid intValue];
+    cell.tapMinusBTNAction = ^(NSInteger index){
+        NSLog(@"点击了%ld 删减按钮", (long)index);
+        [self upCartList:@"5" pid:[NSString stringWithFormat:@"%ld", (long)index]];
+    };
+    
+    if ([[cellData objectForKey:@"minus"] isEqualToString:@"0"]) {
+        cell.minusProBTN.hidden = YES;
+    }else{
+        cell.minusProBTN.hidden = NO;
+    }
+    
+    if ([[cellData objectForKey:@"plus"] isEqualToString:@"0"]) {
+        cell.plusProBTN.hidden = YES;
+    }else{
+        cell.plusProBTN.hidden = NO;
+    }
     
     return cell;
+}
+
+#pragma mark - 设置cell编辑风格
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCellEditingStyle cellStyle = UITableViewCellEditingStyleNone;
+    
+    if ([tableView isEqual:_cartListTV]) cellStyle = UITableViewCellEditingStyleDelete;
+    
+    return cellStyle;
+}
+
+#pragma mark - cell编辑
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        NSDictionary *tmpData = [_cartListData objectAtIndex:indexPath.row];
+        [_cartListData removeObjectAtIndex:indexPath.row];
+
+        NSArray *indexPaths = @[indexPath];
+        [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationLeft];
+
+        [self upCartList:@"2" pid:[tmpData objectForKey:@"pid"]];
+    }
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.cartListData objectAtIndex:indexPath.row]];
+    NSDictionary *cellData = [self.cartListData objectAtIndex:indexPath.row];
     
     ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
     
@@ -276,6 +341,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+#pragma mark - 单选按钮
 - (void) clickCheckBTN:(UITapGestureRecognizer *)gr {
     
     MyCartTableViewCell *cell = (MyCartTableViewCell *) [[[gr view] superview] superview];
@@ -288,21 +354,21 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
         cell.checkStatu = @"0";
     }
     
-    [self upBuyList:cell.checkStatu pid:cell.pid];
+    [self upCartList:cell.checkStatu pid:cell.pid];
     
 }
 
+#pragma mark - 全选按钮
 - (void) clickSelectAllBTN {
     if ([self.selectAllStatu isEqualToString:@"0"]) {
-        [self upBuyList:@"3" pid:@"0"];
+        [self upCartList:@"3" pid:@"0"];
     }else{
-        [self upBuyList:@"4" pid:@"0"];
+        [self upCartList:@"4" pid:@"0"];
     }
 }
 
-#pragma mark 更新选中数据
-
-- (void) upBuyList:(NSString *)type pid:(NSString *)pid {
+#pragma mark - 更新选中数据
+- (void) upCartList:(NSString *)type pid:(NSString *)pid {
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [SVProgressHUD show];
@@ -310,16 +376,25 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [paramter setObject:type forKey:@"type"];
     [paramter setObject:pid forKey:@"pid"];
     
-    [[HttpManager instance] requestWithMethod:@"User/setBuyList"
+    [[HttpManager instance] requestWithMethod:@"User/setCart"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          self.cartListData = [[result objectForKey:@"data"] objectForKey:@"list"];
-                                          NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
+                                          NSDictionary *tmpData = [result objectForKey:@"data"];
+                                          self.cartListData = [[tmpData objectForKey:@"list"] mutableCopy];
+                                          NSString *str = [NSString stringWithFormat:@"¥%@", [tmpData objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
-                                          //                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [[result objectForKey:@"data"] objectForKey:@"selectCount"]];
+                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [tmpData objectForKey:@"select_count"]];
                                           
-                                          if ([[[result objectForKey:@"data"] objectForKey:@"selectAll"] isEqualToString:@"1"]) {
+                                          if ([[tmpData objectForKey:@"select_count"] isEqualToString:@"0"]) {
+                                              _checkoutBTN.enabled = NO;
+                                              _checkoutBTN.backgroundColor = GRAY_FONT_COLOR;
+                                          }else{
+                                              _checkoutBTN.enabled = YES;
+                                              _checkoutBTN.backgroundColor = RED_TEXT;
+                                          }
+                                          
+                                          if ([[tmpData objectForKey:@"select_all"] isEqualToString:@"1"]) {
                                               self.selectAllStatu = @"1";
                                               [self.selectAllBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
                                           }else{
@@ -335,7 +410,6 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
                                           [SVProgressHUD dismiss];
                                       }];
 }
-
 
 #pragma mark 下拉刷新
 - (void) refresh:(UIRefreshControl *)control {

@@ -24,5 +24,12 @@
 @property (nonatomic, strong) UIImageView *priceJPImg;
 @property (nonatomic, strong) UIImageView *productImage;
 @property (nonatomic, strong) UILabel *cutLineLB;
+@property (nonatomic, assign) BOOL selectState;
+@property (nonatomic, strong) UIControl *proTotalV;
+@property (nonatomic, strong) UILabel *proTotalLB;
+@property (nonatomic, strong) UIButton *plusProBTN;
+@property (nonatomic, strong) UIButton *minusProBTN;
+@property (nonatomic, strong) void (^tapPlusBTNAction)(NSInteger index);
+@property (nonatomic, strong) void (^tapMinusBTNAction)(NSInteger index);
 
 @end

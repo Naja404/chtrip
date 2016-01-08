@@ -26,6 +26,7 @@
 "BTN_WANT_GO" = "我想去";
 "BTN_LOGOUT" = "退出登录";
 "BTN_ADD_CART" = "加入购物车";
+"BTN_CHECKOUT" = "结算(%@)";
 
 // text
 "TEXT_APP_TITLE" = "nijiGo";
