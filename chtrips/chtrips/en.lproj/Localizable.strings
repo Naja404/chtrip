@@ -113,6 +113,7 @@
 "TEXT_UNCONFIRM" = "待收货";
 "TEXT_COMPLETE" = "交易完成";
 "TEXT_MY_CART" = "购物车";
+"TEXT_CONFIRM_ORDER" = "确认订单";
 
 // input
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";

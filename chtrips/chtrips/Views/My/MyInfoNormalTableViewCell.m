@@ -29,7 +29,7 @@
         [self.contentView addSubview:_valLB];
         
         [_valLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
-        [_valLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_textLB withOffset:ScreenWidth * 0.05 + 10];
+        [_valLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView];
         [_valLB autoSetDimensionsToSize:CGSizeMake(150, 30)];
         _valLB.font = [UIFont systemFontOfSize:16.0];
         _valLB.textColor = GRAY_FONT_COLOR;

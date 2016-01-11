@@ -9,6 +9,7 @@
 #import "MyCartViewController.h"
 #import "MyCartTableViewCell.h"
 #import "ShoppingDGDetailViewController.h"
+#import "MyCheckOutViewController.h"
 
 #define RED_TEXT [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
 
@@ -113,8 +114,8 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [_checkoutBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:totalBar];
     [_checkoutBTN autoSetDimensionsToSize:CGSizeMake(103, 46.5)];
     _checkoutBTN.backgroundColor = RED_TEXT;
-    _checkoutBTN.userInteractionEnabled = NO;
     [_checkoutBTN setTitle:[NSString stringWithFormat:NSLocalizedString(@"BTN_CHECKOUT", nil), @"0"] forState:UIControlStateNormal];
+    [_checkoutBTN addTarget:self action:@selector(pushCheckOutVC) forControlEvents:UIControlEventTouchUpInside];
     
     self.priceZH = [UILabel newAutoLayoutView];
     [totalBar addSubview:_priceZH];
@@ -165,6 +166,11 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     
 }
 
+#pragma mark - 结算按钮 
+- (void) pushCheckOutVC {
+    MyCheckOutViewController *myCheckoutVC = [[MyCheckOutViewController alloc] init];
+    [self.navigationController pushViewController:myCheckoutVC animated:YES];
+}
 
 #pragma mark - 获取扫货清单数据
 - (void) getCartList{
@@ -184,7 +190,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
                                           NSString *str = [NSString stringWithFormat:@"¥%@", [tmpData objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
-                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"BTN_CHECKOUT", nil), [tmpData objectForKey:@"select_count"]];
+                                          [_checkoutBTN setTitle:[NSString stringWithFormat:NSLocalizedString(@"BTN_CHECKOUT", nil), [tmpData objectForKey:@"select_count"]] forState:UIControlStateNormal];
                                           
                                           if ([[tmpData objectForKey:@"select_count"] isEqualToString:@"0"]) {
                                               _checkoutBTN.enabled = NO;
@@ -383,8 +389,8 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
                                           self.cartListData = [[tmpData objectForKey:@"list"] mutableCopy];
                                           NSString *str = [NSString stringWithFormat:@"¥%@", [tmpData objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
-                                          
-                                          self.checkoutBTN.titleLabel.text = [NSString stringWithFormat:@"结算(%@)", [tmpData objectForKey:@"select_count"]];
+
+                                          [_checkoutBTN setTitle:[NSString stringWithFormat:@"结算(%@)", [tmpData objectForKey:@"select_count"]] forState:UIControlStateNormal];
                                           
                                           if ([[tmpData objectForKey:@"select_count"] isEqualToString:@"0"]) {
                                               _checkoutBTN.enabled = NO;

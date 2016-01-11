@@ -75,6 +75,14 @@
 		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
 		E93CF24B1AC3F6B400247B87 /* redmind.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2491AC3F6B400247B87 /* redmind.png */; };
 		E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF24A1AC3F6B400247B87 /* redmind@2x.png */; };
+		E94324CD1C43A33B004C1886 /* iconCart.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324C71C43A33B004C1886 /* iconCart.png */; };
+		E94324CE1C43A33B004C1886 /* iconCart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324C81C43A33B004C1886 /* iconCart@2x.png */; };
+		E94324CF1C43A33B004C1886 /* iconCart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324C91C43A33B004C1886 /* iconCart@3x.png */; };
+		E94324D01C43A33B004C1886 /* iconFavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324CA1C43A33B004C1886 /* iconFavorite.png */; };
+		E94324D11C43A33B004C1886 /* iconFavorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324CB1C43A33B004C1886 /* iconFavorite@2x.png */; };
+		E94324D21C43A33B004C1886 /* iconFavorite@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324CC1C43A33B004C1886 /* iconFavorite@3x.png */; };
+		E94324D71C43B582004C1886 /* MyCheckOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94324D61C43B582004C1886 /* MyCheckOutViewController.m */; };
+		E94324DA1C43C059004C1886 /* MyCheckOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94324D91C43C059004C1886 /* MyCheckOutTableViewCell.m */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
 		E947EE7F1B2B18AE00012957 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E947EE7B1B2B18AE00012957 /* DOPDropDownMenu.m */; };
@@ -376,6 +384,16 @@
 		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
 		E93CF2491AC3F6B400247B87 /* redmind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redmind.png; path = Resource/redmind.png; sourceTree = "<group>"; };
 		E93CF24A1AC3F6B400247B87 /* redmind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redmind@2x.png"; path = "Resource/redmind@2x.png"; sourceTree = "<group>"; };
+		E94324C71C43A33B004C1886 /* iconCart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconCart.png; path = Resource/iconCart.png; sourceTree = "<group>"; };
+		E94324C81C43A33B004C1886 /* iconCart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconCart@2x.png"; path = "Resource/iconCart@2x.png"; sourceTree = "<group>"; };
+		E94324C91C43A33B004C1886 /* iconCart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconCart@3x.png"; path = "Resource/iconCart@3x.png"; sourceTree = "<group>"; };
+		E94324CA1C43A33B004C1886 /* iconFavorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconFavorite.png; path = Resource/iconFavorite.png; sourceTree = "<group>"; };
+		E94324CB1C43A33B004C1886 /* iconFavorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconFavorite@2x.png"; path = "Resource/iconFavorite@2x.png"; sourceTree = "<group>"; };
+		E94324CC1C43A33B004C1886 /* iconFavorite@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconFavorite@3x.png"; path = "Resource/iconFavorite@3x.png"; sourceTree = "<group>"; };
+		E94324D51C43B582004C1886 /* MyCheckOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCheckOutViewController.h; path = ViewControllers/My/MyCheckOutViewController.h; sourceTree = "<group>"; };
+		E94324D61C43B582004C1886 /* MyCheckOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCheckOutViewController.m; path = ViewControllers/My/MyCheckOutViewController.m; sourceTree = "<group>"; };
+		E94324D81C43C059004C1886 /* MyCheckOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCheckOutTableViewCell.h; path = ViewControllers/My/MyCheckOutTableViewCell.h; sourceTree = "<group>"; };
+		E94324D91C43C059004C1886 /* MyCheckOutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCheckOutTableViewCell.m; path = ViewControllers/My/MyCheckOutTableViewCell.m; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
 		E947EE7A1B2B18AE00012957 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DOPDropDownMenu.h; path = Vendors/DOPDropDownMenu/DOPDropDownMenu.h; sourceTree = "<group>"; };
@@ -965,6 +983,56 @@
 			name = SlideInView;
 			sourceTree = "<group>";
 		};
+		E94324D31C43B546004C1886 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				E9DEFE0F1C3E693200B91771 /* MyCartViewController.h */,
+				E9DEFE101C3E693200B91771 /* MyCartViewController.m */,
+				E9DEFE151C3E728600B91771 /* MyOrderViewController.h */,
+				E9DEFE161C3E728600B91771 /* MyOrderViewController.m */,
+				E94324D51C43B582004C1886 /* MyCheckOutViewController.h */,
+				E94324D61C43B582004C1886 /* MyCheckOutViewController.m */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		E94324D41C43B55B004C1886 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				E96F4B3D1BAC076A0033186D /* MyLoginSelectViewController.h */,
+				E96F4B3E1BAC076A0033186D /* MyLoginSelectViewController.m */,
+				E963CDA21B9815CD00FA250E /* MyWantListViewController.h */,
+				E963CDA31B9815CD00FA250E /* MyWantListViewController.m */,
+				E9B901B21AC93E3C001F4EA0 /* MyViewController.h */,
+				E9B901B31AC93E3C001F4EA0 /* MyViewController.m */,
+				E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */,
+				E937AD001B064A2900D5386A /* MyAboutUsViewController.m */,
+				E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */,
+				E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */,
+				E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */,
+				E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */,
+				E999974A1BE334F700B322D0 /* MyLoginViewController.h */,
+				E999974B1BE334F700B322D0 /* MyLoginViewController.m */,
+				E9F6E26F1BE4961B006C4140 /* RegisterViewController.h */,
+				E9F6E2701BE4961B006C4140 /* RegisterViewController.m */,
+				E9CBB1CF1BE739510087194E /* UserProtocolViewController.h */,
+				E9CBB1D01BE739510087194E /* UserProtocolViewController.m */,
+				E9171B7C1BE89AE000923C1E /* MyInfoViewController.h */,
+				E9171B7D1BE89AE000923C1E /* MyInfoViewController.m */,
+				E9FA2C9B1BE9CB54009E7C10 /* MyInfoNickNameViewController.h */,
+				E9FA2C9C1BE9CB54009E7C10 /* MyInfoNickNameViewController.m */,
+				E9FA2C9E1BE9CB66009E7C10 /* MyInfoSexViewController.h */,
+				E9FA2C9F1BE9CB66009E7C10 /* MyInfoSexViewController.m */,
+				E9A356061BEC58610027C8AC /* MyInfoMobileViewController.h */,
+				E9A356071BEC58610027C8AC /* MyInfoMobileViewController.m */,
+				E9DEFDF81C3B9EFF00B91771 /* MyWebViewController.h */,
+				E9DEFDF91C3B9EFF00B91771 /* MyWebViewController.m */,
+				E9DEFDFB1C3B9FF400B91771 /* MyAddressViewController.h */,
+				E9DEFDFC1C3B9FF400B91771 /* MyAddressViewController.m */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
 		E947EE791B2B188F00012957 /* DropMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1245,40 +1313,8 @@
 		E9B901A81AC93D12001F4EA0 /* My */ = {
 			isa = PBXGroup;
 			children = (
-				E96F4B3D1BAC076A0033186D /* MyLoginSelectViewController.h */,
-				E96F4B3E1BAC076A0033186D /* MyLoginSelectViewController.m */,
-				E963CDA21B9815CD00FA250E /* MyWantListViewController.h */,
-				E963CDA31B9815CD00FA250E /* MyWantListViewController.m */,
-				E9B901B21AC93E3C001F4EA0 /* MyViewController.h */,
-				E9B901B31AC93E3C001F4EA0 /* MyViewController.m */,
-				E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */,
-				E937AD001B064A2900D5386A /* MyAboutUsViewController.m */,
-				E9A28F5D1B00B06100ABAA13 /* MyFeedBackViewController.h */,
-				E9A28F5E1B00B06100ABAA13 /* MyFeedBackViewController.m */,
-				E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */,
-				E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */,
-				E999974A1BE334F700B322D0 /* MyLoginViewController.h */,
-				E999974B1BE334F700B322D0 /* MyLoginViewController.m */,
-				E9F6E26F1BE4961B006C4140 /* RegisterViewController.h */,
-				E9F6E2701BE4961B006C4140 /* RegisterViewController.m */,
-				E9CBB1CF1BE739510087194E /* UserProtocolViewController.h */,
-				E9CBB1D01BE739510087194E /* UserProtocolViewController.m */,
-				E9171B7C1BE89AE000923C1E /* MyInfoViewController.h */,
-				E9171B7D1BE89AE000923C1E /* MyInfoViewController.m */,
-				E9FA2C9B1BE9CB54009E7C10 /* MyInfoNickNameViewController.h */,
-				E9FA2C9C1BE9CB54009E7C10 /* MyInfoNickNameViewController.m */,
-				E9FA2C9E1BE9CB66009E7C10 /* MyInfoSexViewController.h */,
-				E9FA2C9F1BE9CB66009E7C10 /* MyInfoSexViewController.m */,
-				E9A356061BEC58610027C8AC /* MyInfoMobileViewController.h */,
-				E9A356071BEC58610027C8AC /* MyInfoMobileViewController.m */,
-				E9DEFDF81C3B9EFF00B91771 /* MyWebViewController.h */,
-				E9DEFDF91C3B9EFF00B91771 /* MyWebViewController.m */,
-				E9DEFDFB1C3B9FF400B91771 /* MyAddressViewController.h */,
-				E9DEFDFC1C3B9FF400B91771 /* MyAddressViewController.m */,
-				E9DEFE0F1C3E693200B91771 /* MyCartViewController.h */,
-				E9DEFE101C3E693200B91771 /* MyCartViewController.m */,
-				E9DEFE151C3E728600B91771 /* MyOrderViewController.h */,
-				E9DEFE161C3E728600B91771 /* MyOrderViewController.m */,
+				E94324D41C43B55B004C1886 /* Info */,
+				E94324D31C43B546004C1886 /* Cart */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1286,6 +1322,12 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E94324C71C43A33B004C1886 /* iconCart.png */,
+				E94324C81C43A33B004C1886 /* iconCart@2x.png */,
+				E94324C91C43A33B004C1886 /* iconCart@3x.png */,
+				E94324CA1C43A33B004C1886 /* iconFavorite.png */,
+				E94324CB1C43A33B004C1886 /* iconFavorite@2x.png */,
+				E94324CC1C43A33B004C1886 /* iconFavorite@3x.png */,
 				E9DEFE071C3E592000B91771 /* iconComplete@3x.png */,
 				E9DEFE081C3E592000B91771 /* iconConfirm@3x.png */,
 				E9DEFE091C3E592000B91771 /* iconUndelivered@3x.png */,
@@ -1427,6 +1469,8 @@
 				E9DEFE051C3E44E800B91771 /* MyOrderIconTableViewCell.m */,
 				E9DEFE121C3E6BEB00B91771 /* MyCartTableViewCell.h */,
 				E9DEFE131C3E6BEB00B91771 /* MyCartTableViewCell.m */,
+				E94324D81C43C059004C1886 /* MyCheckOutTableViewCell.h */,
+				E94324D91C43C059004C1886 /* MyCheckOutTableViewCell.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1571,6 +1615,7 @@
 				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
 				E913965C1AC14A79003AF385 /* rightNav.png in Resources */,
+				E94324D01C43A33B004C1886 /* iconFavorite.png in Resources */,
 				E95E1D101B9F17D000C88692 /* star_40.png in Resources */,
 				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
 				E96F4B381BABEB270033186D /* goLogoBg.png in Resources */,
@@ -1611,6 +1656,7 @@
 				E9D98ECB1AEDE9C7004805E5 /* iconFeedBack.png in Resources */,
 				E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */,
 				E9516E531B6FAFFB00E01C1F /* zhImg@2x.png in Resources */,
+				E94324CF1C43A33B004C1886 /* iconCart@3x.png in Resources */,
 				E9DEFE0B1C3E592000B91771 /* iconComplete@3x.png in Resources */,
 				E90990E71AAFD6D600C48688 /* Images.xcassets in Resources */,
 				E913965D1AC14A79003AF385 /* rightNav@2x.png in Resources */,
@@ -1621,6 +1667,7 @@
 				E9899F841ACCF713009722C4 /* Icon-40@2x.png in Resources */,
 				E9A1D03B1BB1953D007D635B /* redUnSelect@2x.png in Resources */,
 				E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */,
+				E94324CD1C43A33B004C1886 /* iconCart.png in Resources */,
 				E91396711AC2607E003AF385 /* trash@2x.png in Resources */,
 				E9382A6F1C03165100E447D3 /* wechatMomentBTN@2x.png in Resources */,
 				E9CB92861BD628D00051AA6B /* defaultPicSmall.png in Resources */,
@@ -1643,12 +1690,15 @@
 				E95518F31BB145A300191DE2 /* loginWeibo@2x.png in Resources */,
 				E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */,
 				E9CB928A1BD62F6E0051AA6B /* defaultPicHorizontal.png in Resources */,
+				E94324CE1C43A33B004C1886 /* iconCart@2x.png in Resources */,
 				E91396501AC111B8003AF385 /* bg-menuitem-highlighted.png in Resources */,
+				E94324D11C43A33B004C1886 /* iconFavorite@2x.png in Resources */,
 				E999974E1BE3370700B322D0 /* loginBTN@2x.png in Resources */,
 				E9899F831ACCF713009722C4 /* Icon-40.png in Resources */,
 				E95518F21BB145A300191DE2 /* loginWeChat@2x.png in Resources */,
 				E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */,
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
+				E94324D21C43A33B004C1886 /* iconFavorite@3x.png in Resources */,
 				E93CF24C1AC3F6B400247B87 /* redmind@2x.png in Resources */,
 				E91396751AC261F0003AF385 /* checkboxUncheck.png in Resources */,
 				E946B8EF1AC5453A00701854 /* redpoint.png in Resources */,
@@ -1763,6 +1813,7 @@
 				E98047191BB8122D00B5518A /* CitySelectViewController.m in Sources */,
 				E90EE99E1C082998004E6B20 /* CHActionSheetMapApp.m in Sources */,
 				E9CBB1D11BE739510087194E /* UserProtocolViewController.m in Sources */,
+				E94324D71C43B582004C1886 /* MyCheckOutViewController.m in Sources */,
 				E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */,
 				E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */,
 				E971842D1ABABD23005291A1 /* CocoaSecurity.m in Sources */,
@@ -1790,6 +1841,7 @@
 				E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */,
 				E90990DF1AAFD6D600C48688 /* AppDelegate.m in Sources */,
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
+				E94324DA1C43C059004C1886 /* MyCheckOutTableViewCell.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
 				E9171B841BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m in Sources */,

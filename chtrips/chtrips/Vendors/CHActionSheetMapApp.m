@@ -51,8 +51,8 @@
     }else if ([selectTitle isEqualToString:NSLocalizedString(@"baidumap", nil)]) {
         self.appUrl = [NSURL URLWithString:@"baidumap://"];
     }else if ([selectTitle isEqualToString:NSLocalizedString(@"comgooglemaps", nil)]){
-//        self.appUrl = [NSURL URLWithString:@"comgooglemaps://"];
-        self.appUrl = [NSURL URLWithString:_googleMap];
+        NSString *tmpUrl = [[NSString stringWithFormat:@"%@", _googleMap]    stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        self.appUrl = [NSURL URLWithString:tmpUrl];
     }else {
         NSString *tmpUrl = [[NSString stringWithFormat:@"http://maps.apple.com/?q=%@", self.address] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         self.appUrl = [NSURL URLWithString:tmpUrl];

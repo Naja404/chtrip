@@ -186,10 +186,12 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
             if (indexPath.row == 0) {
 //                titleText = @"TEXT_CELL_BUY_LIST";
                 titleText = @"TEXT_MY_CART";
-                imgPath = @"iconBuyList";
+//                imgPath = @"iconBuyList";
+                imgPath = @"iconCart";
             }else if (indexPath.row == 1){
                 titleText = @"TEXT_MY_WANT_GO";
-                imgPath = @"iconLikeGo";
+//                imgPath = @"iconLikeGo";
+                imgPath = @"iconFavorite";
             }
         }
         
