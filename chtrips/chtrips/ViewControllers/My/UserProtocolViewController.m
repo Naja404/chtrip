@@ -29,7 +29,7 @@
 
 
 - (void) setupStyle {
-    self.navigationItem.title = NSLocalizedString(@"TEXT_USER_PROTOCOL", nil);
+
     self.webView = [[UIWebView alloc] initForAutoLayout];
     [self.view addSubview:_webView];
     
@@ -40,7 +40,10 @@
     
     self.webView.delegate = self;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.nijigo.com/Product/userProtocol"]];
+    if (_webUrl == NULL) _webUrl = @"http://api.nijigo.com/Product/userProtocol";
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_webUrl]];
+    
     [self.webView loadRequest:request];
     
 }

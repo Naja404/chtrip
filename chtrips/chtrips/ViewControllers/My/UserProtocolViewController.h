@@ -10,4 +10,6 @@
 
 @interface UserProtocolViewController : UIViewController
 
+@property (nonatomic, strong) NSString *webUrl;
+
 @end

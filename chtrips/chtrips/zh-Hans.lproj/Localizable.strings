@@ -115,6 +115,11 @@
 "TEXT_COMPLETE" = "交易完成";
 "TEXT_MY_CART" = "购物车";
 "TEXT_CONFIRM_ORDER" = "确认订单";
+"TEXT_SHIPPING_ADDRESS" = "配送地址";
+"TEXT_CONFIRM_PRICE" = "确认价格";
+"TEXT_SHIPPING_TYPE" = "配送方式";
+"TEXT_PAYMENT_TYPE" = "支付方式";
+"TEXT_USER_NEED" = "用户须知";
 
 // input
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";

@@ -144,6 +144,7 @@
 
 - (void) viewProtocol {
     UserProtocolViewController *userProVC = [[UserProtocolViewController alloc] init];
+    userProVC.navigationItem.title = NSLocalizedString(@"TEXT_USER_PROTOCOL", nil);
     [self.navigationController pushViewController:userProVC animated:YES];
 }
 

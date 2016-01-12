@@ -11,5 +11,8 @@
 @interface MyCheckOutTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *titleLB;
+@property (nonatomic, strong) UILabel *priceLB;
+@property (nonatomic, strong) UILabel *shippingLB;
+@property (nonatomic, strong) UIImageView *selectImg;
 
 @end
