@@ -119,6 +119,11 @@
 "TEXT_SHIPPING_TYPE" = "配送方式";
 "TEXT_PAYMENT_TYPE" = "支付方式";
 "TEXT_USER_NEED" = "用户须知";
+"TEXT_ADD_SUCCESS" = "添加成功";
+"TEXT_EDIT_SUCCESS" = "修改成功";
+"TEXT_ENTER_ERR" = "请完整填写信息";
+"TEXT_ADD_ADDRESS" = "添加收货地址";
+"TEXT_EDIT_ADDRESS" = "编辑收货地址";
 
 // input 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";

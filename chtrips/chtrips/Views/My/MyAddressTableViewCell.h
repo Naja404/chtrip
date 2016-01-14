@@ -10,4 +10,9 @@
 
 @interface MyAddressTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *nameLB;
+@property (nonatomic, strong) UILabel *mobileLB;
+@property (nonatomic, strong) UILabel *addressLB;
+@property (nonatomic, strong) UILabel *lineLB;
+
 @end

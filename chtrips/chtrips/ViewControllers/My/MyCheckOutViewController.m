@@ -8,7 +8,7 @@
 
 #import "MyCheckOutViewController.h"
 #import "MyCheckOutTableViewCell.h"
-#import "UserProtocolViewController.h"
+#import "MyAddressViewController.h"
 
 static NSString * const MY_CHECKOUT_CELL = @"myCheckOutCell";
 static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
@@ -213,10 +213,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        UserProtocolViewController *webView = [[UserProtocolViewController alloc] init];
-        
-        webView.webUrl = @"http://api.nijigo.com/User/addAddress";
-        webView.navigationItem.title = @"地址选择";
+        MyAddressViewController *webView = [[MyAddressViewController alloc] init];
         [self.navigationController pushViewController:webView animated:YES];
     }
 }

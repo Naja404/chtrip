@@ -8,16 +8,23 @@
 
 #import "MyAddressViewController.h"
 #import "MyAddressTableViewCell.h"
+#import "MyWebViewController.h"
 
 static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
 
 @interface MyAddressViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myAddressTV;
+@property (nonatomic, strong) NSArray *myAddressData;
+@property (nonatomic, strong) NSString *addUrl;
 
 @end
 
 @implementation MyAddressViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self getAddress];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,6 +32,7 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
     [self setStyle];
+    [self getAddress];
 }
 
 - (void) setStyle {
@@ -45,24 +53,98 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
     
     [_myAddressTV registerClass:[MyAddressTableViewCell class] forCellReuseIdentifier:MY_ADDRESS_CELL];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"新增" style:UIBarButtonItemStyleDone target:self action:@selector(pushAddressVC)];
+    
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
-}
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ([_myAddressData count] <= 0) {
+        return 0;
+    }else{
+        return [_myAddressData count];
+    }
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 60;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_ADDRESS_CELL forIndexPath:indexPath];
     
+    NSDictionary *tmpData = [_myAddressData objectAtIndex:indexPath.row];
+    
+    cell.nameLB.text = [tmpData objectForKey:@"name"];
+    cell.mobileLB.text = [tmpData objectForKey:@"mobile"];
+    cell.addressLB.text = [tmpData objectForKey:@"address"];
+    
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSDictionary *tmpData = [_myAddressData objectAtIndex:indexPath.row];
+    
+    MyWebViewController *webVC = [[MyWebViewController alloc] init];
+    
+    webVC.navigationItem.title = NSLocalizedString(@"TEXT_EDIT_ADDRESS", nil);
+    webVC.webUrl = [tmpData objectForKey:@"edit_url"];
+    webVC.actionName = @"editAddress";
+    [self.navigationController pushViewController:webVC animated:YES];
+}
+
+#pragma mark - 获取收货地址
+- (void) getAddress {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/getAddress"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSDictionary *tmp = [result objectForKey:@"data"];
+                                          _myAddressData = [tmp objectForKey:@"list"];
+                                          _addUrl = [tmp objectForKey:@"add_url"];
+                                          
+                                          if (_myAddressTV != NULL) {
+                                              if ([_myAddressData count] > 0) {
+                                                  _myAddressTV.hidden = NO;
+                                                  [_myAddressTV reloadData];
+                                              }else{
+                                                  _myAddressTV.hidden = YES;
+                                                  [self setEmptyStyle];
+                                              }
+                                          }
+                                      }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          
+                                      }];
+}
+
+#pragma mark - 设置空数据样式
+- (void) setEmptyStyle {
+    UILabel *defaultLB = [UILabel newAutoLayoutView];
+    [self.view addSubview:defaultLB];
+    
+    [defaultLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [defaultLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [defaultLB autoSetDimensionsToSize:CGSizeMake(150, 30)];
+    defaultLB.backgroundColor = [UIColor clearColor];
+    defaultLB.textAlignment = NSTextAlignmentCenter;
+    defaultLB.text = @"暂无收货地址";
+    defaultLB.textColor = [UIColor grayColor];
+}
+
+- (void) pushAddressVC {
+    MyWebViewController *webVC = [[MyWebViewController alloc] init];
+    
+    webVC.webUrl = _addUrl;
+    webVC.navigationItem.title = NSLocalizedString(@"TEXT_ADD_ADDRESS", nil);
+    webVC.actionName = @"subAddress";
+    
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,4 +10,7 @@
 
 @interface MyWebViewController : UIViewController
 
+@property (nonatomic, strong) NSString *webUrl;
+@property (nonatomic, strong) NSString *actionName;
+
 @end
