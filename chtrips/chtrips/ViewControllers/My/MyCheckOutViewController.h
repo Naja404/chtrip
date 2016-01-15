@@ -10,4 +10,6 @@
 
 @interface MyCheckOutViewController : UIViewController
 
+@property (nonatomic, strong) NSString *addressId;
+
 @end

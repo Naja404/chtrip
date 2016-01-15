@@ -9,6 +9,7 @@
 #import "MyCheckOutViewController.h"
 #import "MyCheckOutTableViewCell.h"
 #import "MyAddressViewController.h"
+#import "MyWebViewController.h"
 
 static NSString * const MY_CHECKOUT_CELL = @"myCheckOutCell";
 static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
@@ -24,13 +25,24 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 @property (nonatomic, strong) NSArray *sectionTitleArr;
 @property (nonatomic, strong) NSArray *shipArr;
 @property (nonatomic, strong) NSDictionary *checkOutDic;
+@property (nonatomic, strong) NSDictionary *addressDic;
+@property (nonatomic, strong) NSString *shipType;
 
 @end
 
 @implementation MyCheckOutViewController
 
 - (void) viewWillAppear:(BOOL)animated {
-    [self getPreCheckOut:@"1"];
+    
+    NSString *tmpId = [[TMCache sharedCache] objectForKey:@"addressId"];
+    if (tmpId != nil) {
+        
+        _addressId = tmpId;
+        
+        [[TMCache sharedCache] removeObjectForKey:@"addressId"];
+    }
+    
+    [self getPreCheckOut:_shipType addressId:_addressId];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -45,7 +57,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     [self setStyle];
-    [self getPreCheckOut:@"1"];
+    [self getPreCheckOut:_shipType addressId:_addressId];
 }
 
 #pragma mark - 初始化样式
@@ -89,6 +101,8 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                          NSLocalizedString(@"TEXT_USER_NEED", nil)];
     
 //    _shipArr = @[@"EMS", @"航空件", @"船运"];
+    _addressId = @"0";
+    _shipType = @"1";
     
 }
 
@@ -107,7 +121,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 || indexPath.section == 3) {
         return 80;
     }else if (indexPath.section == 1){
         if (indexPath.row == 1) {
@@ -147,18 +161,20 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_CHECKOUT_CELL forIndexPath:indexPath];
-    cell.titleLB.text = @"商品价格";
-    cell.priceLB.text = @"$100.00";
+//    cell.titleLB.text = @"商品价格";
+//    cell.priceLB.text = @"$100.00";
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if (indexPath.section == 0) {
         cell.titleLB.text = @"请选择配送地址";
         cell.priceLB.text = @"";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        NSString *hasAddress = @"yes";
-        if ([hasAddress isEqualToString:@"no"]) {
+
+        if ([_addressDic count] > 0) {
             [cell removeFromSuperview];
             MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_ADDRESS_CELL forIndexPath:indexPath];
-            cell.titleLB.text = @"王子林";
-            cell.shippingLB.text = @"上海市市辖区黄浦区制造局路787号112室\n13916656990";
+            cell.titleLB.text = [_addressDic objectForKey:@"name"];
+            cell.shippingLB.text = [_addressDic objectForKey:@"address"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
@@ -199,7 +215,13 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         
         return cell;
     }else if (indexPath.section == 3){
+        [cell removeFromSuperview];
         
+        MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_PAYMENT_CELL forIndexPath:indexPath];
+        cell.tapPayAction = ^(NSInteger index){
+            NSLog(@"click index %ld", (long)index);
+        };
+        return cell;
     }else{
         [cell removeFromSuperview];
         MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_USER_CELL forIndexPath:indexPath];
@@ -213,26 +235,47 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        MyAddressViewController *webView = [[MyAddressViewController alloc] init];
-        [self.navigationController pushViewController:webView animated:YES];
+        MyAddressViewController *addressV = [[MyAddressViewController alloc] init];
+        addressV.hasEdit = NO;
+        if ([_addressDic count] > 0) {
+            addressV.selectedID = [_addressDic objectForKey:@"id"];
+        }
+        [self.navigationController pushViewController:addressV animated:YES];
+    }else if(indexPath.section == 2){
+        _shipType = [[_shipArr objectAtIndex:indexPath.row] objectForKey:@"id"];
+        
+        [self getPreCheckOut:_shipType addressId:_addressId];
+    }else if (indexPath.section == 4) {
+        MyWebViewController *webVC = [[MyWebViewController alloc] init];
+        
+        webVC.webUrl = @"http://api.nijigo.com/Product/userProtocol/type/1.html";
+        
+        webVC.navigationItem.title = @"用户须知";
+        
+        [self.navigationController pushViewController:webVC animated:YES];
     }
 }
 
 #pragma mark - 获取预览数据
-- (void) getPreCheckOut:(NSString *)shipType {
+- (void) getPreCheckOut:(NSString *)shipType addressId:(NSString *)addressId {
     
     [SVProgressHUD show];
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
-    [paramter setObject:shipType forKey:@"type"];
+    [paramter setObject:addressId forKey:@"aid"];
+    [paramter setObject:shipType forKey:@"ship"];
     
     [[HttpManager instance] requestWithMethod:@"User/preCheckOut"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
+                                          
                                           _checkOutDic = [result objectForKey:@"data"];
                                           
+                                          NSLog(@"checkout data is %@", _checkOutDic);
+                                          
                                           _shipArr = [_checkOutDic objectForKey:@"shipping_type"];
+                                          _addressDic = [_checkOutDic objectForKey:@"address"];
                                           
                                           [_checkoutTV reloadData];
                                           
@@ -240,9 +283,6 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
-    
-    
-    
 }
 
 #pragma mark - 设置价格样式

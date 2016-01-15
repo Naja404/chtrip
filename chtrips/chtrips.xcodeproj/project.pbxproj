@@ -83,6 +83,8 @@
 		E94324D21C43A33B004C1886 /* iconFavorite@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324CC1C43A33B004C1886 /* iconFavorite@3x.png */; };
 		E94324D71C43B582004C1886 /* MyCheckOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94324D61C43B582004C1886 /* MyCheckOutViewController.m */; };
 		E94324DA1C43C059004C1886 /* MyCheckOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94324D91C43C059004C1886 /* MyCheckOutTableViewCell.m */; };
+		E94324E31C48E9FE004C1886 /* logoAlipay.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324E11C48E9FE004C1886 /* logoAlipay.png */; };
+		E94324E41C48E9FE004C1886 /* logoWeChat.png in Resources */ = {isa = PBXBuildFile; fileRef = E94324E21C48E9FE004C1886 /* logoWeChat.png */; };
 		E946B8EF1AC5453A00701854 /* redpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8ED1AC5453A00701854 /* redpoint.png */; };
 		E946B8F01AC5453A00701854 /* yellowpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E946B8EE1AC5453A00701854 /* yellowpoint.png */; };
 		E947EE7F1B2B18AE00012957 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E947EE7B1B2B18AE00012957 /* DOPDropDownMenu.m */; };
@@ -394,6 +396,8 @@
 		E94324D61C43B582004C1886 /* MyCheckOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCheckOutViewController.m; path = ViewControllers/My/MyCheckOutViewController.m; sourceTree = "<group>"; };
 		E94324D81C43C059004C1886 /* MyCheckOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCheckOutTableViewCell.h; path = ViewControllers/My/MyCheckOutTableViewCell.h; sourceTree = "<group>"; };
 		E94324D91C43C059004C1886 /* MyCheckOutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCheckOutTableViewCell.m; path = ViewControllers/My/MyCheckOutTableViewCell.m; sourceTree = "<group>"; };
+		E94324E11C48E9FE004C1886 /* logoAlipay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoAlipay.png; path = Resource/logoAlipay.png; sourceTree = "<group>"; };
+		E94324E21C48E9FE004C1886 /* logoWeChat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoWeChat.png; path = Resource/logoWeChat.png; sourceTree = "<group>"; };
 		E946B8ED1AC5453A00701854 /* redpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpoint.png; path = Resource/redpoint.png; sourceTree = "<group>"; };
 		E946B8EE1AC5453A00701854 /* yellowpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowpoint.png; path = Resource/yellowpoint.png; sourceTree = "<group>"; };
 		E947EE7A1B2B18AE00012957 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DOPDropDownMenu.h; path = Vendors/DOPDropDownMenu/DOPDropDownMenu.h; sourceTree = "<group>"; };
@@ -1322,6 +1326,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E94324E11C48E9FE004C1886 /* logoAlipay.png */,
+				E94324E21C48E9FE004C1886 /* logoWeChat.png */,
 				E94324C71C43A33B004C1886 /* iconCart.png */,
 				E94324C81C43A33B004C1886 /* iconCart@2x.png */,
 				E94324C91C43A33B004C1886 /* iconCart@3x.png */,
@@ -1611,6 +1617,7 @@
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
 				E95EBFE21B8802BD001BD221 /* arrowLeft.png in Resources */,
 				E90EE9A11C085F35004E6B20 /* share.png in Resources */,
+				E94324E31C48E9FE004C1886 /* logoAlipay.png in Resources */,
 				E95C3D001B4970E40010EF58 /* WebViewJavascriptBridge.js.txt in Resources */,
 				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
 				E91396741AC261F0003AF385 /* checkboxChecked.png in Resources */,
@@ -1723,6 +1730,7 @@
 				E91396591AC111B8003AF385 /* icon-star@2x.png in Resources */,
 				E9899F861ACCF713009722C4 /* Icon-60@2x.png in Resources */,
 				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
+				E94324E41C48E9FE004C1886 /* logoWeChat.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
 				E95E1D121B9F17D000C88692 /* star_50.png in Resources */,
 				E95E1D081B9F17D000C88692 /* star_0.png in Resources */,

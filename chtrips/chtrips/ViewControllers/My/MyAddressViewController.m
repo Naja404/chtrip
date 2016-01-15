@@ -9,6 +9,7 @@
 #import "MyAddressViewController.h"
 #import "MyAddressTableViewCell.h"
 #import "MyWebViewController.h"
+#import "MyCheckOutViewController.h"
 
 static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
 
@@ -17,6 +18,7 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
 @property (nonatomic, strong) UITableView *myAddressTV;
 @property (nonatomic, strong) NSArray *myAddressData;
 @property (nonatomic, strong) NSString *addUrl;
+@property (nonatomic, strong) UILabel *defaultLB;
 
 @end
 
@@ -37,6 +39,8 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
 
 - (void) setStyle {
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.navigationItem.title = NSLocalizedString(@"TEXT_MY_ADDRESS", nil);
     
     self.myAddressTV = [UITableView newAutoLayoutView];
@@ -54,6 +58,7 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
     [_myAddressTV registerClass:[MyAddressTableViewCell class] forCellReuseIdentifier:MY_ADDRESS_CELL];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"新增" style:UIBarButtonItemStyleDone target:self action:@selector(pushAddressVC)];
+    [self setEmptyStyle];
     
 }
 
@@ -82,19 +87,32 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
     cell.mobileLB.text = [tmpData objectForKey:@"mobile"];
     cell.addressLB.text = [tmpData objectForKey:@"address"];
     
+    if (_hasEdit == NO) {
+        if ([_selectedID isEqualToString:[tmpData objectForKey:@"id"]]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    
     return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     NSDictionary *tmpData = [_myAddressData objectAtIndex:indexPath.row];
     
-    MyWebViewController *webVC = [[MyWebViewController alloc] init];
+    if (_hasEdit == YES) {
     
-    webVC.navigationItem.title = NSLocalizedString(@"TEXT_EDIT_ADDRESS", nil);
-    webVC.webUrl = [tmpData objectForKey:@"edit_url"];
-    webVC.actionName = @"editAddress";
-    [self.navigationController pushViewController:webVC animated:YES];
+        MyWebViewController *webVC = [[MyWebViewController alloc] init];
+        
+        webVC.navigationItem.title = NSLocalizedString(@"TEXT_EDIT_ADDRESS", nil);
+        webVC.webUrl = [tmpData objectForKey:@"edit_url"];
+        webVC.actionName = @"editAddress";
+        [self.navigationController pushViewController:webVC animated:YES];
+    }else{
+        [[TMCache sharedCache] setObject:[tmpData objectForKey:@"id"] forKey:@"addressId"];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - 获取收货地址
@@ -111,11 +129,12 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
                                           
                                           if (_myAddressTV != NULL) {
                                               if ([_myAddressData count] > 0) {
+                                                  _defaultLB.hidden = YES;
                                                   _myAddressTV.hidden = NO;
                                                   [_myAddressTV reloadData];
                                               }else{
                                                   _myAddressTV.hidden = YES;
-                                                  [self setEmptyStyle];
+                                                  _defaultLB.hidden = NO;
                                               }
                                           }
                                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -125,16 +144,17 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
 
 #pragma mark - 设置空数据样式
 - (void) setEmptyStyle {
-    UILabel *defaultLB = [UILabel newAutoLayoutView];
-    [self.view addSubview:defaultLB];
+    _defaultLB = [UILabel newAutoLayoutView];
+    [self.view addSubview:_defaultLB];
     
-    [defaultLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
-    [defaultLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
-    [defaultLB autoSetDimensionsToSize:CGSizeMake(150, 30)];
-    defaultLB.backgroundColor = [UIColor clearColor];
-    defaultLB.textAlignment = NSTextAlignmentCenter;
-    defaultLB.text = @"暂无收货地址";
-    defaultLB.textColor = [UIColor grayColor];
+    [_defaultLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view];
+    [_defaultLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.view];
+    [_defaultLB autoSetDimensionsToSize:CGSizeMake(150, 30)];
+    _defaultLB.backgroundColor = [UIColor clearColor];
+    _defaultLB.textAlignment = NSTextAlignmentCenter;
+    _defaultLB.text = @"暂无收货地址";
+    _defaultLB.textColor = [UIColor grayColor];
+    _defaultLB.hidden = YES;
 }
 
 - (void) pushAddressVC {

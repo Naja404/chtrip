@@ -13,6 +13,7 @@
 #import "MyInfoSexViewController.h"
 #import "ZBPhotoTaker.h"
 #import "MyInfoMobileViewController.h"
+#import "MyAddressViewController.h"
 
 static NSString * const MY_INFO_CELL = @"myInfoCell";
 static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
@@ -113,9 +114,9 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
     }else{
         MyInfoNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_NORMAL_CELL];
         
-        if (indexPath.row != 2) {
+//        if (indexPath.row != 2) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;// 右侧箭头
-        }
+//        }
         
         if (indexPath.row == 4) {
             cell.cutLineLB.hidden = YES;
@@ -155,7 +156,9 @@ static NSString * const MY_INFO_NORMAL_CELL = @"myNormalCell";
         sexVC.sex = [NSString stringWithFormat:@"%@", [[[TMCache sharedCache] objectForKey:@"userInfo"] objectAtIndex:indexPath.row]];
         [self.navigationController pushViewController:sexVC animated:YES];
     }else if (indexPath.row == 4) {
-        
+        MyAddressViewController *addressVC = [[MyAddressViewController alloc] init];
+        addressVC.hasEdit = YES;
+        [self.navigationController pushViewController:addressVC animated:YES];
     }
 }
 

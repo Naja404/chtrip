@@ -10,4 +10,7 @@
 
 @interface MyAddressViewController : UIViewController
 
+@property (nonatomic, assign) BOOL hasEdit;
+@property (nonatomic, strong) NSString *selectedID;
+
 @end

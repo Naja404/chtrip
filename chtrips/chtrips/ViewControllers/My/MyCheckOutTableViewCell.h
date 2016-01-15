@@ -14,5 +14,7 @@
 @property (nonatomic, strong) UILabel *priceLB;
 @property (nonatomic, strong) UILabel *shippingLB;
 @property (nonatomic, strong) UIImageView *selectImg;
+@property (nonatomic, strong) void (^tapPayAction)(NSInteger index);
+@property (nonatomic, strong) NSMutableArray *controlArr;
 
 @end

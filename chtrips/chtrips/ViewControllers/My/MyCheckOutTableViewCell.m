@@ -8,6 +8,7 @@
 
 #import "MyCheckOutTableViewCell.h"
 
+
 @implementation MyCheckOutTableViewCell
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -91,6 +92,45 @@
             _shippingLB.font = FONT_SIZE_14;
         }else if ([reuseIdentifier isEqualToString:@"myPaymentCell"]){
             
+            NSArray *tmpArr = @[@"logoWeChat", @"logoAlipay"];
+            NSArray *tmpTitle = @[@"微信支付", @"支付宝"];
+            
+            _controlArr = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < 2; i++) {
+                UIControl *bgView = [[UIControl alloc] initWithFrame:CGRectMake(ScreenWidth / 2 * i, 0, ScreenWidth / 2, 80)];
+                bgView.tag = i + 1;
+                
+                UIImageView *logoImg = [UIImageView newAutoLayoutView];
+                [bgView addSubview:logoImg];
+                
+                [logoImg autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
+                [logoImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
+                [logoImg autoSetDimensionsToSize:CGSizeMake(35, 35)];
+                logoImg.image = [UIImage imageNamed:[tmpArr objectAtIndex:i]];
+                
+                if (i == 0) {
+                    bgView.backgroundColor = RED_COLOR_BG;
+                }else{
+                    bgView.backgroundColor = [UIColor whiteColor];
+                }
+                
+                UILabel *titleLB = [UILabel newAutoLayoutView];
+                [bgView addSubview:titleLB];
+                
+                [titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:logoImg];
+                [titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
+                [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2 - 20, 20)];
+                titleLB.text = [tmpTitle objectAtIndex:i];
+                titleLB.textAlignment = NSTextAlignmentCenter;
+                
+                [bgView addTarget:self action:@selector(tapBgView:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [_controlArr addObject:bgView];
+                
+                [self.contentView addSubview:bgView];
+            }
+            
         }else if ([reuseIdentifier isEqualToString:@"myUserNeedCell"]){
             self.titleLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_titleLB];
@@ -122,6 +162,17 @@
     }
     
     return self;
+}
+
+- (void) tapBgView:(UIControl *) control {
+    [_controlArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj tag] == control.tag) {
+            [obj setBackgroundColor:RED_COLOR_BG];
+        }else{
+            [obj setBackgroundColor:[UIColor whiteColor]];
+        }
+    }];
+    _tapPayAction(control.tag);
 }
 
 - (void)awakeFromNib {
