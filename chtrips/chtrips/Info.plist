@@ -23,8 +23,10 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.caihongtown.chtrip</string>
+			<string>com.nijigo.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>nijigo</string>
@@ -37,7 +39,7 @@
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxaa9423c2b77e86bb</string>
+				<string>wx140bb397338ea49a</string>
 			</array>
 		</dict>
 	</array>

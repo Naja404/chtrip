@@ -11,10 +11,13 @@
 #define chtrips_ConfigDefine_h
 
 // 微信appid
-static NSString *WXAppId = @"wxaa9423c2b77e86bb";
+static NSString *WXAppId = @"wx140bb397338ea49a";
 static NSString *WXAuthScope = @"snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact";
 static NSString *WXAuthOpenID = @"0";
 static NSString *WXAuthState = @"nijigoWechatLogin";
+static NSString *WXPartnerID = @"1308432801";
+static NSString *WXPayAPI = @"4B0F17F38B688EE55855ABF16348E6E1";
+static NSString *WXpackage = @"Sign=WXPay";
 
 static NSString *CHVersion = @"0.9.4";
 
