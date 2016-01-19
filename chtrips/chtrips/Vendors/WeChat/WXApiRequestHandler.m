@@ -225,7 +225,7 @@
     return [WXApi sendReq:req];
 }
 
-+ (NSString *)jumpToBizPay {
++ (NSString *)jumpToBizPay:(NSDictionary *)respData {
     
     //============================================================
     // V3&V4支付流程实现
@@ -279,6 +279,19 @@
     }else{
         return @"服务器返回错误";
     }
+}
+
++ (BOOL) jumpToWXPay:(NSDictionary *)reqDic {
+    //调起微信支付
+    PayReq* req             = [[[PayReq alloc] init]autorelease];
+    req.partnerId           = [reqDic objectForKey:@"partnerid"];
+    req.prepayId            = [reqDic objectForKey:@"prepayid"];
+    req.nonceStr            = [reqDic objectForKey:@"noncestr"];
+    req.timeStamp           = [[reqDic objectForKey:@"timestamp"] intValue];
+    req.package             = [reqDic objectForKey:@"package"];
+    req.sign                = [reqDic objectForKey:@"sign"];
+    
+    return [WXApi sendReq:req];
 }
 
 @end

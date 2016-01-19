@@ -74,6 +74,8 @@
                         tousrname:(NSString *)tousrname
                            ExtMsg:(NSString *)extMsg;
 
-+ (NSString *)jumpToBizPay;
++ (NSString *)jumpToBizPay:(NSDictionary *)reqDic;
 
+// 自定义微信支付跳转
++ (BOOL)jumpToWXPay:(NSDictionary *)reqDic;
 @end

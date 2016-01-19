@@ -10,6 +10,9 @@
 #import "MyCheckOutTableViewCell.h"
 #import "MyAddressViewController.h"
 #import "MyWebViewController.h"
+#import "WXApiManager.h"
+#import "WXApiRequestHandler.h"
+#import "MyOrderViewController.h"
 
 static NSString * const MY_CHECKOUT_CELL = @"myCheckOutCell";
 static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
@@ -18,7 +21,7 @@ static NSString * const MY_SHIPPING_SELECT_CELL = @"myShippingSelectCell";
 static NSString * const MY_PAYMENT_CELL = @"myPaymentCell";
 static NSString * const MY_USER_CELL = @"myUserNeedCell";
 
-@interface MyCheckOutViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MyCheckOutViewController ()<UITableViewDelegate, UITableViewDataSource, WXApiManagerDelegate>
 
 @property (nonatomic, strong) UITableView *checkoutTV;
 @property (nonatomic, strong) UIButton *checkOutBTN;
@@ -27,6 +30,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 @property (nonatomic, strong) NSDictionary *checkOutDic;
 @property (nonatomic, strong) NSDictionary *addressDic;
 @property (nonatomic, strong) NSString *shipType;
+@property (nonatomic, strong) NSString *payType;
 
 @end
 
@@ -54,6 +58,9 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     [super viewDidLoad];
     [self customizeBackItem];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    
+    [WXApiManager sharedManager].delegate = self;
+    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     [self setStyle];
@@ -93,6 +100,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     
     [_checkOutBTN setTitle:@"确认并支付" forState:UIControlStateNormal];
     [_checkOutBTN setBackgroundColor:RED_COLOR_BG];
+    [_checkOutBTN addTarget:self action:@selector(clickCheckOutBTN) forControlEvents:UIControlEventTouchUpInside];
     
     _sectionTitleArr = @[NSLocalizedString(@"TEXT_SHIPPING_ADDRESS", nil),
                          NSLocalizedString(@"TEXT_CONFIRM_PRICE", nil),
@@ -103,6 +111,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 //    _shipArr = @[@"EMS", @"航空件", @"船运"];
     _addressId = @"0";
     _shipType = @"1";
+    _payType = @"wxpay";
     
 }
 
@@ -220,6 +229,11 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_PAYMENT_CELL forIndexPath:indexPath];
         cell.tapPayAction = ^(NSInteger index){
             NSLog(@"click index %ld", (long)index);
+            if (index == 1) {
+                _payType = @"wxpay";
+            }else if (index == 2){
+                _payType = @"alipay";
+            }
         };
         return cell;
     }else{
@@ -276,6 +290,9 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                           
                                           _shipArr = [_checkOutDic objectForKey:@"shipping_type"];
                                           _addressDic = [_checkOutDic objectForKey:@"address"];
+                                          if ([_addressDic count] > 0) {
+                                              _addressId = [_addressDic objectForKey:@"id"];
+                                          }
                                           
                                           [_checkoutTV reloadData];
                                           
@@ -297,6 +314,70 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     [text addAttribute:NSFontAttributeName value:FONT_SIZE_16 range:NSMakeRange(range.location, rangLength)];
     
     return text;
+}
+
+#pragma mark - 确认并支付按钮
+- (void) clickCheckOutBTN {
+    
+    if ([_addressId isEqualToString:@"0"]) {
+        [SVProgressHUD showErrorWithStatus:@"请选择收货地址"];
+        return;
+    }
+    
+    [SVProgressHUD show];
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:_addressId forKey:@"aid"];
+    [paramter setObject:_payType forKey:@"pay"];
+    [paramter setObject:@"1" forKey:@"ship"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/payOrder"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSLog(@"Util/setPay response is %@", result);
+                                          NSDictionary *tmp = [result objectForKey:@"data"];
+
+                                          [WXApiRequestHandler jumpToWXPay:tmp];
+                                          
+                                          [SVProgressHUD dismiss];
+                                      }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
+}
+
+
+#pragma mark - WXApiManagerDelegate
+- (void)managerDidRecvMessageResponse:(SendMessageToWXResp *)response {
+    
+    switch (response.errCode) {
+        case WXSuccess:
+            // 支付成功
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil)];
+            break;
+        case WXErrCodeCommon:
+            // 支付失败
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_FAILD", nil)];
+            break;
+        case WXErrCodeUserCancel:
+            // 用户取消支付
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_CANCEL_PAY", nil)];
+            break;
+        default:
+            [SVProgressHUD showInfoWithStatus:@"#Error App 00366"];
+            break;
+    }
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
+}
+
+- (void) performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait {
+    
+}
+
+- (void) popToRootVC {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

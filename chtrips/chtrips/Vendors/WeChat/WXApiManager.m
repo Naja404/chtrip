@@ -45,6 +45,13 @@
             AddCardToWXCardPackageResp *addCardResp = (AddCardToWXCardPackageResp *)resp;
             [_delegate managerDidRecvAddCardResponse:addCardResp];
         }
+    }else if([resp isKindOfClass:[PayResp class]]){
+        
+        if (_delegate
+            && [_delegate respondsToSelector:@selector(managerDidRecvMessageResponse:)]) {
+            SendMessageToWXResp *messageResp = (SendMessageToWXResp *)resp;
+            [_delegate managerDidRecvMessageResponse:messageResp];
+        }
     }
 }
 

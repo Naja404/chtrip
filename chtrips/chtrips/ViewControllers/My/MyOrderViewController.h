@@ -10,4 +10,7 @@
 
 @interface MyOrderViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isAlert;
+@property (nonatomic) int errCode;
+
 @end

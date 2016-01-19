@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  MyCheckOutViewControllerDelegate <NSObject>
+
+- (void) popToRootVC;
+
+@end
+
 @interface MyCheckOutViewController : UIViewController
 
 @property (nonatomic, strong) NSString *addressId;
+
+@property (nonatomic, weak) id<MyCheckOutViewControllerDelegate> myCheckOutDelegate;
 
 @end
