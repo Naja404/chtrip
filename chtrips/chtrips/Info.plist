@@ -47,6 +47,7 @@
 	<string>0.9.6</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>alipay</string>
 		<string>comgooglemaps</string>
 		<string>iosamap</string>
 		<string>baidumap</string>

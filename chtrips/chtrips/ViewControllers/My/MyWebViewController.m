@@ -24,7 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self customizeBackItem];
+    __weak typeof (self) weakSelf = self;
+    [self customizeBackItemWithCallBack:^{
+        if (_isRoot) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+    
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];

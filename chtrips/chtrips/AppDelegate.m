@@ -17,6 +17,7 @@
 #import "ChtripCDManager.h"
 
 #import "WXApiManager.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 
 @interface AppDelegate ()
@@ -118,6 +119,13 @@
 }
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"safepay %@", resultDic);
+        }];
+    }
+    
     return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 

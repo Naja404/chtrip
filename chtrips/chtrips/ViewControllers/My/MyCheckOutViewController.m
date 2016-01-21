@@ -13,6 +13,7 @@
 #import "WXApiManager.h"
 #import "WXApiRequestHandler.h"
 #import "MyOrderViewController.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 static NSString * const MY_CHECKOUT_CELL = @"myCheckOutCell";
 static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
@@ -337,8 +338,33 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                       success:^(NSDictionary *result) {
                                           NSLog(@"Util/setPay response is %@", result);
                                           NSDictionary *tmp = [result objectForKey:@"data"];
-
-                                          [WXApiRequestHandler jumpToWXPay:tmp];
+                                          
+                                          if ([_payType isEqualToString:@"wxpay"]) {
+                                              [WXApiRequestHandler jumpToWXPay:tmp];
+                                          }else if ([_payType isEqualToString:@"alipay"]){
+                                              
+                                              NSURL *tmpUrl = [NSURL URLWithString:@"alipay://"];
+                                              
+                                              if ([[UIApplication sharedApplication] canOpenURL:tmpUrl]) {
+                                                  [[AlipaySDK defaultService] payOrder:[tmp objectForKey:@"app_url"] fromScheme:@"nijigo" callback:^(NSDictionary *resultDic) {
+                                                      NSLog(@"alipay return info %@", resultDic);
+                                                      
+                                                      if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
+                                                          [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil) maskType:SVProgressHUDMaskTypeBlack];
+                                                      }else{
+                                                          [SVProgressHUD showInfoWithStatus:[resultDic objectForKey:@"memo"] maskType:SVProgressHUDMaskTypeBlack];
+                                                      }
+                                                      
+                                                      [self performSelector:@selector(popToRootVC) withObject:nil afterDelay:1.5f];
+                                                  }];
+                                              }else{
+                                                  MyWebViewController *myWebVC = [[MyWebViewController alloc] init];
+                                                  myWebVC.navigationItem.title = @"支付宝支付";
+                                                  myWebVC.webUrl = [tmp objectForKey:@"wap_url"];
+                                                  myWebVC.isRoot = YES;
+                                                  [self.navigationController pushViewController:myWebVC animated:YES];
+                                              }
+                                          }
                                           
                                           [SVProgressHUD dismiss];
                                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -353,29 +379,26 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     switch (response.errCode) {
         case WXSuccess:
             // 支付成功
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil)];
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil) maskType:SVProgressHUDMaskTypeBlack];
             break;
         case WXErrCodeCommon:
             // 支付失败
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_FAILD", nil)];
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_FAILD", nil) maskType:SVProgressHUDMaskTypeBlack];
             break;
         case WXErrCodeUserCancel:
             // 用户取消支付
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_CANCEL_PAY", nil)];
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_CANCEL_PAY", nil) maskType:SVProgressHUDMaskTypeBlack];
             break;
         default:
-            [SVProgressHUD showInfoWithStatus:@"#Error App 00366"];
+            [SVProgressHUD showInfoWithStatus:@"#Error App 00366" maskType:SVProgressHUDMaskTypeBlack];
             break;
     }
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+
+    [self performSelector:@selector(popToRootVC) withObject:nil afterDelay:1.5f];
 
 }
 
-- (void) performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait {
-    
-}
-
+#pragma mark - 返回root页面
 - (void) popToRootVC {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

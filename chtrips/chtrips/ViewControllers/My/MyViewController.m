@@ -217,21 +217,25 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.section == 0) {
         
-        if ([self.loginStatus isEqualToString:@"0"]) {
-            // 在主线程执行
-            dispatch_async(dispatch_get_main_queue(), ^{
-                MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
-                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginSelect];
-                [self.navigationController presentViewController:nav animated:YES completion:nil];
-            });
+        if (indexPath.row == 1) {
+            MyOrderViewController *myOrderVC = [[MyOrderViewController alloc] init];
+            myOrderVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myOrderVC animated:YES];
         }else{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注销登陆" message:@"是否确认注销登陆？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"注销", nil];
-//            [alert show];
-            MyInfoViewController *myInfoVC = [[MyInfoViewController alloc] init];
-            myInfoVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:myInfoVC animated:YES];
+            if ([self.loginStatus isEqualToString:@"0"]) {
+                // 在主线程执行
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginSelect];
+                    [self.navigationController presentViewController:nav animated:YES completion:nil];
+                });
+            }else{
+                MyInfoViewController *myInfoVC = [[MyInfoViewController alloc] init];
+                myInfoVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:myInfoVC animated:YES];
+            }
         }
     }
     

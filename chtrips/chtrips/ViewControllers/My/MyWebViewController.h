@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *webUrl;
 @property (nonatomic, strong) NSString *actionName;
+@property (nonatomic, assign) BOOL isRoot;
 
 @end

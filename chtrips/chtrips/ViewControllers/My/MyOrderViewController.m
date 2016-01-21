@@ -7,10 +7,11 @@
 //
 
 #import "MyOrderViewController.h"
-#import "WXApiManager.h"
-#import "WXApiRequestHandler.h"
+#import "CHTabBarControl.h"
 
 @interface MyOrderViewController ()
+
+@property (nonatomic, strong) UIView *tabBarV;
 
 @end
 
@@ -24,16 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customizeBackItem];
-//    __weak typeof (self) weakSelf = self;
-//    [self customizeBackItemWithCallBack:^{
-//        if (_isAlert) {
-//            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:^{
-//                [self.navigationController popToRootViewControllerAnimated:YES];
-//            }];
-//        }else{
-//            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-//        }
-//    }];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
@@ -42,36 +33,32 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    if (_isAlert) {
-        [self showInfo];
-    }
 }
 
 #pragma mark - 初始化样式
 - (void) setStyle {
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = NSLocalizedString(@"TEXT_ALL_ORDER", nil);
+
+    self.tabBarV = [UIView newAutoLayoutView];
+    [self.view addSubview:_tabBarV];
+    
+    [_tabBarV autoPinToTopLayoutGuideOfViewController:self withInset:0];
+    [_tabBarV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_tabBarV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 44)];
+    
+    CHTabBarControl *selectControl = [[CHTabBarControl alloc] initWithTitles:@[NSLocalizedString(@"TEXT_ALL_ORDER", nil),
+                                                                               NSLocalizedString(@"TEXT_UNPAY", nil),
+                                                                               NSLocalizedString(@"TEXT_UNDELIVERED", nil) ,
+                                                                               NSLocalizedString(@"TEXT_UNCONFIRM", nil)]];
+    [selectControl setFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    [selectControl setIndexChangeBlock:^(NSUInteger index) {
+        NSLog(@"my order select index %ld", (long)index);
+    }];
+    
+    [_tabBarV addSubview:selectControl];
     
 
-}
-
-- (void) showInfo {
-    switch (_errCode) {
-        case WXSuccess:
-            // 支付成功
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil)];
-            break;
-        case WXErrCodeCommon:
-            // 支付失败
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_FAILD", nil)];
-            break;
-        case WXErrCodeUserCancel:
-            // 用户取消支付
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_CANCEL_PAY", nil)];
-            break;
-        default:
-            [SVProgressHUD showInfoWithStatus:@"#Error App 00366"];
-            break;
-    }
 }
 
 - (void)didReceiveMemoryWarning {
