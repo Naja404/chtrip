@@ -128,6 +128,8 @@
 "TEXT_PAY_FAILD" = "支付失败";
 "TEXT_CANCEL_PAY" = "用户取消支付";
 "TEXT_ALL_ORDER" = "全部订单";
+"TEXT_FACT_PAY_FEE" = "实付金额:";
+
 
 // input
 "INPUT_ADD_TRIP_NAME" = "Add Trip Name";

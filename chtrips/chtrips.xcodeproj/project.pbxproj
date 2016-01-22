@@ -202,6 +202,7 @@
 		E9899F8B1ACCF713009722C4 /* Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F801ACCF713009722C4 /* Icon@3x.png */; };
 		E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F811ACCF713009722C4 /* iTunesArtwork.png */; };
 		E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */; };
+		E98DBB811C5208B800714372 /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E98DBB801C5208B800714372 /* MyOrderTableViewCell.m */; };
 		E999974C1BE334F700B322D0 /* MyLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E999974B1BE334F700B322D0 /* MyLoginViewController.m */; };
 		E999974E1BE3370700B322D0 /* loginBTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E999974D1BE3370700B322D0 /* loginBTN@2x.png */; };
 		E9A18E861B65273D00FA66EC /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A18E851B65273D00FA66EC /* share@3x.png */; };
@@ -596,6 +597,8 @@
 		E9899F801ACCF713009722C4 /* Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@3x.png"; path = "Resource/Icon@3x.png"; sourceTree = "<group>"; };
 		E9899F811ACCF713009722C4 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = Resource/iTunesArtwork.png; sourceTree = "<group>"; };
 		E9899F821ACCF713009722C4 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Resource/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		E98DBB7F1C5208B800714372 /* MyOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyOrderTableViewCell.h; path = Views/My/MyOrderTableViewCell.h; sourceTree = "<group>"; };
+		E98DBB801C5208B800714372 /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderTableViewCell.m; path = Views/My/MyOrderTableViewCell.m; sourceTree = "<group>"; };
 		E999974A1BE334F700B322D0 /* MyLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyLoginViewController.h; path = ViewControllers/My/MyLoginViewController.h; sourceTree = "<group>"; };
 		E999974B1BE334F700B322D0 /* MyLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyLoginViewController.m; path = ViewControllers/My/MyLoginViewController.m; sourceTree = "<group>"; };
 		E999974D1BE3370700B322D0 /* loginBTN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginBTN@2x.png"; path = "Resource/loginBTN@2x.png"; sourceTree = "<group>"; };
@@ -1529,6 +1532,8 @@
 				E9DEFE131C3E6BEB00B91771 /* MyCartTableViewCell.m */,
 				E94324D81C43C059004C1886 /* MyCheckOutTableViewCell.h */,
 				E94324D91C43C059004C1886 /* MyCheckOutTableViewCell.m */,
+				E98DBB7F1C5208B800714372 /* MyOrderTableViewCell.h */,
+				E98DBB801C5208B800714372 /* MyOrderTableViewCell.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -1937,6 +1942,7 @@
 				E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */,
 				E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */,
 				E9B901AB1AC93D6B001F4EA0 /* DiscoveryViewController.m in Sources */,
+				E98DBB811C5208B800714372 /* MyOrderTableViewCell.m in Sources */,
 				E9F0E0B41B5BE5B900999AFA /* PlayDetailViewController.m in Sources */,
 				E999974C1BE334F700B322D0 /* MyLoginViewController.m in Sources */,
 				E967A1F31B9DCB7200FAFF89 /* MJRefreshBackFooter.m in Sources */,

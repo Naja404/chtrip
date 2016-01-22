@@ -10,7 +10,6 @@
 
 @interface MyOrderViewController : UIViewController
 
-@property (nonatomic, assign) BOOL isAlert;
-@property (nonatomic) int errCode;
+@property (nonatomic, assign) NSInteger selectedIndex;
 
 @end

@@ -170,6 +170,11 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
                 MyOrderViewController *orderV = [[MyOrderViewController alloc] init];
                 orderV.hidesBottomBarWhenPushed = YES;
                 orderV.navigationItem.title = NSLocalizedString([titleArr objectAtIndex:(index - 10)], nil);
+                if (index - 10 + 1 == 4) {
+                    orderV.selectedIndex = 0;
+                }else{
+                    orderV.selectedIndex = index - 10 + 1;
+                }
                 [weakSelf.navigationController pushViewController:orderV animated:YES];
             };
             cell.selectionStyle = UITableViewCellSelectionStyleNone;

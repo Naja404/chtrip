@@ -115,13 +115,6 @@
         if (selected != _selectedIndex) {
             [self setSelectedIndex:selected animated:YES];
         }
-        [_labelArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ((int)idx == selected) {
-                [obj setTextColor:HIGHLIGHT_RED_COLOR];
-            }else{
-                [obj setTextColor:HIGHLIGHT_BLACK_COLOR];
-            }
-        }];
     }
 }
 
@@ -162,6 +155,14 @@
             _indexChangeBlock(index);
         }
     }
+    
+    [_labelArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ((int)idx == index) {
+            [obj setTextColor:HIGHLIGHT_RED_COLOR];
+        }else{
+            [obj setTextColor:HIGHLIGHT_BLACK_COLOR];
+        }
+    }];
 }
 
 - (void) setFrame:(CGRect)frame {
