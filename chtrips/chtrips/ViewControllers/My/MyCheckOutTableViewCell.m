@@ -148,7 +148,7 @@
             
             [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
             [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20];
-            [_titleLB autoSetDimensionsToSize:CGSizeMake(200, 30)];
+            [_titleLB autoSetDimensionsToSize:CGSizeMake(150, 30)];
             
             self.priceLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_priceLB];

@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIWebView *webView;
 @property WebViewJavascriptBridge *bridge;
 @property (nonatomic, strong) UIView *addBuyListV;
-
+@property (nonatomic, strong) UIButton *addBuyBTN;
 
 @end
 
@@ -59,26 +59,29 @@
     [_addBuyListV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 80)];
     
     
-    UIButton *addBuyBTN = [UIButton newAutoLayoutView];
-    [self.addBuyListV addSubview:addBuyBTN];
+    self.addBuyBTN = [UIButton newAutoLayoutView];
+    [self.addBuyListV addSubview:_addBuyBTN];
     
-    [addBuyBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.addBuyListV];
-    [addBuyBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.addBuyListV];
-    [addBuyBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.addBuyListV];
-    [addBuyBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
-    addBuyBTN.backgroundColor = ORINGE_COLOR_BG;
+    [_addBuyBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.addBuyListV];
+    [_addBuyBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.addBuyListV];
+    [_addBuyBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.addBuyListV];
+    [_addBuyBTN autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 50)];
+    _addBuyBTN.backgroundColor = ORINGE_COLOR_BG;
 //    [addBuyBTN setTitle:NSLocalizedString(@"BTN_ADD_CART", nil) forState:UIControlStateNormal];
-    [addBuyBTN setTitle:_stockLB forState:UIControlStateNormal];
-    [addBuyBTN addTarget:self action:@selector(addCart) forControlEvents:UIControlEventTouchDown];
+    
+    if (_stockLB == nil) _stockLB = NSLocalizedString(@"BTN_ADD_CART", nil);
+    
+    [_addBuyBTN setTitle:_stockLB forState:UIControlStateNormal];
+    [_addBuyBTN addTarget:self action:@selector(addCart) forControlEvents:UIControlEventTouchDown];
     if ([_stock isEqualToString:@"0"]) {
-        addBuyBTN.enabled = NO;
-        addBuyBTN.backgroundColor = GRAY_COLOR_CELL_LINE;
+        _addBuyBTN.enabled = NO;
+        _addBuyBTN.backgroundColor = GRAY_COLOR_CELL_LINE;
     }
     
     UIView *priceV = [UIView newAutoLayoutView];
     [self.addBuyListV addSubview:priceV];
     
-    [priceV autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:addBuyBTN];
+    [priceV autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_addBuyBTN];
     [priceV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_addBuyListV];
     [priceV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_addBuyListV];
     [priceV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_addBuyListV];
@@ -123,6 +126,9 @@
                                       success:^(NSDictionary *result) {
                                           [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_CART_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
                                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [_addBuyBTN setTitle:[error localizedDescription] forState:UIControlStateNormal];
+                                          _addBuyBTN.enabled = NO;
+                                          _addBuyBTN.backgroundColor = GRAY_COLOR_CELL_LINE;
                                           [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
     

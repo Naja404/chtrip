@@ -37,6 +37,10 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [SVProgressHUD dismiss];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self refresh:self.refreshTV];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customizeBackItem];
@@ -122,7 +126,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     
     [_priceZH autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:totalBar withOffset:10];
     [_priceZH autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_checkoutBTN withOffset:-10];
-    [_priceZH autoSetDimensionsToSize:CGSizeMake(70, 20)];
+    [_priceZH autoSetDimensionsToSize:CGSizeMake(120, 20)];
     
     NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:@"0.00"];
     
@@ -138,7 +142,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [totalBar addSubview:totalLB];
     
     [totalLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_priceZH];
-    [totalLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_priceZH];
+    [totalLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_selectAllBTN withOffset:10];
     [totalLB autoSetDimensionsToSize:CGSizeMake(45, 18)];
     totalLB.textColor = HIGHLIGHT_BLACK_COLOR;
     totalLB.font = [UIFont systemFontOfSize:18];

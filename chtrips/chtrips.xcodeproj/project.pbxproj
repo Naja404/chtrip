@@ -61,6 +61,7 @@
 		E91FBCDC1AB92555005CA250 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD81AB92555005CA250 /* background@2x.png */; };
 		E91FBCDD1AB92555005CA250 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD91AB92555005CA250 /* background1.png */; };
 		E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCDA1AB92555005CA250 /* background1@2x.png */; };
+		E92FE2951C55F9FF00B2F006 /* CHAlertPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E92FE2941C55F9FF00B2F006 /* CHAlertPayView.m */; };
 		E937AD011B064A2900D5386A /* MyAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E937AD001B064A2900D5386A /* MyAboutUsViewController.m */; };
 		E9382A621C02DF6C00E447D3 /* SlideInViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9382A611C02DF6C00E447D3 /* SlideInViewManager.m */; };
 		E9382A6B1C03165100E447D3 /* wechatBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = E9382A651C03165100E447D3 /* wechatBTN.png */; };
@@ -380,6 +381,8 @@
 		E91FBCD81AB92555005CA250 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resource/background@2x.png"; sourceTree = "<group>"; };
 		E91FBCD91AB92555005CA250 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background1.png; path = Resource/background1.png; sourceTree = "<group>"; };
 		E91FBCDA1AB92555005CA250 /* background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background1@2x.png"; path = "Resource/background1@2x.png"; sourceTree = "<group>"; };
+		E92FE2931C55F9FF00B2F006 /* CHAlertPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHAlertPayView.h; path = Vendors/CHAlertPayView.h; sourceTree = "<group>"; };
+		E92FE2941C55F9FF00B2F006 /* CHAlertPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHAlertPayView.m; path = Vendors/CHAlertPayView.m; sourceTree = "<group>"; };
 		E937ACFE1B0640F900D5386A /* StyleDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleDefine.h; path = Utils/Defines/StyleDefine.h; sourceTree = "<group>"; };
 		E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAboutUsViewController.h; path = ViewControllers/My/MyAboutUsViewController.h; sourceTree = "<group>"; };
 		E937AD001B064A2900D5386A /* MyAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAboutUsViewController.m; path = ViewControllers/My/MyAboutUsViewController.m; sourceTree = "<group>"; };
@@ -931,41 +934,15 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E92FE2971C55FA3100B2F006 /* system */,
+				E92FE2961C55FA0D00B2F006 /* CHVendor */,
 				E97547861C5098A600D33A09 /* Alipay */,
 				E9382A5F1C02DF1B00E447D3 /* SlideInView */,
 				E957EFC61BB433B200B8B752 /* WeChat */,
 				E967A1C51B9DCB7100FAFF89 /* MJRefresh */,
-				E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */,
-				E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */,
-				E9CA46C01B6E42E90010C838 /* HMSegmentedControl.h */,
-				E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */,
 				E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */,
 				E947EE791B2B188F00012957 /* DropMenu */,
 				E9DE1A891B29C5330040BFA6 /* AutoSlideScroll */,
-				E91396381AC11157003AF385 /* AwesomeMenu.h */,
-				E91396391AC11157003AF385 /* AwesomeMenu.m */,
-				E913963A1AC11157003AF385 /* AwesomeMenuItem.h */,
-				E913963B1AC11157003AF385 /* AwesomeMenuItem.m */,
-				E97184371ABAC1B9005291A1 /* Base64.h */,
-				E97184381ABAC1B9005291A1 /* Base64.m */,
-				E97184291ABABD23005291A1 /* CocoaSecurity.h */,
-				E971842A1ABABD23005291A1 /* CocoaSecurity.m */,
-				E971842B1ABABD23005291A1 /* WTLocationManager.h */,
-				E971842C1ABABD23005291A1 /* WTLocationManager.m */,
-				E96D4B491AB04F0400F7CB38 /* UIImage+Resize.h */,
-				E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */,
-				E96D4B431AB048FC00F7CB38 /* ZBActionSheetDatePicker.h */,
-				E96D4B441AB048FC00F7CB38 /* ZBActionSheetDatePicker.m */,
-				E96D4B451AB048FC00F7CB38 /* ZBPhotoTaker.h */,
-				E96D4B461AB048FC00F7CB38 /* ZBPhotoTaker.m */,
-				E96D4B341AB0236300F7CB38 /* NSDate-Utilities.h */,
-				E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */,
-				E96D4B361AB0236300F7CB38 /* NSDate+Fomatter.h */,
-				E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */,
-				E90EE99C1C082998004E6B20 /* CHActionSheetMapApp.h */,
-				E90EE99D1C082998004E6B20 /* CHActionSheetMapApp.m */,
-				E97547A41C50B6DD00D33A09 /* CHTabBarControl.h */,
-				E97547A51C50B6DD00D33A09 /* CHTabBarControl.m */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -999,6 +976,50 @@
 				E91396681AC16431003AF385 /* BuyListTableViewCell.m */,
 			);
 			name = BuyList;
+			sourceTree = "<group>";
+		};
+		E92FE2961C55FA0D00B2F006 /* CHVendor */ = {
+			isa = PBXGroup;
+			children = (
+				E90EE99C1C082998004E6B20 /* CHActionSheetMapApp.h */,
+				E90EE99D1C082998004E6B20 /* CHActionSheetMapApp.m */,
+				E97547A41C50B6DD00D33A09 /* CHTabBarControl.h */,
+				E97547A51C50B6DD00D33A09 /* CHTabBarControl.m */,
+				E92FE2931C55F9FF00B2F006 /* CHAlertPayView.h */,
+				E92FE2941C55F9FF00B2F006 /* CHAlertPayView.m */,
+			);
+			name = CHVendor;
+			sourceTree = "<group>";
+		};
+		E92FE2971C55FA3100B2F006 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */,
+				E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */,
+				E9CA46C01B6E42E90010C838 /* HMSegmentedControl.h */,
+				E9CA46C11B6E42E90010C838 /* HMSegmentedControl.m */,
+				E91396381AC11157003AF385 /* AwesomeMenu.h */,
+				E91396391AC11157003AF385 /* AwesomeMenu.m */,
+				E913963A1AC11157003AF385 /* AwesomeMenuItem.h */,
+				E913963B1AC11157003AF385 /* AwesomeMenuItem.m */,
+				E97184371ABAC1B9005291A1 /* Base64.h */,
+				E97184381ABAC1B9005291A1 /* Base64.m */,
+				E97184291ABABD23005291A1 /* CocoaSecurity.h */,
+				E971842A1ABABD23005291A1 /* CocoaSecurity.m */,
+				E971842B1ABABD23005291A1 /* WTLocationManager.h */,
+				E971842C1ABABD23005291A1 /* WTLocationManager.m */,
+				E96D4B491AB04F0400F7CB38 /* UIImage+Resize.h */,
+				E96D4B4A1AB04F0400F7CB38 /* UIImage+Resize.m */,
+				E96D4B431AB048FC00F7CB38 /* ZBActionSheetDatePicker.h */,
+				E96D4B441AB048FC00F7CB38 /* ZBActionSheetDatePicker.m */,
+				E96D4B451AB048FC00F7CB38 /* ZBPhotoTaker.h */,
+				E96D4B461AB048FC00F7CB38 /* ZBPhotoTaker.m */,
+				E96D4B341AB0236300F7CB38 /* NSDate-Utilities.h */,
+				E96D4B351AB0236300F7CB38 /* NSDate-Utilities.m */,
+				E96D4B361AB0236300F7CB38 /* NSDate+Fomatter.h */,
+				E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */,
+			);
+			name = system;
 			sourceTree = "<group>";
 		};
 		E937ACFC1B06408800D5386A /* Utils */ = {
@@ -1902,6 +1923,7 @@
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E9171B811BE8A1A800923C1E /* MyInfoNormalTableViewCell.m in Sources */,
 				E9FA2CA01BE9CB66009E7C10 /* MyInfoSexViewController.m in Sources */,
+				E92FE2951C55F9FF00B2F006 /* CHAlertPayView.m in Sources */,
 				E9DEFE141C3E6BEB00B91771 /* MyCartTableViewCell.m in Sources */,
 				E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */,
 				E9516E561B6FB98600E01C1F /* ShoppingDGDetailViewController.m in Sources */,

@@ -9,15 +9,20 @@
 #import "MyOrderViewController.h"
 #import "CHTabBarControl.h"
 #import "MyOrderTableViewCell.h"
+#import "CHAlertPayView.h"
+#import "WXApiManager.h"
+#import "WXApiRequestHandler.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 static NSString * const MY_ORDER_CELL = @"myOrderCell";
 
-@interface MyOrderViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MyOrderViewController ()<UITableViewDelegate, UITableViewDataSource, CHAlertPayViewDelegate, WXApiManagerDelegate>
 
 @property (nonatomic, strong) UIView *tabBarV;
 @property (nonatomic, strong) UITableView *orderTV;
 @property (nonatomic, strong) NSMutableArray *orderData;
 @property (nonatomic, strong) UILabel *defaultLB;
+@property (nonatomic, strong) CHAlertPayView *payV;
 
 @end
 
@@ -36,6 +41,8 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [super viewDidLoad];
     [self customizeBackItem];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    [WXApiManager sharedManager].delegate = self;
+    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     [self setStyle];
@@ -102,6 +109,8 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     _defaultLB.font = FONT_SIZE_16;
     _defaultLB.text = @"暂无相关内容";
     _defaultLB.hidden = YES;
+    
+    self.payV = [[CHAlertPayView alloc] initWithShareView:self];
 
 }
 
@@ -150,7 +159,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [orderNumLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 20, 45)];
     orderNumLB.textColor = BLACK_FONT_COLOR;
     orderNumLB.font = FONT_SIZE_16;
-    orderNumLB.text = [tmp objectForKey:@"oid"];
+    orderNumLB.text = [tmp objectForKey:@"oid_label"];
     
     UILabel *statusLB = [UILabel newAutoLayoutView];
     [headerV addSubview:statusLB];
@@ -158,9 +167,10 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [statusLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:headerV];
     [statusLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:headerV withOffset:-10];
     [statusLB autoSetDimensionsToSize:CGSizeMake(100, 45)];
+    statusLB.textAlignment = NSTextAlignmentRight;
     statusLB.textColor = RED_COLOR_BG;
     statusLB.font = FONT_SIZE_16;
-    statusLB.text = [tmp objectForKey:@"status"];
+    statusLB.text = [tmp objectForKey:@"status_label"];
     
     return headerV;
 }
@@ -199,7 +209,178 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [bgLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 20)];
     bgLB.backgroundColor = GRAY_COLOR_CELL_LINE;
     
+    if ([[tmp objectForKey:@"status"] isEqualToString:@"4"]) {
+        
+        UIButton *payBTN = [UIButton newAutoLayoutView];
+        [footerV addSubview:payBTN];
+        
+        [payBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
+        [payBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:footerV withOffset:-10];
+        [payBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
+        [payBTN setTitle:@"立即支付" forState:UIControlStateNormal];
+        [payBTN setTitleColor:RED_COLOR_BG forState:UIControlStateNormal];
+        payBTN.titleLabel.font = FONT_SIZE_16;
+        payBTN.layer.masksToBounds = YES;
+        payBTN.layer.cornerRadius = 3.0f;
+        payBTN.layer.borderWidth = 1.0f;
+        payBTN.layer.borderColor = RED_COLOR_BG.CGColor;
+        payBTN.tag = section;
+        
+        UITapGestureRecognizer *payOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(payOrder:)];
+        [payBTN addGestureRecognizer:payOnceTap];
+        
+        UIButton *cancelBTN = [UIButton newAutoLayoutView];
+        [footerV addSubview:cancelBTN];
+        
+        [cancelBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
+        [cancelBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:payBTN withOffset:-10];
+        [cancelBTN autoSetDimensionsToSize:CGSizeMake(45, 25)];
+        [cancelBTN setTitle:@"取消" forState:UIControlStateNormal];
+        [cancelBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
+        cancelBTN.titleLabel.font = FONT_SIZE_16;
+        cancelBTN.layer.masksToBounds = YES;
+        cancelBTN.layer.cornerRadius = 3.0f;
+        cancelBTN.layer.borderWidth = 1.0f;
+        cancelBTN.layer.borderColor = GRAY_FONT_COLOR.CGColor;
+        cancelBTN.tag = section;
+        
+        UITapGestureRecognizer *cancelOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelOrder:)];
+        [cancelBTN addGestureRecognizer:cancelOnceTap];
+        
+    }
+    
     return footerV;
+}
+
+#pragma mark - 取消订单
+- (void) cancelOrder:(id)sender {
+    
+    UIButton *button = (UIButton *)[(UITapGestureRecognizer *)sender view];
+    
+    NSDictionary *tmp = [_orderData objectAtIndex:button.tag];
+    
+    [SVProgressHUD show];
+    _orderTV.scrollEnabled = NO;
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:[tmp objectForKey:@"oid"] forKey:@"oid"];
+    [paramter setObject:[self getSelectedIndex:_selectedIndex] forKey:@"status"];
+    
+    NSLog(@"post data %@", paramter);
+    
+    [[HttpManager instance] requestWithMethod:@"User/cancelOrder"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          
+                                          _orderData = [result objectForKey:@"data"];
+                                          
+                                          if ([_orderData count] <= 0) {
+                                              _orderTV.hidden = YES;
+                                              _defaultLB.hidden = NO;
+                                          }else{
+                                              _orderTV.hidden = NO;
+                                              _defaultLB.hidden = YES;
+                                          }
+                                          
+                                          [_orderTV reloadData];
+                                          
+                                          [SVProgressHUD dismiss];
+                                          _orderTV.scrollEnabled = YES;
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showErrorWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
+}
+
+#pragma mark - 立即支付
+- (void) payOrder:(id)sender {
+    
+    UIButton *button = (UIButton *)[(UITapGestureRecognizer *)sender view];
+    
+    NSDictionary *tmp = [_orderData objectAtIndex:button.tag];
+    
+    _payV.oid = [tmp objectForKey:@"oid"];
+    
+    [_payV show];
+    
+    __weak typeof (self) weakSelf = self;
+    _payV.tapPayAction = ^(NSString *payType, NSString *oid){
+        
+        [SVProgressHUD show];
+
+        NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+        [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+        [paramter setObject:oid forKey:@"oid"];
+        [paramter setObject:payType forKey:@"pay"];
+        NSLog(@"change pay %@", paramter);
+        
+        [[HttpManager instance] requestWithMethod:@"User/changePay"
+                                       parameters:paramter
+                                          success:^(NSDictionary *result) {
+                                              
+                                              NSLog(@"Util/setPay response is %@", result);
+                                              
+                                              NSDictionary *tmp = [result objectForKey:@"data"];
+                                              
+                                              if ([payType isEqualToString:@"wxpay"]) {
+                                                  [WXApiRequestHandler jumpToWXPay:tmp];
+                                              }else if ([payType isEqualToString:@"alipay"]){
+                                                  
+                                                  NSURL *tmpUrl = [NSURL URLWithString:@"alipay://"];
+                                                  
+                                                  if ([[UIApplication sharedApplication] canOpenURL:tmpUrl]) {
+                                                      [[AlipaySDK defaultService] payOrder:[tmp objectForKey:@"app_url"] fromScheme:@"nijigo" callback:^(NSDictionary *resultDic) {
+                                                          NSLog(@"alipay return info %@", resultDic);
+                                                          
+                                                          if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
+                                                              [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil) maskType:SVProgressHUDMaskTypeBlack];
+                                                          }else{
+                                                              [SVProgressHUD showInfoWithStatus:[resultDic objectForKey:@"memo"] maskType:SVProgressHUDMaskTypeBlack];
+                                                          }
+                                                          
+//                                                          [self performSelector:@selector(popToRootVC) withObject:nil afterDelay:1.5f];
+                                                      }];
+                                                  }else{
+//                                                      MyWebViewController *myWebVC = [[MyWebViewController alloc] init];
+//                                                      myWebVC.navigationItem.title = @"支付宝支付";
+//                                                      myWebVC.webUrl = [tmp objectForKey:@"wap_url"];
+//                                                      myWebVC.isRoot = YES;
+//                                                      [self.navigationController pushViewController:myWebVC animated:YES];
+                                                  }
+                                              }
+                                              
+                                              [weakSelf getOrder];
+                                              
+                                              [SVProgressHUD dismiss];
+                                          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                          }];
+    };
+}
+
+#pragma mark - WXApiManagerDelegate
+- (void)managerDidRecvMessageResponse:(SendMessageToWXResp *)response {
+    
+    switch (response.errCode) {
+        case WXSuccess:
+            // 支付成功
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil) maskType:SVProgressHUDMaskTypeBlack];
+            break;
+        case WXErrCodeCommon:
+            // 支付失败
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_FAILD", nil) maskType:SVProgressHUDMaskTypeBlack];
+            break;
+        case WXErrCodeUserCancel:
+            // 用户取消支付
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_CANCEL_PAY", nil) maskType:SVProgressHUDMaskTypeBlack];
+            break;
+        default:
+            [SVProgressHUD showInfoWithStatus:@"#Error App 00366" maskType:SVProgressHUDMaskTypeBlack];
+            break;
+    }
+    
+    [self getOrder];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
