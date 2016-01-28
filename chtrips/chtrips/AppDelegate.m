@@ -38,6 +38,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [NSThread sleepForTimeInterval:2.0];
+    
     [self setupCoreDataManager];
     
     [self regDeviceToken];

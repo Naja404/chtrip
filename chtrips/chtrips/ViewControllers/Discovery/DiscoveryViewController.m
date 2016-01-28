@@ -15,6 +15,7 @@
 #import "PlayDetailViewController.h"
 #import "ShoppingDGDetailViewController.h"
 #import "LinkWebViewController.h"
+#import "IntroViewController.h"
 
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
@@ -46,6 +47,10 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+
+    NSString *isNew = [[TMCache sharedCache] objectForKey:@"ver097"];
+    if (![isNew isEqualToString:@"YES"]) [self setIntroView];
+    
     self.hidesBottomBarWhenPushed = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
@@ -376,6 +381,12 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             [self.discoveryTV.footer noticeNoMoreData];
         }
     }
+}
+
+- (void) setIntroView {
+    IntroViewController *introVC = [[IntroViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:introVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 @end

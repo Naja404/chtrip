@@ -62,6 +62,14 @@
 		E91FBCDD1AB92555005CA250 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCD91AB92555005CA250 /* background1.png */; };
 		E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91FBCDA1AB92555005CA250 /* background1@2x.png */; };
 		E92FE2951C55F9FF00B2F006 /* CHAlertPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E92FE2941C55F9FF00B2F006 /* CHAlertPayView.m */; };
+		E92FE29A1C59E7EF00B2F006 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92FE2991C59E7EF00B2F006 /* IntroViewController.m */; };
+		E92FE2A11C5A1E1A00B2F006 /* iconLogo100.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A01C5A1E1A00B2F006 /* iconLogo100.png */; };
+		E92FE2A81C5A222600B2F006 /* bgIntro1.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A21C5A222600B2F006 /* bgIntro1.png */; };
+		E92FE2A91C5A222600B2F006 /* bgIntro1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A31C5A222600B2F006 /* bgIntro1@2x.png */; };
+		E92FE2AA1C5A222600B2F006 /* bgIntro1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A41C5A222600B2F006 /* bgIntro1@3x.png */; };
+		E92FE2AB1C5A222600B2F006 /* bgIntro2.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A51C5A222600B2F006 /* bgIntro2.png */; };
+		E92FE2AC1C5A222600B2F006 /* bgIntro2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A61C5A222600B2F006 /* bgIntro2@2x.png */; };
+		E92FE2AD1C5A222600B2F006 /* bgIntro2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FE2A71C5A222600B2F006 /* bgIntro2@3x.png */; };
 		E937AD011B064A2900D5386A /* MyAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E937AD001B064A2900D5386A /* MyAboutUsViewController.m */; };
 		E9382A621C02DF6C00E447D3 /* SlideInViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9382A611C02DF6C00E447D3 /* SlideInViewManager.m */; };
 		E9382A6B1C03165100E447D3 /* wechatBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = E9382A651C03165100E447D3 /* wechatBTN.png */; };
@@ -383,6 +391,15 @@
 		E91FBCDA1AB92555005CA250 /* background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background1@2x.png"; path = "Resource/background1@2x.png"; sourceTree = "<group>"; };
 		E92FE2931C55F9FF00B2F006 /* CHAlertPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHAlertPayView.h; path = Vendors/CHAlertPayView.h; sourceTree = "<group>"; };
 		E92FE2941C55F9FF00B2F006 /* CHAlertPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHAlertPayView.m; path = Vendors/CHAlertPayView.m; sourceTree = "<group>"; };
+		E92FE2981C59E7EF00B2F006 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = ViewControllers/Other/IntroViewController.h; sourceTree = "<group>"; };
+		E92FE2991C59E7EF00B2F006 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = ViewControllers/Other/IntroViewController.m; sourceTree = "<group>"; };
+		E92FE2A01C5A1E1A00B2F006 /* iconLogo100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconLogo100.png; path = Resource/iconLogo100.png; sourceTree = "<group>"; };
+		E92FE2A21C5A222600B2F006 /* bgIntro1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgIntro1.png; path = Resource/bgIntro1.png; sourceTree = "<group>"; };
+		E92FE2A31C5A222600B2F006 /* bgIntro1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bgIntro1@2x.png"; path = "Resource/bgIntro1@2x.png"; sourceTree = "<group>"; };
+		E92FE2A41C5A222600B2F006 /* bgIntro1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bgIntro1@3x.png"; path = "Resource/bgIntro1@3x.png"; sourceTree = "<group>"; };
+		E92FE2A51C5A222600B2F006 /* bgIntro2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgIntro2.png; path = Resource/bgIntro2.png; sourceTree = "<group>"; };
+		E92FE2A61C5A222600B2F006 /* bgIntro2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bgIntro2@2x.png"; path = "Resource/bgIntro2@2x.png"; sourceTree = "<group>"; };
+		E92FE2A71C5A222600B2F006 /* bgIntro2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bgIntro2@3x.png"; path = "Resource/bgIntro2@3x.png"; sourceTree = "<group>"; };
 		E937ACFE1B0640F900D5386A /* StyleDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleDefine.h; path = Utils/Defines/StyleDefine.h; sourceTree = "<group>"; };
 		E937ACFF1B064A2900D5386A /* MyAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAboutUsViewController.h; path = ViewControllers/My/MyAboutUsViewController.h; sourceTree = "<group>"; };
 		E937AD001B064A2900D5386A /* MyAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAboutUsViewController.m; path = ViewControllers/My/MyAboutUsViewController.m; sourceTree = "<group>"; };
@@ -910,6 +927,7 @@
 		E909910C1AAFE8CC00C48688 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E92FE29B1C59ED8C00B2F006 /* Other */,
 				E9B901A81AC93D12001F4EA0 /* My */,
 				E9B901A71AC93D08001F4EA0 /* Play */,
 				E9B901A61AC93CF1001F4EA0 /* Shopping */,
@@ -1020,6 +1038,15 @@
 				E96D4B371AB0236300F7CB38 /* NSDate+Fomatter.m */,
 			);
 			name = system;
+			sourceTree = "<group>";
+		};
+		E92FE29B1C59ED8C00B2F006 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				E92FE2981C59E7EF00B2F006 /* IntroViewController.h */,
+				E92FE2991C59E7EF00B2F006 /* IntroViewController.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		E937ACFC1B06408800D5386A /* Utils */ = {
@@ -1402,6 +1429,13 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E92FE2A21C5A222600B2F006 /* bgIntro1.png */,
+				E92FE2A31C5A222600B2F006 /* bgIntro1@2x.png */,
+				E92FE2A41C5A222600B2F006 /* bgIntro1@3x.png */,
+				E92FE2A51C5A222600B2F006 /* bgIntro2.png */,
+				E92FE2A61C5A222600B2F006 /* bgIntro2@2x.png */,
+				E92FE2A71C5A222600B2F006 /* bgIntro2@3x.png */,
+				E92FE2A01C5A1E1A00B2F006 /* iconLogo100.png */,
 				E94324E11C48E9FE004C1886 /* logoAlipay.png */,
 				E94324E21C48E9FE004C1886 /* logoWeChat.png */,
 				E94324C71C43A33B004C1886 /* iconCart.png */,
@@ -1690,6 +1724,7 @@
 				E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */,
 				E91396581AC111B8003AF385 /* icon-star.png in Resources */,
 				E9171B861BE8A98E00923C1E /* myInfoBg@3x.png in Resources */,
+				E92FE2AA1C5A222600B2F006 /* bgIntro1@3x.png in Resources */,
 				E9382A6E1C03165100E447D3 /* wechatMomentBTN.png in Resources */,
 				E91FBCDE1AB92555005CA250 /* background1@2x.png in Resources */,
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
@@ -1705,6 +1740,7 @@
 				E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */,
 				E96F4B381BABEB270033186D /* goLogoBg.png in Resources */,
 				E947EE801B2B18AE00012957 /* icon_chose_arrow_nor@2x.png in Resources */,
+				E92FE2AB1C5A222600B2F006 /* bgIntro2.png in Resources */,
 				E95EBFE31B8802BD001BD221 /* arrowLeft@3x.png in Resources */,
 				E913964F1AC111B8003AF385 /* bg-addbutton@2x.png in Resources */,
 				E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */,
@@ -1728,6 +1764,7 @@
 				E9C1319E1AB2F1D600E6E873 /* tripLocation.png in Resources */,
 				E95E1D111B9F17D000C88692 /* star_45.png in Resources */,
 				E9F1C8B81B403C39008FFD28 /* buyGray@3x.png in Resources */,
+				E92FE2AD1C5A222600B2F006 /* bgIntro2@3x.png in Resources */,
 				E95E1D0E1B9F17D000C88692 /* star_30.png in Resources */,
 				E947EE821B2B18AE00012957 /* icon_chose_bottom@2x.png in Resources */,
 				E9C1319F1AB2F1D600E6E873 /* tripLocation@2x.png in Resources */,
@@ -1757,6 +1794,8 @@
 				E9382A6F1C03165100E447D3 /* wechatMomentBTN@2x.png in Resources */,
 				E9CB92861BD628D00051AA6B /* defaultPicSmall.png in Resources */,
 				E9DEFE0C1C3E592000B91771 /* iconConfirm@3x.png in Resources */,
+				E92FE2A11C5A1E1A00B2F006 /* iconLogo100.png in Resources */,
+				E92FE2A91C5A222600B2F006 /* bgIntro1@2x.png in Resources */,
 				E91396531AC111B8003AF385 /* bg-menuitem@2x.png in Resources */,
 				E95E1D0A1B9F17D000C88692 /* star_10.png in Resources */,
 				E9D98EC91AEDE9C7004805E5 /* iconBuyList.png in Resources */,
@@ -1800,6 +1839,7 @@
 				E91396511AC111B8003AF385 /* bg-menuitem-highlighted@2x.png in Resources */,
 				E91396561AC111B8003AF385 /* icon-plus.png in Resources */,
 				E9C131A01AB2F1D600E6E873 /* tripTitle.png in Resources */,
+				E92FE2AC1C5A222600B2F006 /* bgIntro2@2x.png in Resources */,
 				E95E1D091B9F17D000C88692 /* star_5.png in Resources */,
 				E9382A6C1C03165100E447D3 /* wechatBTN@2x.png in Resources */,
 				E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */,
@@ -1813,6 +1853,7 @@
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
 				E95E1D121B9F17D000C88692 /* star_50.png in Resources */,
 				E95E1D081B9F17D000C88692 /* star_0.png in Resources */,
+				E92FE2A81C5A222600B2F006 /* bgIntro1.png in Resources */,
 				E9D0FB1C1AEA4B2B00CC9664 /* avatar.jpg in Resources */,
 				E95E1D0F1B9F17D000C88692 /* star_35.png in Resources */,
 				E9516E521B6FAFFB00E01C1F /* jpImg@2x.png in Resources */,
@@ -1968,6 +2009,7 @@
 				E9F0E0B41B5BE5B900999AFA /* PlayDetailViewController.m in Sources */,
 				E999974C1BE334F700B322D0 /* MyLoginViewController.m in Sources */,
 				E967A1F31B9DCB7200FAFF89 /* MJRefreshBackFooter.m in Sources */,
+				E92FE29A1C59E7EF00B2F006 /* IntroViewController.m in Sources */,
 				E967A1F51B9DCB7200FAFF89 /* MJRefreshFooter.m in Sources */,
 				E91396621AC1526A003AF385 /* BuyListViewController.m in Sources */,
 				E9F6E2711BE4961B006C4140 /* RegisterViewController.m in Sources */,

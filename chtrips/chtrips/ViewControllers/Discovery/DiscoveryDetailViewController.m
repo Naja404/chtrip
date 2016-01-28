@@ -151,7 +151,7 @@
                              TagName:nil
                                Title:[_albumDic objectForKey:@"title"]
                          Description:nil
-                          ThumbImage:[UIImage imageNamed:@"loginBg"]
+                          ThumbImage:[UIImage imageNamed:@"iconLogo100"]
                              InScene:WXSceneSession];
     [self showShareView];
 }
@@ -162,7 +162,7 @@
                              TagName:nil
                                Title:[_albumDic objectForKey:@"title"]
                          Description:nil
-                          ThumbImage:[UIImage imageNamed:@"loginBg"]
+                          ThumbImage:[UIImage imageNamed:@"iconLogo100"]
                              InScene:WXSceneTimeline];
     [self showShareView];
     
