@@ -145,9 +145,7 @@
         [parameters setObject:openidTmp forKey:@"openid"];
         [parameters setObject:@"nijigoWechatLogin" forKey:@"state"];
     }
-    
-    NSLog(@"post data %@", parameters);
-    
+        
     [[HttpManager instance] requestWithMethod:@"User/login"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {

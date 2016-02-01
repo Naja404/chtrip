@@ -9,6 +9,7 @@
 #import "MyOrderViewController.h"
 #import "CHTabBarControl.h"
 #import "MyOrderTableViewCell.h"
+#import "MyWebViewController.h"
 #import "CHAlertPayView.h"
 #import "WXApiManager.h"
 #import "WXApiRequestHandler.h"
@@ -73,7 +74,6 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [selectControl setSelectedIndex:_selectedIndex];
     [selectControl setIndexChangeBlock:^(NSUInteger index) {
         _selectedIndex = index;
-        NSLog(@"my order select index %ld", (long)index);
         [self getOrder];
     }];
     
@@ -217,7 +217,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         [payBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
         [payBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:footerV withOffset:-10];
         [payBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
-        [payBTN setTitle:@"立即支付" forState:UIControlStateNormal];
+        [payBTN setTitle:NSLocalizedString(@"TEXT_PAY_NOW", nil) forState:UIControlStateNormal];
         [payBTN setTitleColor:RED_COLOR_BG forState:UIControlStateNormal];
         payBTN.titleLabel.font = FONT_SIZE_16;
         payBTN.layer.masksToBounds = YES;
@@ -235,7 +235,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         [cancelBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
         [cancelBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:payBTN withOffset:-10];
         [cancelBTN autoSetDimensionsToSize:CGSizeMake(45, 25)];
-        [cancelBTN setTitle:@"取消" forState:UIControlStateNormal];
+        [cancelBTN setTitle:NSLocalizedString(@"BTN_CANCEL", nil) forState:UIControlStateNormal];
         [cancelBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
         cancelBTN.titleLabel.font = FONT_SIZE_16;
         cancelBTN.layer.masksToBounds = YES;
@@ -249,7 +249,47 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         
     }
     
+    // 待收货 查看物流
+    if ([[tmp objectForKey:@"status"] isEqualToString:@"3"]) {
+        UIButton *shipBTN = [UIButton newAutoLayoutView];
+        [footerV addSubview:shipBTN];
+        
+        [shipBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
+        [shipBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:footerV withOffset:-10];
+        [shipBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
+        [shipBTN setTitle:NSLocalizedString(@"BTN_VIEW_SHIP", nil) forState:UIControlStateNormal];
+        [shipBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
+        shipBTN.titleLabel.font = FONT_SIZE_16;
+        shipBTN.layer.masksToBounds = YES;
+        shipBTN.layer.cornerRadius = 3.0f;
+        shipBTN.layer.borderWidth = 1.0f;
+        shipBTN.layer.borderColor = GRAY_FONT_COLOR.CGColor;
+        shipBTN.tag = section;
+        
+        UITapGestureRecognizer *shipOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reviewShip:)];
+        [shipBTN addGestureRecognizer:shipOnceTap];
+    }
+    
     return footerV;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - 查看物流
+- (void) reviewShip:(id)sender {
+    UIButton *button = (UIButton *)[(UITapGestureRecognizer *)sender view];
+    
+    NSDictionary *tmp = [_orderData objectAtIndex:button.tag];
+    
+    MyWebViewController *webVC = [[MyWebViewController alloc] init];
+    
+    webVC.webUrl = [tmp objectForKey:@"ship_url"];
+    
+    webVC.navigationItem.title = NSLocalizedString(@"TEXT_SHIP_STATUS", nil);
+    
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 #pragma mark - 取消订单
@@ -266,8 +306,6 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:[tmp objectForKey:@"oid"] forKey:@"oid"];
     [paramter setObject:[self getSelectedIndex:_selectedIndex] forKey:@"status"];
-    
-    NSLog(@"post data %@", paramter);
     
     [[HttpManager instance] requestWithMethod:@"User/cancelOrder"
                                    parameters:paramter
@@ -313,13 +351,10 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
         [paramter setObject:oid forKey:@"oid"];
         [paramter setObject:payType forKey:@"pay"];
-        NSLog(@"change pay %@", paramter);
         
         [[HttpManager instance] requestWithMethod:@"User/changePay"
                                        parameters:paramter
                                           success:^(NSDictionary *result) {
-                                              
-                                              NSLog(@"Util/setPay response is %@", result);
                                               
                                               NSDictionary *tmp = [result objectForKey:@"data"];
                                               
@@ -331,7 +366,6 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
                                                   
                                                   if ([[UIApplication sharedApplication] canOpenURL:tmpUrl]) {
                                                       [[AlipaySDK defaultService] payOrder:[tmp objectForKey:@"app_url"] fromScheme:@"nijigo" callback:^(NSDictionary *resultDic) {
-                                                          NSLog(@"alipay return info %@", resultDic);
                                                           
                                                           if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
                                                               [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil) maskType:SVProgressHUDMaskTypeBlack];
@@ -418,9 +452,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:[self getSelectedIndex:_selectedIndex] forKey:@"status"];
-    
-    NSLog(@"post data %@", paramter);
-    
+        
     [[HttpManager instance] requestWithMethod:@"User/getOrder"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {

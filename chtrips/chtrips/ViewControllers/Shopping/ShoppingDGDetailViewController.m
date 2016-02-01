@@ -119,7 +119,6 @@
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:self.pid forKey:@"pid"];
-    NSLog(@"paramter is %@", paramter);
     
     [[HttpManager instance] requestWithMethod:@"User/addCart"
                                    parameters:paramter
@@ -142,7 +141,7 @@
     //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:self.pid forKey:@"pid"];
-    NSLog(@"paramter is %@", paramter);
+
     [[HttpManager instance] requestWithMethod:@"User/addBuyList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
@@ -167,14 +166,6 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
-    
-//    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSLog(@"what data is %@", data);
-//        if ([data isEqualToString:@"backBTN"]) {
-//            [self popToShoppingDG];
-//        }
-//        responseCallback(@"call back");
-//    }];
     
 }
 

@@ -133,13 +133,10 @@
     [paramter setObject:[NSString stringWithFormat:@"%d", errcode] forKey:@"errcode"];
     [paramter setObject:[NSString stringWithFormat:@"%@", lang] forKey:@"lang"];
     [paramter setObject:[NSString stringWithFormat:@"%@", country] forKey:@"country"];
-
-    NSLog(@"wechat return %@", paramter);
     
     [[HttpManager instance] requestWithMethod:@"User/loginWeChat"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"wechat login return %@", result);
                                           
                                           NSArray *userInfoTmp = [[result objectForKey:@"data"] objectForKey:@"user_info"];
                                           NSString *ssidTmp = [[result objectForKey:@"data"] objectForKey:@"ssid"];

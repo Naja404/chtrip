@@ -64,7 +64,6 @@
     }
 
     self.bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"msg form html %@", data);
         responseCallback(@"objc => Right back atcha");
     }];
     
@@ -75,7 +74,7 @@
 
 - (void) reqSubAddress {
     [_bridge send:@"subAddress" responseCallback:^(id responseData) {
-        NSLog(@"js response is %@", responseData);
+
         if([[responseData objectForKey:@"status"] isEqualToString:@"0"]){
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_SUCCESS", nil)];
             [self.navigationController popViewControllerAnimated:YES];
@@ -87,7 +86,7 @@
 
 - (void) reqEditAddress {
     [_bridge send:@"editAddress" responseCallback:^(id responseData) {
-        NSLog(@"js response is %@", responseData);
+
         if([[responseData objectForKey:@"status"] isEqualToString:@"0"]){
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_EDIT_SUCCESS", nil)];
             [self.navigationController popViewControllerAnimated:YES];

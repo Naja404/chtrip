@@ -228,7 +228,6 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
 {
-//    NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
     if (indexPath.item >= 0) {
         if (indexPath.column == 0) {
             self.selectCate = self.smallCate[indexPath.row][indexPath.item];
@@ -289,7 +288,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [[HttpManager instance] requestWithMethod:@"Product/proList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"Productlist data is %@", result);
+
                                           if ([PageNum isEqualToString:@"1"]) {
                                               self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"proList"]];
                                               [self.shopTV reloadData];
@@ -341,12 +340,11 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [paramter setObject:self.selectCate forKey:@"cityName"];
     [paramter setObject:self.selectBrand forKey:@"category"];
     [paramter setObject:self.selectSort forKey:@"sort"];
-    NSLog(@"shoplist paramter is %@", paramter);
     
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"shoplist data is %@", result);
+
                                           if ([PageNum isEqualToString:@"1"]) {
                                               self.shopData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
                                               [self.shopTV reloadData];

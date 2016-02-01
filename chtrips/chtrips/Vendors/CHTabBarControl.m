@@ -111,7 +111,6 @@
     
     if (CGRectContainsPoint(self.bounds, touchLocation)) {
         NSInteger selected = touchLocation.x / _weight;
-        NSLog(@"touch selected is %ld", (long)selected);
         if (selected != _selectedIndex) {
             [self setSelectedIndex:selected animated:YES];
         }

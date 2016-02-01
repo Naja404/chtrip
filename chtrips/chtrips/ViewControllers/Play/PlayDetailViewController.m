@@ -106,7 +106,7 @@
     //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:self.sid forKey:@"sid"];
-    NSLog(@"paramter is %@", paramter);
+
     [[HttpManager instance] requestWithMethod:@"User/addWantGo"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {

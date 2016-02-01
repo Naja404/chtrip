@@ -27,6 +27,9 @@
 "BTN_LOGOUT" = "退出登录";
 "BTN_ADD_CART" = "加入购物车";
 "BTN_CHECKOUT" = "结算(%@)";
+"BTN_CONFIRM_PAY" = "确认并支付";
+"BTN_VIEW_SHIP" = "查看物流";
+
 
 // text
 "TEXT_APP_TITLE" = "彩虹Go";
@@ -129,6 +132,16 @@
 "TEXT_CANCEL_PAY" = "用户取消支付";
 "TEXT_ALL_ORDER" = "全部订单";
 "TEXT_FACT_PAY_FEE" = "实付金额:";
+"TEXT_SELECT_ADDRESS" = "请选择配送地址";
+"TEXT_PRODUCT_TOTAL_FEE" = "商品总价";
+"TEXT_INTALNATIONAL_SHIP" = "国际运费";
+"TEXT_TOTAL_FEE" = "合计";
+"TEXT_SHIP_NOTE" = "装箱重量(包括纸箱和防震材料):%@g";
+"TEXT_CHECKOUT_NOTE" = "点击“确认并支付”,表示您已阅读并同意 用户须知";
+"TEXT_ALIPAY_PAY" = "支付宝";
+"TEXT_WECHAT_PAY" = "微信支付";
+"TEXT_PAY_NOW" = "立即支付";
+"TEXT_SHIP_STATUS" = "物流状态";
 
 // input 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";

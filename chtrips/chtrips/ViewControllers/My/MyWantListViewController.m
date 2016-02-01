@@ -137,7 +137,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     [[HttpManager instance] requestWithMethod:@"User/getWantList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"getWantList data is %@", result);
+
                                           self.wantGoData = [[NSMutableArray alloc] initWithArray:[result objectForKey:@"data"]];
                                           
                                           if ([self.wantGoData count] == 0) {

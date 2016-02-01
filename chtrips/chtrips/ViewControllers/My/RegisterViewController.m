@@ -169,8 +169,6 @@
         [parameters setObject:@"nijigoWechatLogin" forKey:@"state"];
     }
     
-    NSLog(@"post data %@", parameters);
-    
     [[HttpManager instance] requestWithMethod:@"User/register"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {

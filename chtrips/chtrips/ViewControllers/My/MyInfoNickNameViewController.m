@@ -63,8 +63,6 @@
     [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [parameters setObject:_nickTF.text forKey:@"nickname"];
     
-    NSLog(@"post data %@", parameters);
-    
     [[HttpManager instance] requestWithMethod:@"User/setInfo"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {

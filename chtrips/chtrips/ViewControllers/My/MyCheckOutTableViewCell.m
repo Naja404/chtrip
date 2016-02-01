@@ -93,7 +93,7 @@
         }else if ([reuseIdentifier isEqualToString:@"myPaymentCell"]){
             
             NSArray *tmpArr = @[@"logoWeChat", @"logoAlipay"];
-            NSArray *tmpTitle = @[@"微信支付", @"支付宝"];
+            NSArray *tmpTitle = @[NSLocalizedString(@"TEXT_WECHAT_PAY", nil), NSLocalizedString(@"TEXT_ALIPAY_PAY", nil)];
             
             _controlArr = [[NSMutableArray alloc] init];
             
@@ -110,7 +110,7 @@
                 logoImg.image = [UIImage imageNamed:[tmpArr objectAtIndex:i]];
                 
                 if (i == 0) {
-                    bgView.backgroundColor = RED_COLOR_BG;
+                    bgView.backgroundColor = RED_CART_BG;
                 }else{
                     bgView.backgroundColor = [UIColor whiteColor];
                 }
@@ -123,6 +123,8 @@
                 [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2 - 20, 20)];
                 titleLB.text = [tmpTitle objectAtIndex:i];
                 titleLB.textAlignment = NSTextAlignmentCenter;
+                titleLB.font = FONT_SIZE_14;
+                titleLB.textColor = GRAY_FONT_COLOR;
                 
                 [bgView addTarget:self action:@selector(tapBgView:) forControlEvents:UIControlEventTouchUpInside];
                 

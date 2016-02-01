@@ -88,8 +88,6 @@ static NSString * const MY_SEX_CELL = @"myInfoSexCell";
     [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [parameters setObject:sex forKey:@"sex"];
     
-    NSLog(@"post data %@", parameters);
-    
     [[HttpManager instance] requestWithMethod:@"User/setInfo"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {

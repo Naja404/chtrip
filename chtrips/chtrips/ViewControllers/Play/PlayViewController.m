@@ -93,7 +93,7 @@ static NSString * const PLAY_CELL = @"playCell";
     [[HttpManager instance] requestWithMethod:@"Product/shopList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"shoplist data is %@", result);
+
                                           if ([PageNum isEqualToString:@"1"]) {
                                               self.playData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"shopList"]];
                                               [self.playTV reloadData];

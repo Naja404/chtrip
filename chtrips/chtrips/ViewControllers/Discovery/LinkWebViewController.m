@@ -62,14 +62,7 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
-    //    self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView handler:^(id data, WVJBResponseCallback responseCallback) {
-    //        NSLog(@"what data is %@", data);
-    //        if ([data isEqualToString:@"backBTN"]) {
-    //            [self popToDiscovery];
-    //        }
-    //        responseCallback(@"call back");
-    //    }];
-    
+   
     
 }
 

@@ -65,8 +65,6 @@
     [parameters setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [parameters setObject:_mobileTF.text forKey:@"mobile"];
     
-    NSLog(@"post data %@", parameters);
-    
     [[HttpManager instance] requestWithMethod:@"User/setInfo"
                                    parameters:parameters
                                       success:^(NSDictionary *result) {

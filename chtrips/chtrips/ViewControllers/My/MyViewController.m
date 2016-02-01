@@ -286,7 +286,7 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
         [[TMCache sharedCache] setObject:@"" forKey:@"userAvatar"];
         [self.myTV reloadData];
     }else if (buttonIndex == 0){
-        NSLog(@"button index is 0");
+
     }
 }
 

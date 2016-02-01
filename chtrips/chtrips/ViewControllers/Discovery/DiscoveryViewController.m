@@ -72,11 +72,11 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:pageNum forKey:@"pageNum"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:CHVersion forKey:@"ver"];
     
     [[HttpManager instance] requestWithMethod:@"Product/albumList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"album list data is %@", result);
                                           
                                           if (isFirst) {
                                               self.adData = [[NSMutableArray alloc] initWithArray:[[result objectForKey:@"data"] objectForKey:@"adList"]];
@@ -160,7 +160,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (void) pushSearchPage {
-    NSLog(@"touch search bar");
+
 }
 
 - (void) setupDiscoveryTV {
@@ -210,7 +210,6 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     
     __weak typeof (self) weakSelf = self;
     self.kvScrollView.TapActionBlock = ^(NSInteger pageIndex){
-//        NSLog(@"点击了第%d个kv", pageIndex);
 
         NSString *adType = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"type"]];
         

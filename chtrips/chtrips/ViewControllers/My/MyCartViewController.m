@@ -186,7 +186,6 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     [[HttpManager instance] requestWithMethod:@"User/getCart"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"cart data is %@", result);
                                           
                                           NSDictionary *tmpData = [result objectForKey:@"data"];
                                           
@@ -287,14 +286,13 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
 
     cell.plusProBTN.tag = [cell.pid intValue];
     cell.tapPlusBTNAction = ^(NSInteger index){
-        NSLog(@"点击了%ld 增加按钮", (long)index);
         [self upCartList:@"6" pid:[NSString stringWithFormat:@"%ld", (long)index]];
         
     };
     
     cell.minusProBTN.tag = [cell.pid intValue];
     cell.tapMinusBTNAction = ^(NSInteger index){
-        NSLog(@"点击了%ld 删减按钮", (long)index);
+
         [self upCartList:@"5" pid:[NSString stringWithFormat:@"%ld", (long)index]];
     };
     

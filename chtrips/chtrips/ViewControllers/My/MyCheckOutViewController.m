@@ -99,8 +99,8 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     [_checkOutBTN autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
     [_checkOutBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
     
-    [_checkOutBTN setTitle:@"确认并支付" forState:UIControlStateNormal];
-    [_checkOutBTN setBackgroundColor:RED_COLOR_BG];
+    [_checkOutBTN setTitle:NSLocalizedString(@"BTN_CONFIRM_PAY", nil) forState:UIControlStateNormal];
+    [_checkOutBTN setBackgroundColor:RED_CART_BG];
     [_checkOutBTN addTarget:self action:@selector(clickCheckOutBTN) forControlEvents:UIControlEventTouchUpInside];
     
     _sectionTitleArr = @[NSLocalizedString(@"TEXT_SHIPPING_ADDRESS", nil),
@@ -154,7 +154,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *titleV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
-    titleV.backgroundColor = [UIColor blackColor];
+    titleV.backgroundColor = GRAY_COLOR_CELL_LINE;
     UILabel *titleLB = [UILabel newAutoLayoutView];
     [titleV addSubview:titleLB];
     
@@ -162,9 +162,9 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     [titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:titleV withOffset:20];
     [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 30)];
     titleLB.font = FONT_SIZE_16;
-    titleLB.textColor = BLACK_FONT_COLOR;
+    titleLB.textColor = GRAY_FONT_COLOR;
     titleLB.text = [NSString stringWithFormat:@"%@", [_sectionTitleArr objectAtIndex:section]];
-    titleLB.backgroundColor = GRAY_FONT_COLOR;
+    titleLB.backgroundColor = GRAY_COLOR_CELL_LINE;
     
     return titleV;
 }
@@ -176,7 +176,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
-        cell.titleLB.text = @"请选择配送地址";
+        cell.titleLB.text = NSLocalizedString(@"TEXT_SELECT_ADDRESS", nil);
         cell.priceLB.text = @"";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
@@ -192,17 +192,17 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         [cell removeFromSuperview];
         
         if (indexPath.row == 0){
-            cell.titleLB.text = @"商品总价";
+            cell.titleLB.text = NSLocalizedString(@"TEXT_PRODUCT_TOTAL_FEE", nil);
             cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [_checkOutDic objectForKey:@"product_price_total"]];
         }else if (indexPath.row == 1) {
             MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_SHIPPING_CELL forIndexPath:indexPath];
-            cell.titleLB.text = @"国际运费";
+            cell.titleLB.text = NSLocalizedString(@"TEXT_INTALNATIONAL_SHIP", nil);
             cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [_checkOutDic objectForKey:@"shipping_price"]];
-            cell.shippingLB.text = [NSString stringWithFormat:@"装箱重量(包括纸箱和防震材料):%@g", [_checkOutDic objectForKey:@"weight_total"]];
+            cell.shippingLB.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_SHIP_NOTE", nil), [_checkOutDic objectForKey:@"weight_total"]];
             
             return cell;
         }else{
-            cell.titleLB.text = @"合计";
+            cell.titleLB.text = NSLocalizedString(@"TEXT_TOTAL_FEE", nil);
             cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [_checkOutDic objectForKey:@"price_total"]];
         }
     }else if (indexPath.section == 2){
@@ -229,7 +229,6 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         
         MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_PAYMENT_CELL forIndexPath:indexPath];
         cell.tapPayAction = ^(NSInteger index){
-            NSLog(@"click index %ld", (long)index);
             if (index == 1) {
                 _payType = @"wxpay";
             }else if (index == 2){
@@ -240,7 +239,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     }else{
         [cell removeFromSuperview];
         MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_USER_CELL forIndexPath:indexPath];
-        cell.titleLB.attributedText = [self textFormat:@"点击“确认并支付”,表示您已阅读并同意 用户须知"];
+        cell.titleLB.attributedText = [self textFormat:NSLocalizedString(@"TEXT_CHECKOUT_NOTE", nil)];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
@@ -265,7 +264,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         
         webVC.webUrl = @"http://api.nijigo.com/Product/userProtocol/type/1.html";
         
-        webVC.navigationItem.title = @"用户须知";
+        webVC.navigationItem.title = NSLocalizedString(@"TEXT_USER_NEED", nil);
         
         [self.navigationController pushViewController:webVC animated:YES];
     }
@@ -286,8 +285,6 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                       success:^(NSDictionary *result) {
                                           
                                           _checkOutDic = [result objectForKey:@"data"];
-                                          
-                                          NSLog(@"checkout data is %@", _checkOutDic);
                                           
                                           _shipArr = [_checkOutDic objectForKey:@"shipping_type"];
                                           _addressDic = [_checkOutDic objectForKey:@"address"];
@@ -321,7 +318,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 - (void) clickCheckOutBTN {
     
     if ([_addressId isEqualToString:@"0"]) {
-        [SVProgressHUD showErrorWithStatus:@"请选择收货地址"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"TEXT_SELECT_ADDRESS", nil)];
         return;
     }
     
@@ -336,7 +333,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     [[HttpManager instance] requestWithMethod:@"User/payOrder"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          NSLog(@"Util/setPay response is %@", result);
+
                                           NSDictionary *tmp = [result objectForKey:@"data"];
                                           
                                           if ([_payType isEqualToString:@"wxpay"]) {
@@ -347,7 +344,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                               
                                               if ([[UIApplication sharedApplication] canOpenURL:tmpUrl]) {
                                                   [[AlipaySDK defaultService] payOrder:[tmp objectForKey:@"app_url"] fromScheme:@"nijigo" callback:^(NSDictionary *resultDic) {
-                                                      NSLog(@"alipay return info %@", resultDic);
+
                                                       
                                                       if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
                                                           [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_PAY_SUCCESS", nil) maskType:SVProgressHUDMaskTypeBlack];
@@ -359,7 +356,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                                   }];
                                               }else{
                                                   MyWebViewController *myWebVC = [[MyWebViewController alloc] init];
-                                                  myWebVC.navigationItem.title = @"支付宝支付";
+                                                  myWebVC.navigationItem.title = NSLocalizedString(@"TEXT_ALIPAY_PAY", nil);
                                                   myWebVC.webUrl = [tmp objectForKey:@"wap_url"];
                                                   myWebVC.isRoot = YES;
                                                   [self.navigationController pushViewController:myWebVC animated:YES];

@@ -60,6 +60,8 @@
 // 17号字体
 #define TITLE_17FONT_SIZE [UIFont systemFontOfSize:17.0f]
 
+// 结算红色
+#define RED_CART_BG [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
 // 红色背景
 #define RED_COLOR_BG [UIColor colorWithRed:229/255.0 green:42/255.0 blue:34/255.0 alpha:1]
 // 蓝色

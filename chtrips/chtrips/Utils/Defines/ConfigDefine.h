@@ -19,7 +19,7 @@ static NSString *WXPartnerID = @"1308432801";
 static NSString *WXPayAPI = @"4B0F17F38B688EE55855ABF16348E6E1";
 static NSString *WXpackage = @"Sign=WXPay";
 
-static NSString *CHVersion = @"0.9.4";
+static NSString *CHVersion = @"0.9.7";
 
 static NSString *BookingURL = @"http://www.booking.com/?aid=892651";
 
