@@ -147,7 +147,9 @@
 
 - (void) wechatBTN {
     
-    [WXApiRequestHandler sendLinkURL:_webUrl
+    NSString *shareUrl = [NSString stringWithFormat:@"%@?type=app", _webUrl];
+    
+    [WXApiRequestHandler sendLinkURL:shareUrl
                              TagName:nil
                                Title:[_albumDic objectForKey:@"title"]
                          Description:nil
@@ -157,8 +159,9 @@
 }
 
 - (void) wechatMomentBTN {
+    NSString *shareUrl = [NSString stringWithFormat:@"%@?type=app", _webUrl];
     
-    [WXApiRequestHandler sendLinkURL:_webUrl
+    [WXApiRequestHandler sendLinkURL:shareUrl
                              TagName:nil
                                Title:[_albumDic objectForKey:@"title"]
                          Description:nil

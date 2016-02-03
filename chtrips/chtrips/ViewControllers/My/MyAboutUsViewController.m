@@ -27,6 +27,8 @@
     
     [self setupStyle];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 - (void) setupStyle {
@@ -40,9 +42,17 @@
     
     self.webView.delegate = self;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.nijigo.com/Product/aboutme"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.nijigo.com"]];
     [self.webView loadRequest:request];
     
+    [SVProgressHUD show];
+    
+    [self performSelector:@selector(dismissSVHUD) withObject:nil afterDelay:1.0f];
+    
+}
+
+- (void) dismissSVHUD {
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,11 +61,11 @@
 }
 
 - (void) webViewDidStartLoad:(UIWebView *)webView {
-    [SVProgressHUD show];
+
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
-    [SVProgressHUD dismiss];
+
 }
 /*
 #pragma mark - Navigation

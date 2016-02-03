@@ -8,6 +8,8 @@
 
 #import "ShoppingDGDetailViewController.h"
 #import "WebViewJavascriptBridge.h"
+#import "UIBarButtonItem+Badge.h"
+#import "MyCartViewController.h"
 
 @interface ShoppingDGDetailViewController ()<UIWebViewDelegate>
 
@@ -38,6 +40,7 @@
     [self setupUrlPage];
     [self customizeBackItem];
     [self setupAddBuyList];
+    [self getCartTotal];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
@@ -50,6 +53,11 @@
 }
 
 - (void) setupAddBuyList {
+    
+    UIButton *cartBTN = [self customizedRightButton];
+    [cartBTN addTarget:self action:@selector(pushCart) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cartBTN];
+    
     self.addBuyListV = [UIView newAutoLayoutView];
     [self.view addSubview:_addBuyListV];
     
@@ -109,7 +117,6 @@
     [zhPriceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:zhPriceImg withOffset:5];
     [zhPriceLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceV];
     zhPriceLB.text = self.zhPriceStr;
-    
 }
 
 #pragma mark - 加入购物车
@@ -124,6 +131,15 @@
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_CART_SUCCESS", Nil) maskType:SVProgressHUDMaskTypeBlack];
+                                          
+                                          NSDictionary *tmp = [result objectForKey:@"data"];
+                                          
+                                          if ([[tmp objectForKey:@"cart_total"] isEqualToString:@"0"]) {
+                                              self.navigationItem.rightBarButtonItem = nil;
+                                          }else{
+                                              self.navigationItem.rightBarButtonItem.badgeValue = [tmp objectForKey:@"cart_total"];
+                                          }
+                                          
                                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [_addBuyBTN setTitle:[error localizedDescription] forState:UIControlStateNormal];
                                           _addBuyBTN.enabled = NO;
@@ -169,6 +185,44 @@
     
 }
 
+#pragma mark - 获取购物车数量
+- (void) getCartTotal {
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/getCartTotal"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSDictionary *tmp = [result objectForKey:@"data"];
+                                          
+                                          if ([[tmp objectForKey:@"cart_total"] isEqualToString:@"0"]) {
+                                              self.navigationItem.rightBarButtonItem.badgeValue = nil;
+                                          }else{
+                                              self.navigationItem.rightBarButtonItem.badgeValue = [tmp objectForKey:@"cart_total"];
+                                          }
+                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                      }];
+}
+
+- (void) pushCart {
+    MyCartViewController *myCart = [[MyCartViewController alloc] init];
+    [self.navigationController pushViewController:myCart animated:YES];
+}
+
+- (UIButton *)customizedRightButton {
+    UIImage *imgage=[UIImage imageNamed:@"iconCartGray"];
+    UIButton *button=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, imgage.size.width + 0, imgage.size.height)];
+    [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [button setImage:imgage forState:UIControlStateNormal];
+    return button;
+}
+
+- (void)removeFromLayer:(CALayer *)layerAnimation{
+    
+    [layerAnimation removeFromSuperlayer];
+}
+
 - (void) webViewDidStartLoad:(UIWebView *)webView {
     [SVProgressHUD show];
 }
@@ -176,17 +230,6 @@
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
     [SVProgressHUD dismiss];
 }
-- (void) popToShoppingDG {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -146,6 +146,9 @@
 
 #pragma mark - 注册divicetoken
 - (void) regDeviceToken {
+    // 清空推送数字
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
     if (IS_OS_8_OR_LATER) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert) categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];

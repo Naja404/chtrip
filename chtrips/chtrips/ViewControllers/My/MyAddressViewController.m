@@ -16,7 +16,7 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
 @interface MyAddressViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myAddressTV;
-@property (nonatomic, strong) NSArray *myAddressData;
+@property (nonatomic, strong) NSMutableArray *myAddressData;
 @property (nonatomic, strong) NSString *addUrl;
 @property (nonatomic, strong) UILabel *defaultLB;
 
@@ -115,6 +115,57 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
     }
 }
 
+- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCellEditingStyle cellStyle = UITableViewCellEditingStyleNone;
+    
+    if ([tableView isEqual:_myAddressTV]) cellStyle = UITableViewCellEditingStyleDelete;
+    
+    return cellStyle;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        NSDictionary *tmp = [_myAddressData objectAtIndex:indexPath.row];
+
+        [_myAddressData removeObjectAtIndex:indexPath.row];
+        
+        NSArray *indexPaths = @[indexPath];
+        
+        [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [self delAddressById:[tmp objectForKey:@"id"]];
+    }
+}
+
+- (void) delAddressById:(NSString *)aid {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:aid forKey:@"id"];
+
+    [[HttpManager instance] requestWithMethod:@"User/delAddress"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          NSDictionary *tmp = [result objectForKey:@"data"];
+                                          _myAddressData = [[tmp objectForKey:@"list"] mutableCopy];
+                                          _addUrl = [tmp objectForKey:@"add_url"];
+                                          
+                                          if (_myAddressTV != NULL) {
+                                              if ([_myAddressData count] > 0) {
+                                                  _defaultLB.hidden = YES;
+                                                  _myAddressTV.hidden = NO;
+                                                  [_myAddressTV reloadData];
+                                              }else{
+                                                  _myAddressTV.hidden = YES;
+                                                  _defaultLB.hidden = NO;
+                                              }
+                                          }
+                                      }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          
+                                      }];
+}
+
 #pragma mark - 获取收货地址
 - (void) getAddress {
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
@@ -124,7 +175,7 @@ static NSString * const MY_ADDRESS_CELL = @"myAddressCell";
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
                                           NSDictionary *tmp = [result objectForKey:@"data"];
-                                          _myAddressData = [tmp objectForKey:@"list"];
+                                          _myAddressData = [[tmp objectForKey:@"list"] mutableCopy];
                                           _addUrl = [tmp objectForKey:@"add_url"];
                                           
                                           if (_myAddressTV != NULL) {

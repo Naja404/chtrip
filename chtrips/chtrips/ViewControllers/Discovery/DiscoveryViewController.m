@@ -339,7 +339,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
-    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum?aid=%@&ssid=%@", [cellData objectForKey:@"aid"], [CHSSID SSID]];
+    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum/aid/%@/ssid/%@.html", [cellData objectForKey:@"aid"], [CHSSID SSID]];
     detail.albumDic = cellData;
     detail.navigationItem.title = [cellData objectForKey:@"type_name"];
     

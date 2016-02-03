@@ -279,6 +279,10 @@
 		E9DEFE141C3E6BEB00B91771 /* MyCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE131C3E6BEB00B91771 /* MyCartTableViewCell.m */; };
 		E9DEFE171C3E728600B91771 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DEFE161C3E728600B91771 /* MyOrderViewController.m */; };
 		E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */; };
+		E9E2A5CE1C619F4500075D5B /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E2A5CD1C619F4500075D5B /* UIBarButtonItem+Badge.m */; };
+		E9E2A5D21C62005500075D5B /* iconCartGray.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E2A5CF1C62005500075D5B /* iconCartGray.png */; };
+		E9E2A5D31C62005500075D5B /* iconCartGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E2A5D01C62005500075D5B /* iconCartGray@2x.png */; };
+		E9E2A5D41C62005500075D5B /* iconCartGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E2A5D11C62005500075D5B /* iconCartGray@3x.png */; };
 		E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3951B119D8B00A352CD /* HttpManager.m */; };
 		E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */; };
 		E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */; };
@@ -717,6 +721,11 @@
 		E9DEFE161C3E728600B91771 /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderViewController.m; path = ViewControllers/My/MyOrderViewController.m; sourceTree = "<group>"; };
 		E9E0231B1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingPopularityTableViewCell.h; path = Views/Shopping/ShoppingPopularityTableViewCell.h; sourceTree = "<group>"; };
 		E9E0231C1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingPopularityTableViewCell.m; path = Views/Shopping/ShoppingPopularityTableViewCell.m; sourceTree = "<group>"; };
+		E9E2A5CC1C619F4500075D5B /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Badge.h"; path = "Vendors/UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		E9E2A5CD1C619F4500075D5B /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Badge.m"; path = "Vendors/UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		E9E2A5CF1C62005500075D5B /* iconCartGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconCartGray.png; path = Resource/iconCartGray.png; sourceTree = "<group>"; };
+		E9E2A5D01C62005500075D5B /* iconCartGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconCartGray@2x.png"; path = "Resource/iconCartGray@2x.png"; sourceTree = "<group>"; };
+		E9E2A5D11C62005500075D5B /* iconCartGray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconCartGray@3x.png"; path = "Resource/iconCartGray@3x.png"; sourceTree = "<group>"; };
 		E9E4A3941B119D8B00A352CD /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpManager.h; path = Utils/HttpManager.h; sourceTree = "<group>"; };
 		E9E4A3951B119D8B00A352CD /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpManager.m; path = Utils/HttpManager.m; sourceTree = "<group>"; };
 		E9E4A3971B11E12800A352CD /* DeviceTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceTokenManager.h; path = Utils/DeviceTokenManager.h; sourceTree = "<group>"; };
@@ -1012,6 +1021,8 @@
 		E92FE2971C55FA3100B2F006 /* system */ = {
 			isa = PBXGroup;
 			children = (
+				E9E2A5CC1C619F4500075D5B /* UIBarButtonItem+Badge.h */,
+				E9E2A5CD1C619F4500075D5B /* UIBarButtonItem+Badge.m */,
 				E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */,
 				E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */,
 				E9CA46C01B6E42E90010C838 /* HMSegmentedControl.h */,
@@ -1429,6 +1440,9 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9E2A5CF1C62005500075D5B /* iconCartGray.png */,
+				E9E2A5D01C62005500075D5B /* iconCartGray@2x.png */,
+				E9E2A5D11C62005500075D5B /* iconCartGray@3x.png */,
 				E92FE2A21C5A222600B2F006 /* bgIntro1.png */,
 				E92FE2A31C5A222600B2F006 /* bgIntro1@2x.png */,
 				E92FE2A41C5A222600B2F006 /* bgIntro1@3x.png */,
@@ -1730,6 +1744,7 @@
 				E9899F881ACCF713009722C4 /* Icon-76@2x.png in Resources */,
 				E95EBFE21B8802BD001BD221 /* arrowLeft.png in Resources */,
 				E90EE9A11C085F35004E6B20 /* share.png in Resources */,
+				E9E2A5D41C62005500075D5B /* iconCartGray@3x.png in Resources */,
 				E94324E31C48E9FE004C1886 /* logoAlipay.png in Resources */,
 				E95C3D001B4970E40010EF58 /* WebViewJavascriptBridge.js.txt in Resources */,
 				E9F5CE961ACA3E0D00FDE3B0 /* search.png in Resources */,
@@ -1833,6 +1848,7 @@
 				E97184361ABAC178005291A1 /* GetUserLocationCenter@2x.png in Resources */,
 				E9F1C8B31B403BDD008FFD28 /* discoveryGray@3x.png in Resources */,
 				E91396701AC2607E003AF385 /* trash.png in Resources */,
+				E9E2A5D31C62005500075D5B /* iconCartGray@2x.png in Resources */,
 				E9A1D03A1BB1953D007D635B /* redSelect@2x.png in Resources */,
 				E9899F891ACCF713009722C4 /* Icon-Small.png in Resources */,
 				E98438581B386495003AA6B2 /* goLogoEmpty@3x.png in Resources */,
@@ -1850,6 +1866,7 @@
 				E9899F861ACCF713009722C4 /* Icon-60@2x.png in Resources */,
 				E913964C1AC111B8003AF385 /* bg-addbutton-highlighted.png in Resources */,
 				E94324E41C48E9FE004C1886 /* logoWeChat.png in Resources */,
+				E9E2A5D21C62005500075D5B /* iconCartGray.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
 				E95E1D121B9F17D000C88692 /* star_50.png in Resources */,
 				E95E1D081B9F17D000C88692 /* star_0.png in Resources */,
@@ -2021,6 +2038,7 @@
 				E9DEFE111C3E693200B91771 /* MyCartViewController.m in Sources */,
 				E97184311ABABFC6005291A1 /* AddSubTripLocationMapTableViewCell.m in Sources */,
 				E9DEFDFA1C3B9EFF00B91771 /* MyWebViewController.m in Sources */,
+				E9E2A5CE1C619F4500075D5B /* UIBarButtonItem+Badge.m in Sources */,
 				E9DE1A9E1B29D2620040BFA6 /* CHAutoSlideScrollView.m in Sources */,
 				E967A2021B9DCB7200FAFF89 /* UIScrollView+MJExtension.m in Sources */,
 				E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */,
