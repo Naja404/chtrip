@@ -26,6 +26,8 @@
 
 #define FONT_SIZE_12 [UIFont systemFontOfSize:12.0f]
 
+#define FONT_SIZE_10 [UIFont systemFontOfSize:10.0f]
+
 #define FONT_TEXT [UIFont systemFontOfSize:16.0f]
 
 #define PLAY_FONT_TEXT [UIFont systemFontOfSize:12.0f]
@@ -79,5 +81,8 @@
 
 // 城市选择label字体样色
 #define BLACK_COLOR_CITY_NAME [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1]
+
+// 导购灰色
+#define GRAY_COLOR_PLAY [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1]
 
 #endif

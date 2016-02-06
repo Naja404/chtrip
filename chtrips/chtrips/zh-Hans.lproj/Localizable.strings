@@ -73,7 +73,8 @@
 "TEXT_FEEDBACK" = "意见反馈";
 "TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
 "TEXT_FEEDBACK_SEND_SUCCESS" = "反馈成功";
-"TEXT_ADD_BUYLIST_SUCCESS" = "成功添加清单";
+"TEXT_ADD_BUYLIST_SUCCESS" = "成功添加我想买";
+"TEXT_CANCEL_BUYLIST_SUCCESS" = "成功取消我想买";
 "TEXT_NOT_BUYLIST" = "暂无扫货清单,赶快去添加吧";
 "TEXT_REFERENCE_PRICE" = "参考价格";
 "TEXT_ADD_WANT_GO" = "成功添加我想去";

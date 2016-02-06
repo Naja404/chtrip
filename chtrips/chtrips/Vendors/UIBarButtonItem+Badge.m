@@ -43,7 +43,7 @@ NSString const *UIBarButtonItem_badgeValueKey = @"UIBarButtonItem_badgeValueKey"
     [superview addSubview:self.badge];
     
     // Default design initialization
-    self.badgeBGColor   = [UIColor redColor];
+    self.badgeBGColor   = [UIColor colorWithRed:255/255.0 green:187/255.0 blue:0/255.0 alpha:1];
     self.badgeTextColor = [UIColor whiteColor];
     self.badgeFont      = [UIFont systemFontOfSize:12.0];
     self.badgePadding   = 5;
