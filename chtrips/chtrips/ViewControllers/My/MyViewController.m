@@ -110,7 +110,7 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
             return 1;
         }
     }else if(section == 1){
-        return 2;
+        return 3;
     }else{
         return 2;
     }
@@ -193,10 +193,15 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
                 titleText = @"TEXT_MY_CART";
 //                imgPath = @"iconBuyList";
                 imgPath = @"iconCart";
-            }else if (indexPath.row == 1){
+            }else if (indexPath.row == 2){
                 titleText = @"TEXT_MY_WANT_GO";
 //                imgPath = @"iconLikeGo";
                 imgPath = @"iconFavorite";
+            }else{
+//                titleText = @"TEXT_CELL_BUY_LIST";
+//                imgPath = @"iconBuyList";
+                titleText = @"TEXT_WANT_BUY";
+                imgPath = @"iconWantBuy";
             }
         }
         
@@ -254,13 +259,16 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
             MyCartViewController *myCart = [[MyCartViewController alloc] init];
             myCart.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myCart animated:YES];
-        }else if (indexPath.row == 1){
+        }else if (indexPath.row == 2){
             MyWantListViewController *myWantList = [[MyWantListViewController alloc] init];
             myWantList.navigationItem.title = NSLocalizedString(@"TEXT_CELL_WANT_LIST", Nil);
             myWantList.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myWantList animated:YES];
         }else{
-            
+            MyBuyListViewController *myBuyList = [[MyBuyListViewController alloc] init];
+            myBuyList.navigationItem.title = NSLocalizedString(@"TEXT_WANT_BUY", Nil);
+            myBuyList.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myBuyList animated:YES];
         }
     }
     
