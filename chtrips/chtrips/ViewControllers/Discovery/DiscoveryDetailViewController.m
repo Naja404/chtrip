@@ -151,7 +151,7 @@
     
     [WXApiRequestHandler sendLinkURL:shareUrl
                              TagName:nil
-                               Title:[_albumDic objectForKey:@"title"]
+                               Title:[[_albumDic objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"*" withString:@""]
                          Description:nil
                           ThumbImage:[UIImage imageNamed:@"iconLogo100"]
                              InScene:WXSceneSession];
@@ -163,7 +163,7 @@
     
     [WXApiRequestHandler sendLinkURL:shareUrl
                              TagName:nil
-                               Title:[_albumDic objectForKey:@"title"]
+                               Title:[[_albumDic objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"*" withString:@""]
                          Description:nil
                           ThumbImage:[UIImage imageNamed:@"iconLogo100"]
                              InScene:WXSceneTimeline];
