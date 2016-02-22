@@ -16,6 +16,7 @@
 #import "ShoppingDGDetailViewController.h"
 #import "LinkWebViewController.h"
 #import "IntroViewController.h"
+#import <UIImageView-PlayGIF/YFGIFImageView.h>
 
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
@@ -115,6 +116,9 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     UIView *imgView = [UIView newAutoLayoutView];
     [self.searchView addSubview:imgView];
     
+
+    
+    
 //    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:10];
     [imgView autoAlignAxis:ALAxisVertical toSameAxisOfView:_searchView];
     [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
@@ -122,26 +126,38 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     imgView.backgroundColor = [UIColor clearColor];
     imgView.clipsToBounds = YES;
     
-    UIImageView *imgbg = [UIImageView newAutoLayoutView];
-    [imgView addSubview:imgbg];
+
+    NSData *gif = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"gif"]];
+    YFGIFImageView *gifView = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, 66, 30)];
+    gifView.gifData = gif;
     
-    [imgbg autoAlignAxis:ALAxisVertical toSameAxisOfView:imgView];
-    [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
-    [imgbg autoSetDimensionsToSize:CGSizeMake(70, 70)];
-    imgbg.backgroundColor = [UIColor clearColor];
+    [imgView addSubview:gifView];
     
-    imgbg.image = [UIImage imageNamed:@"goLogoBg"];
-    imgbg.clipsToBounds = YES;
-    imgbg.rotate(360).animate(20.0);
+    [gifView startGIF];
     
-    UIImageView *imgLogo = [UIImageView newAutoLayoutView];
-    [imgView addSubview:imgLogo];
+    gifView.userInteractionEnabled = YES;
     
-    [imgLogo autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:imgView];
-    [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
-    [imgLogo autoSetDimensionsToSize:CGSizeMake(66, 30)];
-    imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
-    imgLogo.backgroundColor = [UIColor clearColor];
+//
+//    UIImageView *imgbg = [UIImageView newAutoLayoutView];
+//    [imgView addSubview:imgbg];
+//    
+//    [imgbg autoAlignAxis:ALAxisVertical toSameAxisOfView:imgView];
+//    [imgbg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
+//    [imgbg autoSetDimensionsToSize:CGSizeMake(70, 70)];
+//    imgbg.backgroundColor = [UIColor clearColor];
+//    
+//    imgbg.image = [UIImage imageNamed:@"goLogoBg"];
+//    imgbg.clipsToBounds = YES;
+//    imgbg.rotate(360).animate(20.0);
+//    
+//    UIImageView *imgLogo = [UIImageView newAutoLayoutView];
+//    [imgView addSubview:imgLogo];
+//    
+//    [imgLogo autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:imgView];
+//    [imgLogo autoAlignAxis:ALAxisHorizontal toSameAxisOfView:imgView];
+//    [imgLogo autoSetDimensionsToSize:CGSizeMake(66, 30)];
+//    imgLogo.image = [UIImage imageNamed:@"goLogoEmpty"];
+//    imgLogo.backgroundColor = [UIColor clearColor];
 
 }
 
@@ -276,7 +292,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return ScreenWidth;
+    return ScreenWidth + 10;
 }
 
 

@@ -14,6 +14,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        
+        
         self.bgImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_bgImg];
         
@@ -60,7 +63,7 @@
         [self.contentView addSubview:_timeLB];
         
         [_timeLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.buyBTN];
-        [_timeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.buyBTN withOffset:5];
+        [_timeLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.buyBTN withOffset:15];
         [_timeLB autoSetDimensionsToSize:CGSizeMake(120, 30)];
 //        _timeLB.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
         _timeLB.font = [UIFont systemFontOfSize:20.0f];
@@ -71,7 +74,7 @@
         [self.contentView addSubview:_locationImg];
         
         [_locationImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
-        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-8];
+        [_locationImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-18];
         [_locationImg autoSetDimensionsToSize:CGSizeMake(10, 15)];
         _locationImg.image = [UIImage imageNamed:@"mapLocationIcon"];
         

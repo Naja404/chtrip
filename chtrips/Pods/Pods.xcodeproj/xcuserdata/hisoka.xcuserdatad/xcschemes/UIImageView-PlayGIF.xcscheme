@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6E65E0861BEB31739471A0F5'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = 'CA67A90BB9E8180CD92409EB'
+               BlueprintName = 'UIImageView-PlayGIF'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSDWebImage.a'>
+               BuildableName = 'libUIImageView-PlayGIF.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

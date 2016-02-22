@@ -291,6 +291,8 @@
 		E9E2A5D41C62005500075D5B /* iconCartGray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E2A5D11C62005500075D5B /* iconCartGray@3x.png */; };
 		E9E4A3961B119D8B00A352CD /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3951B119D8B00A352CD /* HttpManager.m */; };
 		E9E4A3991B11E12800A352CD /* DeviceTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */; };
+		E9E8B7051C76B812003EC6D3 /* test1.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9E8B7041C76B812003EC6D3 /* test1.gif */; };
+		E9E8B7071C770E25003EC6D3 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9E8B7061C770E25003EC6D3 /* logo.gif */; };
 		E9EB9C7C1AB7CA5B00ED0334 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */; };
 		E9EB9C801AB8142D00ED0334 /* addIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7E1AB8142D00ED0334 /* addIcon.png */; };
 		E9EB9C811AB8142D00ED0334 /* addIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EB9C7F1AB8142D00ED0334 /* addIcon@2x.png */; };
@@ -742,6 +744,8 @@
 		E9E4A3951B119D8B00A352CD /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpManager.m; path = Utils/HttpManager.m; sourceTree = "<group>"; };
 		E9E4A3971B11E12800A352CD /* DeviceTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceTokenManager.h; path = Utils/DeviceTokenManager.h; sourceTree = "<group>"; };
 		E9E4A3981B11E12800A352CD /* DeviceTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceTokenManager.m; path = Utils/DeviceTokenManager.m; sourceTree = "<group>"; };
+		E9E8B7041C76B812003EC6D3 /* test1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = test1.gif; path = Resource/test1.gif; sourceTree = "<group>"; };
+		E9E8B7061C770E25003EC6D3 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = logo.gif; path = Resource/logo.gif; sourceTree = "<group>"; };
 		E9EB9C7A1AB7CA5B00ED0334 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = coreData/Trip.h; sourceTree = "<group>"; };
 		E9EB9C7B1AB7CA5B00ED0334 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = coreData/Trip.m; sourceTree = "<group>"; };
 		E9EB9C7E1AB8142D00ED0334 /* addIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addIcon.png; path = Resource/addIcon.png; sourceTree = "<group>"; };
@@ -1452,6 +1456,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9E8B7061C770E25003EC6D3 /* logo.gif */,
+				E9E8B7041C76B812003EC6D3 /* test1.gif */,
 				E9D817861C66150700AB95C0 /* iconWantBuy.png */,
 				E9D817871C66150700AB95C0 /* iconWantBuy@2x.png */,
 				E9D817881C66150700AB95C0 /* iconWantBuy@3x.png */,
@@ -1880,6 +1886,7 @@
 				E92FE2AC1C5A222600B2F006 /* bgIntro2@2x.png in Resources */,
 				E95E1D091B9F17D000C88692 /* star_5.png in Resources */,
 				E9382A6C1C03165100E447D3 /* wechatBTN@2x.png in Resources */,
+				E9E8B7071C770E25003EC6D3 /* logo.gif in Resources */,
 				E9B0F67D1B37E1E800D83E83 /* arrowLeft@2x.png in Resources */,
 				E9899F8A1ACCF713009722C4 /* Icon-Small@2x.png in Resources */,
 				E98999491B52B3E5008C9392 /* starProRed.png in Resources */,
@@ -1891,6 +1898,7 @@
 				E94324E41C48E9FE004C1886 /* logoWeChat.png in Resources */,
 				E9E2A5D21C62005500075D5B /* iconCartGray.png in Resources */,
 				E9EB9C841AB8150900ED0334 /* day.png in Resources */,
+				E9E8B7051C76B812003EC6D3 /* test1.gif in Resources */,
 				E95E1D121B9F17D000C88692 /* star_50.png in Resources */,
 				E95E1D081B9F17D000C88692 /* star_0.png in Resources */,
 				E92FE2A81C5A222600B2F006 /* bgIntro1.png in Resources */,
@@ -2235,8 +2243,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2265,8 +2273,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
