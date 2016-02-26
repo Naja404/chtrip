@@ -11,6 +11,7 @@
 #import "PlayDetailViewController.h"
 #import "CitySelectViewController.h"
 #import "HMSegmentedControl.h"
+#import "PlayInsideDetailViewController.h"
 
 static NSString * const PLAY_CELL = @"playCell";
 
@@ -270,20 +271,29 @@ static NSString * const PLAY_CELL = @"playCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+//    PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+//    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
+//    
+//    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@&ssid=%@", [cellData objectForKey:@"saler_id"], [[TMCache sharedCache] objectForKey:@"SSID"]];
+//    detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
+//    if ([_selectIndex isEqualToString:@"3"]) {
+//        detailVC.isHotel = @"1";
+//    }else{
+//        detailVC.isHotel = @"0";
+//    }
+//    
+//    detailVC.address = [cellData objectForKey:@"address"];
+//    detailVC.googleMapUrl = [cellData objectForKey:@"googlemap"];
+//    detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+//    detailVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    
+    // 新版商家详情
+    PlayInsideDetailViewController *detailVC = [[PlayInsideDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
     
-    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@&ssid=%@", [cellData objectForKey:@"saler_id"], [[TMCache sharedCache] objectForKey:@"SSID"]];
-    detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
-    if ([_selectIndex isEqualToString:@"3"]) {
-        detailVC.isHotel = @"1";
-    }else{
-        detailVC.isHotel = @"0";
-    }
-    
-    detailVC.address = [cellData objectForKey:@"address"];
-    detailVC.googleMapUrl = [cellData objectForKey:@"googlemap"];
-    detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+    detailVC.sid = [cellData objectForKey:@"saler_id"];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     

@@ -22,6 +22,8 @@
 
 #define FONT_SIZE_16 [UIFont systemFontOfSize:16.0f]
 
+#define FONT_SIZE_15 [UIFont systemFontOfSize:15.0f]
+
 #define FONT_SIZE_14 [UIFont systemFontOfSize:14.0f]
 
 #define FONT_SIZE_12 [UIFont systemFontOfSize:12.0f]
