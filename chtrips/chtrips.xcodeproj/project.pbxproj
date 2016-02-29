@@ -79,6 +79,7 @@
 		E9382A6F1C03165100E447D3 /* wechatMomentBTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9382A691C03165100E447D3 /* wechatMomentBTN@2x.png */; };
 		E9382A701C03165100E447D3 /* wechatMomentBTN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9382A6A1C03165100E447D3 /* wechatMomentBTN@3x.png */; };
 		E93AFC241B78F15B00B41F61 /* UIViewController+BackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */; };
+		E93BA5A11C84325700D70EF5 /* shopShareICON.png in Resources */ = {isa = PBXBuildFile; fileRef = E93BA5A01C84325700D70EF5 /* shopShareICON.png */; };
 		E93CF2461AC3F5E300247B87 /* bluepoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2431AC3F5E300247B87 /* bluepoint.png */; };
 		E93CF2471AC3F5E300247B87 /* redpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2441AC3F5E300247B87 /* redpoint.jpg */; };
 		E93CF2481AC3F5E300247B87 /* yellowpoint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */; };
@@ -430,6 +431,7 @@
 		E9382A6A1C03165100E447D3 /* wechatMomentBTN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wechatMomentBTN@3x.png"; path = "Resource/wechatMomentBTN@3x.png"; sourceTree = "<group>"; };
 		E93AFC221B78F15B00B41F61 /* UIViewController+BackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BackItem.h"; path = "Vendors/UIViewController+BackItem.h"; sourceTree = "<group>"; };
 		E93AFC231B78F15B00B41F61 /* UIViewController+BackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackItem.m"; path = "Vendors/UIViewController+BackItem.m"; sourceTree = "<group>"; };
+		E93BA5A01C84325700D70EF5 /* shopShareICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shopShareICON.png; path = Resource/shopShareICON.png; sourceTree = "<group>"; };
 		E93CF2431AC3F5E300247B87 /* bluepoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluepoint.png; path = Resource/bluepoint.png; sourceTree = "<group>"; };
 		E93CF2441AC3F5E300247B87 /* redpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = redpoint.jpg; path = Resource/redpoint.jpg; sourceTree = "<group>"; };
 		E93CF2451AC3F5E300247B87 /* yellowpoint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yellowpoint.jpg; path = Resource/yellowpoint.jpg; sourceTree = "<group>"; };
@@ -1472,6 +1474,7 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E93BA5A01C84325700D70EF5 /* shopShareICON.png */,
 				E9A74D061C8018B70002987A /* shopAddressICON.png */,
 				E9A74D071C8018B70002987A /* shopNavICON.png */,
 				E9A74D081C8018B70002987A /* shopTelICON.png */,
@@ -1806,6 +1809,7 @@
 				E9899F8C1ACCF713009722C4 /* iTunesArtwork.png in Resources */,
 				E90EE9A21C085F35004E6B20 /* share@2x.png in Resources */,
 				E90990E51AAFD6D600C48688 /* Main.storyboard in Resources */,
+				E93BA5A11C84325700D70EF5 /* shopShareICON.png in Resources */,
 				E91396571AC111B8003AF385 /* icon-plus@2x.png in Resources */,
 				E9899F851ACCF713009722C4 /* Icon-60.png in Resources */,
 				E9A18E861B65273D00FA66EC /* share@3x.png in Resources */,

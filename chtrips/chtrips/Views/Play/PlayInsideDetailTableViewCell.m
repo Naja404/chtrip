@@ -8,6 +8,12 @@
 
 #import "PlayInsideDetailTableViewCell.h"
 
+@interface PlayInsideDetailTableViewCell ()
+
+
+
+@end
+
 @implementation PlayInsideDetailTableViewCell
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -77,7 +83,16 @@
             
             [_contentLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleLB withOffset:5];
             [_contentLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_titleLB];
-            [_contentLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 60, 15)];
+            [_contentLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-100];
+            [_contentLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
+
+//            if (self.contentView.frame.size.height >= 74) {
+//                [_contentLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 60, 32)];
+//            }else{
+//                [_contentLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 60, 15)];
+//            }
+            _contentLB.lineBreakMode = NSLineBreakByWordWrapping;
+            _contentLB.numberOfLines = 0;
             _contentLB.font = FONT_SIZE_14;
             _contentLB.textColor = GRAY_FONT_COLOR;
             self.lineLB = [UILabel newAutoLayoutView];
@@ -87,6 +102,31 @@
             [_lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
             [_lineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
             _lineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+            
+            
+            self.hLineLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_hLineLB];
+            
+            [_hLineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_contentLB withOffset:20];
+            [_hLineLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_contentLB];
+            [_hLineLB autoSetDimensionsToSize:CGSizeMake(1, 20)];
+            _hLineLB.backgroundColor = GRAY_FONT_COLOR;
+            _hLineLB.hidden = YES;
+            
+            self.mapLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_mapLB];
+            
+            [_mapLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_hLineLB withOffset:10];
+            [_mapLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_contentLB];
+            [_mapLB autoSetDimensionsToSize:CGSizeMake(40, 20)];
+            _mapLB.text = @"地图";
+            _mapLB.font = FONT_SIZE_14;
+            _mapLB.textColor = [UIColor whiteColor];
+            _mapLB.textAlignment = NSTextAlignmentCenter;
+            _mapLB.backgroundColor = BLUE_COLOR_BG;
+            _mapLB.layer.masksToBounds = YES;
+            _mapLB.layer.cornerRadius = 5;
+            _mapLB.hidden = YES;
         }
     }
     

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIView *slideV;
 @property (nonatomic, strong) SlideInViewManager *slideVM;
 @property (nonatomic, strong) NSString *slideShowState;
+@property (nonatomic, strong) UIView *bgView;
 
 @end
 
@@ -73,6 +74,19 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
     
+    self.bgView = [UIView newAutoLayoutView];
+    [self.view addSubview:_bgView];
+    
+    [_bgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
+    [_bgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_bgView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    _bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];;
+    _bgView.hidden = YES;
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissShareView)];
+    
+    [_bgView addGestureRecognizer:gestureRecognizer];
+    
     self.slideV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
     UIButton *wechat = [UIButton newAutoLayoutView];
     [_slideV addSubview:wechat];
@@ -94,7 +108,7 @@
     
     _slideV.backgroundColor = GRAY_COLOR_CELL_LINE;
     
-    self.slideVM = [[SlideInViewManager alloc] initWithSlideView:_slideV parentView:self.view];
+    self.slideVM = [[SlideInViewManager alloc] initWithSlideView:_slideV parentView:_bgView];
     
     self.slideShowState = @"0";
     
@@ -169,6 +183,11 @@
                              InScene:WXSceneTimeline];
     [self showShareView];
     
+}
+
+- (void) dismissShareView{
+    _slideShowState = @"0";
+    [_slideVM slideViewOut];
 }
 
 - (void) showShareView {

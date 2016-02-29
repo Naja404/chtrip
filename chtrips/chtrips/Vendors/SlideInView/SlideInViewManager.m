@@ -30,6 +30,7 @@
 }
 
 - (void) slideViewIn {
+    parentView.hidden = NO;
     visible = YES;
     
     CGFloat slideWidth = CGRectGetWidth(slideView.frame);
@@ -61,6 +62,7 @@
 }
 
 - (void) slideViewOut {
+
     visible = NO;
     
     CGFloat slideWidth = CGRectGetWidth(slideView.frame);
@@ -74,6 +76,7 @@
         [slideView setFrame:original];
     } completion:^(BOOL finished) {
         [slideView removeFromSuperview];
+        parentView.hidden = YES;
     }];
 }
 

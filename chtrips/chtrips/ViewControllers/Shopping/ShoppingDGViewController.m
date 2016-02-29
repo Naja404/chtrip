@@ -12,6 +12,7 @@
 #import "ShoppingPopularityTableViewCell.h"
 #import "ShoppingDGDetailViewController.h"
 #import "PlayDetailViewController.h"
+#import "PlayInsideDetailViewController.h"
 
 static NSString * const SHOP_CELL = @"ShoppingDGCell";
 static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
@@ -117,12 +118,12 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
                        @[@"东京", @"大阪", @"名古屋", @"冲绳", @"京都", @"北海道", @"神户",
                          @"鹿儿岛", @"福冈", @"静冈", @"广岛", @"长崎", @"栃木県", @"千叶县",
                          @"泉佐野", @"茨城県", @"静岡県"]];
-    self.brand = @[@"门店类别", @"百货商场", @"专卖店", @"街区", @"杂货店", @"特产店",
-                      @"免税店", @"药妆店", @"奥特莱斯", @"集市", @"电器店",
+    self.brand = @[@"门店类别", @"免税店", @"百货商场", @"专卖店", @"街区", @"杂货店", @"特产店",
+                      @"药妆店", @"奥特莱斯", @"集市", @"电器店",
                       @"商业街", @"精品店", @"折扣店", @"购物街", @"工艺礼品",
                       @"书店画廊", @"二手店市场", @"食品药品", @"礼品店", @"书店"];
 
-    self.sorts = @[@"星级", @"三星", @"四星", @"五星"];
+    self.sorts = @[@"评分", @"三分", @"四分", @"五分"];
     self.isProduct = NO;
 }
 
@@ -470,13 +471,20 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.shopData objectAtIndex:indexPath.row]];
     
     if (self.shopSegmented.selectedSegmentIndex == 1) {
-        PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+//        PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+//
+//        detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+//        detailVC.address = [cellData objectForKey:@"address"];
+//        detailVC.googleMapUrl = [cellData objectForKey:@"googlemap"];
+//        detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
+//        detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+//        detailVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:detailVC animated:YES];
+        
+        // 新版商家详情
+        PlayInsideDetailViewController *detailVC = [[PlayInsideDetailViewController alloc] init];
 
-        detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
-        detailVC.address = [cellData objectForKey:@"address"];
-        detailVC.googleMapUrl = [cellData objectForKey:@"googlemap"];
         detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
-        detailVC.navigationItem.title = [cellData objectForKey:@"name"];
         detailVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:detailVC animated:YES];
 

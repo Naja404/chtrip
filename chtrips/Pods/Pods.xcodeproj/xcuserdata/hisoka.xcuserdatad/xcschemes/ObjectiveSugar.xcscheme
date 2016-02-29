@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F526D91E6EDDC5B9263A3C85'
+               BlueprintIdentifier = '7D6C76868F779C9583838AB1'
                BlueprintName = 'ObjectiveSugar'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libObjectiveSugar.a'>

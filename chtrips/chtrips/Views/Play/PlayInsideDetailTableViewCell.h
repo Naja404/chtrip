@@ -21,5 +21,7 @@
 @property (nonatomic, strong) UILabel *titleLB;
 @property (nonatomic, strong) UILabel *contentLB;
 @property (nonatomic, strong) UILabel *lineLB;
+@property (nonatomic, strong) UILabel *hLineLB;
+@property (nonatomic, strong) UILabel *mapLB;
 
 @end

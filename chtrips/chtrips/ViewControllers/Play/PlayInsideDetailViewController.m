@@ -9,6 +9,11 @@
 #import "PlayInsideDetailViewController.h"
 #import "PlayInsideDetailTableViewCell.h"
 #import "CHActionSheetMapApp.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "SlideInViewManager.h"
+#import "WXApiRequestHandler.h"
+#import "WXApiManager.h"
+
 
 static NSString * const PLAY_CELL = @"playCell";
 static NSString * const PLAY_TITLE_CELL = @"playTitleCell";
@@ -19,15 +24,23 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
 @property (nonatomic, strong) UITableView *detailTV;
 @property (nonatomic, strong) NSDictionary *detailData;
 @property (nonatomic, strong) CHActionSheetMapApp *mapApp;
+@property (nonatomic, strong) UIView *slideV;
+@property (nonatomic, strong) SlideInViewManager *slideVM;
+@property (nonatomic, strong) NSString *slideShowState;
+@property (nonatomic, strong) UIView *bgView;
 
 @end
 
 @implementation PlayInsideDetailViewController
 
 - (void) viewWillDisappear:(BOOL)animated{
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-        [[HttpManager instance] cancelAllOperations];
-        [SVProgressHUD dismiss];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [[HttpManager instance] cancelAllOperations];
+    [SVProgressHUD dismiss];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -42,7 +55,6 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBarHidden = YES;
     
     self.detailTV = [UITableView newAutoLayoutView];
     [self.view addSubview:_detailTV];
@@ -84,6 +96,146 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
     addWantGoBTN.backgroundColor = BLUE_COLOR_BG;
     [addWantGoBTN addTarget:self action:@selector(addWantGoAction) forControlEvents:UIControlEventTouchDown];
     
+    UIButton *shareBTN = [UIButton newAutoLayoutView];
+    [self.view addSubview:shareBTN];
+    
+    [shareBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:backBTN];
+    [shareBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-20];
+    [shareBTN autoSetDimensionsToSize:CGSizeMake(25, 25)];
+    [shareBTN setBackgroundImage:[UIImage imageNamed:@"shopShareICON"] forState:UIControlStateNormal];
+    [shareBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
+    [shareBTN setBackgroundColor:[UIColor blackColor]];
+    
+    // 设置分享
+    [self setShareView];
+}
+
+#pragma mark - 设置分享
+- (void) setShareView {
+    self.bgView = [UIView newAutoLayoutView];
+    [self.view addSubview:_bgView];
+    
+    [_bgView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
+    [_bgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
+    [_bgView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
+    [_bgView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    _bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];;
+    _bgView.hidden = YES;
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissShareView)];
+    
+    [_bgView addGestureRecognizer:gestureRecognizer];
+    
+    self.slideV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
+    UIButton *wechat = [UIButton newAutoLayoutView];
+    [_slideV addSubview:wechat];
+    
+    [wechat autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_slideV];
+    [wechat autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV withOffset:-50];
+    [wechat autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    [wechat setBackgroundImage:[UIImage imageNamed:@"wechatBTN"] forState:UIControlStateNormal];
+    [wechat addTarget:self action:@selector(wechatBTN) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *wechatMoment = [UIButton newAutoLayoutView];
+    [_slideV addSubview:wechatMoment];
+    
+    [wechatMoment autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_slideV];
+    [wechatMoment autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV withOffset:50];
+    [wechatMoment autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    [wechatMoment setBackgroundImage:[UIImage imageNamed:@"wechatMomentBTN"] forState:UIControlStateNormal];
+    [wechatMoment addTarget:self action:@selector(wechatMomentBTN) forControlEvents:UIControlEventTouchUpInside];
+    
+    _slideV.backgroundColor = GRAY_COLOR_CELL_LINE;
+    
+    self.slideVM = [[SlideInViewManager alloc] initWithSlideView:_slideV parentView:_bgView];
+    
+    self.slideShowState = @"0";
+    
+    UILabel *titleLB = [UILabel newAutoLayoutView];
+    [_slideV addSubview:titleLB];
+    
+    [titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_slideV withOffset:5];
+    [titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:_slideV];
+    [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 20)];
+    titleLB.text = NSLocalizedString(@"TEXT_SHARE_WITH", nil);
+    titleLB.textAlignment = NSTextAlignmentCenter;
+    titleLB.backgroundColor = [UIColor clearColor];
+    titleLB.font = NORMAL_14FONT_SIZE;
+    titleLB.textColor = COLOR_TEXT;
+    
+    UILabel *wechatLB = [UILabel newAutoLayoutView];
+    [_slideV addSubview:wechatLB];
+    
+    [wechatLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:wechat withOffset:-10];
+    [wechatLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:wechat];
+    [wechatLB autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    wechatLB.text = NSLocalizedString(@"TEXT_WECHAT_FRIENDS", nil);
+    wechatLB.textAlignment = NSTextAlignmentCenter;
+    wechatLB.backgroundColor = [UIColor clearColor];
+    wechatLB.font = NORMAL_12FONT_SIZE;
+    wechatLB.textColor = COLOR_TEXT;
+    
+    UILabel *wechatMLB = [UILabel newAutoLayoutView];
+    [_slideV addSubview:wechatMLB];
+    
+    [wechatMLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:wechatMoment withOffset:-10];
+    [wechatMLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:wechatMoment];
+    [wechatMLB autoSetDimensionsToSize:CGSizeMake(50, 50)];
+    wechatMLB.text = NSLocalizedString(@"TEXT_WECHAT_MOMENT", nil);
+    wechatMLB.textAlignment = NSTextAlignmentCenter;
+    wechatMLB.backgroundColor = [UIColor clearColor];
+    wechatMLB.font = NORMAL_12FONT_SIZE;
+    wechatMLB.textColor = COLOR_TEXT;
+}
+
+- (void) wechatBTN {
+    
+    [WXApiRequestHandler sendLinkURL:[_detailData objectForKey:@"share_url"]
+                             TagName:nil
+                               Title:[_detailData objectForKey:@"shop_name"]
+                         Description:[_detailData objectForKey:@"address"]
+                          ThumbImage:[UIImage imageNamed:@"iconLogo100"]
+                             InScene:WXSceneSession];
+    [self showShareView];
+}
+
+- (void) wechatMomentBTN {
+    
+    [WXApiRequestHandler sendLinkURL:[_detailData objectForKey:@"share_url"]
+                             TagName:nil
+                               Title:[_detailData objectForKey:@"shop_name"]
+                         Description:nil
+                          ThumbImage:[UIImage imageNamed:@"iconLogo100"]
+                             InScene:WXSceneTimeline];
+    [self showShareView];
+    
+}
+
+#pragma mark - 获取网络图片
+- (UIImage *) getImageFormUrl:(NSString *) imgUrl {
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgUrl]];
+    
+    if (data == nil) return [UIImage imageNamed:@"iconLogo100"];
+    
+    UIImage *res = [UIImage imageWithData:data];
+    
+    return res;
+}
+
+- (void) dismissShareView{
+    _slideShowState = @"0";
+    [_slideVM slideViewOut];
+}
+
+- (void) showShareView {
+    
+    if ([_slideShowState isEqualToString:@"0"]) {
+        _slideShowState = @"1";
+        [_slideVM slideViewIn];
+    }else{
+        _slideShowState = @"0";
+        [_slideVM slideViewOut];
+    }
 }
 
 #pragma mark - 返回上级controller
@@ -135,7 +287,12 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
         if (indexPath.row == 0) {
             return ScreenWidth * 0.66;
         }else{
-            return 54;
+            
+            if (indexPath.row - 2 == 0 && [[[[_detailData objectForKey:@"normal"] objectAtIndex:0] objectForKey:@"icon"] isEqualToString:@"shopAddressICON"]) {
+                return 74;
+            }else{
+                return 54;
+            }
         }
     }else if(indexPath.section == 1 && indexPath.row == 1){
         return ScreenWidth * 0.75;
@@ -191,7 +348,12 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
             
             cell.contentLB.text = [tmp objectForKey:@"content"];
             
-            if (![[tmp objectForKey:@"icon"] isEqualToString:@"shopAddressICON"]) cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            if (![[tmp objectForKey:@"icon"] isEqualToString:@"shopAddressICON"]) {
+//                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }else{
+                cell.hLineLB.hidden = NO;
+                cell.mapLB.hidden = NO;
+            }
         }
     }else{
         
