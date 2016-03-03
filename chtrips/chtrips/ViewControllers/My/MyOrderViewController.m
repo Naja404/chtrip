@@ -168,7 +168,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [statusLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:headerV withOffset:-10];
     [statusLB autoSetDimensionsToSize:CGSizeMake(100, 45)];
     statusLB.textAlignment = NSTextAlignmentRight;
-    statusLB.textColor = RED_COLOR_BG;
+    statusLB.textColor = RED_CART_BG;
     statusLB.font = FONT_SIZE_16;
     statusLB.text = [tmp objectForKey:@"status_label"];
     
@@ -178,7 +178,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     NSDictionary *tmp = [_orderData objectAtIndex:section];
     
-    UIView *footerV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 45)];
+    UIView *footerV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 45.5)];
     footerV.backgroundColor = [UIColor clearColor];
     
     UILabel *payPriceLB = [UILabel newAutoLayoutView];
@@ -197,9 +197,17 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [priceLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:payPriceLB];
     [priceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:payPriceLB];
     [priceLB autoSetDimensionsToSize:CGSizeMake(100, 45)];
-    priceLB.textColor = RED_COLOR_BG;
+    priceLB.textColor = RED_CART_BG;
     priceLB.font = FONT_SIZE_16;
     priceLB.text = [tmp objectForKey:@"total_fee"];
+    
+    UILabel *parentBgLB = [UILabel newAutoLayoutView];
+    [footerV addSubview:parentBgLB];
+    
+    [parentBgLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:priceLB withOffset:-0.5];
+    [parentBgLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:footerV];
+    [parentBgLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 21)];
+    parentBgLB.backgroundColor = GRAY_COLOR_CELL_LINE;
     
     UILabel *bgLB = [UILabel newAutoLayoutView];
     [footerV addSubview:bgLB];
@@ -207,7 +215,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [bgLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:priceLB];
     [bgLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:footerV];
     [bgLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 20)];
-    bgLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+    bgLB.backgroundColor = GRAY_COLOR_CITY_CELL;
     
     if ([[tmp objectForKey:@"status"] isEqualToString:@"4"]) {
         
@@ -218,12 +226,12 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         [payBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:footerV withOffset:-10];
         [payBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
         [payBTN setTitle:NSLocalizedString(@"TEXT_PAY_NOW", nil) forState:UIControlStateNormal];
-        [payBTN setTitleColor:RED_COLOR_BG forState:UIControlStateNormal];
+        [payBTN setTitleColor:RED_CART_BG forState:UIControlStateNormal];
         payBTN.titleLabel.font = FONT_SIZE_16;
         payBTN.layer.masksToBounds = YES;
         payBTN.layer.cornerRadius = 3.0f;
         payBTN.layer.borderWidth = 1.0f;
-        payBTN.layer.borderColor = RED_COLOR_BG.CGColor;
+        payBTN.layer.borderColor = RED_CART_BG.CGColor;
         payBTN.tag = section;
         
         UITapGestureRecognizer *payOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(payOrder:)];

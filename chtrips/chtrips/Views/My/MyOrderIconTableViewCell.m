@@ -28,7 +28,7 @@
             
             [iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView withOffset:0.0];
             [iconImg autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
-            [iconImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
+            [iconImg autoSetDimensionsToSize:CGSizeMake(20, 20)];
             iconImg.image = [UIImage imageNamed:[iconArr objectAtIndex:i]];
             
             UILabel *titleLB = [UILabel newAutoLayoutView];

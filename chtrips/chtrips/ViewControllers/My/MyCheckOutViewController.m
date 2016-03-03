@@ -142,7 +142,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 80;
+        return 90;
     }else if (indexPath.section == 1){
         if (indexPath.row == 1) {
             return 80;
@@ -377,7 +377,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     NSRange range = [str rangeOfString:@" "];
     NSUInteger rangLength = str.length - range.location;
     
-    [text addAttribute:NSForegroundColorAttributeName value:RED_COLOR_BG range:NSMakeRange(range.location, rangLength)];
+    [text addAttribute:NSForegroundColorAttributeName value:RED_CART_BG range:NSMakeRange(range.location, rangLength)];
     
     [text addAttribute:NSFontAttributeName value:FONT_SIZE_16 range:NSMakeRange(range.location, rangLength)];
     

@@ -62,7 +62,7 @@
             [_lineLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.contentView withOffset:-0.5];
             [_lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
             [_lineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
-            _lineLB.backgroundColor = GRAY_COLOR_CITY_CELL;
+            _lineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
             
             self.hotelLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_hotelLB];
@@ -105,7 +105,8 @@
             self.iconImg = [UIImageView newAutoLayoutView];
             [self.contentView addSubview:_iconImg];
             
-            [_iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+//            [_iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+            [_iconImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:12];
             [_iconImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
             [_iconImg autoSetDimensionsToSize:CGSizeMake(15, 15)];
             
@@ -113,7 +114,7 @@
             [self.contentView addSubview:_titleLB];
             
             [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:12];
-            [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_iconImg withOffset:5];
+            [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_iconImg withOffset:10];
             [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 60, 15)];
             _titleLB.font = FONT_SIZE_15;
             _titleLB.textColor = HIGHLIGHT_BLACK_COLOR;

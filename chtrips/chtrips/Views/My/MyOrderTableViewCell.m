@@ -20,6 +20,8 @@
         [_proImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_proImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
         [_proImg autoSetDimensionsToSize:CGSizeMake(90, 66)];
+        _proImg.layer.borderWidth = 0.5;
+        _proImg.layer.borderColor = GRAY_COLOR_CELL_LINE.CGColor;
         
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];
@@ -36,7 +38,7 @@
         [_priceLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_proImg];
         [_priceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_titleLB];
         [_priceLB autoSetDimensionsToSize:CGSizeMake(100, 40)];
-        _priceLB.textColor = RED_COLOR_BG;
+        _priceLB.textColor = RED_CART_BG;
         _priceLB.font = FONT_SIZE_14;
         
         self.totalLB = [UILabel newAutoLayoutView];

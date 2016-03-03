@@ -18,7 +18,7 @@
             self.titleLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_titleLB];
             
-            [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
+            [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:5];
             [_titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView withOffset:20];
             [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 40, 30)];
             
