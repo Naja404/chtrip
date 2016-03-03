@@ -13,11 +13,14 @@
 #import "SlideInViewManager.h"
 #import "WXApiRequestHandler.h"
 #import "WXApiManager.h"
+#import "BookingWebViewController.h"
+
 
 
 static NSString * const PLAY_CELL = @"playCell";
 static NSString * const PLAY_TITLE_CELL = @"playTitleCell";
 static NSString * const PLAY_NAV_CELL = @"playNavCell";
+static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
 
 @interface PlayInsideDetailViewController ()<UITableViewDelegate, UITableViewDataSource, CHActionSheetMapAppDelegate>
 
@@ -73,16 +76,24 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_TITLE_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_NAV_CELL];
+    [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_DESCRIPTION_CELL];
+    
+    UIImageView *backIMG = [UIImageView newAutoLayoutView];
+    [self.view addSubview:backIMG];
+    
+    [backIMG autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:30];
+    [backIMG autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20];
+    [backIMG autoSetDimensionsToSize:CGSizeMake(25, 25)];
+    backIMG.image = [UIImage imageNamed:@"shopBackBTN"];
     
     UIButton *backBTN = [UIButton newAutoLayoutView];
     [self.view addSubview:backBTN];
     
-    [backBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:30];
-    [backBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20];
-    [backBTN autoSetDimensionsToSize:CGSizeMake(15, 25)];
-    [backBTN setBackgroundImage:[UIImage imageNamed:@"arrowLeft"] forState:UIControlStateNormal];
+    [backBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:10];
+    [backBTN autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:10];
+    [backBTN autoSetDimensionsToSize:CGSizeMake(50, 50)];
     [backBTN addTarget:self action:@selector(backLastController) forControlEvents:UIControlEventTouchUpInside];
-    [backBTN setBackgroundColor:[UIColor blackColor]];
+    [backBTN setBackgroundColor:[UIColor clearColor]];
     
     UIButton *addWantGoBTN = [UIButton newAutoLayoutView];
     [self.view addSubview:addWantGoBTN];
@@ -99,12 +110,12 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
     UIButton *shareBTN = [UIButton newAutoLayoutView];
     [self.view addSubview:shareBTN];
     
-    [shareBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:backBTN];
+    [shareBTN autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:backIMG];
     [shareBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-20];
     [shareBTN autoSetDimensionsToSize:CGSizeMake(25, 25)];
-    [shareBTN setBackgroundImage:[UIImage imageNamed:@"shopShareICON"] forState:UIControlStateNormal];
+    [shareBTN setBackgroundImage:[UIImage imageNamed:@"shopShareBTN"] forState:UIControlStateNormal];
     [shareBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
-    [shareBTN setBackgroundColor:[UIColor blackColor]];
+//    [shareBTN setBackgroundColor:[UIColor blackColor]];
     
     // 设置分享
     [self setShareView];
@@ -271,11 +282,13 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 1) {
+        return 1;
+    }else if(section == 2){
         return 2;
     }else{
         return [[_detailData objectForKey:@"normal"] count] + 2;
@@ -290,11 +303,29 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
             
             if (indexPath.row - 2 == 0 && [[[[_detailData objectForKey:@"normal"] objectAtIndex:0] objectForKey:@"icon"] isEqualToString:@"shopAddressICON"]) {
                 return 74;
+            }else if (indexPath.row - 2 == 2) {
+                NSString *openTime = [[[_detailData objectForKey:@"normal"] objectAtIndex:2] objectForKey:@"content"];
+                
+                CGSize size = [openTime boundingRectWithSize:CGSizeMake(ScreenWidth - 40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_SIZE_14} context:nil].size;
+                
+                if (size.height > 20) {
+                    return 88;
+                }else{
+                    return 54;
+                }
             }else{
                 return 54;
             }
         }
-    }else if(indexPath.section == 1 && indexPath.row == 1){
+    }else if (indexPath.section == 1){
+        NSString *description = [_detailData objectForKey:@"description"];
+        
+//        CGSize size = [description sizeWithAttributes:@{NSFontAttributeName:FONT_SIZE_14}];
+        CGSize size = [description boundingRectWithSize:CGSizeMake(ScreenWidth - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_SIZE_14} context:nil].size;
+        
+        return size.height + 20;
+        
+    }else if(indexPath.section == 2 && indexPath.row == 1){
         return ScreenWidth * 0.75;
     }else{
         return 42;
@@ -302,7 +333,7 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == 1) {
+    if (section == 2) {
         return 0;
     }else{
         return 10;
@@ -324,6 +355,8 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
             NSURL *imageUrl = [NSURL URLWithString:[_detailData objectForKey:@"thumb"]];
             [cell.bgImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
             
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
             return cell;
         
         }else if(indexPath.row == 1){
@@ -335,6 +368,11 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
             cell.shopNameLB.text = [_detailData objectForKey:@"shop_name"];
             cell.ratingImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [_detailData objectForKey:@"rating"]]];
             cell.categoryLB.text = [_detailData objectForKey:@"category"];
+            
+            if ([_isHotel isEqualToString:@"1"]) {
+                cell.hLineLB.hidden = NO;
+                cell.hotelLB.hidden = NO;
+            }
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -355,6 +393,19 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
                 cell.mapLB.hidden = NO;
             }
         }
+    }else if (indexPath.section == 1){
+        // 商户简介
+        
+        [cell removeFromSuperview];
+        
+        PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_DESCRIPTION_CELL forIndexPath:indexPath];
+        
+        cell.contentLB.text = [_detailData objectForKey:@"description"];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+        
     }else{
         
         if (indexPath.row == 0) {
@@ -368,6 +419,7 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
             PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_NAV_CELL forIndexPath:indexPath];
             NSURL *imageUrl = [NSURL URLWithString:[_detailData objectForKey:@"map_thumb"]];
             [cell.bgImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             return cell;
         }
@@ -383,9 +435,13 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
 
     if (indexPath.section == 0) {
         if (indexPath.row == 2) {
-            [_detailTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1] animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            [_detailTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionBottom];
         }
-    }else{
+        
+        if (indexPath.row == 1) {
+            [self pushBookVC];
+        }
+    }else if(indexPath.section == 2){
         [self showMapActionSheet];
     }
 }
@@ -414,6 +470,15 @@ static NSString * const PLAY_NAV_CELL = @"playNavCell";
                                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
+}
+
+#pragma mark - 载入booking页面
+- (void) pushBookVC {
+    BookingWebViewController *bookVC = [[BookingWebViewController alloc] init];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:bookVC];
+    
+    [self.navigationController presentViewController:navVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

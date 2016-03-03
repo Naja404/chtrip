@@ -11,5 +11,6 @@
 @interface PlayInsideDetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *sid;
+@property (nonatomic, strong) NSString *isHotel;
 
 @end

@@ -294,6 +294,11 @@ static NSString * const PLAY_CELL = @"playCell";
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.playData objectAtIndex:indexPath.row]];
     
     detailVC.sid = [cellData objectForKey:@"saler_id"];
+    if ([_selectIndex isEqualToString:@"3"]) {
+        detailVC.isHotel = @"1";
+    }else{
+        detailVC.isHotel = @"0";
+    }
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     

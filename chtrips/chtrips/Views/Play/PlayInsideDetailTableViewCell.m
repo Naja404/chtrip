@@ -34,10 +34,11 @@
             [self.contentView addSubview:_shopNameLB];
             
             [_shopNameLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
-            [_shopNameLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:5];
+            [_shopNameLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
             [_shopNameLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 10, 30)];
+            _shopNameLB.numberOfLines = 0;
             _shopNameLB.font = FONT_SIZE_16;
-            _shopNameLB.font = BLACK_FONT_TEXT;
+            _shopNameLB.textColor = HIGHLIGHT_BLACK_COLOR;
             
             self.ratingImg = [UIImageView newAutoLayoutView];
             [self.contentView addSubview:_ratingImg];
@@ -62,12 +63,50 @@
             [_lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
             [_lineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
             _lineLB.backgroundColor = GRAY_COLOR_CITY_CELL;
+            
+            self.hotelLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_hotelLB];
+            
+            [_hotelLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-10];
+            [_hotelLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+            [_hotelLB autoSetDimensionsToSize:CGSizeMake(40, 20)];
+            _hotelLB.text = @"预定";
+            _hotelLB.font = FONT_SIZE_14;
+            _hotelLB.textColor = [UIColor whiteColor];
+            _hotelLB.textAlignment = NSTextAlignmentCenter;
+            _hotelLB.backgroundColor = BLUE_COLOR_BG;
+            _hotelLB.layer.masksToBounds = YES;
+            _hotelLB.layer.cornerRadius = 10;
+            _hotelLB.hidden = YES;
+            
+            self.hLineLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_hLineLB];
+            
+            [_hLineLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_hotelLB withOffset:-10];
+            [_hLineLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+            [_hLineLB autoSetDimensionsToSize:CGSizeMake(0.5, 20)];
+            _hLineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+            _hLineLB.hidden = YES;
+        }else if ([reuseIdentifier isEqualToString:@"playDescriptionCell"]){
+            self.contentLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_contentLB];
+            
+            [_contentLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:5];
+            [_contentLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
+            [_contentLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-10];
+            [_contentLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
+            
+            _contentLB.lineBreakMode = NSLineBreakByWordWrapping;
+            _contentLB.numberOfLines = 0;
+            _contentLB.font = FONT_SIZE_14;
+            _contentLB.textColor = BLACK_FONT_COLOR;
+            
         }else{
             self.iconImg = [UIImageView newAutoLayoutView];
             [self.contentView addSubview:_iconImg];
             
             [_iconImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
-            [_iconImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:5];
+            [_iconImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
             [_iconImg autoSetDimensionsToSize:CGSizeMake(15, 15)];
             
             self.titleLB = [UILabel newAutoLayoutView];
@@ -77,6 +116,7 @@
             [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_iconImg withOffset:5];
             [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 60, 15)];
             _titleLB.font = FONT_SIZE_15;
+            _titleLB.textColor = HIGHLIGHT_BLACK_COLOR;
             
             self.contentLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_contentLB];
@@ -94,7 +134,7 @@
             _contentLB.lineBreakMode = NSLineBreakByWordWrapping;
             _contentLB.numberOfLines = 0;
             _contentLB.font = FONT_SIZE_14;
-            _contentLB.textColor = GRAY_FONT_COLOR;
+            _contentLB.textColor = BLACK_FONT_COLOR;
             self.lineLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_lineLB];
             
@@ -103,21 +143,11 @@
             [_lineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
             _lineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
             
-            
-            self.hLineLB = [UILabel newAutoLayoutView];
-            [self.contentView addSubview:_hLineLB];
-            
-            [_hLineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_contentLB withOffset:20];
-            [_hLineLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_contentLB];
-            [_hLineLB autoSetDimensionsToSize:CGSizeMake(1, 20)];
-            _hLineLB.backgroundColor = GRAY_FONT_COLOR;
-            _hLineLB.hidden = YES;
-            
             self.mapLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_mapLB];
             
-            [_mapLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_hLineLB withOffset:10];
-            [_mapLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_contentLB];
+            [_mapLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-10];
+            [_mapLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
             [_mapLB autoSetDimensionsToSize:CGSizeMake(40, 20)];
             _mapLB.text = @"地图";
             _mapLB.font = FONT_SIZE_14;
@@ -125,8 +155,17 @@
             _mapLB.textAlignment = NSTextAlignmentCenter;
             _mapLB.backgroundColor = BLUE_COLOR_BG;
             _mapLB.layer.masksToBounds = YES;
-            _mapLB.layer.cornerRadius = 5;
+            _mapLB.layer.cornerRadius = 10;
             _mapLB.hidden = YES;
+            
+            self.hLineLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_hLineLB];
+            
+            [_hLineLB autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_mapLB withOffset:-10];
+            [_hLineLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+            [_hLineLB autoSetDimensionsToSize:CGSizeMake(0.5, 20)];
+            _hLineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+            _hLineLB.hidden = YES;
         }
     }
     
