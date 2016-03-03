@@ -32,6 +32,8 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
 @property (nonatomic, strong) NSDictionary *addressDic;
 @property (nonatomic, strong) NSString *shipType;
 @property (nonatomic, strong) NSString *payType;
+@property (nonatomic, strong) NSArray *payArr;
+@property (nonatomic, assign) NSInteger selectPayType;
 
 @end
 
@@ -83,6 +85,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     
     _checkoutTV.delegate = self;
     _checkoutTV.dataSource = self;
+    _checkoutTV.tableFooterView = [[UIView alloc] init];
     
     [_checkoutTV registerClass:[MyCheckOutTableViewCell class] forCellReuseIdentifier:MY_CHECKOUT_CELL];
     [_checkoutTV registerClass:[MyCheckOutTableViewCell class] forCellReuseIdentifier:MY_ADDRESS_CELL];
@@ -109,6 +112,11 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                          NSLocalizedString(@"TEXT_PAYMENT_TYPE", nil),
                          NSLocalizedString(@"TEXT_USER_NEED", nil)];
     
+    _payArr = @[@{},
+              @{@"title":NSLocalizedString(@"TEXT_WECHAT_PAY", nil), @"icon":@"logoWeChat"},
+              @{@"title":NSLocalizedString(@"TEXT_ALIPAY_PAY", nil), @"icon":@"logoAlipay"}];
+    _selectPayType = 1;
+    
 //    _shipArr = @[@"EMS", @"航空件", @"船运"];
     _addressId = @"0";
     _shipType = @"1";
@@ -124,14 +132,16 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
     if (section == 1) {
         return 3;
     }else if (section == 2){
-        return [_shipArr count];
+        return [_shipArr count] + 1;
+    }else if (section == 3){
+        return 3;
     }else{
         return 1;
     }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 || indexPath.section == 3) {
+    if (indexPath.section == 0) {
         return 80;
     }else if (indexPath.section == 1){
         if (indexPath.row == 1) {
@@ -139,35 +149,39 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         }else{
             return 60;
         }
+    }else if (indexPath.section == 2){
+        return 50;
+    }else if (indexPath.section == 3){
+        return 50;
     }else{
         return 60;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 4) {
+        return 0;
+    }else{
+        return 10;
+    }
 }
 
-//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 30;
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView *titleV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+//    titleV.backgroundColor = GRAY_COLOR_CELL_LINE;
+//    UILabel *titleLB = [UILabel newAutoLayoutView];
+//    [titleV addSubview:titleLB];
+//    
+//    [titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:titleLB];
+//    [titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:titleV withOffset:20];
+//    [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 30)];
+//    titleLB.font = FONT_SIZE_16;
+//    titleLB.textColor = GRAY_FONT_COLOR;
+//    titleLB.text = [NSString stringWithFormat:@"%@", [_sectionTitleArr objectAtIndex:section]];
+//    titleLB.backgroundColor = GRAY_COLOR_CELL_LINE;
+//    
+//    return titleV;
 //}
-
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *titleV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
-    titleV.backgroundColor = GRAY_COLOR_CELL_LINE;
-    UILabel *titleLB = [UILabel newAutoLayoutView];
-    [titleV addSubview:titleLB];
-    
-    [titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:titleLB];
-    [titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:titleV withOffset:20];
-    [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 30)];
-    titleLB.font = FONT_SIZE_16;
-    titleLB.textColor = GRAY_FONT_COLOR;
-    titleLB.text = [NSString stringWithFormat:@"%@", [_sectionTitleArr objectAtIndex:section]];
-    titleLB.backgroundColor = GRAY_COLOR_CELL_LINE;
-    
-    return titleV;
-}
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_CHECKOUT_CELL forIndexPath:indexPath];
@@ -179,6 +193,7 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         cell.titleLB.text = NSLocalizedString(@"TEXT_SELECT_ADDRESS", nil);
         cell.priceLB.text = @"";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.lastLine.hidden = NO;
 
         if ([_addressDic count] > 0) {
             [cell removeFromSuperview];
@@ -186,61 +201,103 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
             cell.titleLB.text = [_addressDic objectForKey:@"name"];
             cell.shippingLB.text = [_addressDic objectForKey:@"address"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.lastLine.hidden = NO;
             return cell;
         }
     }else if (indexPath.section == 1){
-        [cell removeFromSuperview];
         
         if (indexPath.row == 0){
             cell.titleLB.text = NSLocalizedString(@"TEXT_PRODUCT_TOTAL_FEE", nil);
             cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [_checkOutDic objectForKey:@"product_price_total"]];
+            cell.lastLine.hidden = YES;
         }else if (indexPath.row == 1) {
+            [cell removeFromSuperview];
+
             MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_SHIPPING_CELL forIndexPath:indexPath];
             cell.titleLB.text = NSLocalizedString(@"TEXT_INTALNATIONAL_SHIP", nil);
             cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [_checkOutDic objectForKey:@"shipping_price"]];
             cell.shippingLB.text = [NSString stringWithFormat:NSLocalizedString(@"TEXT_SHIP_NOTE", nil), [_checkOutDic objectForKey:@"weight_total"]];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
             cell.titleLB.text = NSLocalizedString(@"TEXT_TOTAL_FEE", nil);
             cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [_checkOutDic objectForKey:@"price_total"]];
+            cell.lastLine.hidden = NO;
         }
     }else if (indexPath.section == 2){
         
-        [cell removeFromSuperview];
-        
-        MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_SHIPPING_SELECT_CELL forIndexPath:indexPath];
-        
-        NSDictionary *tmpShip = [_shipArr objectAtIndex:indexPath.row];
-        
-        cell.titleLB.text = [tmpShip objectForKey:@"name"];
-        cell.shippingLB.text = [tmpShip objectForKey:@"ship_day"];
-        cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [tmpShip objectForKey:@"shipping_zh"]];
-        
-        if ([[tmpShip objectForKey:@"selected"] isEqualToString:@"1"]) {
-            cell.selectImg.image = [UIImage imageNamed:@"checkboxChecked"];
+        if (indexPath.row == 0) {
+            cell.titleLB.text = NSLocalizedString(@"TEXT_SHIPPING_TYPE", nil);
         }else{
-            cell.selectImg.image = [UIImage imageNamed:@"checkboxUncheck"];
+            [cell removeFromSuperview];
+            
+            MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_SHIPPING_SELECT_CELL forIndexPath:indexPath];
+            
+            NSDictionary *tmpShip = [_shipArr objectAtIndex:indexPath.row - 1];
+            
+            cell.titleLB.text = [tmpShip objectForKey:@"name"];
+            cell.shippingLB.text = [tmpShip objectForKey:@"ship_day"];
+//            cell.priceLB.text = [NSString stringWithFormat:@"￥%@", [tmpShip objectForKey:@"shipping_zh"]];
+            
+//            if ([[tmpShip objectForKey:@"selected"] isEqualToString:@"1"]) {
+//                cell.selectImg.image = [UIImage imageNamed:@"checkboxChecked"];
+//            }else{
+//                cell.selectImg.image = [UIImage imageNamed:@"checkboxUncheck"];
+//            }
+
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.tintColor = RED_CART_BG;
+            cell.lastLine.hidden = NO;
+            
+            return cell;
         }
-        
-        return cell;
+
     }else if (indexPath.section == 3){
-        [cell removeFromSuperview];
         
-        MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_PAYMENT_CELL forIndexPath:indexPath];
-        cell.tapPayAction = ^(NSInteger index){
-            if (index == 1) {
-                _payType = @"wxpay";
-            }else if (index == 2){
-                _payType = @"alipay";
+        if (indexPath.row == 0) {
+            cell.titleLB.text = NSLocalizedString(@"TEXT_PAYMENT_TYPE", nil);
+        }else{
+//            [cell removeFromSuperview];
+//            
+//            MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_PAYMENT_CELL forIndexPath:indexPath];
+//            cell.tapPayAction = ^(NSInteger index){
+//                if (index == 1) {
+//                    _payType = @"wxpay";
+//                }else if (index == 2){
+//                    _payType = @"alipay";
+//                }
+//            };
+//            return cell;
+            
+            [cell removeFromSuperview];
+            
+            MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_PAYMENT_CELL forIndexPath:indexPath];
+            NSDictionary *tmp = [_payArr objectAtIndex:indexPath.row];
+            cell.titleLB.text = [tmp objectForKey:@"title"];
+            cell.titleLB.textColor = BLACK_FONT_COLOR;
+            cell.selectImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [tmp objectForKey:@"icon"]]];
+            
+            if (indexPath.row == _selectPayType) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }else{
+                cell.accessoryType = UITableViewCellAccessoryNone;
             }
-        };
-        return cell;
+            
+            cell.tintColor = RED_CART_BG;
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            if (indexPath.row == 2) cell.lastLine.hidden = NO;
+            
+            return cell;
+        }
+
     }else{
         [cell removeFromSuperview];
         MyCheckOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_USER_CELL forIndexPath:indexPath];
         cell.titleLB.attributedText = [self textFormat:NSLocalizedString(@"TEXT_CHECKOUT_NOTE", nil)];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.lastLine.hidden = NO;
         return cell;
     }
     
@@ -256,9 +313,22 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
         }
         [self.navigationController pushViewController:addressV animated:YES];
     }else if(indexPath.section == 2){
-        _shipType = [[_shipArr objectAtIndex:indexPath.row] objectForKey:@"id"];
+        _shipType = [[_shipArr objectAtIndex:indexPath.row - 1] objectForKey:@"id"];
         
         [self getPreCheckOut:_shipType addressId:_addressId];
+    }else if (indexPath.section == 3){
+        if (indexPath.row == 0) return;
+        
+        _selectPayType = indexPath.row;
+        
+        if (indexPath.row == 1) {
+            _payType = @"wxpay";
+        }else if (indexPath.row == 2){
+            _payType = @"alipay";
+        }
+        
+        [_checkoutTV reloadData];
+        
     }else if (indexPath.section == 4) {
         MyWebViewController *webVC = [[MyWebViewController alloc] init];
         

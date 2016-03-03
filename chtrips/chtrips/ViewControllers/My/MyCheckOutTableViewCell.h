@@ -16,5 +16,6 @@
 @property (nonatomic, strong) UIImageView *selectImg;
 @property (nonatomic, strong) void (^tapPayAction)(NSInteger index);
 @property (nonatomic, strong) NSMutableArray *controlArr;
+@property (nonatomic, strong) UILabel *lastLine;
 
 @end

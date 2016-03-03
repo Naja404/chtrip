@@ -47,6 +47,7 @@
             [_priceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_titleLB];
             [_priceLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-20];
             _priceLB.textAlignment = NSTextAlignmentRight;
+            _priceLB.textColor = RED_CART_BG;
             
             self.shippingLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_shippingLB];
@@ -65,7 +66,7 @@
             [_selectImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
             [_selectImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20];
             [_selectImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
-            _selectImg.image = [UIImage imageNamed:@"checkboxUncheck"];
+            _selectImg.image = [UIImage imageNamed:@"emsICON"];
             
             self.titleLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_titleLB];
@@ -85,53 +86,67 @@
             self.shippingLB = [UILabel newAutoLayoutView];
             [self.contentView addSubview:_shippingLB];
             
-            [_shippingLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_titleLB];
+            [_shippingLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
             [_shippingLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_titleLB];
-            [_shippingLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 100, 30)];
+            [_shippingLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 100, 20)];
             _shippingLB.textColor = GRAY_FONT_COLOR;
             _shippingLB.font = FONT_SIZE_14;
         }else if ([reuseIdentifier isEqualToString:@"myPaymentCell"]){
+            self.selectImg = [UIImageView newAutoLayoutView];
+            [self.contentView addSubview:_selectImg];
             
-            NSArray *tmpArr = @[@"logoWeChat", @"logoAlipay"];
-            NSArray *tmpTitle = @[NSLocalizedString(@"TEXT_WECHAT_PAY", nil), NSLocalizedString(@"TEXT_ALIPAY_PAY", nil)];
+            [_selectImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+            [_selectImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:20];
+            [_selectImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
             
-            _controlArr = [[NSMutableArray alloc] init];
+            self.titleLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_titleLB];
             
-            for (int i = 0; i < 2; i++) {
-                UIControl *bgView = [[UIControl alloc] initWithFrame:CGRectMake(ScreenWidth / 2 * i, 0, ScreenWidth / 2, 80)];
-                bgView.tag = i + 1;
-                
-                UIImageView *logoImg = [UIImageView newAutoLayoutView];
-                [bgView addSubview:logoImg];
-                
-                [logoImg autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
-                [logoImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
-                [logoImg autoSetDimensionsToSize:CGSizeMake(35, 35)];
-                logoImg.image = [UIImage imageNamed:[tmpArr objectAtIndex:i]];
-                
-                if (i == 0) {
-                    bgView.backgroundColor = RED_CART_BG;
-                }else{
-                    bgView.backgroundColor = [UIColor whiteColor];
-                }
-                
-                UILabel *titleLB = [UILabel newAutoLayoutView];
-                [bgView addSubview:titleLB];
-                
-                [titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:logoImg];
-                [titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
-                [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2 - 20, 20)];
-                titleLB.text = [tmpTitle objectAtIndex:i];
-                titleLB.textAlignment = NSTextAlignmentCenter;
-                titleLB.font = FONT_SIZE_14;
-                titleLB.textColor = GRAY_FONT_COLOR;
-                
-                [bgView addTarget:self action:@selector(tapBgView:) forControlEvents:UIControlEventTouchUpInside];
-                
-                [_controlArr addObject:bgView];
-                
-                [self.contentView addSubview:bgView];
-            }
+//            [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
+            [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
+            [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_selectImg withOffset:10];
+            [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 100, 30)];
+            
+//            NSArray *tmpArr = @[@"logoWeChat", @"logoAlipay"];
+//            NSArray *tmpTitle = @[NSLocalizedString(@"TEXT_WECHAT_PAY", nil), NSLocalizedString(@"TEXT_ALIPAY_PAY", nil)];
+//            
+//            _controlArr = [[NSMutableArray alloc] init];
+//            
+//            for (int i = 0; i < 2; i++) {
+//                UIControl *bgView = [[UIControl alloc] initWithFrame:CGRectMake(ScreenWidth / 2 * i, 0, ScreenWidth / 2, 80)];
+//                bgView.tag = i + 1;
+//                
+//                UIImageView *logoImg = [UIImageView newAutoLayoutView];
+//                [bgView addSubview:logoImg];
+//                
+//                [logoImg autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
+//                [logoImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bgView];
+//                [logoImg autoSetDimensionsToSize:CGSizeMake(35, 35)];
+//                logoImg.image = [UIImage imageNamed:[tmpArr objectAtIndex:i]];
+//                
+//                if (i == 0) {
+//                    bgView.backgroundColor = RED_CART_BG;
+//                }else{
+//                    bgView.backgroundColor = [UIColor whiteColor];
+//                }
+//                
+//                UILabel *titleLB = [UILabel newAutoLayoutView];
+//                [bgView addSubview:titleLB];
+//                
+//                [titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:logoImg];
+//                [titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:bgView];
+//                [titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2 - 20, 20)];
+//                titleLB.text = [tmpTitle objectAtIndex:i];
+//                titleLB.textAlignment = NSTextAlignmentCenter;
+//                titleLB.font = FONT_SIZE_14;
+//                titleLB.textColor = GRAY_FONT_COLOR;
+//                
+//                [bgView addTarget:self action:@selector(tapBgView:) forControlEvents:UIControlEventTouchUpInside];
+//                
+//                [_controlArr addObject:bgView];
+//                
+//                [self.contentView addSubview:bgView];
+//            }
             
         }else if ([reuseIdentifier isEqualToString:@"myUserNeedCell"]){
             self.titleLB = [UILabel newAutoLayoutView];
@@ -160,7 +175,18 @@
             [_priceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_titleLB];
             [_priceLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-20];
             _priceLB.textAlignment = NSTextAlignmentRight;
+            _priceLB.textColor = RED_CART_BG;
         }
+        
+        self.lastLine = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_lastLine];
+        
+        [_lastLine autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.contentView];
+        [_lastLine autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
+        [_lastLine autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
+        _lastLine.backgroundColor = GRAY_COLOR_CELL_LINE;
+        _lastLine.hidden = YES;
+        
     }
     
     return self;

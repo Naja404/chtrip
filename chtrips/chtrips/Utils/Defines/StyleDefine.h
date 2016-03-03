@@ -42,6 +42,8 @@
 
 #define BLACK_FONT_COLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
 
+#define TRANSLATE_BLACK_BG [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.6]
+
 // 添加扫货清单背景色
 #define ADD_BUY_LIST_COLOR [UIColor colorWithRed:250/255.0 green:139/255.0 blue:10/255.0 alpha:1]
 
@@ -65,7 +67,7 @@
 #define TITLE_17FONT_SIZE [UIFont systemFontOfSize:17.0f]
 
 // 结算红色
-#define RED_CART_BG [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
+#define RED_CART_BG [UIColor colorWithRed:255/255.0 green:52/255.0 blue:36/255.0 alpha:1]
 // 红色背景
 #define RED_COLOR_BG [UIColor colorWithRed:229/255.0 green:42/255.0 blue:34/255.0 alpha:1]
 // 蓝色

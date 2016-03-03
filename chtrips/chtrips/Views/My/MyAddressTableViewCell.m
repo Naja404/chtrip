@@ -28,7 +28,7 @@
         
         [_mobileLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_nameLB];
         [_mobileLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_nameLB];
-        [_mobileLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2 - 20, 20)];
+        [_mobileLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2 - 50, 20)];
         _mobileLB.textAlignment = NSTextAlignmentRight;
         _mobileLB.font = FONT_SIZE_16;
         _mobileLB.textColor = BLACK_FONT_COLOR;
@@ -47,8 +47,8 @@
         
         [_lineLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.contentView withOffset:-1];
         [_lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
-        [_lineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 1)];
-        _lineLB.backgroundColor = GRAY_FONT_COLOR;
+        [_lineLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 0.5)];
+        _lineLB.backgroundColor = GRAY_COLOR_CELL_LINE;
     }
     
     return self;

@@ -78,6 +78,16 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_NAV_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_DESCRIPTION_CELL];
     
+    UILabel *backBG = [UILabel newAutoLayoutView];
+    [self.view addSubview:backBG];
+    
+    [backBG autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:25];
+    [backBG autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:15];
+    [backBG autoSetDimensionsToSize:CGSizeMake(35, 35)];
+    backBG.backgroundColor = TRANSLATE_BLACK_BG;
+    backBG.layer.cornerRadius = 17.5;
+    backBG.layer.masksToBounds = YES;
+    
     UIImageView *backIMG = [UIImageView newAutoLayoutView];
     [self.view addSubview:backIMG];
     
@@ -107,6 +117,16 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
     addWantGoBTN.backgroundColor = BLUE_COLOR_BG;
     [addWantGoBTN addTarget:self action:@selector(addWantGoAction) forControlEvents:UIControlEventTouchDown];
     
+    UILabel *shareBG = [UILabel newAutoLayoutView];
+    [self.view addSubview:shareBG];
+    
+    [shareBG autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:backBG];
+    [shareBG autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-15];
+    [shareBG autoSetDimensionsToSize:CGSizeMake(35, 35)];
+    shareBG.backgroundColor = TRANSLATE_BLACK_BG;
+    shareBG.layer.cornerRadius = 17.5;
+    shareBG.layer.masksToBounds = YES;
+    
     UIButton *shareBTN = [UIButton newAutoLayoutView];
     [self.view addSubview:shareBTN];
     
@@ -115,7 +135,6 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
     [shareBTN autoSetDimensionsToSize:CGSizeMake(25, 25)];
     [shareBTN setBackgroundImage:[UIImage imageNamed:@"shopShareBTN"] forState:UIControlStateNormal];
     [shareBTN addTarget:self action:@selector(showShareView) forControlEvents:UIControlEventTouchUpInside];
-//    [shareBTN setBackgroundColor:[UIColor blackColor]];
     
     // 设置分享
     [self setShareView];
