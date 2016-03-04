@@ -21,6 +21,7 @@ static NSString * const PLAY_CELL = @"playCell";
 static NSString * const PLAY_TITLE_CELL = @"playTitleCell";
 static NSString * const PLAY_NAV_CELL = @"playNavCell";
 static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
+static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
 
 @interface PlayInsideDetailViewController ()<UITableViewDelegate, UITableViewDataSource, CHActionSheetMapAppDelegate>
 
@@ -77,6 +78,7 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_TITLE_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_NAV_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_DESCRIPTION_CELL];
+    [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_POWERED_CELL];
     
     UILabel *backBG = [UILabel newAutoLayoutView];
     [self.view addSubview:backBG];
@@ -308,7 +310,11 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
     if (section == 1) {
         return 1;
     }else if(section == 2){
-        return 2;
+        if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
+            return 3;
+        }else{
+            return 2;
+        }
     }else{
         return [[_detailData objectForKey:@"normal"] count] + 2;
     }
@@ -342,7 +348,7 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
 //        CGSize size = [description sizeWithAttributes:@{NSFontAttributeName:FONT_SIZE_14}];
         CGSize size = [description boundingRectWithSize:CGSizeMake(ScreenWidth - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_SIZE_14} context:nil].size;
         
-        return size.height + 20;
+        return size.height + 40;
         
     }else if(indexPath.section == 2 && indexPath.row == 1){
         return ScreenWidth * 0.75;
@@ -373,6 +379,8 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
             
             NSURL *imageUrl = [NSURL URLWithString:[_detailData objectForKey:@"thumb"]];
             [cell.bgImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
+            
+            if([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) cell.sourceLB.hidden = NO;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -421,6 +429,8 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
         
         cell.contentLB.text = [_detailData objectForKey:@"description"];
         
+        if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) cell.mapLB.hidden = NO;
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -432,12 +442,20 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
             cell.iconImg.image = [UIImage imageNamed:@"shopNavICON"];
             cell.titleLB.text = @"进入导航";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }else{
+        }else if(indexPath.row == 1){
             [cell removeFromSuperview];
             // 地图
             PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_NAV_CELL forIndexPath:indexPath];
             NSURL *imageUrl = [NSURL URLWithString:[_detailData objectForKey:@"map_thumb"]];
             [cell.bgImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+        }else{
+            [cell removeFromSuperview];
+            // powered by gurunavi
+            PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_POWERED_CELL forIndexPath:indexPath];
+
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             return cell;
@@ -457,11 +475,19 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
             [_detailTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionBottom];
         }
         
-        if (indexPath.row == 1) {
+        if (indexPath.row == 1 && [_isHotel isEqualToString:@"1"]) {
             [self pushBookVC];
         }
+    }else if (indexPath.section == 1){
+        
+        if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[_detailData objectForKey:@"gnav_url"]]];
+        
     }else if(indexPath.section == 2){
-        [self showMapActionSheet];
+        if (indexPath.row == 2) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mobile.gnavi.co.jp/"]];
+        }else{
+            [self showMapActionSheet];
+        }
     }
 }
 
@@ -480,7 +506,7 @@ static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     //    [paramter setObject:[CHSSID SSID] forKey:@"ssid"];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
-    [paramter setObject:self.sid forKey:@"sid"];
+    [paramter setObject:[_detailData objectForKey:@"saler_id"] forKey:@"sid"];
     
     [[HttpManager instance] requestWithMethod:@"User/addWantGo"
                                    parameters:paramter

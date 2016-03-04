@@ -19,5 +19,6 @@
 @property (nonatomic, strong) UILabel *areaLB;
 @property (nonatomic, strong) UILabel *cateLB;
 @property (nonatomic, strong) UILabel *cutLineLB;
+@property (nonatomic, strong) UILabel *sourceLB;
 
 @end

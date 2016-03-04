@@ -261,6 +261,12 @@ static NSString * const PLAY_CELL = @"playCell";
     cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
     cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
     cell.starImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [cellData objectForKey:@"avg_rating"]]];
+            NSLog(@"is gnav is %@", [cellData objectForKey:@"is_gnav"]);
+    if ([[cellData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
+        cell.sourceLB.hidden = NO;
+    }else{
+        cell.sourceLB.hidden = YES;
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

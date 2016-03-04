@@ -23,6 +23,19 @@
         [_proImg autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_proImg autoSetDimensionsToSize:CGSizeMake(90, 66)];
         
+        self.sourceLB = [UILabel newAutoLayoutView];
+        [self.contentView addSubview:_sourceLB];
+        
+        [_sourceLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_proImg];
+        [_sourceLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_proImg];
+        [_sourceLB autoSetDimensionsToSize:CGSizeMake(90, 14)];
+        _sourceLB.textColor = [UIColor whiteColor];
+        _sourceLB.backgroundColor = TRANSLATE_BLACK_BG;
+        _sourceLB.textAlignment = NSTextAlignmentCenter;
+        _sourceLB.text = @"Source: Gurunavi";
+        _sourceLB.font = FONT_SIZE_10;
+        _sourceLB.hidden = YES;
+        
         self.bigTitleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_bigTitleLB];
 

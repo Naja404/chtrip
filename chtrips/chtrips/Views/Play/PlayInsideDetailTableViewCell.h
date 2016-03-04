@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIImageView *ratingImg;
 @property (nonatomic, strong) UILabel *categoryLB;
 @property (nonatomic, strong) UILabel *hotelLB;
+@property (nonatomic, strong) UILabel *sourceLB;
 
 #pragma mark - 通用样式
 @property (nonatomic, strong) UIImageView *iconImg;

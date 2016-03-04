@@ -28,6 +28,21 @@
             [_bgImg autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
             [_bgImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView];
             [_bgImg autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView];
+            
+            self.sourceLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_sourceLB];
+            
+            [_sourceLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_bgImg withOffset:-5];
+            [_sourceLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_bgImg withOffset:-5];
+            [_sourceLB autoSetDimensionsToSize:CGSizeMake(90, 14)];
+            _sourceLB.textColor = [UIColor whiteColor];
+            _sourceLB.backgroundColor = TRANSLATE_BLACK_BG;
+            _sourceLB.layer.masksToBounds = YES;
+            _sourceLB.layer.cornerRadius = 7;
+            _sourceLB.textAlignment = NSTextAlignmentCenter;
+            _sourceLB.text = @"Source: Gurunavi";
+            _sourceLB.font = FONT_SIZE_10;
+            _sourceLB.hidden = YES;
 
         }else if ([reuseIdentifier isEqualToString:@"playTitleCell"]){
             self.shopNameLB = [UILabel newAutoLayoutView];
@@ -94,13 +109,42 @@
             [_contentLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:5];
             [_contentLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:10];
             [_contentLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-10];
-            [_contentLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
+            [_contentLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-25];
             
             _contentLB.lineBreakMode = NSLineBreakByWordWrapping;
             _contentLB.numberOfLines = 0;
             _contentLB.font = FONT_SIZE_14;
             _contentLB.textColor = BLACK_FONT_COLOR;
             
+            self.mapLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_mapLB];
+            
+            [_mapLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-5];
+            [_mapLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-10];
+            [_mapLB autoSetDimensionsToSize:CGSizeMake(40, 20)];
+            _mapLB.text = @"详情";
+            _mapLB.font = FONT_SIZE_14;
+            _mapLB.textColor = [UIColor whiteColor];
+            _mapLB.textAlignment = NSTextAlignmentCenter;
+            _mapLB.backgroundColor = BLUE_COLOR_BG;
+            _mapLB.layer.masksToBounds = YES;
+            _mapLB.layer.cornerRadius = 10;
+            _mapLB.hidden = YES;
+            
+        }else if ([reuseIdentifier isEqualToString:@"playPoweredCell"]){
+            self.titleLB = [UILabel newAutoLayoutView];
+            [self.contentView addSubview:_titleLB];
+
+            [_titleLB autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView];
+            [_titleLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView];
+            [_titleLB autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView];
+            [_titleLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView];
+            
+            _titleLB.font = FONT_SIZE_16;
+            _titleLB.textAlignment = NSTextAlignmentCenter;
+            _titleLB.textColor = GRAY_FONT_COLOR;
+            _titleLB.text = @"Powered By Gurunavi";
+
         }else{
             self.iconImg = [UIImageView newAutoLayoutView];
             [self.contentView addSubview:_iconImg];
