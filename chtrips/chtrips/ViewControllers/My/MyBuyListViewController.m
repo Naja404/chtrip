@@ -175,7 +175,10 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [[HttpManager instance] requestWithMethod:@"User/getBuyList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          self.buyListData = [[result objectForKey:@"data"] objectForKey:@"list"];
+                                          
+                                          NSDictionary *tmpData = [result objectForKey:@"data"];
+                                          self.buyListData = [[tmpData objectForKey:@"list"] mutableCopy];
+                                          
                                           NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
@@ -201,8 +204,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
 
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          [SVProgressHUD dismiss];
-
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 
@@ -300,6 +302,20 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     }
 }
 
+#pragma mark - cell编辑
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSDictionary *tmpData = [self.buyListData objectAtIndex:indexPath.row];
+        [self.buyListData removeObjectAtIndex:indexPath.row];
+        
+        NSArray *indexPaths = @[indexPath];
+        [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [self upBuyList:@"2" pid:[tmpData objectForKey:@"pid"]];
+    }
+}
+
 #pragma mark 更新选中数据
 
 - (void) upBuyList:(NSString *)type pid:(NSString *)pid {
@@ -313,7 +329,10 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
     [[HttpManager instance] requestWithMethod:@"User/setBuyList"
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
-                                          self.buyListData = [[result objectForKey:@"data"] objectForKey:@"list"];
+                                          
+                                          NSDictionary *tmpData = [result objectForKey:@"data"];
+                                          self.buyListData = [[tmpData objectForKey:@"list"] mutableCopy];
+                                          
                                           NSString *str = [NSString stringWithFormat:@"¥%@", [[result objectForKey:@"data"] objectForKey:@"price_zh_total"]];
                                           self.priceZH.attributedText = [self priceFormat:str];
                                           
@@ -332,7 +351,7 @@ static NSString * const MY_BUYLIST_CELL = @"MyBuyListCell";
                                       }
      
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          [SVProgressHUD dismiss];
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 

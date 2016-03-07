@@ -415,7 +415,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
                                       }
      
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          [SVProgressHUD dismiss];
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 

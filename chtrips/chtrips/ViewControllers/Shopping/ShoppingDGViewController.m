@@ -73,6 +73,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [self refresh:YES];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
 }
 

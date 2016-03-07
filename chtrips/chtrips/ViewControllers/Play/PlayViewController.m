@@ -48,10 +48,13 @@ static NSString * const PLAY_CELL = @"playCell";
 
 - (void) viewWillAppear:(BOOL)animated {
 //    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+
 }
 
 - (void)viewDidLoad {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+
     self.selectIndex = @"2";
     self.nextPageNum = @"2";
     NSString *selectCity = [[TMCache sharedCache] objectForKey:@"selectCityName"];
@@ -126,7 +129,7 @@ static NSString * const PLAY_CELL = @"playCell";
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [self.playTV.header endRefreshing];
-                                          [SVProgressHUD dismiss];
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 
@@ -172,6 +175,7 @@ static NSString * const PLAY_CELL = @"playCell";
                                           }
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 
@@ -261,7 +265,7 @@ static NSString * const PLAY_CELL = @"playCell";
     cell.areaLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"area"]];
     cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
     cell.starImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [cellData objectForKey:@"avg_rating"]]];
-            NSLog(@"is gnav is %@", [cellData objectForKey:@"is_gnav"]);
+
     if ([[cellData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
         cell.sourceLB.hidden = NO;
     }else{

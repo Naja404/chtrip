@@ -107,7 +107,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
                                           
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          [SVProgressHUD dismiss];
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 

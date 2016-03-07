@@ -9,6 +9,7 @@
 #import "MyWantListViewController.h"
 #import "PlayTableViewCell.h"
 #import "PlayDetailViewController.h"
+#import "PlayInsideDetailViewController.h"
 
 static NSString * const WANTGO_CELL = @"wantGoCell";
 
@@ -108,6 +109,12 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
     cell.cateLB.text = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"category"]];
     cell.starImg.image = [UIImage imageNamed:[NSString stringWithFormat:@"star_%@", [cellData objectForKey:@"avg_rating"]]];
     
+    if ([[cellData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
+        cell.sourceLB.hidden = NO;
+    }else{
+        cell.sourceLB.hidden = YES;
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -116,15 +123,74 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+//    NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.wantGoData objectAtIndex:indexPath.row]];
+//    
+//    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
+//    detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
+//    detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+//    detailVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailVC animated:YES];
     
-    PlayDetailViewController *detailVC = [[PlayDetailViewController alloc] init];
+    
+    // 新版商家详情
+    PlayInsideDetailViewController *detailVC = [[PlayInsideDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.wantGoData objectAtIndex:indexPath.row]];
     
-    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showShopDetail?sid=%@", [cellData objectForKey:@"saler_id"]];
-    detailVC.sid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"saler_id"]];
-    detailVC.navigationItem.title = [cellData objectForKey:@"name"];
+    detailVC.sid = [cellData objectForKey:@"saler_id"];
+    if ([[cellData objectForKey:@"type"]  isEqualToString:@"3"]) {
+        detailVC.isHotel = @"1";
+    }else{
+        detailVC.isHotel = @"0";
+    }
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+#pragma mark - cell编辑
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSDictionary *tmpData = [self.wantGoData objectAtIndex:indexPath.row];
+        [self.wantGoData removeObjectAtIndex:indexPath.row];
+        
+        NSArray *indexPaths = @[indexPath];
+        [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [self upWantList:@"2" sid:[tmpData objectForKey:@"saler_id"]];
+    }
+}
+
+- (void) upWantList:(NSString *)type sid:(NSString *)sid {
+    
+    [SVProgressHUD show];
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:type forKey:@"type"];
+    [paramter setObject:sid forKey:@"sid"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/setWantGo"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          
+                                          self.wantGoData = [[result objectForKey:@"data"] mutableCopy];
+                                          
+                                          if ([self.wantGoData count] == 0) {
+                                              self.wantGoTV.hidden = YES;
+                                              self.bgView.hidden = NO;
+                                          }else{
+                                              [self.wantGoTV reloadData];
+                                              self.bgView.hidden = YES;
+                                              self.wantGoTV.hidden = NO;
+                                          }
+                                          
+                                          
+                                          [SVProgressHUD dismiss];
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
 }
 
 #pragma mark 获取商家列表
@@ -138,7 +204,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
                                    parameters:paramter
                                       success:^(NSDictionary *result) {
 
-                                          self.wantGoData = [[NSMutableArray alloc] initWithArray:[result objectForKey:@"data"]];
+                                          self.wantGoData = [[result objectForKey:@"data"] mutableCopy];
                                           
                                           if ([self.wantGoData count] == 0) {
                                               self.wantGoTV.hidden = YES;
@@ -153,7 +219,7 @@ static NSString * const WANTGO_CELL = @"wantGoCell";
                                           [SVProgressHUD dismiss];
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                          [SVProgressHUD dismiss];
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];
 }
 
