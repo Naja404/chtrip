@@ -65,10 +65,10 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     [_tabBarV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_tabBarV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 44)];
     
-    CHTabBarControl *selectControl = [[CHTabBarControl alloc] initWithTitles:@[NSLocalizedString(@"TEXT_ALL_ORDER", nil),
-                                                                               NSLocalizedString(@"TEXT_UNPAY", nil),
+    CHTabBarControl *selectControl = [[CHTabBarControl alloc] initWithTitles:@[NSLocalizedString(@"TEXT_UNPAY", nil),
                                                                                NSLocalizedString(@"TEXT_UNDELIVERED", nil) ,
-                                                                               NSLocalizedString(@"TEXT_UNCONFIRM", nil)]];
+                                                                               NSLocalizedString(@"TEXT_UNCONFIRM", nil),
+                                                                               NSLocalizedString(@"TEXT_COMPLETE", nil)]];
     
     [selectControl setFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     [selectControl setSelectedIndex:_selectedIndex];
@@ -487,23 +487,23 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
 
 - (NSString *) getSelectedIndex:(NSInteger)index {
     
-    NSString *selectedIndex = @"all";
+    NSString *selectedIndex = @"4";
     
     switch (index) {
         case 0:
-            selectedIndex = @"all";
-            break;
-        case 1:
             selectedIndex = @"4";
             break;
-        case 2:
+        case 1:
             selectedIndex = @"2";
             break;
-        case 3:
+        case 2:
             selectedIndex = @"3";
             break;
+        case 3:
+            selectedIndex = @"10";
+            break;
         default:
-            selectedIndex = @"all";
+            selectedIndex = @"4";
             break;
     }
     

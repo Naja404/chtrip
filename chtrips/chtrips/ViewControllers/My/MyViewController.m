@@ -171,9 +171,9 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
                 orderV.hidesBottomBarWhenPushed = YES;
                 orderV.navigationItem.title = NSLocalizedString([titleArr objectAtIndex:(index - 10)], nil);
                 if (index - 10 + 1 == 4) {
-                    orderV.selectedIndex = 0;
+                    orderV.selectedIndex = 3;
                 }else{
-                    orderV.selectedIndex = index - 10 + 1;
+                    orderV.selectedIndex = index - 10;
                 }
                 [weakSelf.navigationController pushViewController:orderV animated:YES];
             };
