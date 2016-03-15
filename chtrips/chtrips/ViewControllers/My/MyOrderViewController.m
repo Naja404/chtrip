@@ -436,7 +436,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     cell.titleLB.text = [tmp objectForKey:@"title_zh"];
     cell.priceLB.text = [tmp objectForKey:@"price_zh"];
     cell.totalLB.text = [tmp objectForKey:@"quantity"];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

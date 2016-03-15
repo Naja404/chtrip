@@ -15,7 +15,7 @@
 
 static NSString * const PLAY_CELL = @"playCell";
 
-@interface PlayViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, CitySelectViewControllerDelegate>
+@interface PlayViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, CitySelectViewControllerDelegate, UIViewControllerPreviewingDelegate>
 @property (nonatomic, strong) UISegmentedControl *shopSegmented;
 @property (nonatomic, strong) NSArray *classifys;
 @property (nonatomic, strong) NSArray *cates;
@@ -36,6 +36,8 @@ static NSString * const PLAY_CELL = @"playCell";
 @property (nonatomic, strong) UIView *cateMenuView;
 @property (nonatomic, strong) UISegmentedControl *playSegmented;
 @property (nonatomic, strong) UIImageView *bgView;
+
+@property (nonatomic,weak)UITableViewCell *selectedCell;
 
 @end
 
@@ -73,7 +75,8 @@ static NSString * const PLAY_CELL = @"playCell";
     [self setupCateMenu];
     [self getCityList];
     [self refresh];
-    
+    // 3DTouch
+    [self registerForPreviewingWithDelegate:self sourceView:self.view];
     // Do any additional setup after loading the view.
 }
 
@@ -81,6 +84,9 @@ static NSString * const PLAY_CELL = @"playCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark 3DTouch 
+
 
 
 #pragma mark 获取商家列表

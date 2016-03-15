@@ -407,7 +407,16 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                           NSDictionary *tmp = [result objectForKey:@"data"];
                                           
                                           if ([_payType isEqualToString:@"wxpay"]) {
-                                              [WXApiRequestHandler jumpToWXPay:tmp];
+                                              // 检测是否安装微信
+                                              NSURL *tmpUrl = [NSURL URLWithString:@"weixin://"];
+                                              if ([[UIApplication sharedApplication] canOpenURL:tmpUrl]) {
+                                                  [WXApiRequestHandler jumpToWXPay:tmp];
+                                                  [self performSelector:@selector(popToRootVC) withObject:nil afterDelay:1.5f];
+                                              }else{
+                                                  [SVProgressHUD dismiss];
+                                                  [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"TEXT_NO_WEIXIN", nil) maskType:SVProgressHUDMaskTypeBlack];
+                                                  [self performSelector:@selector(popToRootVC) withObject:nil afterDelay:1.5f];
+                                              }
                                           }else if ([_payType isEqualToString:@"alipay"]){
                                               
                                               NSURL *tmpUrl = [NSURL URLWithString:@"alipay://"];
@@ -433,7 +442,6 @@ static NSString * const MY_USER_CELL = @"myUserNeedCell";
                                               }
                                           }
                                           
-                                          [SVProgressHUD dismiss];
                                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
                                       }];

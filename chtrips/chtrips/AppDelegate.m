@@ -13,6 +13,7 @@
 #import "PlayViewController.h"
 #import "TripListViewController.h"
 #import "MyViewController.h"
+#import "MyCartViewController.h"
 
 #import "ChtripCDManager.h"
 
@@ -55,6 +56,13 @@
         NSLog(@"第一次启动");
     }else{
         NSLog(@"不是第一次启动");
+    }
+    
+    // 判断ssid 是否正确
+    if ([CHSSID SSID].length < 32) {
+        [self setupSSIDWithApi:@"default" success:^{
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        }];
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -146,6 +154,16 @@
 
 #pragma mark - 注册divicetoken
 - (void) regDeviceToken {
+    
+    // 3D Touch Test
+    UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLocation];
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"itemTypeA" localizedTitle:@"导购" localizedSubtitle:nil icon:icon userInfo:nil];
+    
+    UIApplicationShortcutIcon *icon2 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeFavorite];
+    UIApplicationShortcutItem *item2 = [[UIApplicationShortcutItem alloc] initWithType:@"itemTypeB" localizedTitle:@"购物车" localizedSubtitle:nil icon:icon2 userInfo:nil];
+    
+    [[UIApplication sharedApplication] setShortcutItems:@[item, item2]];
+    
     // 清空推送数字
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
@@ -174,7 +192,23 @@
 }
 #endif
 
+- (void) application:(UIApplication *)application performActionForShortcutItem:(nonnull UIApplicationShortcutItem *)shortcutItem completionHandler:(nonnull void (^)(BOOL))completionHandler {
+
+    if ([shortcutItem.type isEqualToString:@"itemTypeA"]) {
+        tabBarController.selectedViewController = [tabBarController.viewControllers objectAtIndex:1];
+    }else if ([shortcutItem.type isEqualToString:@"itemTypeB"]){
+        tabBarController.selectedViewController = [tabBarController.viewControllers objectAtIndex:3];
+        UINavigationController *nav = (UINavigationController *)tabBarController.selectedViewController;
+        
+        MyCartViewController *cart = [[MyCartViewController alloc] init];
+        nav.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:cart animated:YES];
+    }
+    
+}
+
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+
     if ([self.deviceTokens isEqualToString:@"first"]) {
         self.deviceTokens = (NSString *) deviceToken;
         [self setupSSIDWithApi:self.deviceTokens success:^{

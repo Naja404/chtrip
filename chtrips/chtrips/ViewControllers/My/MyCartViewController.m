@@ -10,6 +10,7 @@
 #import "MyCartTableViewCell.h"
 #import "ShoppingDGDetailViewController.h"
 #import "MyCheckOutViewController.h"
+#import "MyLoginSelectViewController.h"
 
 #define RED_TEXT [UIColor colorWithRed:255/255.0 green:17/255.0 blue:0/255.0 alpha:1]
 
@@ -172,8 +173,19 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
 
 #pragma mark - 结算按钮 
 - (void) pushCheckOutVC {
-    MyCheckOutViewController *myCheckoutVC = [[MyCheckOutViewController alloc] init];
-    [self.navigationController pushViewController:myCheckoutVC animated:YES];
+    NSString *loginStatus = [[TMCache sharedCache] objectForKey:@"loginStatus"];
+    
+    if ([loginStatus isEqualToString:@"0"]) {
+        // 在主线程执行
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MyLoginSelectViewController *loginSelect = [[MyLoginSelectViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginSelect];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+        });
+    }else{
+        MyCheckOutViewController *myCheckoutVC = [[MyCheckOutViewController alloc] init];
+        [self.navigationController pushViewController:myCheckoutVC animated:YES];
+    }
 }
 
 #pragma mark - 获取扫货清单数据

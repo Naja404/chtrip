@@ -145,6 +145,7 @@
 "TEXT_WECHAT_PAY" = "微信支付";
 "TEXT_PAY_NOW" = "立即支付";
 "TEXT_SHIP_STATUS" = "物流状态";
+"TEXT_NO_WEIXIN" = "尚未安装微信,请在'待支付'中更改支付方式";
 
 
 
