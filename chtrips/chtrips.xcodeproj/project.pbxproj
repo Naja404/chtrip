@@ -115,6 +115,13 @@
 		E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFD41BB433B200B8B752 /* WXApiRequestHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E957EFDD1BB433B200B8B752 /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E957EFD61BB433B200B8B752 /* WXApiResponseHandler.m */; };
 		E959EF381B25D2A0006CB977 /* DiscoveryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */; };
+		E95A48871CA9184300F9CE73 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A487A1CA9184300F9CE73 /* TAAbstractDotView.m */; };
+		E95A48881CA9184300F9CE73 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A487C1CA9184300F9CE73 /* TAAnimatedDotView.m */; };
+		E95A48891CA9184300F9CE73 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A487E1CA9184300F9CE73 /* TADotView.m */; };
+		E95A488A1CA9184300F9CE73 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A48801CA9184300F9CE73 /* TAPageControl.m */; };
+		E95A488B1CA9184300F9CE73 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A48821CA9184300F9CE73 /* SDCollectionViewCell.m */; };
+		E95A488C1CA9184300F9CE73 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A48841CA9184300F9CE73 /* SDCycleScrollView.m */; };
+		E95A488D1CA9184300F9CE73 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A48861CA9184300F9CE73 /* UIView+SDExtension.m */; };
 		E95A99DA1B1ADAFB003FB7FF /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */; };
 		E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99DC1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m */; };
 		E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */ = {isa = PBXBuildFile; fileRef = E95A99E21B1AE8C1003FB7FF /* CHSSID.m */; };
@@ -508,6 +515,20 @@
 		E957EFDE1BB4342A00B8B752 /* ConfigDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigDefine.h; path = Utils/Defines/ConfigDefine.h; sourceTree = "<group>"; };
 		E959EF361B25D2A0006CB977 /* DiscoveryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoveryDetailViewController.h; path = ViewControllers/Discovery/DiscoveryDetailViewController.h; sourceTree = "<group>"; };
 		E959EF371B25D2A0006CB977 /* DiscoveryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoveryDetailViewController.m; path = ViewControllers/Discovery/DiscoveryDetailViewController.m; sourceTree = "<group>"; };
+		E95A48791CA9184300F9CE73 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		E95A487A1CA9184300F9CE73 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		E95A487B1CA9184300F9CE73 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		E95A487C1CA9184300F9CE73 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		E95A487D1CA9184300F9CE73 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		E95A487E1CA9184300F9CE73 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		E95A487F1CA9184300F9CE73 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		E95A48801CA9184300F9CE73 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		E95A48811CA9184300F9CE73 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		E95A48821CA9184300F9CE73 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		E95A48831CA9184300F9CE73 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		E95A48841CA9184300F9CE73 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		E95A48851CA9184300F9CE73 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		E95A48861CA9184300F9CE73 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		E95A99D81B1ADAFB003FB7FF /* MyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuyListViewController.h; path = ViewControllers/My/MyBuyListViewController.h; sourceTree = "<group>"; };
 		E95A99D91B1ADAFB003FB7FF /* MyBuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBuyListViewController.m; path = ViewControllers/My/MyBuyListViewController.m; sourceTree = "<group>"; };
 		E95A99DB1B1ADD1E003FB7FF /* MyBuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuyListTableViewCell.h; path = Views/My/MyBuyListTableViewCell.h; sourceTree = "<group>"; };
@@ -1037,6 +1058,7 @@
 		E909910E1AAFE8FA00C48688 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E95A48771CA9184300F9CE73 /* SDCycleScrollView */,
 				E92FE2971C55FA3100B2F006 /* system */,
 				E92FE2961C55FA0D00B2F006 /* CHVendor */,
 				E97547861C5098A600D33A09 /* Alipay */,
@@ -1268,6 +1290,36 @@
 				E957EFCD1BB433B200B8B752 /* WXMediaMessage+messageConstruct.m */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		E95A48771CA9184300F9CE73 /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E95A48781CA9184300F9CE73 /* PageControl */,
+				E95A48811CA9184300F9CE73 /* SDCollectionViewCell.h */,
+				E95A48821CA9184300F9CE73 /* SDCollectionViewCell.m */,
+				E95A48831CA9184300F9CE73 /* SDCycleScrollView.h */,
+				E95A48841CA9184300F9CE73 /* SDCycleScrollView.m */,
+				E95A48851CA9184300F9CE73 /* UIView+SDExtension.h */,
+				E95A48861CA9184300F9CE73 /* UIView+SDExtension.m */,
+			);
+			name = SDCycleScrollView;
+			path = Vendors/SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		E95A48781CA9184300F9CE73 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				E95A48791CA9184300F9CE73 /* TAAbstractDotView.h */,
+				E95A487A1CA9184300F9CE73 /* TAAbstractDotView.m */,
+				E95A487B1CA9184300F9CE73 /* TAAnimatedDotView.h */,
+				E95A487C1CA9184300F9CE73 /* TAAnimatedDotView.m */,
+				E95A487D1CA9184300F9CE73 /* TADotView.h */,
+				E95A487E1CA9184300F9CE73 /* TADotView.m */,
+				E95A487F1CA9184300F9CE73 /* TAPageControl.h */,
+				E95A48801CA9184300F9CE73 /* TAPageControl.m */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 		E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */ = {
@@ -2101,7 +2153,9 @@
 				E9B170BE1ABFFD9A00722C2F /* EditSubTripViewController.m in Sources */,
 				E96D4B5C1AB190E300F7CB38 /* SubTripListViewController.m in Sources */,
 				E959EF381B25D2A0006CB977 /* DiscoveryDetailViewController.m in Sources */,
+				E95A488B1CA9184300F9CE73 /* SDCollectionViewCell.m in Sources */,
 				E91396651AC16096003AF385 /* AddBuyViewController.m in Sources */,
+				E95A488C1CA9184300F9CE73 /* SDCycleScrollView.m in Sources */,
 				E9DE1A9B1B29D0440040BFA6 /* NSTimer+Addition.m in Sources */,
 				E97184341ABAC0E2005291A1 /* LocationAnnotation.m in Sources */,
 				E9DEFDFD1C3B9FF400B91771 /* MyAddressViewController.m in Sources */,
@@ -2109,6 +2163,7 @@
 				E98047191BB8122D00B5518A /* CitySelectViewController.m in Sources */,
 				E90EE99E1C082998004E6B20 /* CHActionSheetMapApp.m in Sources */,
 				E9CBB1D11BE739510087194E /* UserProtocolViewController.m in Sources */,
+				E95A488A1CA9184300F9CE73 /* TAPageControl.m in Sources */,
 				E94324D71C43B582004C1886 /* MyCheckOutViewController.m in Sources */,
 				E957EFDC1BB433B200B8B752 /* WXApiRequestHandler.m in Sources */,
 				E9A28F5F1B00B06100ABAA13 /* MyFeedBackViewController.m in Sources */,
@@ -2129,6 +2184,7 @@
 				E967A1FE1B9DCB7200FAFF89 /* MJRefreshNormalHeader.m in Sources */,
 				E95A99DD1B1ADD1E003FB7FF /* MyBuyListTableViewCell.m in Sources */,
 				E913963C1AC11157003AF385 /* AwesomeMenu.m in Sources */,
+				E95A48891CA9184300F9CE73 /* TADotView.m in Sources */,
 				E913963D1AC11157003AF385 /* AwesomeMenuItem.m in Sources */,
 				E9171B811BE8A1A800923C1E /* MyInfoNormalTableViewCell.m in Sources */,
 				E9FA2CA01BE9CB66009E7C10 /* MyInfoSexViewController.m in Sources */,
@@ -2140,11 +2196,13 @@
 				E96D4B3F1AB0295500F7CB38 /* ViewController.m in Sources */,
 				E94324DA1C43C059004C1886 /* MyCheckOutTableViewCell.m in Sources */,
 				E97184281ABAAD96005291A1 /* AddSubTripLocationViewController.m in Sources */,
+				E95A48881CA9184300F9CE73 /* TAAnimatedDotView.m in Sources */,
 				E96D4B381AB0236300F7CB38 /* NSDate-Utilities.m in Sources */,
 				E9171B841BE8A1BC00923C1E /* MyInfoAvatarTableViewCell.m in Sources */,
 				E9E0231D1AE1E9F80054F03D /* ShoppingPopularityTableViewCell.m in Sources */,
 				E913967B1AC28371003AF385 /* BuyList.m in Sources */,
 				E9FA2CA31BE9E1EE009E7C10 /* MyInfoSexTableViewCell.m in Sources */,
+				E95A488D1CA9184300F9CE73 /* UIView+SDExtension.m in Sources */,
 				E96D4B3C1AB024E100F7CB38 /* AddTripFrontTableViewCell.m in Sources */,
 				E967A1FB1B9DCB7200FAFF89 /* MJRefreshBackNormalFooter.m in Sources */,
 				E967A2031B9DCB7200FAFF89 /* UIScrollView+MJRefresh.m in Sources */,
@@ -2219,6 +2277,7 @@
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,
 				E967A1FC1B9DCB7200FAFF89 /* MJRefreshBackStateFooter.m in Sources */,
 				E937AD011B064A2900D5386A /* MyAboutUsViewController.m in Sources */,
+				E95A48871CA9184300F9CE73 /* TAAbstractDotView.m in Sources */,
 				E96D4B581AB1476800F7CB38 /* ChtripCDManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

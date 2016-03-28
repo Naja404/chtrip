@@ -108,7 +108,6 @@
             [RED_COLOR_BG set];
             break;
         case 2:
-//            [[UIColor orangeColor] set];
             [BLUE_COLOR_BG set];
             break;
         case 3:
@@ -118,7 +117,6 @@
             [GREEN_COLOR_BG set];
             break;
         case 5:
-//            [[UIColor colorWithRed:19 green:100 blue:217 alpha:1] set];
             [[UIColor blueColor] set];
             break;
         default:

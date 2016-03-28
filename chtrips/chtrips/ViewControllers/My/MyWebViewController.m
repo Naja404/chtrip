@@ -79,7 +79,12 @@
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_SUCCESS", nil)];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"TEXT_ENTER_ERR", nil)];
+            
+            NSString *info = [responseData objectForKey:@"msg"];
+            
+            [SVProgressHUD showErrorWithStatus:info];
+            
+//            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"TEXT_ENTER_ERR", nil)];
         }
     }];
 }
@@ -91,7 +96,10 @@
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_EDIT_SUCCESS", nil)];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"TEXT_ENTER_ERR", nil)];
+//            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"TEXT_ENTER_ERR", nil)];
+            NSString *info = [responseData objectForKey:@"msg"];
+            
+            [SVProgressHUD showErrorWithStatus:info];
         }
     }];
 }

@@ -17,11 +17,12 @@
 #import "LinkWebViewController.h"
 #import "IntroViewController.h"
 #import <UIImageView-PlayGIF/YFGIFImageView.h>
+#import "SDCycleScrollView.h"
 
 
 static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
-@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UITextFieldDelegate>
+@interface DiscoveryViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, SDCycleScrollViewDelegate>
 
 @property (nonatomic, strong) UITableView *discoveryTV;
 @property (nonatomic, strong) NSMutableArray *discoveryTVData;
@@ -197,36 +198,32 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 }
 
+// update with 2016-3-28
 - (void) setupKV:(NSMutableArray *)adData {
     
-    NSMutableArray *viewsArray = [@[] mutableCopy];
-    
-    for (int i = 0; i < 4; ++i) {
-        UIImageView *imgView = [[UIImageView alloc] init];
-        imgView.frame = CGRectMake(ScreenWidth * i, 0, ScreenWidth, ScreenWidth / 2.25);
-        NSURL *imageUrl = [NSURL URLWithString:[[adData objectAtIndex:i] objectForKey:@"path"]];
-        [imgView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
-        
-        [viewsArray addObject:imgView];
-    }
+    NSMutableArray *temp = [NSMutableArray new];
+    [adData enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * stop) {
+        if (idx == nil) {
+            [temp addObject:[[adData objectAtIndex:0] objectForKey:@"path"]];
+        }else{
+            [temp addObject:[[adData objectAtIndex:idx] objectForKey:@"path"]];
+        }
+    }];
     
     self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25 + 10)];
     
-    self.kvScrollView = [[CHAutoSlideScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25) animationDuration:5];
-    
-    [self.discoveryHV removeFromSuperview];
-    
-    self.kvScrollView.totalPagesCount = ^NSInteger(void){
-        return viewsArray.count;
-    };
-    
-    self.kvScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-        return viewsArray[pageIndex];
-    };
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    cycleScrollView.imageURLStringsGroup = temp;
+
+    [self.discoveryHV addSubview:cycleScrollView];
+    cycleScrollView.autoScrollTimeInterval = 5.0;
     
     __weak typeof (self) weakSelf = self;
-    self.kvScrollView.TapActionBlock = ^(NSInteger pageIndex){
 
+    cycleScrollView.clickItemOperationBlock = ^(NSInteger pageIndex) {
+        
+        NSLog(@">>>>>  %ld", (long)pageIndex);
+        
         NSString *adType = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"type"]];
         
         if ([adType isEqualToString:@"1"]) {
@@ -267,9 +264,10 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
             
             [weakSelf.navigationController pushViewController:detail animated:YES];
         }
+        
+        
     };
-    self.kvScrollView.scrollView.scrollsToTop = NO;
-    [self.discoveryHV addSubview:self.kvScrollView];
+
     self.discoveryTV.tableHeaderView = _discoveryHV;
 }
 
