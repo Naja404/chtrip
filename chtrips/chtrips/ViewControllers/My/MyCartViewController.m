@@ -353,7 +353,7 @@ static NSString * const MY_CARTLIST_CELL = @"MycartListCell";
     
     ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
     
-    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+    detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetailNew?pid=%@", [cellData objectForKey:@"pid"]];
     detailVC.pid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"pid"]];
     detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"price_zh"]];
     detailVC.navigationItem.title = [cellData objectForKey:@"title_zh"];

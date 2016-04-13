@@ -288,7 +288,7 @@
     [_webView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
     [_webView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view];
     [_webView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view];
-    [_webView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    [_webView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view withOffset:-50];
     
     self.webView.delegate = self;
     

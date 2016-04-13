@@ -213,9 +213,11 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     self.discoveryHV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25 + 10)];
     
     SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth / 2.25) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+    [self.discoveryHV removeFromSuperview];
+    
     cycleScrollView.imageURLStringsGroup = temp;
 
-    [self.discoveryHV addSubview:cycleScrollView];
     cycleScrollView.autoScrollTimeInterval = 5.0;
     
     __weak typeof (self) weakSelf = self;
@@ -229,7 +231,7 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         if ([adType isEqualToString:@"1"]) {
             ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
             
-            detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetail?pid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
+            detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetailNew?pid=%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.pid = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"pid"]];
             detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [[adData objectAtIndex:pageIndex] objectForKey:@"price_zh"]];
             detailVC.hasNav = @"1";
@@ -267,6 +269,9 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         
         
     };
+    
+
+    [self.discoveryHV addSubview:cycleScrollView];
 
     self.discoveryTV.tableHeaderView = _discoveryHV;
 }

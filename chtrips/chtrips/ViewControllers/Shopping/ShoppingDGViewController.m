@@ -492,7 +492,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     }else{
         ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
 
-        detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetail?pid=%@", [cellData objectForKey:@"pid"]];
+        detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetailNew?pid=%@", [cellData objectForKey:@"pid"]];
         detailVC.pid = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"pid"]];
         detailVC.stock = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"rest"]];
         detailVC.stockLB = [NSString stringWithFormat:@"%@", [cellData objectForKey:@"stock_label"]];

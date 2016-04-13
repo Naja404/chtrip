@@ -278,6 +278,27 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         [shipBTN addGestureRecognizer:shipOnceTap];
     }
     
+    // 已完成 立即评价
+    if ([[tmp objectForKey:@"has_comment"] isEqualToString:@"1"]) {
+        UIButton *shipBTN = [UIButton newAutoLayoutView];
+        [footerV addSubview:shipBTN];
+        
+        [shipBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
+        [shipBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:footerV withOffset:-10];
+        [shipBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
+        [shipBTN setTitle:NSLocalizedString(@"BTN_COMMENT_NOW", nil) forState:UIControlStateNormal];
+        [shipBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
+        shipBTN.titleLabel.font = FONT_SIZE_16;
+        shipBTN.layer.masksToBounds = YES;
+        shipBTN.layer.cornerRadius = 3.0f;
+        shipBTN.layer.borderWidth = 1.0f;
+        shipBTN.layer.borderColor = GRAY_FONT_COLOR.CGColor;
+        shipBTN.tag = section;
+        
+        UITapGestureRecognizer *shipOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentNow:)];
+        [shipBTN addGestureRecognizer:shipOnceTap];
+    }
+    
     return footerV;
 }
 
@@ -296,6 +317,21 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     webVC.webUrl = [tmp objectForKey:@"ship_url"];
     
     webVC.navigationItem.title = NSLocalizedString(@"TEXT_SHIP_STATUS", nil);
+    
+    [self.navigationController pushViewController:webVC animated:YES];
+}
+
+#pragma mark - 立即评价
+- (void) commentNow:(id)sender {
+    UIButton *button = (UIButton *)[(UITapGestureRecognizer *)sender view];
+    
+    NSDictionary *tmp = [_orderData objectAtIndex:button.tag];
+    
+    MyWebViewController *webVC = [[MyWebViewController alloc] init];
+    
+    webVC.webUrl = [tmp objectForKey:@"comment_url"];
+    
+    webVC.navigationItem.title = NSLocalizedString(@"TEXT_PUBLICSH_COMMENT", nil);
     
     [self.navigationController pushViewController:webVC animated:YES];
 }

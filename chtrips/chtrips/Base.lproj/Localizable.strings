@@ -29,6 +29,7 @@
 "BTN_CHECKOUT" = "结算(%@)";
 "BTN_CONFIRM_PAY" = "确认并支付";
 "BTN_VIEW_SHIP" = "查看物流";
+"BTN_COMMENT_NOW" = "立即评价";
 
 
 // text
@@ -145,6 +146,7 @@
 "TEXT_PAY_NOW" = "立即支付";
 "TEXT_SHIP_STATUS" = "物流状态";
 "TEXT_NO_WEIXIN" = "尚未安装微信,请在'待支付'中更改支付方式";
+"TEXT_PUBLICSH_COMMENT" = "发表评价";
 
 // input 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";
