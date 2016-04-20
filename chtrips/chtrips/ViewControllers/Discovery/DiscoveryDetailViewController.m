@@ -112,10 +112,24 @@
     
     self.slideShowState = @"0";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                           target:self
-                                                                                           action:@selector(showShareView)];
-    self.navigationItem.rightBarButtonItem.tintColor = NAV_GRAY_COLOR;
+    UIBarButtonItem *shareBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                             target:self
+                                                                             action:@selector(showShareView)];
+    
+    UIBarButtonItem *collectBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                                                                target:self
+                                                                                action:@selector(collectAlbum)];
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+//                                                                                           target:self
+//                                                                                           action:@selector(showShareView)];
+    shareBTN.tintColor = NAV_GRAY_COLOR;
+    collectBTN.tintColor = NAV_GRAY_COLOR;
+    
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:shareBTN, collectBTN, nil];
+    
+//    self.navigationItem.rightBarButtonItem.tintColor = NAV_GRAY_COLOR;
     
     UILabel *titleLB = [UILabel newAutoLayoutView];
     [_slideV addSubview:titleLB];

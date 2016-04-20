@@ -141,7 +141,7 @@
     [_priceLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 3, 20)];
     _priceLB.textAlignment = NSTextAlignmentCenter;
     _priceLB.textColor = GRAY_COLOR_PLAY;
-    _priceLB.attributedText = [self priceFormat:[NSString stringWithFormat:@"参考价格 %@", _zhPriceStr]];
+    _priceLB.attributedText = [self priceFormat:[NSString stringWithFormat:@"价格 %@", _zhPriceStr]];
     _priceLB.font = FONT_SIZE_10;
 
     UILabel *topLine = [UILabel newAutoLayoutView];
@@ -209,8 +209,8 @@
     
 //    NSUInteger rangLength = str.length - 5;
     
-    [price addAttribute:NSForegroundColorAttributeName value:GRAY_COLOR_PLAY range:NSMakeRange(0, 3)];
-    [price addAttribute:NSForegroundColorAttributeName value:ORINGE_COLOR_BG range:NSMakeRange(5, str.length - 5)];
+    [price addAttribute:NSForegroundColorAttributeName value:GRAY_COLOR_PLAY range:NSMakeRange(0, 1)];
+    [price addAttribute:NSForegroundColorAttributeName value:ORINGE_COLOR_BG range:NSMakeRange(3, str.length - 3)];
     
     return price;
 }

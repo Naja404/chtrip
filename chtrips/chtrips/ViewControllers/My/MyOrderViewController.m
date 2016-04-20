@@ -279,7 +279,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     }
     
     // 已完成 立即评价
-    if ([[tmp objectForKey:@"has_comment"] isEqualToString:@"1"]) {
+    if ([[tmp objectForKey:@"has_comment"] isEqualToString:@"0"] && [[tmp objectForKey:@"status"] isEqualToString:@"1"]) {
         UIButton *shipBTN = [UIButton newAutoLayoutView];
         [footerV addSubview:shipBTN];
         

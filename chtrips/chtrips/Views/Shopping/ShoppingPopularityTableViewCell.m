@@ -41,21 +41,21 @@
         _summaryZHLB.textColor = HIGHLIGHT_GRAY_COLOR;
         
         
-        self.prePriceLB = [UILabel newAutoLayoutView];
-        [self.contentView addSubview:_prePriceLB];
-        
-        [_prePriceLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_productImage];
-        [_prePriceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:10];
-        [_prePriceLB autoSetDimensionsToSize:CGSizeMake(60, 20)];
-        _prePriceLB.font = [UIFont systemFontOfSize:14.0f];
-        _prePriceLB.text = NSLocalizedString(@"TEXT_REFERENCE_PRICE", nil);
-        _prePriceLB.textColor = HIGHLIGHT_BLACK_COLOR;
+//        self.prePriceLB = [UILabel newAutoLayoutView];
+//        [self.contentView addSubview:_prePriceLB];
+//        
+//        [_prePriceLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_productImage];
+//        [_prePriceLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:10];
+//        [_prePriceLB autoSetDimensionsToSize:CGSizeMake(60, 20)];
+//        _prePriceLB.font = [UIFont systemFontOfSize:14.0f];
+//        _prePriceLB.text = NSLocalizedString(@"TEXT_REFERENCE_PRICE", nil);
+//        _prePriceLB.textColor = HIGHLIGHT_BLACK_COLOR;
         
         self.priceZHLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_priceZHLB];
         
-        [_priceZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_prePriceLB withOffset:5];
-        [_priceZHLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_prePriceLB];
+        [_priceZHLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_productImage withOffset:10];
+        [_priceZHLB autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_productImage];
         [_priceZHLB autoSetDimensionsToSize:CGSizeMake(120, 20)];
         _priceZHLB.font = [UIFont systemFontOfSize:11.0f];
         _priceZHLB.textColor = HIGHLIGHT_RED_COLOR;
