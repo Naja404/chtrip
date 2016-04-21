@@ -59,6 +59,9 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    
     [self setupDiscoveryTV];
     [self setupSearchNav];
     [self setupLogo];

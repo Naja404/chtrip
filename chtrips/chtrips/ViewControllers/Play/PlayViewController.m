@@ -69,6 +69,8 @@ static NSString * const PLAY_CELL = @"playCell";
     }
     
     [super viewDidLoad];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+
     [self setupCityBTN];
 //    [self setupDOPMenu];
     [self setupPlayList];

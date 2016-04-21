@@ -15,6 +15,8 @@
 @property (nonatomic, readwrite) CGFloat height;
 @property (nonatomic, readwrite) CGFloat weight;
 @property (nonatomic, readwrite) CGFloat selectedIndexHeight;
+@property (nonatomic, readwrite) CGFloat selectedRedLineHeight;
+@property (nonatomic, readwrite) UIFont *fontStyle;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, readwrite) UIEdgeInsets segmentEdgeInset; // default is UIEdgeInsetsMake(0, 5, 0, 5)
 @property (nonatomic, copy) void (^indexChangeBlock)(NSUInteger index);

@@ -58,6 +58,8 @@
 
 // 导航红色字体颜色
 #define HIGHLIGHT_RED_COLOR [UIColor colorWithRed:255/255.0 green:62/255.0 blue:48/255.0 alpha:1]
+// 菜单灰色背景
+#define MENU_GRAY_BGCOLOR [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1]
 
 // 12号字体
 #define NORMAL_12FONT_SIZE [UIFont systemFontOfSize:12.0f]

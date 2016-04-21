@@ -13,6 +13,8 @@
 #import "ShoppingDGDetailViewController.h"
 #import "PlayDetailViewController.h"
 #import "PlayInsideDetailViewController.h"
+#import "CHTabBarControl.h"
+
 
 static NSString * const SHOP_CELL = @"ShoppingDGCell";
 static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
@@ -46,6 +48,10 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 @property (nonatomic, assign) BOOL isProduct;
 @property (nonatomic, strong) UIImageView *bgView;
 
+@property (nonnull, strong) UIScrollView *scrollMenuV;
+@property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) NSInteger defaultIndex;
+@property (nonatomic, assign) NSMutableArray *cateArr;
 @end
 
 @implementation ShoppingDGViewController
@@ -64,10 +70,13 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     self.proNextPageNum = @"1";
     self.shopNextPageNum = @"1";
+    self.selectedIndex = 0;
+    self.defaultIndex = 0;
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
+    [self getCateList];
     [self setupSegmentedControl];
     [self setProductDOPMenu];
-    [self setupDOPMenu];
     
     [self setupShopList];
     [self refresh:YES];
@@ -126,6 +135,9 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
     self.sorts = @[@"评分", @"三分", @"四分", @"五分"];
     self.isProduct = NO;
+    _dopMenu.hidden = NO;
+    _scrollMenuV.hidden = YES;
+
 }
 
 - (void) setProductDOPMenu {
@@ -153,14 +165,56 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
                         @"盛田屋", @"乐敦制药", @"薬師堂"]];
     self.sorts = @[@"价格", @"200以下", @"200-500", @"1000-2000", @"2000-5000", @"5000-10000", @"1万以上"];
     self.isProduct = YES;
+    _dopMenu.hidden = YES;
+    _scrollMenuV.hidden = NO;
 }
 
+#pragma mark - 设置滚动菜单/下拉菜单
 - (void) setupDOPMenu {
+    
+    CGFloat sWidth = ScreenWidth;
+    
+    CGFloat cWidth = self.cateArr.count * 75;
+    
+    if (cWidth > sWidth) {
+        sWidth = cWidth;
+    }
+    
+    // 添加滚动菜单
+    self.scrollMenuV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 44)];
+    _scrollMenuV.backgroundColor = MENU_GRAY_BGCOLOR;
+    _scrollMenuV.contentSize = CGSizeMake(sWidth, 44);
+    _scrollMenuV.contentOffset = CGPointMake(0, 0);
+    _scrollMenuV.showsHorizontalScrollIndicator = NO;
+    _scrollMenuV.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:_scrollMenuV];
+    
+    CHTabBarControl *selectControl = [[CHTabBarControl alloc] initWithTitles:self.cateArr];
+    
+    selectControl.backgroundColor = MENU_GRAY_BGCOLOR;
+    selectControl.fontStyle = FONT_SIZE_14;
+    selectControl.selectedRedLineHeight = 0;
+    [selectControl setFrame:CGRectMake(0, 0, sWidth, 44)];
+    [selectControl setSelectedIndex:_selectedIndex];
+    [selectControl setIndexChangeBlock:^(NSUInteger index) {
+        self.selectCate = [NSString stringWithFormat:@"%@", self.cateArr[index]];
+        if (self.defaultIndex != 0) {
+            self.proNextPageNum = @"1";
+            [self getProductList:self.proNextPageNum];
+        }else{
+            self.defaultIndex = 1;
+        }
+    }];
+    
+    [_scrollMenuV addSubview:selectControl];
+    
+    [selectControl setSelectedIndex:_selectedIndex animated:NO];
     
     // 添加下拉菜单
     self.dopMenu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:44];
     _dopMenu.delegate = self;
     _dopMenu.dataSource = self;
+    _dopMenu.hidden = YES;
     [self.view addSubview:_dopMenu];
     
     [_dopMenu selectDefalutIndexPath];
@@ -274,6 +328,25 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 获取产品分类列表
+- (void) getCateList {
+    self.scrollMenuV.scrollEnabled = NO;
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    
+    [[HttpManager instance] requestWithMethod:@"Product/cateList"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          self.cateArr = [result objectForKey:@"data"];
+                                          [self setupDOPMenu];
+                                          self.scrollMenuV.scrollEnabled = YES;
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          self.scrollMenuV.scrollEnabled = NO;
+                                      }];
 }
 
 #pragma mark 获取产品列表

@@ -41,6 +41,8 @@
     self.height = self.frame.size.height;
     self.selectedIndexHeight = 5.0f;
     self.selectedIndex = 0;
+    self.selectedRedLineHeight = 42;
+    self.fontStyle = FONT_SIZE_16;
     self.backgroundColor = GRAY_COLOR_CITY_CELL;
     _labelArr = [[NSMutableArray alloc] init];
     self.selectedLayer = [CALayer layer];
@@ -59,7 +61,7 @@
         
         titleLB.text = [_titleArr objectAtIndex:idx];
         titleLB.textAlignment = NSTextAlignmentCenter;
-        titleLB.font = FONT_SIZE_16;
+        titleLB.font = _fontStyle;
         titleLB.textColor = HIGHLIGHT_BLACK_COLOR;
         
         if (idx == _selectedIndex) {
@@ -82,7 +84,7 @@
     CGFloat widthTillBeforeSelectedIndex = (_weight * _selectedIndex);
     
     CGFloat x = ((widthTillEndOfSelectedIndex - widthTillBeforeSelectedIndex) / 2) + (widthTillBeforeSelectedIndex - 50 / 2);
-    return CGRectMake(x, 42, 50, 2);
+    return CGRectMake(x, _selectedRedLineHeight, 50, 2);
     
 //    return CGRectMake(_weight * _selectedIndex, 0.0, _weight, _height);
 }
