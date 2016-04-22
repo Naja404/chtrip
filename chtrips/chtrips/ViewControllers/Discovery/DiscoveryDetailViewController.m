@@ -21,7 +21,8 @@
 @property (nonatomic, strong) SlideInViewManager *slideVM;
 @property (nonatomic, strong) NSString *slideShowState;
 @property (nonatomic, strong) UIView *bgView;
-
+@property (nonatomic, strong) UIBarButtonItem *collectBTN;
+@property (nonatomic, strong) NSString *isCollect;
 @end
 
 @implementation DiscoveryDetailViewController
@@ -41,6 +42,9 @@
 - (void)viewDidLoad {
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [super viewDidLoad];
+    
+    [self isCollectAlbum];
+    
     [self setupUrlPage];
     [self customizeBackItem];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
@@ -116,7 +120,7 @@
                                                                              target:self
                                                                              action:@selector(showShareView)];
     
-    UIBarButtonItem *collectBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+    self.collectBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
                                                                                 target:self
                                                                                 action:@selector(collectAlbum)];
     
@@ -124,10 +128,10 @@
 //                                                                                           target:self
 //                                                                                           action:@selector(showShareView)];
     shareBTN.tintColor = NAV_GRAY_COLOR;
-    collectBTN.tintColor = NAV_GRAY_COLOR;
+    _collectBTN.tintColor = NAV_GRAY_COLOR;
     
     
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:shareBTN, collectBTN, nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:shareBTN, _collectBTN, nil];
     
 //    self.navigationItem.rightBarButtonItem.tintColor = NAV_GRAY_COLOR;
     
@@ -197,6 +201,57 @@
                              InScene:WXSceneTimeline];
     [self showShareView];
     
+}
+
+#pragma mark - 收藏专辑按钮
+- (void) collectAlbum {
+    
+    [SVProgressHUD show];
+    
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:[self.albumDic objectForKey:@"aid"] forKey:@"aid"];
+    [paramter setObject:_isCollect forKey:@"type"];
+    [paramter setObject:@"0" forKey:@"islist"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/setAlbum"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+
+                                          if ([_isCollect isEqualToString:@"1"]) {
+                                              _isCollect = @"2";
+                                              _collectBTN.tintColor = ORINGE_COLOR_BG;
+                                          }else{
+                                              _isCollect = @"1";
+                                              _collectBTN.tintColor = NAV_GRAY_COLOR;
+                                          }
+                                          
+                                          [SVProgressHUD dismiss];
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                          [SVProgressHUD showInfoWithStatus:[error localizedDescription] maskType:SVProgressHUDMaskTypeBlack];
+                                      }];
+}
+
+#pragma mark - 是否收藏该专辑
+- (void) isCollectAlbum {
+    NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
+    [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:[self.albumDic objectForKey:@"aid"] forKey:@"aid"];
+    
+    [[HttpManager instance] requestWithMethod:@"User/isCollectAlbum"
+                                   parameters:paramter
+                                      success:^(NSDictionary *result) {
+                                          if ([[[result objectForKey:@"data"] objectForKey:@"is_collect"] isEqualToString:@"1"]) {
+                                              _collectBTN.tintColor = ORINGE_COLOR_BG;
+                                              _isCollect = @"2";
+                                          }else{
+                                              _collectBTN.tintColor = NAV_GRAY_COLOR;
+                                              _isCollect = @"1";
+                                          }
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                      }];
 }
 
 - (void) dismissShareView{

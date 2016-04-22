@@ -1563,6 +1563,7 @@
 		E9B901A81AC93D12001F4EA0 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				E9C8FFAB1CCA061D00B4DED5 /* Favorite */,
 				E94324D41C43B55B004C1886 /* Info */,
 				E94324D31C43B546004C1886 /* Cart */,
 			);
@@ -1741,6 +1742,13 @@
 				E9C1319D1AB2F1D600E6E873 /* tripTitle@2x.png */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		E9C8FFAB1CCA061D00B4DED5 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Favorite;
 			sourceTree = "<group>";
 		};
 		E9D0FB171AEA467C00CC9664 /* My */ = {

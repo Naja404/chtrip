@@ -259,10 +259,6 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
     [_slideVM slideViewOut];
 }
 
-#pragma mark - 收藏专辑按钮
-- (void) collectAlbum {
-    
-}
 
 - (void) showShareView {
     
