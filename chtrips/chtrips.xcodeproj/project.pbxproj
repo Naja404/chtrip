@@ -163,6 +163,7 @@
 		E967A2021B9DCB7200FAFF89 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E967A1ED1B9DCB7200FAFF89 /* UIScrollView+MJExtension.m */; };
 		E967A2031B9DCB7200FAFF89 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = E967A1EF1B9DCB7200FAFF89 /* UIScrollView+MJRefresh.m */; };
 		E967A2041B9DCB7200FAFF89 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E967A1F11B9DCB7200FAFF89 /* UIView+MJExtension.m */; };
+		E969BCD71CCDEE2600FF9089 /* MyFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E969BCD61CCDEE2600FF9089 /* MyFavoriteViewController.m */; };
 		E96D4B221AB016BE00F7CB38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96D4B241AB016BE00F7CB38 /* Localizable.strings */; };
 		E96D4B2A1AB01AE600F7CB38 /* AddTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B291AB01AE600F7CB38 /* AddTripTableViewCell.m */; };
 		E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D4B2C1AB01F8100F7CB38 /* AddTripDateTableViewCell.m */; };
@@ -594,6 +595,8 @@
 		E967A1EF1B9DCB7200FAFF89 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		E967A1F01B9DCB7200FAFF89 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		E967A1F11B9DCB7200FAFF89 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		E969BCD51CCDEE2600FF9089 /* MyFavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFavoriteViewController.h; path = ViewControllers/My/MyFavoriteViewController.h; sourceTree = "<group>"; };
+		E969BCD61CCDEE2600FF9089 /* MyFavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFavoriteViewController.m; path = ViewControllers/My/MyFavoriteViewController.m; sourceTree = "<group>"; };
 		E96D4B201AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E96D4B211AB0160400F7CB38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E96D4B231AB016BE00F7CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1747,6 +1750,8 @@
 		E9C8FFAB1CCA061D00B4DED5 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				E969BCD51CCDEE2600FF9089 /* MyFavoriteViewController.h */,
+				E969BCD61CCDEE2600FF9089 /* MyFavoriteViewController.m */,
 			);
 			name = Favorite;
 			sourceTree = "<group>";
@@ -2186,6 +2191,7 @@
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
 				E9DEFE171C3E728600B91771 /* MyOrderViewController.m in Sources */,
 				E967A1FF1B9DCB7200FAFF89 /* MJRefreshStateHeader.m in Sources */,
+				E969BCD71CCDEE2600FF9089 /* MyFavoriteViewController.m in Sources */,
 				E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */,
 				E967A2011B9DCB7200FAFF89 /* MJRefreshConst.m in Sources */,
 				E96D4B2D1AB01F8100F7CB38 /* AddTripDateTableViewCell.m in Sources */,

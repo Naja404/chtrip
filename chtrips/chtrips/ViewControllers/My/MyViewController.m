@@ -19,6 +19,7 @@
 #import "MyOrderIconTableViewCell.h"
 #import "MyCartViewController.h"
 #import "MyOrderViewController.h"
+#import "MyFavoriteViewController.h"
 
 
 static NSString * const MY_AVATAR_CELL = @"myAvatarCell";
@@ -110,7 +111,7 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
             return 1;
         }
     }else if(section == 1){
-        return 3;
+        return 4;
     }else{
         return 2;
     }
@@ -197,11 +198,14 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
                 titleText = @"TEXT_MY_WANT_GO";
 //                imgPath = @"iconLikeGo";
                 imgPath = @"iconFavorite";
-            }else{
+            }else if (indexPath.row == 3){
 //                titleText = @"TEXT_CELL_BUY_LIST";
 //                imgPath = @"iconBuyList";
                 titleText = @"TEXT_WANT_BUY";
                 imgPath = @"iconWantBuy";
+            }else {
+                titleText = @"TEXT_FAVORITES";
+                imgPath = @"discoveryGray";
             }
         }
         
@@ -264,11 +268,16 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
             myWantList.navigationItem.title = NSLocalizedString(@"TEXT_CELL_WANT_LIST", Nil);
             myWantList.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myWantList animated:YES];
-        }else{
+        }else if(indexPath.row == 3){
             MyBuyListViewController *myBuyList = [[MyBuyListViewController alloc] init];
             myBuyList.navigationItem.title = NSLocalizedString(@"TEXT_WANT_BUY", Nil);
             myBuyList.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myBuyList animated:YES];
+        }else{
+            MyFavoriteViewController *myFavorite = [[MyFavoriteViewController alloc] init];
+            myFavorite.navigationItem.title = NSLocalizedString(@"TEXT_FAVORITES", nil);
+            myFavorite.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myFavorite animated:YES];
         }
     }
     
