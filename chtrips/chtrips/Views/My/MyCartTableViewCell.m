@@ -85,7 +85,7 @@
         self.proTotalV = [UIControl newAutoLayoutView];
         [self.contentView addSubview:_proTotalV];
         
-        [_proTotalV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_productImage];
+        [_proTotalV autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:_productImage withOffset:8];
         [_proTotalV autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.contentView withOffset:-5.0];
         [_proTotalV autoSetDimensionsToSize:CGSizeMake(102, 32)];
         _proTotalV.backgroundColor = [UIColor clearColor];

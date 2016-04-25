@@ -32,6 +32,7 @@
 
     self.tabBarController.tabBar.hidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
+    [self getCartTotal];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
