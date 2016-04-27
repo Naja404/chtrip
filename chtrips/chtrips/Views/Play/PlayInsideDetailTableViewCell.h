@@ -25,5 +25,8 @@
 @property (nonatomic, strong) UILabel *lineLB;
 @property (nonatomic, strong) UILabel *hLineLB;
 @property (nonatomic, strong) UILabel *mapLB;
+@property (nonatomic, strong) UIScrollView *albumSV;
+@property (nonatomic, strong) NSArray *albumArr;
+@property (nonatomic, strong) void (^tapAction)(NSInteger index);
 
 @end

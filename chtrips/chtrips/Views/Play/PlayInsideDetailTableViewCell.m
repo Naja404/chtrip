@@ -10,7 +10,7 @@
 
 @interface PlayInsideDetailTableViewCell ()
 
-
+@property (nonatomic, strong) NSArray *cellAlbumArr;
 
 @end
 
@@ -144,7 +144,9 @@
             _titleLB.textAlignment = NSTextAlignmentCenter;
             _titleLB.textColor = GRAY_FONT_COLOR;
             _titleLB.text = @"Powered By Gurunavi";
-
+            
+        }else if ([reuseIdentifier isEqualToString:@"playAlbumCell"]){
+            
         }else{
             self.iconImg = [UIImageView newAutoLayoutView];
             [self.contentView addSubview:_iconImg];
@@ -215,6 +217,55 @@
     }
     
     return self;
+}
+
+@synthesize albumArr = _albumArr;
+- (void) setAlbumArr:(NSArray *)albumArr {
+    _albumArr = albumArr;
+    
+    self.albumSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 120)];
+    
+    [_albumArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        UIControl *bgView = [[UIControl alloc] initWithFrame:CGRectMake(idx*130+10, 0, 120, 120)];
+        
+        [bgView addTarget:self action:@selector(bgViewTap:) forControlEvents:UIControlEventTouchUpInside];
+        
+        bgView.tag = idx;
+        
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
+        NSURL *imgUrl = [NSURL URLWithString:[obj objectForKey:@"path"]];
+        [imgV sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
+        
+        [bgView addSubview:imgV];
+        
+        UILabel *bg = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
+        bg.backgroundColor = [UIColor blackColor];
+        bg.alpha = 0.5;
+        [bgView addSubview:bg];
+        
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
+        title.font = FONT_SIZE_10;
+        title.text = [[obj objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"*" withString:@"\n"];
+        title.textAlignment = NSTextAlignmentCenter;
+        title.numberOfLines = 0;
+        title.lineBreakMode = NSLineBreakByWordWrapping;
+        title.textColor = [UIColor whiteColor];
+        title.backgroundColor = [UIColor clearColor];
+        
+        [bgView addSubview:title];
+        
+        [_albumSV addSubview:bgView];
+    }];
+    
+    _albumSV.contentSize = CGSizeMake(_albumArr.count*130+10, 120);
+    
+    [self.contentView addSubview:_albumSV];
+    
+}
+
+- (void) bgViewTap:(UIControl *) control {
+    _tapAction(control.tag);
 }
 
 - (void)awakeFromNib {

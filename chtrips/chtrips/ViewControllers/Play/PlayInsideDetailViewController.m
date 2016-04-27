@@ -14,7 +14,7 @@
 #import "WXApiRequestHandler.h"
 #import "WXApiManager.h"
 #import "BookingWebViewController.h"
-
+#import "DiscoveryDetailViewController.h"
 
 
 static NSString * const PLAY_CELL = @"playCell";
@@ -22,11 +22,13 @@ static NSString * const PLAY_TITLE_CELL = @"playTitleCell";
 static NSString * const PLAY_NAV_CELL = @"playNavCell";
 static NSString * const PLAY_DESCRIPTION_CELL = @"playDescriptionCell";
 static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
+static NSString * const PLAY_ALBUM_CELL = @"playAlbumCell";
 
 @interface PlayInsideDetailViewController ()<UITableViewDelegate, UITableViewDataSource, CHActionSheetMapAppDelegate>
 
 @property (nonatomic, strong) UITableView *detailTV;
 @property (nonatomic, strong) NSDictionary *detailData;
+@property (nonatomic, strong) NSArray *albumArr;
 @property (nonatomic, strong) CHActionSheetMapApp *mapApp;
 @property (nonatomic, strong) UIView *slideV;
 @property (nonatomic, strong) SlideInViewManager *slideVM;
@@ -79,6 +81,7 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_NAV_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_DESCRIPTION_CELL];
     [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_POWERED_CELL];
+    [_detailTV registerClass:[PlayInsideDetailTableViewCell class] forCellReuseIdentifier:PLAY_ALBUM_CELL];
     
     UILabel *backBG = [UILabel newAutoLayoutView];
     [self.view addSubview:backBG];
@@ -291,6 +294,7 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
                                       success:^(NSDictionary *result) {
                                           
                                           self.detailData = [result objectForKey:@"data"];
+                                          self.albumArr = [self.detailData objectForKey:@"album"];
                                           
                                           [self setStyle];
                                           
@@ -304,21 +308,48 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    
+    if (_albumArr.count > 0) {
+        return 4;
+    }else{
+        return 3;
+    }
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 1) {
-        return 1;
-    }else if(section == 2){
-        if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
-            return 3;
-        }else{
-            return 2;
-        }
-    }else{
-        return [[_detailData objectForKey:@"normal"] count] + 2;
+    
+    NSInteger returnNum = 1;
+    
+    switch (section) {
+        case 0:
+            returnNum = [[_detailData objectForKey:@"normal"] count] + 2;
+            break;
+        case 1:
+            returnNum = 1;
+            break;
+        case 2:
+            if (_albumArr.count > 0) {
+                returnNum = 1;
+            }else{
+                if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
+                    returnNum = 3;
+                }else{
+                    returnNum = 2;
+                }
+            }
+            break;
+        case 3:
+            if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) {
+                returnNum = 3;
+            }else{
+                returnNum = 2;
+            }
+            break;
+        default:
+            break;
     }
+    
+    return returnNum;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -351,15 +382,32 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
         
         return size.height + 40;
         
-    }else if(indexPath.section == 2 && indexPath.row == 1){
+    }else if(indexPath.section == 2){
+        if (_albumArr.count > 0) {
+            return 120;
+        }else{
+            if (indexPath.row == 1) {
+                return ScreenWidth * 0.75;
+            }else{
+                return 42;
+            }
+        }
+    }else if (indexPath.section  == 3 && indexPath.row == 1){
         return ScreenWidth * 0.75;
     }else{
         return 42;
     }
+    
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 2) {
+        if (_albumArr.count > 0) {
+            return 10;
+        }else{
+            return 0;
+        }
+    }else if(section == 3){
         return 0;
     }else{
         return 10;
@@ -435,6 +483,57 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
+    }else if (indexPath.section == 2){
+        // 相关专辑
+        if (_albumArr.count > 0) {
+            [cell removeFromSuperview];
+            
+            PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_ALBUM_CELL forIndexPath:indexPath];
+            NSLog(@"view controller %@", _albumArr);
+            cell.albumArr = _albumArr;
+            
+            __weak typeof (self) weakSelf = self;
+            
+            cell.tapAction = ^(NSInteger index){
+
+                DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
+                NSDictionary *albumDic = _albumArr[index];
+                detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum/aid/%@/ssid/%@.html", [albumDic objectForKey:@"aid"], [CHSSID SSID]];
+                detail.albumDic = albumDic;
+                detail.navigationItem.title = @"专辑";
+
+                [weakSelf.navigationController pushViewController:detail animated:YES];
+            };
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+            
+        }else{
+            if (indexPath.row == 0) {
+                
+                cell.iconImg.image = [UIImage imageNamed:@"shopNavICON"];
+                cell.titleLB.text = @"进入导航";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }else if(indexPath.row == 1){
+                [cell removeFromSuperview];
+                // 地图
+                PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_NAV_CELL forIndexPath:indexPath];
+                NSURL *imageUrl = [NSURL URLWithString:[_detailData objectForKey:@"map_thumb"]];
+                [cell.bgImg sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"defaultPicHorizontal"]];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                return cell;
+            }else{
+                [cell removeFromSuperview];
+                // powered by gurunavi
+                PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_POWERED_CELL forIndexPath:indexPath];
+                
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                return cell;
+            }
+        }
         
     }else{
         
@@ -484,6 +583,16 @@ static NSString * const PLAY_POWERED_CELL = @"playPoweredCell";
         if ([[_detailData objectForKey:@"is_gnav"] isEqualToString:@"1"]) [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[_detailData objectForKey:@"gnav_url"]]];
         
     }else if(indexPath.section == 2){
+        if (_albumArr.count > 0) {
+            
+        }else{
+            if (indexPath.row == 2) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mobile.gnavi.co.jp/"]];
+            }else{
+                [self showMapActionSheet];
+            }
+        }
+    }else if (indexPath.section == 3){
         if (indexPath.row == 2) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mobile.gnavi.co.jp/"]];
         }else{
