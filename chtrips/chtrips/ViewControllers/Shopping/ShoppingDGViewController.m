@@ -75,7 +75,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     [self getCateList];
-    [self setupSegmentedControl];
+//    [self setupSegmentedControl];
     [self setProductDOPMenu];
     
     [self setupShopList];
@@ -171,6 +171,16 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 
 #pragma mark - 设置滚动菜单/下拉菜单
 - (void) setupDOPMenu {
+    
+    UIButton *cityBTN = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 30)];
+    
+    [cityBTN setTitle:@"人气商品" forState:UIControlStateNormal];
+    cityBTN.titleLabel.textColor = [UIColor whiteColor];
+    cityBTN.titleLabel.font = [UIFont systemFontOfSize:14];
+    cityBTN.backgroundColor = RED_COLOR_BG;
+    cityBTN.layer.cornerRadius = 5;
+    
+    self.navigationItem.titleView = cityBTN;
     
     CGFloat sWidth = ScreenWidth;
     

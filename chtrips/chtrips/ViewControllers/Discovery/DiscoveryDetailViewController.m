@@ -235,6 +235,9 @@
 
 #pragma mark - 是否收藏该专辑
 - (void) isCollectAlbum {
+    
+    if (self.albumDic.count <= 0) return;
+    
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
     [paramter setObject:[self.albumDic objectForKey:@"aid"] forKey:@"aid"];

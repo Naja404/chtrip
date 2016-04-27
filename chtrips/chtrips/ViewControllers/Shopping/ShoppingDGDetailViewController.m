@@ -84,7 +84,7 @@
     self.wantIconImg = [UIImageView newAutoLayoutView];
     [wantV addSubview:_wantIconImg];
     
-    [_wantIconImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wantV];
+    [_wantIconImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wantV withOffset:3];
     [_wantIconImg autoAlignAxis:ALAxisVertical toSameAxisOfView:wantV];
     [_wantIconImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
     _wantIconImg.image = [UIImage imageNamed:@"iconWantBuy"];
@@ -92,7 +92,7 @@
     _wantLB = [UILabel newAutoLayoutView];
     [wantV addSubview:_wantLB];
     
-    [_wantLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_wantIconImg];
+    [_wantLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_wantIconImg withOffset:-2];
     [_wantLB autoAlignAxis:ALAxisVertical toSameAxisOfView:wantV];
     [_wantLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 6, 20)];
     _wantLB.textAlignment = NSTextAlignmentCenter;
@@ -129,7 +129,7 @@
     self.cartIconImg = [UIImageView newAutoLayoutView];
     [priceV addSubview:_cartIconImg];
     
-    [_cartIconImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:priceV];
+    [_cartIconImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:priceV withOffset:3];
     [_cartIconImg autoAlignAxis:ALAxisVertical toSameAxisOfView:priceV];
     [_cartIconImg autoSetDimensionsToSize:CGSizeMake(30, 30)];
     _cartIconImg.image = [UIImage imageNamed:@"iconCartGray"];
@@ -137,7 +137,7 @@
     self.priceLB = [UILabel newAutoLayoutView];
     [priceV addSubview:_priceLB];
     
-    [_priceLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_cartIconImg];
+    [_priceLB autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_cartIconImg withOffset:-2];
     [_priceLB autoAlignAxis:ALAxisVertical toSameAxisOfView:priceV];
     [_priceLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 3, 20)];
     _priceLB.textAlignment = NSTextAlignmentCenter;
