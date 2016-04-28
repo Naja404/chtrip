@@ -68,6 +68,7 @@
 "TEXT_CELL_BUY_LIST" = "Buy List";
 "TEXT_MY_WANT_GO" = "Like To Go";
 "TEXT_FAVORITES" = "Favorites";
+"TEXT_ALBUM" = "专辑";
 "TEXT_ABOUT_US" = "About Us";
 "TEXT_FEEDBACK" = "FeedBack";
 "TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
@@ -146,7 +147,7 @@
 "TEXT_SHIP_STATUS" = "物流状态";
 "TEXT_NO_WEIXIN" = "尚未安装微信,请在'待支付'中更改支付方式";
 "TEXT_PUBLICSH_COMMENT" = "发表评价";
-
+"TEXT_EMPTY_LABEL" = "暂无相关内容";
 
 
 // input

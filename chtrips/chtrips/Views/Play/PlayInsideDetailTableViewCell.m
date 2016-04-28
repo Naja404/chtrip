@@ -223,6 +223,8 @@
 - (void) setAlbumArr:(NSArray *)albumArr {
     _albumArr = albumArr;
     
+    if (self.albumSV != nil) return;
+    
     self.albumSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 120)];
     
     [_albumArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

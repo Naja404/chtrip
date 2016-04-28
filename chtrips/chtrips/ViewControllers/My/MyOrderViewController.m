@@ -107,7 +107,7 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     _defaultLB.textColor = GRAY_FONT_COLOR;
     _defaultLB.textAlignment = NSTextAlignmentCenter;
     _defaultLB.font = FONT_SIZE_16;
-    _defaultLB.text = @"暂无相关内容";
+    _defaultLB.text = NSLocalizedString(@"TEXT_EMPTY_LABEL", nil);
     _defaultLB.hidden = YES;
     
     self.payV = [[CHAlertPayView alloc] initWithShareView:self];

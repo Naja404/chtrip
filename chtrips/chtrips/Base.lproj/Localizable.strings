@@ -69,6 +69,7 @@
 "TEXT_CELL_BUY_LIST" = "扫货清单";
 "TEXT_MY_WANT_GO" = "我想去";
 "TEXT_FAVORITES" = "收藏";
+"TEXT_ALBUM" = "专辑";
 "TEXT_ABOUT_US" = "关于我们";
 "TEXT_FEEDBACK" = "意见反馈";
 "TEXT_FEEDBACK_DEFAULT" = "我们会认真倾听您的所有";
@@ -147,6 +148,7 @@
 "TEXT_SHIP_STATUS" = "物流状态";
 "TEXT_NO_WEIXIN" = "尚未安装微信,请在'待支付'中更改支付方式";
 "TEXT_PUBLICSH_COMMENT" = "发表评价";
+"TEXT_EMPTY_LABEL" = "暂无相关内容";
 
 // input 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";

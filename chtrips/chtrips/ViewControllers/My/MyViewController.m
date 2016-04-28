@@ -111,7 +111,7 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
             return 1;
         }
     }else if(section == 1){
-        return 4;
+        return 2;
     }else{
         return 2;
     }
@@ -205,7 +205,7 @@ static NSString * const MY_ORDER_ICON_CELL = @"myOrderIconCell";
                 imgPath = @"iconWantBuy";
             }else {
                 titleText = @"TEXT_FAVORITES";
-                imgPath = @"discoveryGray";
+                imgPath = @"iconFavorite";
             }
         }
         

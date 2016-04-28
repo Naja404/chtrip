@@ -294,6 +294,7 @@ static NSString * const PLAY_ALBUM_CELL = @"playAlbumCell";
                                       success:^(NSDictionary *result) {
                                           
                                           self.detailData = [result objectForKey:@"data"];
+                                          
                                           self.albumArr = [self.detailData objectForKey:@"album"];
                                           
                                           [self setStyle];
@@ -489,7 +490,7 @@ static NSString * const PLAY_ALBUM_CELL = @"playAlbumCell";
             [cell removeFromSuperview];
             
             PlayInsideDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PLAY_ALBUM_CELL forIndexPath:indexPath];
-            NSLog(@"view controller %@", _albumArr);
+            
             cell.albumArr = _albumArr;
             
             __weak typeof (self) weakSelf = self;
@@ -572,7 +573,11 @@ static NSString * const PLAY_ALBUM_CELL = @"playAlbumCell";
 
     if (indexPath.section == 0) {
         if (indexPath.row == 2) {
-            [_detailTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            if (self.albumArr.count > 0) {
+                [_detailTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:3] animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            }else{
+                [_detailTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            }
         }
         
         if (indexPath.row == 1 && [_isHotel isEqualToString:@"1"]) {
