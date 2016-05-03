@@ -345,6 +345,19 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
         cell.activityTimeLB.hidden = NO;
     }
     
+    if ([[cellData objectForKey:@"pro_type"] isEqualToString:@"0"]) {
+        cell.productTypeImg.hidden = YES;
+    }else{
+        
+        cell.productTypeImg.hidden = NO;
+        
+        if ([[cellData objectForKey:@"pro_type"] isEqualToString:@"1"]) {
+            cell.productTypeImg.image = [UIImage imageNamed:@"albumType1"];
+        }else{
+            cell.productTypeImg.image = [UIImage imageNamed:@"albumType2"];
+        }
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -368,7 +381,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
-    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum/aid/%@/ssid/%@.html", [cellData objectForKey:@"aid"], [CHSSID SSID]];
+//    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum/aid/%@/ssid/%@.html", [cellData objectForKey:@"aid"], [CHSSID SSID]];
+    detail.webUrl = @"http://api.nijigo.com/Product/showAlbum/aid/418/ssid/e2b0388da966dba73e21fd529affa4d5.html";
     detail.albumDic = cellData;
     detail.navigationItem.title = [cellData objectForKey:@"type_name"];
     

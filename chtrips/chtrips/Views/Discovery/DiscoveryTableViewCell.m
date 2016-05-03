@@ -102,6 +102,16 @@
         _activityTimeLB.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.6];
         _activityTimeLB.layer.cornerRadius = 13.0f;
         _activityTimeLB.layer.masksToBounds = YES;
+        
+        
+        self.productTypeImg = [UIImageView newAutoLayoutView];
+        [self.contentView addSubview:_productTypeImg];
+        
+        [_productTypeImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoverImg withOffset:20];
+        [_productTypeImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_discoverImg withOffset:-20];
+        [_productTypeImg autoSetDimensionsToSize:CGSizeMake(40, 40)];
+        _productTypeImg.image = [UIImage imageNamed:@"albumType1"];
+        _productTypeImg.hidden = YES;
     }
     
     return self;

@@ -68,7 +68,7 @@ static NSString * const WANTBUY_CELL = @"wantBuyCell";
     [_cateMenuView autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 30)];
     _cateMenuView.backgroundColor = MENU_DEFAULT_COLOR;
     
-    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[NSLocalizedString(@"TEXT_MY_WANT_GO", nil), NSLocalizedString(@"TEXT_WANT_BUY", nil), NSLocalizedString(@"TEXT_ALBUM", nil)]];
+    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[NSLocalizedString(@"TEXT_ALBUM", nil), NSLocalizedString(@"TEXT_MY_WANT_GO", nil), NSLocalizedString(@"TEXT_WANT_BUY", nil)]];
     [_segmentedControl setFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     [_segmentedControl setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1]];
     [_segmentedControl setSelectionIndicatorMode:HMSelectionIndicatorResizesToStringWidth];
@@ -93,12 +93,37 @@ static NSString * const WANTBUY_CELL = @"wantBuyCell";
     _bgScrollV.pagingEnabled = YES;
     _bgScrollV.showsHorizontalScrollIndicator = NO;
     
+    // 专辑
+    self.albumTV = [UITableView newAutoLayoutView];
+    [_bgScrollV addSubview:_albumTV];
+    
+    [_albumTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_bgScrollV];
+    [_albumTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_bgScrollV];
+    [_albumTV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, ScreenHeight - 108)];
+    
+    _albumTV.delegate = self;
+    _albumTV.dataSource = self;
+    _albumTV.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [_albumTV registerClass:[DiscoveryTableViewCell class] forCellReuseIdentifier:ALBUM_CELL];
+    
+    self.albumLB = [UILabel newAutoLayoutView];
+    [_bgScrollV addSubview:_albumLB];
+    
+    [_albumLB autoAlignAxis:ALAxisVertical toSameAxisOfView:_albumTV];
+    [_albumLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_albumTV];
+    [_albumLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 40)];
+    _albumLB.textAlignment = NSTextAlignmentCenter;
+    _albumLB.text = NSLocalizedString(@"TEXT_EMPTY_LABEL", nil);
+    _albumLB.textColor = GRAY_FONT_COLOR;
+    _albumLB.hidden = YES;
+    
     // 我想去
     self.wantGoTV = [UITableView newAutoLayoutView];
     [_bgScrollV addSubview:_wantGoTV];
     
     [_wantGoTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_bgScrollV];
-    [_wantGoTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_bgScrollV];
+    [_wantGoTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_albumTV];
     [_wantGoTV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, ScreenHeight - 108)];
     
     _wantGoTV.delegate = self;
@@ -142,31 +167,6 @@ static NSString * const WANTBUY_CELL = @"wantBuyCell";
     _wantBuyLB.text = NSLocalizedString(@"TEXT_EMPTY_LABEL", nil);
     _wantBuyLB.textColor = GRAY_FONT_COLOR;
     _wantBuyLB.hidden = YES;
-    
-    // 专辑
-    self.albumTV = [UITableView newAutoLayoutView];
-    [_bgScrollV addSubview:_albumTV];
-    
-    [_albumTV autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_bgScrollV];
-    [_albumTV autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_wantBuyTV];
-    [_albumTV autoSetDimensionsToSize:CGSizeMake(ScreenWidth, ScreenHeight - 108)];
-    
-    _albumTV.delegate = self;
-    _albumTV.dataSource = self;
-    _albumTV.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [_albumTV registerClass:[DiscoveryTableViewCell class] forCellReuseIdentifier:ALBUM_CELL];
-    
-    self.albumLB = [UILabel newAutoLayoutView];
-    [_bgScrollV addSubview:_albumLB];
-    
-    [_albumLB autoAlignAxis:ALAxisVertical toSameAxisOfView:_albumTV];
-    [_albumLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_albumTV];
-    [_albumLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 40)];
-    _albumLB.textAlignment = NSTextAlignmentCenter;
-    _albumLB.text = NSLocalizedString(@"TEXT_EMPTY_LABEL", nil);
-    _albumLB.textColor = GRAY_FONT_COLOR;
-    _albumLB.hidden = YES;
     
 }
 #pragma mark - 监控scrollview 滑动并指向分类下

@@ -246,6 +246,11 @@
 		E9A04D1E1C88383B00A10D07 /* iconUndelivered@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A04D161C88383B00A10D07 /* iconUndelivered@2x.png */; };
 		E9A04D1F1C88383B00A10D07 /* iconUnpay.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A04D171C88383B00A10D07 /* iconUnpay.png */; };
 		E9A04D201C88383B00A10D07 /* iconUnpay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A04D181C88383B00A10D07 /* iconUnpay@2x.png */; };
+		E9A10C541CD8936300707A42 /* albumType1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A10C521CD8936300707A42 /* albumType1.png */; };
+		E9A10C551CD8936300707A42 /* albumType2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A10C531CD8936300707A42 /* albumType2.png */; };
+		E9A10C5C1CD8AE8000707A42 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A10C571CD8AE8000707A42 /* WebViewJavascriptBridge_JS.m */; };
+		E9A10C5D1CD8AE8000707A42 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A10C591CD8AE8000707A42 /* WebViewJavascriptBridgeBase.m */; };
+		E9A10C5E1CD8AE8000707A42 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A10C5B1CD8AE8000707A42 /* WKWebViewJavascriptBridge.m */; };
 		E9A18E861B65273D00FA66EC /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A18E851B65273D00FA66EC /* share@3x.png */; };
 		E9A1D0391BB1953D007D635B /* mapLocationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */; };
 		E9A1D03A1BB1953D007D635B /* redSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A1D0371BB1953D007D635B /* redSelect@2x.png */; };
@@ -711,6 +716,14 @@
 		E9A04D161C88383B00A10D07 /* iconUndelivered@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconUndelivered@2x.png"; path = "Resource/iconUndelivered@2x.png"; sourceTree = "<group>"; };
 		E9A04D171C88383B00A10D07 /* iconUnpay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUnpay.png; path = Resource/iconUnpay.png; sourceTree = "<group>"; };
 		E9A04D181C88383B00A10D07 /* iconUnpay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconUnpay@2x.png"; path = "Resource/iconUnpay@2x.png"; sourceTree = "<group>"; };
+		E9A10C521CD8936300707A42 /* albumType1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = albumType1.png; path = Resource/albumType1.png; sourceTree = "<group>"; };
+		E9A10C531CD8936300707A42 /* albumType2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = albumType2.png; path = Resource/albumType2.png; sourceTree = "<group>"; };
+		E9A10C561CD8AE8000707A42 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		E9A10C571CD8AE8000707A42 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		E9A10C581CD8AE8000707A42 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		E9A10C591CD8AE8000707A42 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		E9A10C5A1CD8AE8000707A42 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		E9A10C5B1CD8AE8000707A42 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		E9A18E851B65273D00FA66EC /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@3x.png"; path = "Resource/share@3x.png"; sourceTree = "<group>"; };
 		E9A1D0361BB1953D007D635B /* mapLocationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mapLocationIcon@2x.png"; path = "Resource/mapLocationIcon@2x.png"; sourceTree = "<group>"; };
 		E9A1D0371BB1953D007D635B /* redSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redSelect@2x.png"; path = "Resource/redSelect@2x.png"; sourceTree = "<group>"; };
@@ -1328,6 +1341,12 @@
 		E95C3CFC1B4970E40010EF58 /* WebViewJavascriptBridge */ = {
 			isa = PBXGroup;
 			children = (
+				E9A10C561CD8AE8000707A42 /* WebViewJavascriptBridge_JS.h */,
+				E9A10C571CD8AE8000707A42 /* WebViewJavascriptBridge_JS.m */,
+				E9A10C581CD8AE8000707A42 /* WebViewJavascriptBridgeBase.h */,
+				E9A10C591CD8AE8000707A42 /* WebViewJavascriptBridgeBase.m */,
+				E9A10C5A1CD8AE8000707A42 /* WKWebViewJavascriptBridge.h */,
+				E9A10C5B1CD8AE8000707A42 /* WKWebViewJavascriptBridge.m */,
 				E95C3CFD1B4970E40010EF58 /* WebViewJavascriptBridge.h */,
 				E95C3CFE1B4970E40010EF58 /* WebViewJavascriptBridge.js.txt */,
 				E95C3CFF1B4970E40010EF58 /* WebViewJavascriptBridge.m */,
@@ -1576,6 +1595,8 @@
 		E9C131991AB2F1C400E6E873 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9A10C521CD8936300707A42 /* albumType1.png */,
+				E9A10C531CD8936300707A42 /* albumType2.png */,
 				E9A04D111C88383B00A10D07 /* iconComplete.png */,
 				E9A04D121C88383B00A10D07 /* iconComplete@2x.png */,
 				E9A04D131C88383B00A10D07 /* iconConfirm.png */,
@@ -2016,6 +2037,7 @@
 				E91396521AC111B8003AF385 /* bg-menuitem.png in Resources */,
 				E913966F1AC2607E003AF385 /* buyList@2x.png in Resources */,
 				E95E1D0B1B9F17D000C88692 /* star_15.png in Resources */,
+				E9A10C551CD8936300707A42 /* albumType2.png in Resources */,
 				E9A04D071C87D2EF00A10D07 /* shopTimeICON@2x.png in Resources */,
 				E9DEFE0D1C3E592000B91771 /* iconUndelivered@3x.png in Resources */,
 				E97547891C5098B700D33A09 /* AlipaySDK.bundle in Resources */,
@@ -2038,6 +2060,7 @@
 				E999974E1BE3370700B322D0 /* loginBTN@2x.png in Resources */,
 				E9899F831ACCF713009722C4 /* Icon-40.png in Resources */,
 				E95518F21BB145A300191DE2 /* loginWeChat@2x.png in Resources */,
+				E9A10C541CD8936300707A42 /* albumType1.png in Resources */,
 				E9899F8D1ACCF713009722C4 /* iTunesArtwork@2x.png in Resources */,
 				E913966E1AC2607E003AF385 /* buyList.png in Resources */,
 				E9D817901C66150700AB95C0 /* iconWantBuyGray@2x.png in Resources */,
@@ -2191,6 +2214,7 @@
 				E91FBCD61AB91FB4005CA250 /* SubTripListNormalTableViewCell.m in Sources */,
 				E9DEFE171C3E728600B91771 /* MyOrderViewController.m in Sources */,
 				E967A1FF1B9DCB7200FAFF89 /* MJRefreshStateHeader.m in Sources */,
+				E9A10C5C1CD8AE8000707A42 /* WebViewJavascriptBridge_JS.m in Sources */,
 				E969BCD71CCDEE2600FF9089 /* MyFavoriteViewController.m in Sources */,
 				E94DA2861B23EE3700F87B42 /* DiscoveryTableViewCell.m in Sources */,
 				E967A2011B9DCB7200FAFF89 /* MJRefreshConst.m in Sources */,
@@ -2283,9 +2307,11 @@
 				E9D0FB1A1AEA46CA00CC9664 /* MyAvatarTableViewCell.m in Sources */,
 				E95A99E31B1AE8C1003FB7FF /* CHSSID.m in Sources */,
 				E947EE7F1B2B18AE00012957 /* DOPDropDownMenu.m in Sources */,
+				E9A10C5E1CD8AE8000707A42 /* WKWebViewJavascriptBridge.m in Sources */,
 				E9DEFE061C3E44E800B91771 /* MyOrderIconTableViewCell.m in Sources */,
 				E9C131921AB2DBD500E6E873 /* AddSubTripViewController.m in Sources */,
 				E963CDA41B9815CD00FA250E /* MyWantListViewController.m in Sources */,
+				E9A10C5D1CD8AE8000707A42 /* WebViewJavascriptBridgeBase.m in Sources */,
 				E9C777B71AB46F0C007576EC /* AddSubTripLocationTableViewCell.m in Sources */,
 				E967A1F61B9DCB7200FAFF89 /* MJRefreshHeader.m in Sources */,
 				E96D4B4B1AB04F0400F7CB38 /* UIImage+Resize.m in Sources */,

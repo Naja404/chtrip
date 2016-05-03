@@ -149,6 +149,13 @@
 "TEXT_NO_WEIXIN" = "尚未安装微信,请在'待支付'中更改支付方式";
 "TEXT_PUBLICSH_COMMENT" = "发表评价";
 "TEXT_EMPTY_LABEL" = "暂无相关内容";
+"TEXT_CONTACT_QQ" = "QQ客服:(长按号码复制)";
+"TEXT_CONTACT_QQNUM" = "757316428";
+"TEXT_CONTACT_WECHAT" = "微信客服:(长按微信号复制)";
+"TEXT_CONTACT_WECHATNUM" = "wangzilin0115";
+"TEXT_COPY_SUCCESS" = "复制成功";
+"TEXT_ALBUM_PROTYPE_1" = "抢购";
+"TEXT_ALBUM_PROTYPE_2" = "情报";
 
 // input 
 "INPUT_ADD_TRIP_NAME" = "添加行程名称";

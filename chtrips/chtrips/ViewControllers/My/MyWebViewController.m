@@ -63,9 +63,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BTN_SAVE", nil) style:UIBarButtonItemStyleDone target:self action:@selector(reqEditAddress)];
     }
 
-    self.bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
-        responseCallback(@"objc => Right back atcha");
-    }];
+    self.bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
     
     [SVProgressHUD show];
     [self performSelector:@selector(dismissSVHUD) withObject:nil afterDelay:1.0f];
@@ -73,7 +71,7 @@
 }
 
 - (void) reqSubAddress {
-    [_bridge send:@"subAddress" responseCallback:^(id responseData) {
+    [_bridge callHandler:@"subAddress" data:nil responseCallback:^(id responseData) {
 
         if([[responseData objectForKey:@"status"] isEqualToString:@"0"]){
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_ADD_SUCCESS", nil)];
@@ -90,7 +88,7 @@
 }
 
 - (void) reqEditAddress {
-    [_bridge send:@"editAddress" responseCallback:^(id responseData) {
+    [_bridge callHandler:@"editAddress" data:nil responseCallback:^(id responseData) {
 
         if([[responseData objectForKey:@"status"] isEqualToString:@"0"]){
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"TEXT_EDIT_SUCCESS", nil)];

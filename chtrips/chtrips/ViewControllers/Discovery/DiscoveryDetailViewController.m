@@ -11,6 +11,7 @@
 #import "SlideInViewManager.h"
 #import "WXApiRequestHandler.h"
 #import "WXApiManager.h"
+#import "ShoppingDGDetailViewController.h"
 
 @interface DiscoveryDetailViewController ()<UIWebViewDelegate>
 
@@ -77,6 +78,32 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]];
     [self.webView loadRequest:request];
+    
+    self.bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
+    
+    [_bridge registerHandler:@"toProductDetail" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"toProductDetail called: %@", data);
+        if (![[data objectForKey:@"pid"] isEqualToString:@"0"]) {
+            
+            ShoppingDGDetailViewController *detailVC = [[ShoppingDGDetailViewController alloc] init];
+            
+            detailVC.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showProDetailNew?pid=%@", [data objectForKey:@"pid"]];
+            detailVC.pid = [NSString stringWithFormat:@"%@", [data objectForKey:@"pid"]];
+            detailVC.stock = [NSString stringWithFormat:@"%@", [data objectForKey:@"rest"]];
+            detailVC.stockLB = [NSString stringWithFormat:@"%@", [data objectForKey:@"stock_label"]];
+            detailVC.zhPriceStr = [NSString stringWithFormat:@"%@", [data objectForKey:@"price_zh"]];
+            detailVC.navigationItem.title = [data objectForKey:@"title_zh"];
+            detailVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:detailVC animated:YES];
+            
+        }
+//        responseCallback(@"Response from testObjcCallback");
+    }];
+
+//    [_bridge registerHandler:@"testObjcCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"testObjcCallback called: %@", data);
+//        responseCallback(@"Response from testObjcCallback");
+//    }];
     
     self.bgView = [UIView newAutoLayoutView];
     [self.view addSubview:_bgView];
