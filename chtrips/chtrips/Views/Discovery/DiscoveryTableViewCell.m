@@ -37,10 +37,11 @@
         self.titleLB = [UILabel newAutoLayoutView];
         [self.contentView addSubview:_titleLB];
         
-        [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView withOffset:-40];
+        [_titleLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView];
         [_titleLB autoAlignAxis:ALAxisVertical toSameAxisOfView:self.contentView];
         [_titleLB autoSetDimensionsToSize:CGSizeMake(ScreenWidth - 30*2, 70)];
-        _titleLB.font = [UIFont systemFontOfSize:24.0f];
+//        _titleLB.font = [UIFont systemFontOfSize:24.0f];
+        _titleLB.font = [UIFont fontWithName:@"Helvetica-bold" size:24];
         _titleLB.textAlignment = NSTextAlignmentCenter;
         _titleLB.numberOfLines = 0;
         _titleLB.lineBreakMode = NSLineBreakByWordWrapping;
@@ -107,8 +108,8 @@
         self.productTypeImg = [UIImageView newAutoLayoutView];
         [self.contentView addSubview:_productTypeImg];
         
-        [_productTypeImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoverImg withOffset:20];
-        [_productTypeImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_discoverImg withOffset:-20];
+        [_productTypeImg autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_discoverImg withOffset:10];
+        [_productTypeImg autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:_discoverImg withOffset:-10];
         [_productTypeImg autoSetDimensionsToSize:CGSizeMake(40, 40)];
         _productTypeImg.image = [UIImage imageNamed:@"albumType1"];
         _productTypeImg.hidden = YES;

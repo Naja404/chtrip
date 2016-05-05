@@ -91,4 +91,7 @@
 // 导购灰色
 #define GRAY_COLOR_PLAY [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1]
 
+// 商品购买背景线条灰色
+#define GRAY_COLOR_SHOPBUY [UIColor colorWithRed:174/255.0 green:174/255.0 blue:174/255.0 alpha:1]
+
 #endif

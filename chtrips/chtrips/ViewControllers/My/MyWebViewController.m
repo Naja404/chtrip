@@ -37,7 +37,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
-    [self setStyle];
+    [self setStyle]; 
 }
 
 - (void) setStyle {

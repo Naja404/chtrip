@@ -78,7 +78,7 @@
     
     
     PlayViewController *playVC = [[PlayViewController alloc] init];
-    playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"worthGray"] tag:3];
+    playVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_PLAY", Nil) image:[UIImage imageNamed:@"infoICON"] tag:3];
 //    
 //    TripListViewController *tripVC = [[TripListViewController alloc] init];
 //    tripVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TEXT_TRIP", Nil) image:[UIImage imageNamed:@"tripGray"] tag:4];

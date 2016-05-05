@@ -28,6 +28,8 @@ enum HMSelectionIndicatorMode {
 @property (nonatomic, readwrite) CGFloat height; // default is 32.0
 @property (nonatomic, readwrite) CGFloat selectionIndicatorHeight; // default is 5.0
 @property (nonatomic, readwrite) UIEdgeInsets segmentEdgeInset; // default is UIEdgeInsetsMake(0, 5, 0, 5)
+@property (nonatomic, strong) NSMutableArray *labelArr;
+
 
 - (id)initWithSectionTitles:(NSArray *)sectiontitles;
 - (void)setSelectedIndex:(NSUInteger)index animated:(BOOL)animated;

@@ -64,6 +64,16 @@
         titleLB.font = _fontStyle;
         titleLB.textColor = HIGHLIGHT_BLACK_COLOR;
         
+        if (idx != 0) {
+            UILabel *lineLB = [UILabel newAutoLayoutView];
+            [titleLB addSubview:lineLB];
+            
+            [lineLB autoAlignAxis:ALAxisHorizontal toSameAxisOfView:titleLB];
+            [lineLB autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:titleLB withOffset:1];
+            [lineLB autoSetDimensionsToSize:CGSizeMake(1, 20)];
+            lineLB.backgroundColor = [UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:1];
+        }
+        
         if (idx == _selectedIndex) {
             titleLB.textColor = HIGHLIGHT_RED_COLOR;
         }

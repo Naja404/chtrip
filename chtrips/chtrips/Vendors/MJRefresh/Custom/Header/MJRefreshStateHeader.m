@@ -14,6 +14,8 @@
     __weak UILabel *_lastUpdatedTimeLabel;
     /** 显示刷新状态的label */
     __weak UILabel *_stateLabel;
+    /** 显示 slogan **/
+    __weak UIImageView *_sloganImage;
 }
 /** 所有状态对应的文字 */
 @property (strong, nonatomic) NSMutableDictionary *stateTitles;
@@ -27,6 +29,16 @@
         self.stateTitles = [NSMutableDictionary dictionary];
     }
     return _stateTitles;
+}
+
+- (UIImageView *) sloganImage {
+    if (!_sloganImage) {
+        UIImageView *sloganImage = [[UIImageView alloc] init];
+        sloganImage.image = [UIImage imageNamed:@"sloganRefresh"];
+        [self addSubview:_sloganImage = sloganImage];
+    }
+    
+    return _sloganImage;
 }
 
 - (UILabel *)stateLabel
@@ -112,6 +124,16 @@
         // 状态
         self.stateLabel.frame = self.bounds;
     } else {
+        
+        // slogan
+//        self.sloganImage.mj_x = 0;
+//        self.sloganImage.mj_y = 0;
+//        self.sloganImage.mj_w = self.mj_w;
+//        self.sloganImage.mj_h = self.mj_h * 0.5;
+        
+        [self.sloganImage autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:self.stateLabel];
+        [self.sloganImage autoAlignAxis:ALAxisVertical toSameAxisOfView:self];
+        [self.sloganImage autoSetDimensionsToSize:CGSizeMake(144, 20)];
         // 状态
         self.stateLabel.mj_x = 0;
         self.stateLabel.mj_y = 0;

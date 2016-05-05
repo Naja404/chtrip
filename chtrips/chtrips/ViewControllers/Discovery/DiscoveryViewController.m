@@ -126,23 +126,16 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 //    [imgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_searchView withOffset:10];
     [imgView autoAlignAxis:ALAxisVertical toSameAxisOfView:_searchView];
     [imgView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_searchView];
-    [imgView autoSetDimensionsToSize:CGSizeMake(100, 40)];
+    [imgView autoSetDimensionsToSize:CGSizeMake(66, 30)];
     imgView.backgroundColor = [UIColor clearColor];
     imgView.clipsToBounds = YES;
     
 
     NSData *gif = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"gif"]];
-    YFGIFImageView *gifView = [[YFGIFImageView alloc] initWithFrame:CGRectMake(20, 0, 60, 27)];
+    YFGIFImageView *gifView = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, 66, 30)];
     gifView.gifData = gif;
     
     [imgView addSubview:gifView];
-    
-    UILabel *slogan = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 100, 10)];
-    slogan.textColor = GRAY_FONT_COLOR;
-    slogan.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
-    slogan.textAlignment = NSTextAlignmentCenter;
-    slogan.text = @"彩虹GO,想购就购!";
-    [imgView addSubview:slogan];
     
     [gifView startGIF];
     
@@ -381,8 +374,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
     DiscoveryDetailViewController *detail = [[DiscoveryDetailViewController alloc] init];
     NSDictionary *cellData = [[NSDictionary alloc] initWithDictionary:[self.discoveryTVData objectAtIndex:indexPath.row]];
     
-//    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum/aid/%@/ssid/%@.html", [cellData objectForKey:@"aid"], [CHSSID SSID]];
-    detail.webUrl = @"http://api.nijigo.com/Product/showAlbum/aid/418/ssid/e2b0388da966dba73e21fd529affa4d5.html";
+    detail.webUrl = [NSString stringWithFormat:@"http://api.nijigo.com/Product/showAlbum/aid/%@/ssid/%@.html", [cellData objectForKey:@"aid"], [CHSSID SSID]];
+//    detail.webUrl = @"http://api.nijigo.com/Product/showAlbum/aid/418/ssid/e2b0388da966dba73e21fd529affa4d5.html";
     detail.albumDic = cellData;
     detail.navigationItem.title = [cellData objectForKey:@"type_name"];
     

@@ -184,7 +184,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     CGFloat sWidth = ScreenWidth;
     
-    CGFloat cWidth = self.cateArr.count * 75;
+    CGFloat cWidth = self.cateArr.count * 80;
     
     if (cWidth > sWidth) {
         sWidth = cWidth;

@@ -106,7 +106,7 @@
     [horizontalLine autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:wantV];
     [horizontalLine autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:wantV withOffset:-0.5];
     [horizontalLine autoSetDimensionsToSize:CGSizeMake(0.5, 50)];
-    horizontalLine.backgroundColor = GRAY_COLOR_PLAY;
+    horizontalLine.backgroundColor = GRAY_COLOR_SHOPBUY;
     
     self.wantBuyBTN = [UIButton newAutoLayoutView];
     [wantV addSubview:_wantBuyBTN];
@@ -151,7 +151,7 @@
     [topLine autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:_addBuyListV];
     [topLine autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:_addBuyListV];
     [topLine autoSetDimensionsToSize:CGSizeMake(ScreenWidth / 2, 0.5)];
-    topLine.backgroundColor = GRAY_COLOR_PLAY;
+    topLine.backgroundColor = GRAY_COLOR_SHOPBUY;
     
     
     self.addBuyBTN = [UIButton newAutoLayoutView];

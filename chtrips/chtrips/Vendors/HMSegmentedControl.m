@@ -55,6 +55,8 @@
     self.selectionIndicatorMode = HMSelectionIndicatorResizesToStringWidth;
     
     self.selectedSegmentLayer = [CALayer layer];
+    _labelArr = [[NSMutableArray alloc] init];
+
 }
 
 #pragma mark - Drawing
@@ -79,6 +81,10 @@
         strLB.font = self.font;
         strLB.textColor = self.textColor;
         
+        if (idx == _selectedIndex) {
+            strLB.textColor = HIGHLIGHT_RED_COLOR;
+        }
+        
         if ([self.sectionTitles count] - idx != 1) {
             UILabel *lineLB = [UILabel newAutoLayoutView];
             [strLB addSubview:lineLB];
@@ -89,6 +95,8 @@
             lineLB.backgroundColor = [UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:1];
         }
         
+        [_labelArr addObject:strLB];
+
         [self.viewForBaselineLayout addSubview:strLB];
 //#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 //        [titleString drawInRect:rect
@@ -202,7 +210,15 @@
         if (self.indexChangeBlock)
             self.indexChangeBlock(index);
 
-    }    
+    }
+    
+    [_labelArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ((int)idx == index) {
+            [obj setTextColor:HIGHLIGHT_RED_COLOR];
+        }else{
+            [obj setTextColor:HIGHLIGHT_BLACK_COLOR];
+        }
+    }];
 }
 
 - (void)setFrame:(CGRect)frame {

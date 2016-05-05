@@ -88,7 +88,7 @@ NSString * const ID = @"cycleCell";
     _pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
     _hidesForSinglePage = YES;
     _currentPageDotColor = ORINGE_COLOR_BG;
-    _pageDotColor = [UIColor lightGrayColor];
+    _pageDotColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
     _bannerImageViewContentMode = UIViewContentModeScaleToFill;
     
     self.backgroundColor = [UIColor lightGrayColor];
