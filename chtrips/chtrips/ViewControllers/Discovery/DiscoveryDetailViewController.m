@@ -147,9 +147,11 @@
                                                                              target:self
                                                                              action:@selector(showShareView)];
     
-    self.collectBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
-                                                                                target:self
-                                                                                action:@selector(collectAlbum)];
+    self.collectBTN = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"albumCollect"] style:UIButtonTypeCustom target:self action:@selector(collectAlbum)];
+    
+//    self.collectBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+//                                                                                target:self
+//                                                                                action:@selector(collectAlbum)];
     
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
 //                                                                                           target:self

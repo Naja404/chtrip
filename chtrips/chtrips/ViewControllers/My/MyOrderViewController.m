@@ -279,14 +279,15 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
     }
     
     // 已完成 立即评价
-    if ([[tmp objectForKey:@"has_comment"] isEqualToString:@"0"] && [[tmp objectForKey:@"status"] isEqualToString:@"1"]) {
+    if ([[tmp objectForKey:@"status"] isEqualToString:@"1"]) {
+        
         UIButton *shipBTN = [UIButton newAutoLayoutView];
         [footerV addSubview:shipBTN];
         
         [shipBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
         [shipBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:footerV withOffset:-10];
-        [shipBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
-        [shipBTN setTitle:NSLocalizedString(@"BTN_COMMENT_NOW", nil) forState:UIControlStateNormal];
+        [shipBTN autoSetDimensionsToSize:CGSizeMake(40, 25)];
+        [shipBTN setTitle:NSLocalizedString(@"TEXT_SHIP_STATUS_1", nil) forState:UIControlStateNormal];
         [shipBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
         shipBTN.titleLabel.font = FONT_SIZE_16;
         shipBTN.layer.masksToBounds = YES;
@@ -295,8 +296,30 @@ static NSString * const MY_ORDER_CELL = @"myOrderCell";
         shipBTN.layer.borderColor = GRAY_FONT_COLOR.CGColor;
         shipBTN.tag = section;
         
-        UITapGestureRecognizer *shipOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentNow:)];
+        UITapGestureRecognizer *shipOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reviewShip:)];
         [shipBTN addGestureRecognizer:shipOnceTap];
+        
+        if ([[tmp objectForKey:@"has_comment"] isEqualToString:@"0"]) {
+            UIButton *commentBTN = [UIButton newAutoLayoutView];
+            [footerV addSubview:commentBTN];
+            
+            [commentBTN autoAlignAxis:ALAxisHorizontal toSameAxisOfView:priceLB];
+            [commentBTN autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:shipBTN withOffset:-10];
+            [commentBTN autoSetDimensionsToSize:CGSizeMake(80, 25)];
+            [commentBTN setTitle:NSLocalizedString(@"BTN_COMMENT_NOW", nil) forState:UIControlStateNormal];
+            [commentBTN setTitleColor:GRAY_FONT_COLOR forState:UIControlStateNormal];
+            commentBTN.titleLabel.font = FONT_SIZE_16;
+            commentBTN.layer.masksToBounds = YES;
+            commentBTN.layer.cornerRadius = 3.0f;
+            commentBTN.layer.borderWidth = 1.0f;
+            commentBTN.layer.borderColor = GRAY_FONT_COLOR.CGColor;
+            commentBTN.tag = section;
+            
+            UITapGestureRecognizer *commentOnceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentNow:)];
+            [commentBTN addGestureRecognizer:commentOnceTap];
+            
+        }
+
     }
     
     return footerV;

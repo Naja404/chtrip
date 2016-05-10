@@ -292,18 +292,18 @@ static NSString * const WANTBUY_CELL = @"wantBuyCell";
         cell.titleZHLB.text = [cellData objectForKey:@"title_zh"];
         cell.summaryZHLB.text = [cellData objectForKey:@"summary_zh"];
         cell.priceZHLB.text = [NSString stringWithFormat:@"%@ RMB", [cellData objectForKey:@"price_zh"]];
-        cell.checkStatu = [cellData objectForKey:@"select"];
+//        cell.checkStatu = [cellData objectForKey:@"select"];
         cell.pid = [cellData objectForKey:@"pid"];
         
-        if ([cell.checkStatu isEqualToString:@"0"]) {
-            [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
-        }else{
-            [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
-        }
+//        if ([cell.checkStatu isEqualToString:@"0"]) {
+//            [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redUnSelect"] forState:UIControlStateNormal];
+//        }else{
+//            [cell.checkBTN setBackgroundImage:[UIImage imageNamed:@"redSelect"] forState:UIControlStateNormal];
+//        }
         
-        UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCheckBTN:)];
-        cell.checkBTN.userInteractionEnabled = YES;
-        [cell.checkBTN addGestureRecognizer:onceTap];
+//        UITapGestureRecognizer *onceTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCheckBTN:)];
+//        cell.checkBTN.userInteractionEnabled = YES;
+//        [cell.checkBTN addGestureRecognizer:onceTap];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -476,6 +476,7 @@ static NSString * const WANTBUY_CELL = @"wantBuyCell";
     
     NSMutableDictionary *paramter = [NSMutableDictionary dictionary];
     [paramter setObject:[NSString stringWithFormat:@"%@", [CHSSID SSID]] forKey:@"ssid"];
+    [paramter setObject:@"0.9.7" forKey:@"ver"];
     
     [[HttpManager instance] requestWithMethod:@"User/getFavoriteList"
                                    parameters:paramter
