@@ -23,6 +23,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
 }

@@ -46,6 +46,7 @@ static NSString * const PLAY_ALBUM_CELL = @"playAlbumCell";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 

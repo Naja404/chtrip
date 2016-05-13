@@ -2514,8 +2514,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan (U6HJXK6D8E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan (U6HJXK6D8E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2533,7 +2533,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nijigo.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2e8d2a4f-8484-4cdb-a988-8df5d913ff21";
+				PROVISIONING_PROFILE = "9cfbce16-d94b-4c70-946e-9015407312d4";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
@@ -2544,8 +2544,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhengyu Yan (U6HJXK6D8E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhengyu Yan (U6HJXK6D8E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhengyu Yan (53RHUFBMK2)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2563,7 +2563,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nijigo.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2e8d2a4f-8484-4cdb-a988-8df5d913ff21";
+				PROVISIONING_PROFILE = "9cfbce16-d94b-4c70-946e-9015407312d4";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};
 			name = Release;
