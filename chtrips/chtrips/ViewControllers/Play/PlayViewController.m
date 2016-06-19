@@ -57,7 +57,7 @@ static NSString * const PLAY_CELL = @"playCell";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 
-    self.selectIndex = @"1";
+    self.selectIndex = @"5";
     self.nextPageNum = @"2";
     NSString *selectCity = [[TMCache sharedCache] objectForKey:@"selectCityName"];
     
@@ -199,12 +199,18 @@ static NSString * const PLAY_CELL = @"playCell";
     [_cateMenuView autoSetDimensionsToSize:CGSizeMake(ScreenWidth, 30)];
     _cateMenuView.backgroundColor = MENU_DEFAULT_COLOR;
     
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"购物", @"美食", @"酒店", @"景点"]];
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"体检", @"购物", @"美食", @"酒店", @"景点"]];
     [segmentedControl setFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     [segmentedControl setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1]];
     [segmentedControl setSelectionIndicatorMode:HMSelectionIndicatorResizesToStringWidth];
     [segmentedControl setIndexChangeBlock:^(NSUInteger index) {
-        self.selectIndex = [NSString stringWithFormat:@"%lu", (index + 1)];
+        
+        if (index == 0) {
+            self.selectIndex = @"5";
+        }else{
+            self.selectIndex = [NSString stringWithFormat:@"%lu", index];
+        }
+        
         [self.playTV scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         
         [self getShopList:@"1"];

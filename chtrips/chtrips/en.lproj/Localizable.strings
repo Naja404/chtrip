@@ -61,7 +61,7 @@
 "TEXT_TODAY" = "Today";
 "TEXT_TOMORROW" = "Tomorrow";
 "TEXT_DISCOVERY" = "Discovery";
-"TEXT_SHOPPING" = "Shopping";
+"TEXT_SHOPPING" = "良品";
 "TEXT_PLAY" = "Play";
 "TEXT_TRIP" = "Trip";
 "TEXT_MY" = "My";
@@ -153,7 +153,7 @@
 "TEXT_CONTACT_WECHAT" = "微信客服:(长按微信号复制)";
 "TEXT_CONTACT_WECHATNUM" = "wangzilin116";
 "TEXT_COPY_SUCCESS" = "复制成功";
-"TEXT_ALBUM_PROTYPE_1" = "抢购";
+"TEXT_ALBUM_PROTYPE_1" = "良品";
 "TEXT_ALBUM_PROTYPE_2" = "情报";
 "TEXT_SHIP_STATUS_1" = "物流";
 

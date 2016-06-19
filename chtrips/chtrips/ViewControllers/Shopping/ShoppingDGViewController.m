@@ -87,7 +87,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
 }
 
 - (void) setupSegmentedControl {
-    self.shopSegmented = [[UISegmentedControl alloc] initWithItems:@[@"人气商品",@"商家"]];
+    self.shopSegmented = [[UISegmentedControl alloc] initWithItems:@[@"健康商品",@"商家"]];
     _shopSegmented.frame = CGRectMake(20.0, 20.0, 150, 30);
     _shopSegmented.selectedSegmentIndex = 0;
     _shopSegmented.tintColor = RED_COLOR_BG;
@@ -174,7 +174,7 @@ static NSString * const SHOP_POP_CELL = @"ShoppingPOPCell";
     
     UIButton *cityBTN = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 30)];
     
-    [cityBTN setTitle:@"人气商品" forState:UIControlStateNormal];
+    [cityBTN setTitle:@"健康商品" forState:UIControlStateNormal];
     cityBTN.titleLabel.textColor = [UIColor whiteColor];
     cityBTN.titleLabel.font = [UIFont systemFontOfSize:14];
     cityBTN.backgroundColor = RED_COLOR_BG;
