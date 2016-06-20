@@ -50,8 +50,8 @@ static NSString * const DISCOVERY_CELL = @"discoveryCell";
 
 - (void) viewWillAppear:(BOOL)animated{
 
-    NSString *isNew = [[TMCache sharedCache] objectForKey:@"ver097"];
-    if (![isNew isEqualToString:@"YES"]) [self setIntroView];
+//    NSString *isNew = [[TMCache sharedCache] objectForKey:@"ver097"];
+//    if (![isNew isEqualToString:@"YES"]) [self setIntroView];
     
     self.hidesBottomBarWhenPushed = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
